@@ -47,6 +47,15 @@ _k32.VirtualProtectEx.argtypes = [wt.HANDLE, ctypes.c_uint64, ctypes.c_size_t, w
 MEM_RESERVE, MEM_PRIVATE = 0x2000, 0x20000
 PAGE_EXECUTE_READWRITE, PAGE_READWRITE = 0x40, 0x04
 _READABLE = 0x02 | 0x04 | 0x08 | 0x20 | 0x40 | 0x80  # R, RW, WC, XR, XRW, XWC
+PAGE_WRITECOMBINE = 0x400
+PAGE = 0x1000
+
+
+class _WSEX(ctypes.Structure):  # PSAPI_WORKING_SET_EX_INFORMATION
+    _fields_ = [("VirtualAddress", ctypes.c_uint64), ("Attributes", ctypes.c_uint64)]
+
+
+_k32.K32QueryWorkingSetEx.argtypes = [wt.HANDLE, ctypes.c_void_p, wt.DWORD]
 
 
 def find_pid(exe: str = "kyty_emulator.exe") -> int:
@@ -149,6 +158,58 @@ class GameMemory:
                         i = block.find(pattern, i + 1)
                     at += chunk
             address = base + size
+        return hits
+
+    def resident(self, start: int, end: int, batch: int = 1 << 16) -> list[tuple[int, int]]:
+        """(start, end) runs of pages in [start, end) that are in the process's working set (touched memory).
+        Reading only these avoids faulting in gigabytes of untouched guest memory."""
+        runs: list[tuple[int, int]] = []
+        for first in range(start, end, batch * PAGE):
+            n = min(batch, (end - first) // PAGE)
+            entries = (_WSEX * n)()
+            for i in range(n):
+                entries[i].VirtualAddress = first + i * PAGE
+            if not _k32.K32QueryWorkingSetEx(self.handle, entries, ctypes.sizeof(entries)):
+                raise OSError(ctypes.get_last_error(), "QueryWorkingSetEx failed")
+            for i in range(n):
+                if entries[i].Attributes & 1:
+                    page = first + i * PAGE
+                    if runs and runs[-1][1] == page:
+                        runs[-1] = (runs[-1][0], page + PAGE)
+                    else:
+                        runs.append((page, page + PAGE))
+        return runs
+
+    def find_guest(self, patterns: list[bytes], limit: int = 64) -> dict[bytes, list[int]]:
+        """Addresses of each pattern in touched, readable memory (one pass for all patterns). GPU (write-combined)
+        and guard pages are skipped; the game's data lives in mapped views at 0x2_0000_0000 and up."""
+        import re
+        regex = re.compile(b"|".join(re.escape(p) for p in patterns))
+        hits: dict[bytes, list[int]] = {p: [] for p in patterns}
+        longest = max(len(p) for p in patterns)
+        runs = []
+        info = _MEMORY_BASIC_INFORMATION()
+        address = 0
+        while _k32.VirtualQueryEx(self.handle, address, ctypes.byref(info), ctypes.sizeof(info)):
+            base, size = info.BaseAddress, info.RegionSize
+            if (info.State == MEM_COMMIT and info.Protect & _READABLE
+                    and not info.Protect & (PAGE_GUARD | PAGE_WRITECOMBINE)):
+                runs += self.resident(base, base + size)
+            address = base + size
+        for run_start, run_end in runs:
+            at = run_start
+            while at < run_end:
+                n = min((16 << 20) + longest, run_end - at)
+                try:
+                    block = self.read(at, n)
+                except OSError:
+                    at += 16 << 20
+                    continue
+                for m in regex.finditer(block):
+                    found = hits[m.group(0)]
+                    if len(found) < limit and (not found or found[-1] != at + m.start()):
+                        found.append(at + m.start())
+                at += 16 << 20
         return hits
 
     def regions(self, start: int = 0, end: int = 1 << 47) -> list[Region]:

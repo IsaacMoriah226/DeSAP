@@ -26,7 +26,8 @@ WORK = Path(r"C:\Dev\DeSArchi\work")
 
 def loaded_params(game: GameMemory, param_type: str) -> list[int]:
     """Start addresses of loaded copies of a PARAM (its type name sits at +0x0c)."""
-    hits = game.find(param_type.encode("ascii") + b"\0", limit=32)
+    needle = param_type.encode("ascii") + b"\0"
+    hits = game.find_guest([needle], limit=32)[needle]
     out = []
     for hit in hits:
         start = hit - 0x0C
@@ -79,9 +80,9 @@ def cmd_rename(game: GameMemory, args) -> None:
         raise SystemExit("the new text must not be longer than the old")
     for encoding, terminator in (("utf-8", b"\0"), ("utf-16-le", b"\0\0")):
         old_bytes, new_bytes = old.encode(encoding), new.encode(encoding)
-        hits = game.find(old_bytes, limit=64)
-        for hit in hits:
-            game.write(hit, new_bytes + terminator)
+        hits = game.find_guest([old_bytes], limit=64)[old_bytes]
+        for hit in hits:  # a same-length name needs no terminator (the old one's is still there)
+            game.write(hit, new_bytes + (terminator if len(new_bytes) < len(old_bytes) else b""))
         print(f"{encoding}: {len(hits)} copies rewritten {[hex(h) for h in hits[:8]]}")
 
 
