@@ -41,6 +41,12 @@ _k32.WriteProcessMemory.argtypes = [wt.HANDLE, ctypes.c_uint64, ctypes.c_void_p,
 _k32.VirtualQueryEx.argtypes = [wt.HANDLE, ctypes.c_uint64, ctypes.POINTER(_MEMORY_BASIC_INFORMATION),
                                 ctypes.c_size_t]
 _k32.VirtualQueryEx.restype = ctypes.c_size_t
+_k32.VirtualAllocEx.argtypes = [wt.HANDLE, ctypes.c_uint64, ctypes.c_size_t, wt.DWORD, wt.DWORD]
+_k32.VirtualAllocEx.restype = ctypes.c_uint64
+_k32.VirtualProtectEx.argtypes = [wt.HANDLE, ctypes.c_uint64, ctypes.c_size_t, wt.DWORD, ctypes.POINTER(wt.DWORD)]
+MEM_RESERVE, MEM_PRIVATE = 0x2000, 0x20000
+PAGE_EXECUTE_READWRITE, PAGE_READWRITE = 0x40, 0x04
+_READABLE = 0x02 | 0x04 | 0x08 | 0x20 | 0x40 | 0x80  # R, RW, WC, XR, XRW, XWC
 
 
 def find_pid(exe: str = "kyty_emulator.exe") -> int:
@@ -106,6 +112,44 @@ class GameMemory:
 
     def u64(self, address: int) -> int:
         return int.from_bytes(self.read(address, 8), "little")
+
+    def alloc(self, size: int, protect: int = PAGE_EXECUTE_READWRITE) -> int:
+        address = _k32.VirtualAllocEx(self.handle, 0, size, MEM_COMMIT | MEM_RESERVE, protect)
+        if not address:
+            raise OSError(ctypes.get_last_error(), f"VirtualAllocEx({size}) failed")
+        return address
+
+    def protect(self, address: int, size: int, protect: int) -> int:
+        old = wt.DWORD()
+        if not _k32.VirtualProtectEx(self.handle, address, size, protect, ctypes.byref(old)):
+            raise OSError(ctypes.get_last_error(), f"VirtualProtectEx({address:#x}) failed")
+        return old.value
+
+    def find(self, pattern: bytes, start: int = 0, end: int = 1 << 47, limit: int = 16,
+             chunk: int = 16 << 20, private_only: bool = True) -> list[int]:
+        """Addresses of `pattern` in committed readable memory (the game's heap is private memory)."""
+        hits: list[int] = []
+        info = _MEMORY_BASIC_INFORMATION()
+        address = start
+        while address < end and len(hits) < limit and _k32.VirtualQueryEx(
+                self.handle, address, ctypes.byref(info), ctypes.sizeof(info)):
+            base, size = info.BaseAddress, info.RegionSize
+            if (info.State == MEM_COMMIT and info.Protect & _READABLE and not info.Protect & PAGE_GUARD
+                    and (not private_only or info.Type == MEM_PRIVATE)):
+                at = base
+                while at < base + size and len(hits) < limit:
+                    n = min(chunk + len(pattern), base + size - at)
+                    try:
+                        block = self.read(at, n)
+                    except OSError:
+                        break
+                    i = block.find(pattern)
+                    while i != -1 and len(hits) < limit:
+                        hits.append(at + i)
+                        i = block.find(pattern, i + 1)
+                    at += chunk
+            address = base + size
+        return hits
 
     def regions(self, start: int = 0, end: int = 1 << 47) -> list[Region]:
         out = []
