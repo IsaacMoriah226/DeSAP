@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.apworld
+/build/
+/dist/
+*.log
+# game data and dumps never go in the repo
+*.elf
+*.bin
+*.parambnd
+*.msgbnd
