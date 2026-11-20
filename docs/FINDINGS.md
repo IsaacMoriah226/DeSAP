@@ -87,12 +87,12 @@ Lua flag ids (`proxy:SetEventFlag(n, true)`, `CompleteEvent(n)`, a `once` event'
 
 ### Location table
 
-`tools/build_locations.py` writes 573 locations to `work\locations.json`:
+`tools/build_locations.py` writes 570 locations to `work\locations.json`:
 
 | Type | Count | Source | Flag |
 | --- | --- | --- | --- |
 | treasure | 484 | MSB treasure events (15 more hold nothing) | 10240 + 512 * sub-map + index |
-| event | 67 | Lua `GetRateItem(lot)`: all 16 boss souls, keys, gifts | the rewarding function's `SetEventFlag`, `CompleteEvent`, or its `once` event id |
+| event | 66 | Lua `GetRateItem(lot)`: all 16 boss souls, keys, gifts | the rewarding function's `SetEventFlag`, `CompleteEvent`, or its `once` event id |
 | enemy | 6 | Lua `OnCharacterDead(flag, entity, ..., once)` with a guaranteed drop: 5 Primeval Demons (Colorless Demon's Soul), the Fat Officer (Grey Demon's Soul) | the death flag |
 | shop | 14 | ShopLineupParam rows with limited stock | `eventFlag`: an 8-bit purchase counter (byte `flag // 8`) |
 
