@@ -34,20 +34,21 @@ FLAG_MANAGER_PTR = 0x9027bf328
 STORED_WORLD_BLOCKS = 0x2B1C
 STORED_WORLD_BLOCK_SIZE = 0x200
 
-# Map ids to areas. m02 (1-1, 1-2) is confirmed in game; the rest follow from their items and enemies.
+# Map ids to areas. m02 (1-1, 1-2) is confirmed in game; the rest follow from the boss soul each map's script
+# gives (m03: Adjudicator, Old Hero, Storm King; m04: Fool's Idol, Maneater, Old Monk) and their treasures.
 AREAS = {
     "m01_00_00_00": "Nexus",
     "m02_00_00_00": "Gates of Boletaria",
     "m02_01_00_00": "The Lord's Path",
     "m02_02_00_00": "Inner Ward",
     "m02_03_00_00": "The King's Tower",
-    "m03_00_00_00": "Prison of Hope (Latria hub)",
-    "m03_01_00_00": "Prison of Hope",
-    "m03_02_00_00": "Upper Latria",
-    "m03_03_00_00": "The Ivory Tower",
-    "m04_00_00_00": "Island's Edge",
-    "m04_01_00_00": "The Ritual Path",
-    "m04_02_00_00": "Altar of Storms",
+    "m03_00_00_00": "Shrine of Storms (unused)",
+    "m03_01_00_00": "Island's Edge",
+    "m03_02_00_00": "The Ritual Path",
+    "m03_03_00_00": "Altar of Storms",
+    "m04_00_00_00": "Prison of Hope",
+    "m04_01_00_00": "Upper Latria",
+    "m04_02_00_00": "The Ivory Tower",
     "m05_00_00_00": "Depraved Chasm",
     "m05_01_00_00": "Swamp of Sorrow",
     "m05_02_00_00": "Rotting Haven",

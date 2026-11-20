@@ -30,14 +30,14 @@ Notes:
 ## Map IDs
 
 From `tools/list_spawns.py` (50 player spawn points). m02_00 (1-1) and m02_01 (1-2) are confirmed in game; the
-rest agree with the items their treasures hold (Prison of Hope keys in m03, Hardstone in m06, and so on).
+rest follow from the boss soul each map's script gives and from their treasures.
 
 | ID | Maps | Area |
 | --- | --- | --- |
 | m01 | 00 | Nexus (many spawns, at two heights) |
 | m02 | 00-03 | Boletarian Palace 1-1 to 1-4 |
-| m03 | 00-03 | Tower of Latria (m03_00 has no c0000 spawn and no treasures) |
-| m04 | 00-02 | Shrine of Storms (the fork's notes: m04_01 c0000_0001 is at the Maneater fog gate) |
+| m03 | 00-03 | Shrine of Storms 4-1 to 4-3 (Adjudicator, Old Hero, Storm King souls; m03_00 has no spawn or treasures) |
+| m04 | 00-02 | Tower of Latria 3-1 to 3-3 (Fool's Idol, Maneater, Old Monk souls; the fork's notes: m04_01 c0000_0001 is at the Maneater fog gate) |
 | m05 | 00-02 | Valley of Defilement |
 | m06 | 00-02 | Stonefang Tunnel |
 | m08 | 00-02 | tutorial |
@@ -66,10 +66,44 @@ Treasure `i` of map `mWW_SS_00_00` (its MSB treasure events in file order) sets 
 | Throwing Knife x10 | m02_01 #2 | 10754 | `+0x540`, 2 | `+0x2e5c`, 2 |
 | Half Moon Grass x3 | m02_01 #1 | 10753 | `+0x540`, 1 | `+0x2e5c`, 1 |
 
-`tools/build_locations.py` writes all 499 treasures (484 with an item; the largest map has 64) with their flags.
+### Flag ranges
 
-Not covered yet: boss souls and other event rewards (Lua `GetItem`/`AddInventoryItem`), NPC gifts and trades,
-enemy drops, shops.
+| Flags | Kind | Read from another world |
+| --- | --- | --- |
+| 0-3199 | the world's own (event script flags such as 37, 582, one-time NPC deaths) | saved block `+0x8d0` |
+| 3200-8191 | global (boss kills and souls: 4224, 4252, ...) | live |
+| 8192-12287 | the world's own (treasures from 10240) | saved block `+0x2b1c` |
+| 12288-18047 | global (shop purchase counters from 14984, ...) | live |
+
+Lua flag ids (`proxy:SetEventFlag(n, true)`, `CompleteEvent(n)`, a `once` event's own id) are these ids.
+
+### Bosses (verified on Tower Knight, 2026-11-20)
+
+- The kill: the script's `proxy:OnCharacterDead(4224, 801, "OnEvent_4224", once)` (801 is Tower Knight's MSB
+  entity id) set flag 4224 when he died.
+- The soul: `OnEvent_4252_1` gives the Iron Demon's Soul (`GetRateItem(10111)`) and sets 4252, when the archstone
+  is touched (not on the kill). Flag 4252 came on with the soul.
+- Ordinary enemies' deaths set world flags (850-870 in 1-2) that clear when the area resets: not locations.
+
+### Location table
+
+`tools/build_locations.py` writes 573 locations to `work\locations.json`:
+
+| Type | Count | Source | Flag |
+| --- | --- | --- | --- |
+| treasure | 484 | MSB treasure events (15 more hold nothing) | 10240 + 512 * sub-map + index |
+| event | 67 | Lua `GetRateItem(lot)`: all 16 boss souls, keys, gifts | the rewarding function's `SetEventFlag`, `CompleteEvent`, or its `once` event id |
+| enemy | 6 | Lua `OnCharacterDead(flag, entity, ..., once)` with a guaranteed drop: 5 Primeval Demons (Colorless Demon's Soul), the Fat Officer (Grey Demon's Soul) | the death flag |
+| shop | 14 | ShopLineupParam rows with limited stock | `eventFlag`: an 8-bit purchase counter (byte `flag // 8`) |
+
+Not covered yet:
+- NPC trades and gifts: Sparkly the Crow (ItemLot 20000-20018), Blige's trades (10219-10228), a few NPC gifts.
+  They run through the compiled talk scripts (`script\talk\*.talkesdbnd`, ESD).
+- Remake additions (ItemLot rows named "BP - ...": Penetrator armor, collectible coins, new Sparkly trades). Their
+  items are not in the PS3 text files and they are not placed by the original-format MSB/Lua data.
+- The two dragon souls (Small/Large Flame-Scale Demon's Soul, given through an NPC state list) and Crystal
+  Lizards (their persistence is not in the Lua scripts).
+- The final soul choice in the Nexus (left out on purpose).
 
 ## Game data in the dump
 

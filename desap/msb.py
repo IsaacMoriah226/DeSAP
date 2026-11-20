@@ -64,6 +64,35 @@ def _params(data: bytes) -> dict[str, list[int]]:
     return out
 
 
+@dataclass
+class Enemy:
+    name: str
+    entity_id: int
+    npc_param: int
+    talk_id: int
+    position: tuple[float, float, float]
+
+
+PART_ENEMY = 2
+
+
+def read_enemies(path: Path) -> list[Enemy]:
+    """Enemy parts (type 2): +0x68 entity data offset (i64; entity id first), +0x70 type data offset (i64);
+    type data +0xc NpcParam id, +0x10 talk id (the PS3 layout's)."""
+    data = path.read_bytes()
+    out = []
+    for entry in _params(data).get("PARTS_PARAM_ST", []):
+        name_at, part_type = struct.unpack_from("<qi", data, entry)
+        if part_type != PART_ENEMY:
+            continue
+        entity_at, type_at = struct.unpack_from("<qq", data, entry + 0x68)
+        entity_id = struct.unpack_from("<i", data, entry + entity_at)[0]
+        npc_param, talk_id = struct.unpack_from("<ii", data, entry + type_at + 0xC)
+        out.append(Enemy(_text(data, entry + name_at), entity_id, npc_param, talk_id,
+                         struct.unpack_from("<3f", data, entry + 0x20)))
+    return out
+
+
 def read_msb(path: Path) -> Msb:
     data = path.read_bytes()
     params = _params(data)
