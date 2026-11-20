@@ -29,17 +29,47 @@ Notes:
 
 ## Map IDs
 
-From `tools/list_spawns.py` (50 player spawn points). Only `m02` is confirmed in game.
+From `tools/list_spawns.py` (50 player spawn points). m02_00 (1-1) and m02_01 (1-2) are confirmed in game; the
+rest agree with the items their treasures hold (Prison of Hope keys in m03, Hardstone in m06, and so on).
 
-| ID | Maps | Area (guess unless marked) |
+| ID | Maps | Area |
 | --- | --- | --- |
 | m01 | 00 | Nexus (many spawns, at two heights) |
-| m02 | 00-03 | Boletarian Palace 1-1 to 1-4 (m02_00 = 1-1 confirmed) |
-| m03 | 00-03 | Tower of Latria (m03_00 has no c0000 spawn) |
+| m02 | 00-03 | Boletarian Palace 1-1 to 1-4 |
+| m03 | 00-03 | Tower of Latria (m03_00 has no c0000 spawn and no treasures) |
 | m04 | 00-02 | Shrine of Storms (the fork's notes: m04_01 c0000_0001 is at the Maneater fog gate) |
 | m05 | 00-02 | Valley of Defilement |
 | m06 | 00-02 | Stonefang Tunnel |
 | m08 | 00-02 | tutorial |
+
+## Event flags
+
+Flag manager: pointer at `0x9027bf328` (getter `0x9002edd40`). Found from the Lua binding of `SetEventFlag`
+(registered at `0x90024d96b`, handler `0x900216d10`, setter `0x9002a7460`).
+
+- Flags 0-18047 are one bit array from the manager's start: flag `n` is bit `n % 8` of byte `n // 8`
+  (set/get by id: `0x9002a7400` / `0x9002a7550`).
+- The current world's live flags: 0-3199 (bytes `+0x0`-`+0x18f`) and 8192-12287 (bytes `+0x400`-`+0x5ff`).
+  The current world number is the byte at `+0x3cd3`.
+- On leaving a world the game copies those two blocks to the world's saved slots: `+0x8d0 + (w - 1) * 0x190`
+  and `+0x2b1c + (w - 1) * 0x200` (`0x9002a7230`). A treasure pickup writes the saved slot at once too.
+
+### Treasure pickups (verified)
+
+Treasure `i` of map `mWW_SS_00_00` (its MSB treasure events in file order) sets **flag 10240 + 512 * SS + i**.
+
+| Pickup | Map, treasure | Flag | Live byte, bit | Saved byte, bit |
+| --- | --- | --- | --- | --- |
+| Late Moon Grass x2 | m02_00 #2 | 10242 | `+0x500`, 2 | `+0x2e1c`, 2 |
+| Crescent Moon Grass x3 | m02_00 #3 | 10243 | `+0x500`, 3 | `+0x2e1c`, 3 |
+| Unknown Soldier's Soul | m02_00 #4 | 10244 | `+0x500`, 4 | `+0x2e1c`, 4 |
+| Throwing Knife x10 | m02_01 #2 | 10754 | `+0x540`, 2 | `+0x2e5c`, 2 |
+| Half Moon Grass x3 | m02_01 #1 | 10753 | `+0x540`, 1 | `+0x2e5c`, 1 |
+
+`tools/build_locations.py` writes all 499 treasures (484 with an item; the largest map has 64) with their flags.
+
+Not covered yet: boss souls and other event rewards (Lua `GetItem`/`AddInventoryItem`), NPC gifts and trades,
+enemy drops, shops.
 
 ## Game data in the dump
 
