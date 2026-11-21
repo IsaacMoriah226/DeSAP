@@ -63,7 +63,8 @@ class FakeGame:
     def detach(self): pass
 
     def state(self) -> GameState:
-        return GameState(self.in_game, self.map_uid, Flags(bytes(self.flags)), self.deaths)
+        return GameState(self.in_game, self.map_uid, Flags(bytes(self.flags)), self.deaths,
+                         getattr(self, "position", None))
 
     def inventory(self):
         return list(self.entries)
@@ -115,8 +116,14 @@ class FakeGame:
     def find_text_entries(self, keys):
         return {key: [i] for i, key in enumerate(keys)}
 
-    def set_text(self, fields, text):
+    def set_text(self, fields, text, key=""):
         self.texts = getattr(self, "texts", []) + [(tuple(fields), text)]
+
+    def set_text_buffer(self, fields, text, key):
+        self.set_text(fields, text)
+
+    def tables_live(self):
+        return bool(self.tables)
 
     # test helpers
     def set_flag(self, location_code: int) -> None:
@@ -286,6 +293,22 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(Flags(bytes(self.game.flags)).received, 8)
         self.tick()
         self.assertEqual(len(self.game.given), 7)
+
+    def test_placeholder_named_after_the_nearest_foreign_location(self):
+        self.placed_game()
+        nexus = LOCATION_BY_CODE[TREASURE]  # (in the Nexus, holding Club for this slot: not a placeholder)
+        foreign = next(code for code, location in LOCATION_BY_CODE.items() if location.kind == "treasure"
+                       and location.game["map"] == "m01_00_00_00" and code != TREASURE)
+        self.game.enter(NEXUS_UID)
+        self.game.position = tuple(LOCATION_BY_CODE[foreign].game["position"])
+        self.ctx.player_names = {1: "Me", OTHER_PLAYER: "Friend"}
+        self.ctx.slot_info = {1: SimpleNamespace(game="Demon's Souls Remake", name="Me"),
+                              OTHER_PLAYER: SimpleNamespace(game="Demon's Souls Remake", name="Friend")}
+        self.tick()
+        self.assertTrue(self.game.texts[-1][1].startswith("Friend's "), self.game.texts[-1])
+        self.game.position = (9999.0, 0.0, 0.0)
+        self.tick()
+        self.assertEqual(self.game.texts[-1][1], "Archipelago Item")
 
     def test_placeholders_are_removed(self):
         self.placed_game()

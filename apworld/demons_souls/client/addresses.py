@@ -25,6 +25,7 @@ CHR_INS_MAN = 0x9027CF378
 GAME_MAN = 0x9027BF378
 
 # offsets
+CHR_CTRL, CHR_BODY, BODY_POSITION = 0x38, 0x20, 0x20  # ChrIns -> ChrCtrl -> physics body -> x, y, z (the MSB's)
 PLAYER_DATA = 0x10
 DEATH_COUNT = 0x94
 PLAYER_CHR = 0x258

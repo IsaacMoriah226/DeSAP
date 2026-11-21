@@ -33,6 +33,38 @@ PLACEHOLDER_TEXTS = {
     "GOODS_CAPTION_2055": "This item belongs to another player's world in the Archipelago multiworld. "
                           "It has been sent to them; the client takes this token away.",
 }
+# While you play, the client names the placeholder after the nearest unchecked location (in the world you are in)
+# that holds another world's item: "<Player>'s <Item>". You stand at a corpse to loot it, so the pickup's popup shows
+# that location's item. Scripted rewards have no position: they keep the generic name.
+PLACEHOLDER_NAME_KEY = "GOODS_NAME_2055"
+NAMING_RANGE = 40.0  # metres: farther than that, the generic name
+# Shop rows holding another world's item sell a second placeholder (goods 2056, also cut from the game).
+SHOP_PLACEHOLDER = (CATEGORY["goods"], 2056, 1)
+SHOP_PLACEHOLDER_TEXTS = {
+    "GOODS_NAME_2056": "[AP] Item for another world",
+    "GOODS_INFO_2056": "Archipelago: sends an item to another world",
+    "GOODS_CAPTION_2056": "Buying this sends an item to another player's world in the Archipelago multiworld; "
+                          "the client takes this token away.",
+}
+
+
+def nearest_foreign(position, area: int, scouted: dict, checked: frozenset, slot: int):
+    """The scouted item of the nearest unchecked location in this area holding another world's item, with its
+    distance; (None, inf) when there is none."""
+    best, best_distance = None, float("inf")
+    if position is None:
+        return best, best_distance
+    for code, item in scouted.items():
+        if item.player == slot or code in checked:
+            continue
+        location = LOCATION_BY_CODE.get(code)
+        if location is None or "position" not in location.game or world_of_map(location.game["map"]) != area:
+            continue
+        x, y, z = location.game["position"]
+        distance = ((x - position[0]) ** 2 + (y - position[1]) ** 2 + (z - position[2]) ** 2) ** 0.5
+        if distance < best_distance:
+            best, best_distance = item, distance
+    return best, best_distance
 GOAL_FLAG, GOAL_WORLD = 70, 1  # OnCharacterDead(70, 821): False King Allant (m01_00_00_00_eventboss.lua)
 AMMUNITION = range(160000, 170000)
 

@@ -34,15 +34,18 @@ from . import params
 from .game import DemonsSoulsGame, GameState, GameVersionError
 from .profile import Emulator, Profile, ProfileError
 from .settings import LauncherSettings
-from .placement import (CHECKS, GOAL_FLAG, GOAL_WORLD, LOCATION_BY_CODE, LOCATION_INDEX, LOCK_CODES, PLACEHOLDER,
-                        PLACEHOLDER_TEXTS, game_item, has_lot, shared, upgraded_weapon)
+from .placement import (CHECKS, GOAL_FLAG, GOAL_WORLD, LOCATION_BY_CODE, LOCATION_INDEX, LOCK_CODES, NAMING_RANGE,
+                        PLACEHOLDER, PLACEHOLDER_NAME_KEY, PLACEHOLDER_TEXTS, SHOP_PLACEHOLDER, SHOP_PLACEHOLDER_TEXTS,
+                        game_item, has_lot, nearest_foreign, shared, upgraded_weapon)
 
 GAME = "Demon's Souls Remake"
 GAME_TICK = 0.25
 ATTACH_RETRY = 5.0
 KICK_RETRY = 15.0
+SETTLE_SECONDS = 15.0  # after attaching, before the client writes anything
 GIVE_PER_TICK = 4  # items per game call (one popup each; batches of 2 and 8 verified in game)
 PART_OF_MAP = {part.map: part for part in PARTS}
+NEXIAL_BINDING = 1033
 
 
 @dataclass(frozen=True)
@@ -120,6 +123,8 @@ class DemonsSoulsContext(CommonContext):
         self.placed = False  # lots and shop rows rewritten for this slot
         self.area_safe = False  # the area being played loaded after the rewrite (treasures are fixed at load)
         self.texts_set = False
+        self.text_fields: dict[str, list[int]] = {}
+        self.placeholder_name = ""
         self.lot_writes: dict[int, dict[int, bytes]] = {}
         self.shop_writes: dict[int, dict[int, bytes]] = {}
         self.physical: set[int] = set()  # locations whose lot or shop row gives this world's item by itself
@@ -127,6 +132,7 @@ class DemonsSoulsContext(CommonContext):
         self.last_deaths = -1
         self.last_kick = 0.0
         self.last_attach_try = 0.0
+        self.attached_at = 0.0
         self.last_message = ""
         self.launcher_mode = False  # the emulator runs from the Archipelago profile: every save there is ours
 
@@ -237,12 +243,13 @@ class DemonsSoulsContext(CommonContext):
             self.last_attach_try = time.monotonic()
             try:
                 self.bridge.attach()
+                self.attached_at = time.monotonic()
                 self.launcher_mode = self.in_profile(self.bridge.exe_path)
                 if self.launcher_mode:
                     self.bridge.live.path = self.profile.live_file
                 self.say("Attached to the emulator" + (" (Archipelago profile)." if self.launcher_mode else "."))
-            except LookupError:
-                self.say("Waiting for kyty_emulator.exe ...")
+            except LookupError as error:
+                self.say("Waiting for the game ..." if "starting" in str(error) else "Waiting for kyty_emulator.exe ...")
                 return out
             except GameVersionError as error:
                 self.say(str(error))
@@ -250,6 +257,8 @@ class DemonsSoulsContext(CommonContext):
         self.periodic_backup()
         if not self.slot or self.server_seed_name is None:
             return out
+        if time.monotonic() - self.attached_at < SETTLE_SECONDS:
+            return out  # (let the game finish starting before anything is written)
         state = self.bridge.state()
         if not state.in_game:
             # a loading screen or the title: the next area loads with the current lots (another save may be loaded
@@ -264,6 +273,7 @@ class DemonsSoulsContext(CommonContext):
         self.place(view)
         out["checks"] = self.find_checks(state, view)
         self.deliver(state, view)
+        self.name_placeholder(state, view)
         self.clean_placeholders()
         self.enforce_locks(state, view)
         out["death"] = self.death_link(state)
@@ -303,15 +313,21 @@ class DemonsSoulsContext(CommonContext):
 
     def place(self, view: View) -> None:
         """Rewrite lots and shop rows once the scouts are in; repair them if the game reloaded its params."""
-        if not view.scouted:
+        if not view.scouted or os.environ.get("DESAP_NO_WRITES"):
             return
         if self.placed:
-            if self.bridge.rows_intact("ITEMLOT_PARAM_ST", self.lot_writes):
+            if not self.bridge.tables_live():
+                self.say("The game moved its item tables: placing the items again.")
+                self.placed = False
+            elif self.bridge.rows_intact("ITEMLOT_PARAM_ST", self.lot_writes):
                 return
-            self.say("The game reloaded its item tables: placing the items again.")
-            self.placed = False
+            else:
+                self.say("The game reloaded its item tables: placing the items again.")
+                self.placed = False
+        if self.bridge.tables and not self.bridge.tables_live():
+            self.bridge.tables = {}
         if not self.bridge.tables:
-            self.say("Looking for the game's item tables (about 30 seconds) ...")
+            self.say("Looking for the game's item tables (about 45 seconds) ...")
             try:
                 self.bridge.find_tables()
             except LookupError:
@@ -329,20 +345,38 @@ class DemonsSoulsContext(CommonContext):
             self.bridge.patch_rows("CHARACTER_INIT_PARAM", {
                 int(row): {offsets[field]: struct.pack("<i", item) for field, item in fields.items()}
                 for row, fields in loadouts.items()})
+        self.dress_placeholders()
         if self.slot_data.get("remove_stat_requirements"):
             rows = {row: {params.WEAPON_REQUIREMENTS: bytes(4)}
                     for copy in self.bridge.tables.get("EQUIP_PARAM_WEAPON_ST", []) for row in copy.rows}
             self.bridge.patch_rows("EQUIP_PARAM_WEAPON_ST", rows)
         if not self.texts_set:
             self.say("Setting the text of items for other worlds (about a minute) ...")
-            fields = self.bridge.find_text_entries(list(PLACEHOLDER_TEXTS))
-            for key, text in PLACEHOLDER_TEXTS.items():
-                self.bridge.set_text(fields[key], text)
+            texts = {**PLACEHOLDER_TEXTS, **SHOP_PLACEHOLDER_TEXTS}
+            self.text_fields = self.bridge.find_text_entries(list(texts))
+            for key, text in texts.items():
+                if key == PLACEHOLDER_NAME_KEY:
+                    self.bridge.set_text_buffer(self.text_fields[key], text, key)
+                else:
+                    self.bridge.set_text(self.text_fields[key], text, key)
+            self.placeholder_name = PLACEHOLDER_TEXTS[PLACEHOLDER_NAME_KEY]
             self.texts_set = True
         self.placed = True
         self.area_safe = False
         self.say("Items placed. Pickups lying in the area you are in change after its next loading screen (die, "
                  "warp, or quit and continue); bosses, scripted rewards and enemy drops already give their new items.")
+
+    def dress_placeholders(self) -> None:
+        """The placeholders take the Nexial Binding's look (its icon id and the remake's item link)."""
+        copies = self.bridge.tables.get("EQUIP_PARAM_GOODS_ST")
+        if not copies or copies[0].row(NEXIAL_BINDING) is None:
+            return
+        source = copies[0].row(NEXIAL_BINDING)
+        icon = self.bridge.memory.read(source + params.GOODS_ICON, 2)
+        link = self.bridge.memory.read(source + params.GOODS_REMAKE_UI, 4)
+        self.bridge.patch_rows("EQUIP_PARAM_GOODS_ST", {
+            item: {params.GOODS_ICON: icon, params.GOODS_REMAKE_UI: link}
+            for item in (PLACEHOLDER[1], SHOP_PLACEHOLDER[1])})
 
     def in_profile(self, exe_path: str) -> bool:
         try:
@@ -370,15 +404,15 @@ class DemonsSoulsContext(CommonContext):
             self.launch_status = "Cannot start: " + "; ".join(problems)
             logger.error(self.launch_status)
             return
-        if self.bridge.attached:
-            self.launch_status = "The game is already running."
-            return
+        running_ours = False
         try:
-            from .memory import find_pid
-            find_pid()
-            self.launch_status = "Another KytyPS5 is running: close it first."
-            logger.error(self.launch_status)
-            return
+            from .memory import GameMemory, find_pid
+            with GameMemory(find_pid()) as running:
+                running_ours = self.in_profile(running.image_path())
+            if not running_ours:
+                self.launch_status = "Another KytyPS5 (not the Archipelago profile) is running: close it first."
+                logger.error(self.launch_status)
+                return
         except LookupError:
             pass
         if not (self.server and self.slot and self.auth == s.slot):
@@ -394,6 +428,9 @@ class DemonsSoulsContext(CommonContext):
                 self.launch_status = "Could not connect (check the server, the slot name and the password)."
                 logger.error(self.launch_status)
                 return
+        if running_ours:
+            self.launch_status = "Connected to the running game."
+            return
         self.launch_status = "Preparing the Archipelago profile ..."
         try:
             await asyncio.to_thread(self.profile.sync, emulator)
@@ -422,6 +459,7 @@ class DemonsSoulsContext(CommonContext):
             "in_game": bool(state and state.in_game), "map": state.map_id if state else "",
             "checked": len(self.checked_locations), "locations": len(self.checked_locations | self.missing_locations),
             "received": len(self.items_received), "goal": self.finished_game, "launch": self.launch_status,
+            "progress": self.last_message if self.bridge.attached and not self.placed else "",
         }
 
     def weapon_rows(self) -> set[int]:
@@ -450,7 +488,7 @@ class DemonsSoulsContext(CommonContext):
                 if own:
                     self.physical.add(code)
             elif location.kind == "shop" and self.bridge.tables.get("SHOP_LINEUP_PARAM"):
-                self.shop_writes[location.game["shop_row"]] = params.shop_bytes(*(own or PLACEHOLDER)[:2])
+                self.shop_writes[location.game["shop_row"]] = params.shop_bytes(*(own or SHOP_PLACEHOLDER)[:2])
                 if own:
                     self.physical.add(code)
 
@@ -498,10 +536,25 @@ class DemonsSoulsContext(CommonContext):
         except (OSError, LookupError):
             return []  # (no character loaded: the title screen)
 
+    def name_placeholder(self, state: GameState, view: View) -> None:
+        """The placeholder takes the name of the nearest location holding another world's item."""
+        if not self.texts_set or PLACEHOLDER_NAME_KEY not in self.text_fields:
+            return
+        item, distance = nearest_foreign(state.position, state.area, view.scouted, view.checked, self.slot)
+        if item is not None and distance <= NAMING_RANGE:
+            name = (f"{self.player_names.get(item.player, 'Someone')}'s "
+                    f"{self.item_names.lookup_in_slot(item.item, item.player)}")
+        else:
+            name = PLACEHOLDER_TEXTS[PLACEHOLDER_NAME_KEY]
+        if name != self.placeholder_name:
+            self.bridge.set_text_buffer(self.text_fields[PLACEHOLDER_NAME_KEY], name, PLACEHOLDER_NAME_KEY)
+            self.placeholder_name = name
+
     def clean_placeholders(self) -> None:
-        count = sum(e.count for e in self.bridge.inventory() if (e.category, e.item_id) == PLACEHOLDER[:2])
-        if count:
-            self.bridge.remove_item(PLACEHOLDER[0], PLACEHOLDER[1], min(count, 16))
+        for placeholder in (PLACEHOLDER, SHOP_PLACEHOLDER):
+            count = sum(e.count for e in self.bridge.inventory() if (e.category, e.item_id) == placeholder[:2])
+            if count:
+                self.bridge.remove_item(placeholder[0], placeholder[1], min(count, 16))
 
     def enforce_locks(self, state: GameState, view: View) -> None:
         part = PART_OF_MAP.get(state.map_id)

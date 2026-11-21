@@ -3,8 +3,12 @@ icons). Field offsets come from Paramdex's DES paramdefs (checked against them i
 no game files.
 
 Loaded params keep the PARAM file layout (verified 2026-11-20): +0x0a u16 row count, +0x0c type name, +0x2c
-endianness byte (0), row table at +0x30 of (i32 id, u32 data offset, u32 name offset). The game holds two copies
-of most params; both are patched.
+endianness byte (0), row table at +0x30 of (i32 id, u32 data offset, u32 name offset).
+
+Memory may hold a second copy of a param: a load buffer the game frees, whose memory is then reused (writing into
+it crashed the game, 2026-11-21). The live copy is the one the game's param list points to (one pointer to its
+start, verified for all five tables). Only those copies are used, and the pointer is checked again right before
+every write.
 """
 
 from __future__ import annotations
@@ -35,17 +39,34 @@ SHOP_EQUIP_TYPES = {0x00000000: 0, 0x10000000: 1, 0x20000000: 2, 0x40000000: 3}
 # EquipParamWeapon: u8 properStrength, properAgility, properMagic, properFaith at +108 (verified: zeroing them lets
 # an under-leveled weapon swing normally).
 WEAPON_REQUIREMENTS = 108
-# EquipParamGoods: u16 iconId at +0.
+# EquipParamGoods: u16 iconId at +0 (the PS3's; the remake's inventory ignores it), and at +64, past the PS3 fields,
+# a u32 of the remake's (17177 for the Nexial Binding, different for every item): its link to the item's icon and
+# 3D preview, by the look of it (to check in game).
 GOODS_ICON = 0
+GOODS_REMAKE_UI = 64
 
 
 @dataclass
 class Table:
     start: int
     rows: dict[int, int]  # row id -> row address
+    name: str = ""
+    reference: int = 0  # where the game's param list points at this copy (0: not checked)
 
     def row(self, row_id: int) -> int | None:
         return self.rows.get(row_id)
+
+    def live(self, game: GameMemory) -> bool:
+        """Still the game's copy: its param list still points here and the header is still this table's."""
+        try:
+            if self.reference and game.u64(self.reference) != self.start:
+                return False
+            header = game.read(self.start, 0x30)
+        except OSError:
+            return False
+        count, _size = TABLES.get(self.name, (None, None))
+        return header[0x0C:0x0C + len(self.name)] == self.name.encode("ascii") and (
+            count is None or struct.unpack_from("<H", header, 0x0A)[0] == count)
 
 
 def read_table(game: GameMemory, start: int) -> Table:
@@ -59,7 +80,7 @@ def read_table(game: GameMemory, start: int) -> Table:
 
 
 def find_tables(game: GameMemory) -> dict[str, list[Table]]:
-    """Every loaded copy of the TABLES params (one pass over the game's memory: about 30 s)."""
+    """The game's live copy of each TABLES param (two passes over the game's memory: about 45 s)."""
     needles = {name: name.encode("ascii") + b"\0" for name in TABLES}
     hits = game.find_guest(list(needles.values()), limit=32)
     out: dict[str, list[Table]] = {name: [] for name in TABLES}
@@ -77,7 +98,19 @@ def find_tables(game: GameMemory) -> dict[str, list[Table]]:
             addresses = sorted(table.rows.values())
             if len(addresses) > 1 and addresses[1] - addresses[0] != row_size:
                 continue
+            table.name = name
             out[name].append(table)
+    candidates = [t for copies in out.values() for t in copies]
+    if candidates:  # keep the copies the game points to
+        pointers = game.find_guest([struct.pack("<Q", t.start) for t in candidates], limit=4)
+        for name, copies in out.items():
+            live = []
+            for table in copies:
+                found = pointers[struct.pack("<Q", table.start)]
+                if found:
+                    table.reference = found[0]
+                    live.append(table)
+            out[name] = live
     return out
 
 

@@ -84,14 +84,15 @@ def starting_loadouts(random: Random, no_requirements: bool) -> dict[str, dict[s
 
 def describe(loadouts: dict[str, dict[str, int]]) -> dict[str, list[str]]:
     """Class name -> the names of its gear (the launcher's preview and the spoiler)."""
-    names = {**{int(i): w["name"] for i, w in EQUIPMENT["weapons"].items()},
-             **{int(i): a["name"] for i, a in EQUIPMENT["armor"].items()}}
+    weapon_names = {int(i): w["name"] for i, w in EQUIPMENT["weapons"].items()}
+    armor_names = {int(i): a["name"] for i, a in EQUIPMENT["armor"].items()}  # (ids overlap with weapons')
     out = {}
     for row_id, fields in loadouts.items():
         row = EQUIPMENT["classes"][row_id]
         gear = []
         for field in WEAPON_FIELDS + ARMOR_FIELDS:
             item = fields.get(field, row[field])
+            names = armor_names if field in ARMOR_FIELDS else weapon_names
             if item > 0 and item in names:
                 gear.append(names[item])
         out[row["name"]] = gear

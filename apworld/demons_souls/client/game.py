@@ -34,6 +34,7 @@ class GameState:
     map_uid: int  # 0x02010000 for m02_01_00_00; -1 while unknown
     flags: Flags | None
     death_count: int
+    position: tuple[float, float, float] | None = None  # the player's (world coordinates, y up)
 
     @property
     def area(self) -> int:
@@ -70,9 +71,15 @@ class DemonsSoulsGame:
 
     def attach(self) -> None:
         """Open the emulator, check the game version, install the call stub. Raises LookupError when the emulator
-        is not running, GameVersionError on another game version."""
+        is not running or the game has not finished starting, GameVersionError on another game version."""
         memory = GameMemory(find_pid(), write=True)
         try:
+            try:
+                started = memory.u64(A.FLAG_MANAGER) != 0  # (the event flags exist from the title screen on)
+            except OSError:
+                started = False
+            if not started:
+                raise LookupError("the game is still starting")
             for address, expected in A.SIGNATURES.items():
                 found = memory.read(address, len(expected) // 2).hex()
                 if address == A.TRIGGER_CALLBACK and found.startswith("48b8"):
@@ -104,6 +111,7 @@ class DemonsSoulsGame:
         self.memory = self.call = None
         self.tables = {}
         self.originals = {}
+        self.__dict__.pop("_text_buffers", None)
 
     # --- reading -------------------------------------------------------------------------------------------------
 
@@ -136,7 +144,16 @@ class DemonsSoulsGame:
                 death_count = m.u32(player + A.DEATH_COUNT)
         except OSError:
             pass
-        return GameState(bool(chr_ins) and flags is not None and map_uid != -1, map_uid, flags, death_count)
+        position = None
+        if chr_ins:
+            try:
+                body = m.u64(m.u64(chr_ins + A.CHR_CTRL) + A.CHR_BODY)
+                if body:
+                    position = struct.unpack("<3f", m.read(body + A.BODY_POSITION, 12))
+            except OSError:
+                position = None
+        return GameState(bool(chr_ins) and flags is not None and map_uid != -1, map_uid, flags, death_count,
+                         position)
 
     def inventory(self) -> list[InventoryEntry]:
         m = self.memory
@@ -192,16 +209,28 @@ class DemonsSoulsGame:
     def find_tables(self) -> dict[str, list[params.Table]]:
         """Locate the param tables (slow: about 30 s). Raises LookupError if the lots are not loaded yet."""
         tables = params.find_tables(self.memory)
-        if not tables["ITEMLOT_PARAM_ST"]:
-            raise LookupError("the item lots are not in memory yet")
+        if len(tables["ITEMLOT_PARAM_ST"]) != 1:
+            raise LookupError("the item lots are not in memory yet (or not one live copy)")
         self.tables = tables
         return tables
+
+    def tables_live(self) -> bool:
+        """Drop copies the game no longer uses; False when the item lots have gone (the tables must be found again)."""
+        for name, copies in list(self.tables.items()):
+            self.tables[name] = [t for t in copies if t.live(self.memory)]
+        if not self.tables.get("ITEMLOT_PARAM_ST"):
+            self.tables = {}
+            self.originals = {}
+            return False
+        return True
 
     def patch_rows(self, table: str, writes: dict[int, dict[int, bytes]]) -> int:
         """Apply row writes (row id -> offset -> bytes) to every copy of a table; rows the copy lacks are skipped.
         Returns how many row writes were made."""
         done = 0
         for copy in self.tables.get(table, []):
+            if not copy.live(self.memory):
+                continue  # (freed or moved: never write there)
             for row_id, row_writes in writes.items():
                 row = copy.row(row_id)
                 if row is not None:
@@ -212,9 +241,11 @@ class DemonsSoulsGame:
         return done
 
     def restore_rows(self) -> int:
-        """Put back every param byte the client rewrote (the vanilla game again)."""
+        """Put back every param byte the client rewrote (the vanilla game again), in copies still live."""
+        live = [t for copies in self.tables.values() for t in copies if t.live(self.memory)]
         for address, data in self.originals.items():
-            self.memory.write(address, data)
+            if any(t.start <= address < t.start + 0x100000 for t in live):
+                self.memory.write(address, data)
         restored = len(self.originals)
         self.originals = {}
         return restored
@@ -222,6 +253,8 @@ class DemonsSoulsGame:
     def rows_intact(self, table: str, writes: dict[int, dict[int, bytes]]) -> bool:
         """Whether the patch is still in place (the game could reload its params, e.g. on returning to the title)."""
         for copy in self.tables.get(table, []):
+            if not copy.live(self.memory):
+                return False
             for row_id, row_writes in writes.items():
                 row = copy.row(row_id)
                 if row is not None:
@@ -271,7 +304,27 @@ class DemonsSoulsGame:
                     continue
         return out
 
-    def set_text(self, fields: list[int], text: str) -> None:
+    def set_text_buffer(self, fields: list[int], text: str, buffer_key: str) -> None:
+        """Like set_text, but always in the same buffer for `buffer_key` (for text that changes often)."""
+        data = text.encode("utf-8")[:0xFF0]
+        buffers = self.__dict__.setdefault("_text_buffers", {})
+        if buffer_key not in buffers:
+            buffers[buffer_key] = self.memory.alloc(0x1000, PAGE_READWRITE)
+        buffer = buffers[buffer_key]
+        self.memory.write(buffer, data + b"\0")
+        for field in fields:
+            if self.text_entry_live(field, buffer_key):
+                self.memory.write(field, struct.pack("<QQ", buffer, len(data)))
+
+    def text_entry_live(self, field: int, key: str) -> bool:
+        """The text entry is still there: its key view (at +0x20 from the text's) still names `key`."""
+        try:
+            key_at, length = struct.unpack("<QQ", self.memory.read(field + 0x20, 16))
+            return length == len(key) and self.memory.read(key_at, length) == key.encode("ascii")
+        except OSError:
+            return False
+
+    def set_text(self, fields: list[int], text: str, key: str) -> None:
         """Point text entries (from find_text_entries) at a new string of any length (verified: a 60-character
         item name shows whole in the inventory)."""
         data = text.encode("utf-8")
@@ -280,4 +333,5 @@ class DemonsSoulsGame:
         buffer = self.memory.alloc(0x1000, PAGE_READWRITE)  # (a page per text: few texts, never freed)
         self.memory.write(buffer, data + b"\0")
         for field in fields:
-            self.memory.write(field, struct.pack("<QQ", buffer, len(data)))
+            if self.text_entry_live(field, key):
+                self.memory.write(field, struct.pack("<QQ", buffer, len(data)))

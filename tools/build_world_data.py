@@ -199,6 +199,28 @@ def added_sources(notes: dict[tuple, dict], known: set[tuple]) -> list[dict]:
     return out
 
 
+def add_positions(locations: list[dict]) -> None:
+    """Map positions (x, y, z; the MSB's, which are the game's world coordinates, y up) of treasures (their corpse
+    or chest) and one-time enemies (where they stand), for the client's placeholder names and the tracker."""
+    from desap import msb
+    treasure_at = {(t["map"], t["index"]): t["position"]
+                   for t in json.loads((WORK / "locations.json").read_text(encoding="utf-8")) if t["type"] == "treasure"}
+    enemies: dict[str, dict[int, tuple]] = {}
+    for location in locations:
+        game = location.get("game") or {}
+        position = None
+        if location["kind"] == "treasure":
+            position = treasure_at.get((game["map"], game["index"]))
+        elif location["kind"] == "enemy" and game.get("entity") is not None:
+            map_id = game["map"]
+            if map_id not in enemies:
+                path = GAME.dvdroot / "map" / "mapstudio" / f"{map_id}.msb"
+                enemies[map_id] = {e.entity_id: e.position for e in msb.read_enemies(path)}
+            position = enemies[map_id].get(game["entity"])
+        if position:
+            game["position"] = [round(v, 2) for v in position]
+
+
 CLASS_ROWS = {1000: "Soldier", 1001: "Knight", 1002: "Hunter", 1003: "Priest", 1004: "Magician", 1005: "Wanderer",
               1006: "Barbarian", 1007: "Thief", 1008: "Temple Knight", 1009: "Royalty"}
 CLASS_FIELDS = ("baseVit", "baseWil", "baseEnd", "baseStr", "baseDex", "baseMag", "baseFai", "baseLuc",
@@ -365,6 +387,7 @@ def main() -> None:
     if any(c > 1 for c in codes.values()):
         raise ValueError(f"duplicate location codes: {[c for c, n in codes.items() if n > 1]}")
 
+    add_positions(locations)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "items.json").write_text(json.dumps(sorted(items.values(), key=lambda i: i["code"]), indent=1,
                                                ensure_ascii=False), encoding="utf-8")

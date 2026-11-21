@@ -308,10 +308,12 @@ class PlayPage(BoxLayout):
                 parts.append(str(es.get("upscaler")).upper())
             self.settings_text.text = "Uses your KytyLauncher settings: " + "  ·  ".join(p for p in parts if p)
         running = st["attached"]
-        self.play.text = "RUNNING" if running else "PLAY"
-        self.play.disabled = running
-        self.status.text = st["launch"] or ("Archipelago saves are kept apart from your vanilla saves and backed up "
-                                            "while you play.")
+        if running and not st["connected"]:
+            self.play.text, self.play.disabled = "CONNECT", False  # (the game was started before this window)
+        else:
+            self.play.text, self.play.disabled = ("RUNNING", True) if running else ("PLAY", False)
+        self.status.text = st["progress"] or st["launch"] or (
+            "Archipelago saves are kept apart from your vanilla saves and backed up while you play.")
 
 
 class SavesPage(BoxLayout):
