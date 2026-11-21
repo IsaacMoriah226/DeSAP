@@ -46,7 +46,8 @@ GAME_TICK = 0.25
 ATTACH_RETRY = 2.0
 KICK_RETRY = 15.0
 SETTLE_SECONDS = 3.0  # after attaching, before the client writes anything (only live tables are written)
-PLACE_RETRY = 5.0  # the item tables were not loaded yet: try again after this long
+PLACE_RETRY = 3.0  # the item tables were not loaded yet: try again after this long
+NARROW_TRIES = 4  # tries in the usual memory only (the game may still be booting) before searching everywhere
 READY_BANNER_SECONDS = 20.0
 PAUSE_RECORD = data_dir() / "paused.json"  # the threads a pause holds (resumed by the next client if this one dies)
 GIVE_PER_TICK = 4  # items per game call (one popup each; batches of 2 and 8 verified in game)
@@ -140,6 +141,7 @@ class DemonsSoulsContext(CommonContext):
         self.last_attach_try = 0.0
         self.attached_at = 0.0
         self.next_place_try = 0.0
+        self.place_tries = 0
         self.phase = ""  # "preparing" (the game is paused while the items are placed), "ready", "" (neither yet)
         self.last_message = ""
         self.launcher_mode = False  # the emulator runs from the Archipelago profile: every save there is ours
@@ -369,10 +371,11 @@ class DemonsSoulsContext(CommonContext):
             self.say("Waiting for the game to load its item tables ...")
             return
         self.phase = "ready"
-        logger.info(f"Items placed in {time.monotonic() - started:.1f} s. Pickups lying in the area you are in change "
-                    "after its next loading screen (die, warp, or quit and continue); bosses, scripted rewards and "
-                    "enemy drops already give their new items.")
+        self.place_tries = 0
+        logger.info(f"Items placed in {time.monotonic() - started:.1f} s.")
         if in_game:
+            logger.info("Pickups lying in the area you are in change after its next loading screen (die, warp, or "
+                        "quit and continue); bosses, scripted rewards and enemy drops already give their new items.")
             self.say("Ready: the Archipelago items are placed.")
             self.overlay_banner([("Ready: ", "location"), ("the Archipelago items are placed.", "text")],
                                 READY_BANNER_SECONDS / 2)
@@ -394,8 +397,9 @@ class DemonsSoulsContext(CommonContext):
             self.texts_set = False
         texts = {**PLACEHOLDER_TEXTS, **SHOP_PLACEHOLDER_TEXTS}
         if not self.bridge.tables:
+            self.place_tries += 1
             try:
-                self.text_fields = self.bridge.prepare(list(texts))
+                self.text_fields = self.bridge.prepare(list(texts), everywhere=self.place_tries > NARROW_TRIES)
             except LookupError:
                 return False
             self.texts_set = False

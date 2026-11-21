@@ -101,7 +101,7 @@ class FakeGame:
         self.pauses = getattr(self, "pauses", 0) + 1
         return contextlib.nullcontext()
 
-    def prepare(self, keys):
+    def prepare(self, keys, everywhere=True):
         self.find_tables()
         return self.find_text_entries(keys)
 
@@ -244,7 +244,7 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.game.pauses, 1)  # placed: no more pauses
 
     def test_waits_for_the_item_tables(self):
-        def not_loaded(keys):
+        def not_loaded(keys, everywhere=True):
             raise LookupError("not yet")
         self.game.prepare = not_loaded
         self.ctx.launcher_mode = True

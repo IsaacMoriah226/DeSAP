@@ -206,13 +206,14 @@ class DemonsSoulsGame:
 
     # --- params and text -----------------------------------------------------------------------------------------
 
-    def prepare(self, text_keys: list[str]) -> dict[str, list[int]]:
+    def prepare(self, text_keys: list[str], everywhere: bool = True) -> dict[str, list[int]]:
         """Find the live param tables and the text entries of `text_keys` in one pass over the game's memory (by
-        the markers of addresses.py: about 15 s where they have always been, longer if they must be looked for
-        everywhere). Returns the text fields (as find_text_entries); sets self.tables. Raises LookupError when the
-        item lots are not there yet."""
+        the markers of addresses.py: about 1.5 s where they have always been). `everywhere`: if they are not all
+        there, search all of the game's memory (about 5 s more; pointless while the game is still booting).
+        Returns the text fields (as find_text_entries); sets self.tables. Raises LookupError when the item lots are
+        not there yet."""
         tables, fields = self.scan_markers(text_keys, *A.HOT_MEMORY)
-        if len(tables["ITEMLOT_PARAM_ST"]) != 1 or not all(fields.values()):
+        if everywhere and (len(tables["ITEMLOT_PARAM_ST"]) != 1 or not all(fields.values())):
             logger.info("Not all of the game's tables are where they usually are: searching all of its memory.")
             tables, fields = self.scan_markers(text_keys)
         if len(tables["ITEMLOT_PARAM_ST"]) != 1:
