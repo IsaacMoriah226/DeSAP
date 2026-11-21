@@ -18,7 +18,7 @@ Archipelago Launcher lists it as **Demon's Souls Launcher**. It talks to the gam
 | `placement.py` | what each location gives, how a check is seen, placeholders and their names, auto-upgrade (pure) |
 | `context.py` | the Archipelago context and the game loop |
 | `profile.py`, `settings.py` | the launcher's emulator profile, saves and backups; its settings |
-| `gui.py` | the launcher window (Play, Classes, Overlay, Saves pages) |
+| `gui.py` | the launcher window (Play, Archipelago, Classes, Overlay, Saves pages) |
 | `overlay.py`, `gdiplus.py` | the in-game message window, drawn with GDI+ |
 | `tracker.py`, `mapshapes.py` | the 3D map tracker: its logic, its local web server, the map shapes |
 

@@ -10,7 +10,7 @@ The parts of a world share one coordinate system (1-1 to 1-4 run end to end), th
 positions and the player's position in memory, so markers and the player land on the mesh as they are.
 
 Output, in %LOCALAPPDATA%\\DemonsSoulsAP\\maps: maps.json (areas, parts, triangle ranges and bounds) and <area>.bin
-(int16 x, y, z per triangle corner, metres * QUANTUM; triangles grouped by part in maps.json order). About 2 s.
+(int16 x, y, z per triangle corner, metres * QUANTUM; triangles grouped by part in maps.json order). About 0.1 s.
 """
 
 from __future__ import annotations
@@ -166,7 +166,7 @@ def build(game: Path, out: Path) -> dict:
             (out / f"{area_id}.bin").write_bytes(data)
             index["areas"].append({"id": area_id, "name": name, "file": f"{area_id}.bin", "parts": parts,
                                    "maps": [m for m, _c, _n in maps]})
-    except (OSError, struct.error, ValueError, IndexError) as error:
+    except (OSError, struct.error, ValueError, IndexError, ArithmeticError) as error:
         raise MapShapeError(f"could not read the game's maps: {error}") from error
     (out / "maps.json").write_text(json.dumps(index, indent=1), encoding="utf-8")
     return index

@@ -1,7 +1,7 @@
 """The Archipelago client for Demon's Souls (PS5 remake on KytyPS5).
 
-    ArchipelagoLauncher -> "Demon's Souls Client", or
-    python Launcher.py "Demon's Souls Client" -- --connect host:port --name slot
+    ArchipelagoLauncher -> "Demon's Souls Launcher", or
+    python Launcher.py "Demon's Souls Launcher" -- --connect host:port --name slot
 
 Each tick (GAME_TICK seconds) the game loop, off the event loop:
 - attaches to kyty_emulator.exe (checks the game version, installs the call stub);
@@ -47,6 +47,7 @@ ATTACH_RETRY = 2.0
 KICK_RETRY = 15.0
 SETTLE_SECONDS = 3.0  # after attaching, before the client writes anything (only live tables are written)
 PLACE_RETRY = 3.0  # the item tables were not loaded yet: try again after this long
+CALL_RETRY = 30.0  # the game did not run a call: wait this long before the next
 NARROW_TRIES = 4  # tries in the usual memory only (the game may still be booting) before searching everywhere
 READY_BANNER_SECONDS = 20.0
 PAUSE_RECORD = data_dir() / "paused.json"  # the threads a pause holds (resumed by the next client if this one dies)
@@ -150,6 +151,9 @@ class DemonsSoulsContext(CommonContext):
         self.attached_at = 0.0
         self.next_place_try = 0.0
         self.place_tries = 0
+        self.place_failures = 0
+        self.calls_paused_until = 0.0  # the game did not run the client's calls: wait before trying again
+        self.placed_identity = None  # the seed and slot the placement is for
         self.phase = ""  # "preparing" (the game is paused while the items are placed), "ready", "" (neither yet)
         self.last_message = ""
         self.launcher_mode = False  # the emulator runs from the Archipelago profile: every save there is ours
@@ -173,7 +177,8 @@ class DemonsSoulsContext(CommonContext):
                 logger.warning(f"This seed was made with version {seeds} of the Demon's Souls world, this client is "
                                f"{ours}: use the matching .apworld, or locations may be checked wrongly.")
             self.scouted = {}
-            self.placed = False
+            if self.placed_identity != self.identity:  # (another seed or slot: place again)
+                self.placed = False
             self.death_link_enabled = bool(self.slot_data.get("death_link"))
             Utils.async_start(self.update_death_link(self.death_link_enabled))
             ours = sorted(self.missing_locations | self.checked_locations)
@@ -287,6 +292,7 @@ class DemonsSoulsContext(CommonContext):
                 self.say("The emulator closed.")
                 self.bridge.detach()
                 self.reset_game_session()
+                self.overlay_banner(None)
             if time.monotonic() - self.last_attach_try < ATTACH_RETRY:
                 return out
             self.last_attach_try = time.monotonic()
@@ -311,6 +317,10 @@ class DemonsSoulsContext(CommonContext):
             except GameVersionError as error:
                 self.say(str(error))
                 return out
+            except (RuntimeError, OSError) as error:
+                self.say(f"Cannot attach to the emulator: {error} (if KytyPS5 runs as administrator, run Archipelago "
+                         "as administrator too).")
+                return out
         self.periodic_backup()
         if not self.slot or self.server_seed_name is None:
             return out
@@ -330,12 +340,21 @@ class DemonsSoulsContext(CommonContext):
             return out
         self.place(view, in_game=True)
         out["checks"] = self.find_checks(state, view)
-        self.deliver(state, view)
-        self.name_placeholder(state, view)
-        self.clean_placeholders()
-        self.enforce_locks(state, view)
-        out["death"] = self.death_link(state)
         out["goal"] = not self.finished_game and state.flags.get(GOAL_FLAG, GOAL_WORLD)
+        out["death"] = self.death_link(state)
+        if time.monotonic() >= self.calls_paused_until:
+            try:  # (these call into the game: a failure must not hold back the checks found above)
+                self.deliver(state, view)
+                self.name_placeholder(state, view)
+                self.clean_placeholders()
+                self.enforce_locks(state, view)
+            except TimeoutError:
+                self.calls_paused_until = time.monotonic() + CALL_RETRY
+                self.say("The game did not run the client's call (live control off? Start the game with the "
+                         "launcher's PLAY). Items will be given once it does.")
+            except OSError as error:
+                self.calls_paused_until = time.monotonic() + CALL_RETRY
+                logger.warning(f"A game call failed: {error}")
         return out
 
     def check_save(self, state: GameState) -> bool:
@@ -392,10 +411,19 @@ class DemonsSoulsContext(CommonContext):
         try:
             with self.bridge.paused(PAUSE_RECORD):
                 done = self.write_placement(view)
+        except Exception as error:
+            self.place_failures += 1
+            self.next_place_try = time.monotonic() + PLACE_RETRY * min(2 ** self.place_failures, 40)
+            self.phase = ""
+            self.overlay_banner([("Archipelago could not place the items", "trap"),
+                                 (": see the launcher's log. Trying again shortly.", "text")])
+            logger.exception(f"Placing the items failed: {error!r}")
+            return
         except BaseException:
             self.phase = ""
             self.overlay_banner(None)
             raise
+        self.place_failures = 0
         if not done:
             if in_game:
                 self.phase = ""
@@ -406,6 +434,7 @@ class DemonsSoulsContext(CommonContext):
             self.say("Waiting for the game to load its item tables ...")
             return
         self.phase = "ready"
+        self.placed_identity = self.identity
         self.place_tries = 0
         logger.info(f"Items placed in {time.monotonic() - started:.1f} s.")
         if in_game:
@@ -523,6 +552,11 @@ class DemonsSoulsContext(CommonContext):
                 return
         except LookupError:
             pass
+        except OSError as error:
+            self.launch_status = (f"Cannot check the running emulator ({error}); if KytyPS5 runs as administrator, "
+                                  "run Archipelago as administrator too.")
+            logger.error(self.launch_status)
+            return
         if not (self.server and self.slot and self.auth == s.slot):
             self.launch_status = f"Connecting to {s.server} as {s.slot} ..."
             self.username, self.auth = s.slot, None
@@ -558,7 +592,7 @@ class DemonsSoulsContext(CommonContext):
         if self.bridge.attached:
             try:
                 state = self.bridge.state()
-            except OSError:
+            except Exception:  # (the game loop may be detaching it right now)
                 state = None
         return {
             "connected": bool(self.server and self.slot), "slot": self.player_names.get(self.slot, "") if self.slot else "",

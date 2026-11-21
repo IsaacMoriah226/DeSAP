@@ -7,7 +7,6 @@ from __future__ import annotations
 import ctypes
 import ctypes.wintypes as wt
 import os
-import subprocess
 from pathlib import Path
 
 from kvui import GameManager  # (first: kvui sets Kivy up)
@@ -16,7 +15,6 @@ from kivy.clock import Clock
 from kivy.core.text import LabelBase
 from kivy.graphics import Color, Line, Rectangle, RoundedRectangle
 from kivy.metrics import dp
-from kivy.core.image import Image as CoreImage
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.image import Image as KivyImage
@@ -626,8 +624,11 @@ def make_manager(ctx):
                 Clock.schedule_once(show)
 
             def emulator_pid():
-                memory = ctx.bridge.memory
-                return memory.pid if memory is not None and ctx.bridge.attached else 0
+                memory = ctx.bridge.memory  # (once: the game loop may detach it meanwhile)
+                try:
+                    return memory.pid if memory is not None and memory.alive() else 0
+                except (AttributeError, OSError):
+                    return 0
 
             ctx.overlay = Overlay(ctx.settings.overlay, open_settings, emulator_pid,
                                   on_moved=lambda: Clock.schedule_once(lambda *_: ctx.settings.save()))

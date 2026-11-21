@@ -5,7 +5,8 @@ An [Archipelago](https://archipelago.gg) randomizer for the **Demon's Souls rema
 Every corpse, chest, boss reward, one-time enemy drop and limited shop item can hold anyone's item, and the five
 worlds open as you find their archstones.
 
-**Status: playtest (0.4.0).** Everything below works and has been played; a full playthrough is under way.
+**Status: playtest (0.4.0).** Everything below has been built and played in short sessions; the first full
+playthrough is next ([`docs/PLAYTEST.md`](docs/PLAYTEST.md)).
 
 ## What you get
 
@@ -14,8 +15,10 @@ worlds open as you find their archstones.
   never touched), backs saves up while you play, and pauses the game for a few seconds at the title while it
   places the items, then says **Ready!**
 - **World locks**: each part past 1-1 needs its archstone item (`1-2 The Lord's Path` ... `5-3 Rotting Haven`).
-- **Items for other players** look like a Nexial Binding and carry their real name ("Friend's Moonlight
-  Greatsword"); items you receive pop up as in the game.
+- **Items for other players** look like a Nexial Binding and, on corpses and chests, carry their real name
+  ("Friend's Moonlight Greatsword"); items you receive pop up as in the game.
+- **656 locations**: corpses and chests, boss souls and scripted rewards, one-time enemy drops, limited shop items.
+  Goal: the five archdemons, then False King Allant.
 - **Options**: randomized starting gear per class (DS3-style), no stat requirements, received weapons upgraded to
   match yours, DeathLink.
 - **An in-game overlay** of what you find, send and receive: draggable, adjustable, in a Futura-like face.

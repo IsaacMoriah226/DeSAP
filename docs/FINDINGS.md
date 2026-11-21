@@ -1,5 +1,8 @@
 # Findings
 
+A dated research log: later sections correct earlier ones. The current state is in `DESIGN.md` (what is
+randomized, with counts) and `CLIENT.md` (how the client works, what is verified).
+
 Game: Demon's Souls PS5 remake, PPSA01341, version 01.007.000. Emulator: KytyPS5 v20261120 (chenxiao07 fork).
 
 ## Verified in game (2026-11-20, throwaway character in save slot 1)
@@ -45,7 +48,7 @@ rest follow from the boss soul each map's script gives and from their treasures.
 ## Event flags
 
 Flag manager: pointer at `0x9027bf328` (getter `0x9002edd40`). Found from the Lua binding of `SetEventFlag`
-(registered at `0x90024d96b`, handler `0x900216d10`, setter `0x9002a7460`).
+(registered at `0x90024d96b`, handler `0x900216d10` (corrected below to `0x900216ca0`), setter `0x9002a7460`).
 
 - Flags 0-18047 are one bit array from the manager's start: flag `n` is bit `n % 8` of byte `n // 8`
   (set/get by id: `0x9002a7400` / `0x9002a7550`).
@@ -92,7 +95,8 @@ Lua flag ids (`proxy:SetEventFlag(n, true)`, `CompleteEvent(n)`, a `once` event'
 
 ### Location table
 
-`tools/build_locations.py` writes 570 locations to `work\locations.json`:
+`tools/build_locations.py` writes 570 locations to `work\locations.json` (the first extraction, 2026-11-20; the world
+now has 656: 521 treasures, 37 rewards, 85 enemy drops, 13 shops, the dragon souls included; see `DESIGN.md`):
 
 | Type | Count | Source | Flag |
 | --- | --- | --- | --- |
@@ -132,7 +136,7 @@ Other: reloading in the tutorial resets the tutorial. `cp11_addGoods 1003 47` di
 the other params), `script\*.lua` (event scripts, plain text, translated by Bluepoint), `msg\<language>\*.msgbnd`,
 `map\mapstudio\*.msb` (64-bit remake layout). The game writes its own log to `<game folder>\logs`.
 
-## Found in the eboot for the client (2026-11-21, static analysis; not yet checked in game)
+## Found in the eboot for the client (2026-11-21, static analysis; checked in game in the test sessions below)
 
 - **Lua bindings:** `tools/lua_bindings.py` lists all 943 `proxy:` functions with their native handlers
   (`work/lua_bindings.txt`). Each binding is a 0x18-byte static object (+0x8 handler), and the code fills the NEXT

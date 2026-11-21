@@ -20,9 +20,16 @@ Slay the five archdemons and False King Allant below the Nexus.
 
 ## What does another world's item look like?
 
-A Nexial Binding named after the item ("Friend's Moonlight Greatsword"); in shops, "[AP] Item for another world".
+A Nexial Binding, named after the item on nearby corpses and chests ("Friend's Moonlight Greatsword"),
+"Archipelago Item" for boss and scripted rewards, "[AP] Item for another world" in shops.
 
 ## Which locations are missable?
 
-The tutorial (it cannot be revisited), items that only appear at a world tendency, items behind NPCs that can die
-or turn hostile, and the shops. These locations only ever hold filler.
+These only ever hold filler (118 of 656):
+- the tutorial (it cannot be revisited);
+- items that need a world tendency (pure white or pure black), and tendency-only enemies;
+- items behind NPCs who can die or turn hostile, or who must be rescued first (Biorr, Rydell, Blige, Patches, Yurt,
+  the Mausoleum Key from Ostrava, ...);
+- enemy drops that are lost if not picked up before the area reloads;
+- the items that appear as Depraved Ones fall into the 5-1 chasm;
+- Soulbrandt (after the final boss) and the shops.

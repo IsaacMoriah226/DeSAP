@@ -157,6 +157,7 @@ class Freeze:
             raise
         if self.record is not None:
             try:
+                self.record.parent.mkdir(parents=True, exist_ok=True)
                 self.record.write_text(json.dumps({"pid": self.pid, "threads": paused}))
             except OSError:
                 pass

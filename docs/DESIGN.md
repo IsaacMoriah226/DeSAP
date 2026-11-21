@@ -24,7 +24,7 @@ Reach the ending credits (beat the final boss). The only goal for now.
 
 | Kind | Location? |
 | --- | --- |
-| Map pickups (corpses, chests): 484 | yes, AP items can be there |
+| Map pickups (corpses, chests): 521 | yes, AP items can be there |
 | Boss drops and boss rewards (demon souls, items given after the fight) | yes |
 | Shops | the 13 limited-stock entries (one-time stock); buying one sends its check, their vanilla items go into the pool. Unlimited items stay vanilla. All are **missable** (the merchants can die or turn hostile). The 14th limited row (Filthy Woman's Stone of Ephemeral Eyes) restocks after every death, so it is not a location |
 | Tutorial pickups | yes, **missable** (the tutorial cannot be revisited; decided 2026-11-20). The Vanguard fight and its rewards too |
@@ -40,13 +40,22 @@ Reach the ending credits (beat the final boss). The only goal for now.
 
 Missable locations only get filler items.
 
+### By the numbers (version 0.4.0)
+
+| | |
+| --- | --- |
+| Locations | 656: 521 treasures, 37 boss and scripted rewards, 85 one-time enemy drops, 13 shop entries |
+| Missable (filler only) | 118 |
+| Items | 331 kinds: 27 progression (15 world locks, 12 keys), 226 useful, 78 filler |
+
 ## Items
 
 - Classification after the Dark Souls III world: **progression** (world locks, keys and other items logic needs),
   **useful** (equipment, spells, upgrade materials, demon souls), **filler** (consumables, souls items, grass).
 - Boss demon souls: **useful** (progression only if one is needed to finish the game).
 - Keys and every other progression item are clearly marked as progression: the 15 world locks and every key a
-  logic rule uses (the Copper Key and the Prison of Hope keys). Keys nothing checks are useful.
+  logic rule uses (the Iron Key Ring, the Bloody Iron Key, the Copper Key and the Prison of Hope keys: 27
+  progression items in all). Keys nothing checks are useful.
 
 ## Options (YAML)
 
@@ -76,8 +85,9 @@ Missable locations only get filler items.
 ## Open
 
 - Weapon upgrade paths (Sharp, Quality, Crescent, ...): proportional to the path's own maximum.
-- The Black Eye Stone (five invader phantoms share its one-time flag, so only the first gives it) and the Fat
-  Officials' random-count New Moon Grass: not locations.
+- The Black Eye Stone (five invader phantoms share its one-time flag, so only the first gives it): not a location.
+  The minibosses' New Moon Grass (LP 1-2 prison, IW 1-3 twice) are locations; two of them share one lot, so the
+  client gives those by flag.
 
 ## Implementation notes (not design decisions)
 

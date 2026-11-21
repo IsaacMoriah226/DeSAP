@@ -6,8 +6,9 @@ Delivery (items_handling 0b111: the server sends every item, own ones included):
   rows when the shop table is found) gives its item in the game itself when it holds an item of this world. The
   server's copy of that item is then skipped, but only if the location's flag is set in the save (an item
   collected some other way, e.g. !collect, still has to be given).
-- Items for other worlds are a placeholder (one goods item, renamed "Archipelago", Nexial Binding icon) that the
-  client removes from the inventory.
+- Items for other worlds are placeholders (goods 2055, 2057, 9998 on corpses, one per item of a corpse; goods
+  2056 in shops), with the Nexial Binding's icon, named after the nearby items ("Archipelago Item" otherwise),
+  that the client removes from the inventory.
 - Locations on a shared lot (Primeval Demons, the two Vanguards, two Fat Officials' grass) get an empty lot; the
   client gives their item when the location's flag turns on.
 """
@@ -22,10 +23,10 @@ from ..ids import ITEM_BASE, KINDS, LOCK_ITEM_OFFSET
 from .addresses import CATEGORY
 from .flags import Flags, world_of_map
 
-# Unused goods row 2055 (an upgrade stone cut from the game, "UNUSED DATA"; PS3 "Large Clearstone Shard"). Goods
-# 9998 was tried first (2026-11-21): a key item, one at most, so a corpse with several other-world items showed one
-# popup. 2055 is a stackable material (to check in game). Its text is set through the loaded text tables (any
-# length, verified). Its icon cannot be changed through EquipParamGoods' iconId: the remake draws icons by item id.
+# Unused goods rows (2055 and 2057: upgrade stones cut from the game, "UNUSED DATA"; 9998 a key item, one at most):
+# stackable, so a corpse with several other-world items shows one popup each (verified). Their text is set through
+# the loaded text tables (any length, verified); their look is the Nexial Binding's: its iconId and the remake's UI
+# link at goods row +64 (dress_placeholders in context.py, verified).
 # Up to three placeholders per corpse (goods 2055 and 2057, stackable materials cut from the game, and 9998, a key
 # item, one at most): each item of a corpse holding several items for other worlds gets its own, named after it.
 PLACEHOLDERS = ((CATEGORY["goods"], 2055, 1), (CATEGORY["goods"], 2057, 1), (CATEGORY["goods"], 9998, 1))

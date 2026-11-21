@@ -10,7 +10,6 @@ the tests stay out. The template comes from Archipelago's own generator (Options
 from __future__ import annotations
 
 import json
-import os
 import re
 import shutil
 import subprocess

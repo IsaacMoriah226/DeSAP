@@ -14,17 +14,16 @@ The tools expect a workspace folder that holds this repository and its neighbour
 | `repos\Paramdex\` | [Paramdex](https://github.com/soulsmods/Paramdex) (param definitions; Demon's Souls is `DES`) |
 | `repos\KytyPS5\` | the emulator's source (chenxiao07 fork), for reference |
 | `venv\` | a Python 3.12 virtual environment with Archipelago's requirements |
+| `KytyPS5\` | the KytyPS5 build you test with (or set `emulator`) |
 | `work\` | scratch output: the converted eboot, research output, logs, the live-control file |
 | `tools\` | Ghidra 12.2 and its JDK 25 (`ghidra_12.2_PUBLIC\`, `jdk-25.0.5.1+2\`), optionally Smithbox |
 | `ghidra_projects\` | the analyzed eboot (`DeS_01.007.000`, image base `0x900000000`) |
 
 Paths that differ on your PC go in `DeSAP\local_paths.json` (git-ignored; copy `local_paths.example.json`) or in
 environment variables (`DESAP_GAME`, `DESAP_WORK`, `DESAP_ARCHIPELAGO`, `DESAP_PARAMDEX`, `DESAP_PYTHON`,
-`DESAP_EMULATOR`); `desap/local.py` reads them. Only two have no default:
-
-- `game`: your dump of the game (the `PPSA01341-app0` folder: original data in `cp11demonssouls\dvdroot`, the
-  decrypted executable in `decrypted\eboot.bin`);
-- `emulator`: the KytyPS5 build you test with (for `tools/live.py`).
+`DESAP_EMULATOR`); `desap/local.py` reads them. Only `game` has no default: your dump of the game (the
+`PPSA01341-app0` folder: original data in `cp11demonssouls\dvdroot`, the decrypted executable in
+`decrypted\eboot.bin`). Set `emulator` too if your KytyPS5 build is not `<workspace>\KytyPS5`.
 
 ## Archipelago from source
 

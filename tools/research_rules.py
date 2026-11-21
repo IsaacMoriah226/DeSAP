@@ -388,6 +388,7 @@ GLOSSARY_FIXES: dict[str, dict[str, str | None]] = {
                          "Club (the bait) lies on the ledge below where it lands.",
         "worm cliff": "The open ledge with ore carts and three rock worms at the bottom of the rift path, right before "
                       "the fog entrance to the bug tunnels; flying bearbugs come up from its edge.",
+        "Scirvir's cave": "The cave halfway down the great pit with two Crystal Lizards, where Scirvir stands.",
     },
     "m02_00_00_00": {
         "execution grounds stairwell": "The stairwell building of the execution grounds, where Executioner Miralda "
@@ -410,9 +411,6 @@ GLOSSARY_FIXES: dict[str, dict[str, str | None]] = {
     "m06_00_00_00": {
         "cliff corridor": "The corridor with four miners just before the cliff above the archstone.",
         "magma wheel room": "The room with five miners and the magma wheel at the bottom of the lizard tower.",
-    },
-    "m06_01_00_00": {
-        "Scirvir's cave": "The cave halfway down the great pit with two Crystal Lizards, where Scirvir stands.",
     },
     "m05_02_00_00": {
         "plague swamp end": "The far end of the plague swamp, where Garl Vinland guards Maiden Astraea.",

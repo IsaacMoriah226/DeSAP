@@ -245,6 +245,39 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.tick()
         self.assertEqual(self.game.pauses, 1)  # placed: no more pauses
 
+    def test_failed_placement_backs_off(self):
+        def broken(keys, everywhere=True):
+            raise RuntimeError("something unexpected")
+        self.game.prepare = broken
+        self.scout({TREASURE: (CLUB, 1)})
+        self.tick()  # (in the tutorial: places, fails)
+        self.tick()
+        self.tick()
+        self.assertEqual(self.game.pauses, 1)  # not paused again right away
+        self.assertFalse(self.ctx.placed)
+        self.assertGreater(self.ctx.next_place_try, 0)
+
+    def test_checks_are_sent_when_a_game_call_times_out(self):
+        self.placed_game()
+        self.loading_screen()
+
+        def stuck(items):
+            raise TimeoutError("the game did not run the call")
+        self.game.give_items = stuck
+        self.receive(GRASS, -1, OTHER_PLAYER)  # (something to give)
+        self.game.set_flag(TREASURE)
+        out = self.tick()
+        self.assertIn(TREASURE, out["checks"])
+        self.assertGreater(self.ctx.calls_paused_until, 0)
+
+    async def test_reconnecting_keeps_the_placement(self):
+        self.placed_game()
+        self.ctx.on_package("Connected", {"slot_data": dict(self.ctx.slot_data)})
+        self.assertTrue(self.ctx.placed)  # same seed and slot
+        self.ctx.slot = 2
+        self.ctx.on_package("Connected", {"slot_data": dict(self.ctx.slot_data)})
+        self.assertFalse(self.ctx.placed)  # another slot: place again
+
     def test_waits_for_the_item_tables(self):
         def not_loaded(keys, everywhere=True):
             raise LookupError("not yet")
@@ -295,7 +328,7 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.placed_game()
         self.loading_screen()  # the area reloads with the new lots
         self.game.set_flag(TREASURE)
-        out = self.tick()
+        self.tick()
         self.assertIn(TREASURE, self.ctx.checked_locations)
         self.assertTrue(Flags(bytes(self.game.flags)).delivered(LOCATION_INDEX[TREASURE]))
         self.receive(CLUB, TREASURE, 1)  # the server's copy
@@ -352,7 +385,6 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
 
     def test_placeholder_named_after_the_nearest_foreign_location(self):
         self.placed_game()
-        nexus = LOCATION_BY_CODE[TREASURE]  # (in the Nexus, holding Club for this slot: not a placeholder)
         foreign = next(code for code, location in LOCATION_BY_CODE.items() if location.kind == "treasure"
                        and location.game["map"] == "m01_00_00_00" and code != TREASURE)
         self.game.enter(NEXUS_UID)

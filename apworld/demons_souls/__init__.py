@@ -8,7 +8,6 @@ tutorial, one-time events) are excluded: they only get filler.
 
 from __future__ import annotations
 
-from collections import Counter
 from collections.abc import Mapping
 from typing import Any, ClassVar
 

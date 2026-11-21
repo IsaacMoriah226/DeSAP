@@ -283,6 +283,7 @@ function status(code) {
 const STATUS_TEXT = { checked: "Checked", logic: "In logic", out: "Out of logic" };
 
 function paintMesh(s) {
+  if (!s) return;  // (the area is still loading)
   const geo = s.mesh.geometry, col = geo.attributes.color, pos = geo.attributes.position;
   const lo = s.box.min.y, span = Math.max(1, s.box.max.y - lo);
   const open = new Set(STATE?.open_parts || []);
@@ -304,6 +305,7 @@ function paintMesh(s) {
 }
 
 function paintMarkers(s) {
+  if (!s) return;
   const g = s.markerGeo, col = g.attributes.color, size = g.attributes.size, glow = g.attributes.glow, alpha = g.attributes.alpha;
   s.locs.forEach((l, i) => {
     const st = status(l.code), visible = show[st];
@@ -322,10 +324,13 @@ function paintMarkers(s) {
 async function showArea(id, frame = true) {
   const a = STATIC.areas.find(x => x.id === id);
   if (!a) return;
-  for (const s of Object.values(scenes)) { root.remove(s.group); s.labels.forEach(l => l.el.style.display = "none"); }
+  const previous = area;
   area = a;
-  const s = await loadArea(a);
+  let s;
+  try { s = await loadArea(a); }
+  catch { area = previous; toast(`Could not load ${a.name}`); return; }
   if (area !== a) return;
+  for (const other of Object.values(scenes)) { root.remove(other.group); other.labels.forEach(l => l.el.style.display = "none"); }
   root.add(s.group);
   s.labels.forEach(l => l.el.style.display = "");
   paintMesh(s); paintMarkers(s);
@@ -433,7 +438,7 @@ let down = null;
 renderer.domElement.addEventListener("pointerdown", e => down = [e.clientX, e.clientY]);
 renderer.domElement.addEventListener("pointermove", e => {
   const r = renderer.domElement.getBoundingClientRect(), l = pick(e.clientX - r.left, e.clientY - r.top);
-  if (l !== hovered) { hovered = l; paintMarkers(scenes[area.id]); }
+  if (l !== hovered) { hovered = l; if (area) paintMarkers(scenes[area.id]); }
   const tip = $("tip");
   if (!l) { tip.style.display = "none"; renderer.domElement.style.cursor = ""; return; }
   renderer.domElement.style.cursor = "pointer";
@@ -602,7 +607,8 @@ async function poll() {
     const st = await (await fetch("/api/state", { cache: "no-store" })).json();
     st.checked_set = new Set(st.checked); st.logic_set = new Set(st.in_logic);
     const changed = !STATE || STATE.checked.length !== st.checked.length || STATE.in_logic.length !== st.in_logic.length
-      || STATE.open_parts.join() !== st.open_parts.join() || STATE.player?.area !== st.player?.area || STATE.ready !== st.ready;
+      || STATE.open_parts.join() !== st.open_parts.join() || STATE.player?.area !== st.player?.area || STATE.ready !== st.ready
+      || JSON.stringify(STATE.have) !== JSON.stringify(st.have) || Object.keys(STATE.scouted).length !== Object.keys(st.scouted).length;
     STATE = st;
     $("offline").style.display = "none";
     $("conn").className = "dot" + (st.connected ? " on" : "");
@@ -612,7 +618,7 @@ async function poll() {
       if (follow && st.player.area !== lastPlayerArea) { lastPlayerArea = st.player.area; await showArea(st.player.area, false); followPlayer(true); }
       else if (follow) followPlayer(false);
     } else player.visible = false;
-    if (changed && area) { paintMesh(scenes[area.id]); paintMarkers(scenes[area.id]); renderSide(); }
+    if (changed) { if (area) { paintMesh(scenes[area.id]); paintMarkers(scenes[area.id]); } renderSide(); }
   } catch (err) {
     $("offline").style.display = "grid";
     $("conn").className = "dot bad"; $("connText").textContent = "The client is not running";

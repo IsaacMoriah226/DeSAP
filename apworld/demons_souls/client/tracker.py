@@ -23,7 +23,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from ..data import ITEMS, LOCATIONS
-from ..parts import ARCHDEMON_PARTS, PART_BY_CODE, PARTS
+from ..parts import ARCHDEMON_PARTS, PARTS
 from . import mapshapes
 from .mapshapes import AREA_OF_MAP, AREA_OF_PART
 
@@ -92,6 +92,7 @@ class MapStore:
         self.index = mapshapes.load(root)
         self.building = False
         self.problem = ""
+        self.failed_for: Path | None = None  # the game folder the last build failed for
         self._lock = threading.Lock()
 
     def status(self) -> dict:
@@ -110,6 +111,8 @@ class MapStore:
                 self.problem = ("The map is built from your game files: choose KytyLauncher.exe on the launcher's "
                                 "Play page (its settings name your Demon's Souls folder).")
                 return
+            if Path(game) == self.failed_for:
+                return
             self.building = True
         threading.Thread(target=self._build, args=(Path(game),), name="map shapes", daemon=True).start()
 
@@ -120,6 +123,7 @@ class MapStore:
             self.index, self.problem = index, ""
         except (mapshapes.MapShapeError, OSError) as error:
             self.problem = f"Could not build the map from {game}: {error}"
+            self.failed_for = game
             logger.warning(self.problem)
         finally:
             self.building = False
@@ -271,7 +275,14 @@ class TrackerServer:
                 path = self.path.split("?", 1)[0]
                 try:
                     if path == "/api/state":
-                        body, kind = json.dumps(server.state()).encode("utf-8"), CONTENT_TYPES[".json"]
+                        for attempt in range(3):
+                            try:
+                                state = server.state()
+                                break
+                            except RuntimeError:  # (changed size while being read: read it again)
+                                if attempt == 2:
+                                    raise
+                        body, kind = json.dumps(state).encode("utf-8"), CONTENT_TYPES[".json"]
                     elif path == "/api/static":
                         server.maps.ensure()
                         if server.maps.index is None:  # (the page shows this and asks again)

@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import logging
 import struct
-import time
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -287,9 +286,12 @@ class DemonsSoulsGame:
 
     def tables_live(self) -> bool:
         """Drop copies the game no longer uses; False when the item lots have gone (the tables must be found again)."""
+        moved = False
         for name, copies in list(self.tables.items()):
-            self.tables[name] = [t for t in copies if t.live(self.memory)]
-        if not self.tables.get("ITEMLOT_PARAM_ST"):
+            live = [t for t in copies if t.live(self.memory)]
+            moved |= bool(copies) and not live
+            self.tables[name] = live
+        if moved or not self.tables.get("ITEMLOT_PARAM_ST"):
             self.tables = {}
             self.originals = {}
             return False

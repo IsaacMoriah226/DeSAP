@@ -469,13 +469,13 @@ Terms used in this area's names:
 - **elevator hall**: Left branch from the Armor Spider archstone: the wide room with the giant elevator in the middle and a Fat Official on the right.
 - **cart room**: The room with many mine carts and rock worms at the end of the narrow corridor after the elevator hall.
 - **rift platforms**: The wooden platforms you drop through one by one below the cart room, ending in a corridor (Sharpstone Chunk) and stairs down to the bearbug ledge.
-- **bearbug ledge**: The ledge at the bottom of those stairs where Patches sets his trap: the Club is the bait, a Giant Bearbug drops in, and the Flame Resistance Ring glows beside where it lands.
+- **bearbug ledge**: The ledge at the bottom of the stairs down from the rift platforms where Patches sets his trap: the Flame Resistance Ring glows on the upper ledge where the Giant Bearbug waits, and the Club (the bait) lies on the ledge below where it lands.
 - **bearbug den**: Left of the bearbug ledge: four small bearbugs, stairs to the Great Axe, and a Giant Bearbug guarding a corpse.
 - **side room off bearbug den**: The room behind a door along the wall below the bearbug den, with a miner and two corpses.
 - **lizard nest**: The Crystal Lizard nest reached by following the two lizards from the lower elevator room (the elevator goes back up to the elevator hall); two Black Phantoms guard it.
 - **rift path**: The outdoor path that descends from the bearbug area along the rift, with flying bearbugs, three rock worms at a junction, ore carts and the Filthy Man near its bottom.
 - **bug tunnels**: The underground tunnel system entered by a fog gate at the bottom of the rift path; it splits three ways near the lava rift and has several side tunnels with breakable bones and spines. It is the long route to the pit bottom.
-- **worm cliff**: The open area in the bug tunnels with ore carts, three rock worms and flying bearbugs coming from the edge.
+- **worm cliff**: The open ledge with ore carts and three rock worms at the bottom of the rift path, right before the fog entrance to the bug tunnels; flying bearbugs come up from its edge.
 - **lava rift**: The molten area off the bug tunnels full of Giant Bearbugs; the lava is a damage floor.
 - **great pit**: Right branch from the archstone: past two miner groups, the huge pit with wooden platforms you drop down (Plague Resistance Ring, a corpse hanging on a narrow beam, Scirvir's cave with two Crystal Lizards, a lizard walkway and stairs near the bottom). It is the short route.
 - **pit bottom**: The floor of the great pit where the short and long routes meet; rock worms, ladders back up.

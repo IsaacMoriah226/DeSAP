@@ -46,6 +46,11 @@ user32.CreateWindowExW.restype = wt.HWND
 user32.CreateWindowExW.argtypes = [wt.DWORD, wt.LPCWSTR, wt.LPCWSTR, wt.DWORD, ctypes.c_int, ctypes.c_int,
                                    ctypes.c_int, ctypes.c_int, wt.HWND, wt.HMENU, wt.HINSTANCE, wt.LPVOID]
 user32.GetForegroundWindow.restype = wt.HWND
+user32.GetDC.restype = wt.HDC
+user32.GetDC.argtypes = [wt.HWND]
+user32.ReleaseDC.argtypes = [wt.HWND, wt.HDC]
+kernel32.GetModuleHandleW.restype = wt.HMODULE
+kernel32.GetModuleHandleW.argtypes = [wt.LPCWSTR]
 user32.GetWindowThreadProcessId.argtypes = [wt.HWND, ctypes.POINTER(wt.DWORD)]
 user32.PostMessageW.argtypes = [wt.HWND, wt.UINT, wt.WPARAM, wt.LPARAM]
 user32.UpdateLayeredWindow.argtypes = [wt.HWND, wt.HDC, ctypes.POINTER(wt.POINT), ctypes.POINTER(wt.SIZE), wt.HDC,

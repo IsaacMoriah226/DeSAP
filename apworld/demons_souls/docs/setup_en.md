@@ -25,9 +25,11 @@ emulator (chenxiao07 fork), on Windows.
 
 ## In play
 
-- Items for other players look like a Nexial Binding and are named after what they are; the client takes them out
-  of your inventory once sent. Items you receive pop up like any pickup.
-- Parts of the world you have not unlocked send you back to the Nexus.
+- Items for other players look like a Nexial Binding, named after what they are on nearby corpses and chests
+  ("Archipelago Item" for boss rewards, "[AP] Item for another world" in shops); the client takes them out of your
+  inventory once sent. Items you receive pop up like any pickup.
+- Parts of the world you have not unlocked send you back to the Nexus. The game's own unlocks apply on top
+  (Phalanx for the other worlds, the previous boss for x-n, another world's archdemon for 1-3).
 - The overlay shows what you find, send and receive; drag it anywhere, its gear opens its settings.
 - **MAP TRACKER** on the Play page (or `/tracker`) opens a 3D map of each world in your browser, with every
   location in or out of logic and your position.
