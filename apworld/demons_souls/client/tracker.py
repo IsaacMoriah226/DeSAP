@@ -4,7 +4,8 @@ the client knows: checked locations, what is in logic, the progression items rec
 - Logic: the world's own requirement tokens (data.py `requires`, `part_requirements`), evaluated the way the
   generator's regions do: a part is open when its archstone's requirements hold, a boss counts as defeated when
   its part is open (its boss event is reachable), repeated until nothing changes.
-- Map shapes: tools/build_tracker_maps.py (the game's navmeshes, one scene per world).
+- Map shapes: mapshapes.py builds them from the player's own game files on first use (MapStore), into
+  %LOCALAPPDATA%/DemonsSoulsAP/maps; nothing from the game ships with the .apworld.
 - Server: http://127.0.0.1:PORT/ (local only), JSON at /api/static (once) and /api/state (polled).
 """
 
@@ -19,9 +20,12 @@ from collections import Counter
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 
 from ..data import ITEMS, LOCATIONS
 from ..parts import ARCHDEMON_PARTS, PART_BY_CODE, PARTS
+from . import mapshapes
+from .mapshapes import AREA_OF_MAP, AREA_OF_PART
 
 logger = logging.getLogger("Client")
 
@@ -80,21 +84,61 @@ def evaluate(have: Counter) -> Logic:
 
 # --- what the page shows -------------------------------------------------------------------------------------
 
-def _index() -> dict:
-    return json.loads(pkgutil.get_data(PACKAGE, "data/tracker/maps.json").decode("utf-8"))
+class MapStore:
+    """The map shapes in `root`, built (once, in the background) from the game folder `game()` names."""
 
+    def __init__(self, root: Path, game: Callable[[], Path | None]):
+        self.root, self.game = root, game
+        self.index = mapshapes.load(root)
+        self.building = False
+        self.problem = ""
+        self._lock = threading.Lock()
 
-MAPS = _index()
-AREA_OF_MAP = {map_id: area["id"] for area in MAPS["areas"] for map_id in area["maps"]}
-AREA_OF_PART = {part["code"]: area["id"] for area in MAPS["areas"] for part in area["parts"]}
+    def status(self) -> dict:
+        if self.index is not None:
+            return {"state": "ready"}
+        if self.building:
+            return {"state": "building", "message": "Building the map from your game files ..."}
+        return {"state": "missing", "message": self.problem or "The map is built from your game files."}
+
+    def ensure(self) -> None:
+        with self._lock:
+            if self.index is not None or self.building:
+                return
+            game = self.game()
+            if game is None:
+                self.problem = ("The map is built from your game files: choose KytyLauncher.exe on the launcher's "
+                                "Play page (its settings name your Demon's Souls folder).")
+                return
+            self.building = True
+        threading.Thread(target=self._build, args=(Path(game),), name="map shapes", daemon=True).start()
+
+    def _build(self, game: Path) -> None:
+        try:
+            index = mapshapes.build(game, self.root)
+            logger.info(f"Map tracker: built the map shapes from {game}.")
+            self.index, self.problem = index, ""
+        except (mapshapes.MapShapeError, OSError) as error:
+            self.problem = f"Could not build the map from {game}: {error}"
+            logger.warning(self.problem)
+        finally:
+            self.building = False
+
+    def file(self, name: str) -> bytes | None:
+        if self.index is None or name not in {area["file"] for area in self.index["areas"]}:
+            return None
+        try:
+            return (self.root / name).read_bytes()
+        except OSError:
+            return None
 
 
 def area_of(location) -> str:
     return AREA_OF_MAP.get(location.game.get("map", ""), AREA_OF_PART.get(location.part, "nexus"))
 
 
-def static_data() -> dict:
-    """Everything that does not change during a session: areas, locations, progression items."""
+def static_data(index: dict) -> dict:
+    """Everything that does not change during a session: areas (the map shapes' index), locations, progression."""
     locations = []
     for location in LOCATIONS.values():
         if location.code is None:
@@ -108,8 +152,8 @@ def static_data() -> dict:
                          "world": part.world} for part in PARTS}
     progression = [{"name": item.name, "group": "Archstones" if item.kind == "archipelago" else "Keys"}
                    for item in PROGRESSION]
-    return {"areas": MAPS["areas"], "quantum": MAPS["quantum"], "locations": locations, "parts": parts,
-            "progression": progression}
+    return {"areas": index["areas"], "quantum": index["quantum"], "locations": locations, "parts": parts,
+            "progression": progression, "maps": {"state": "ready"}}
 
 
 class TrackerFeed:
@@ -122,13 +166,15 @@ class TrackerFeed:
 
     def logic(self) -> tuple[Logic, Counter, list[int]]:
         items = list(self.ctx.items_received)
-        key = len(items)
+        ours = set(self.ctx.missing_locations) | set(self.ctx.checked_locations)
+        key = (len(items), len(ours))
         if self._logic is None or key != self._logic_key:
             have = Counter(ITEM_BY_CODE[i.item].name for i in items if i.item in ITEM_BY_CODE)
             logic = evaluate(have)
-            ours = set(self.ctx.missing_locations) | set(self.ctx.checked_locations)
+            # (not connected yet: every location, with nothing received)
             in_logic = [location.code for location in LOCATIONS.values()
-                        if location.code is not None and location.code in ours and logic.in_logic(location, have)]
+                        if location.code is not None and (not ours or location.code in ours)
+                        and logic.in_logic(location, have)]
             self._logic, self._logic_key = (logic, have, in_logic), key
         return self._logic
 
@@ -174,8 +220,8 @@ class _Server(ThreadingHTTPServer):
 
 
 class TrackerServer:
-    def __init__(self, state: Callable[[], dict]):
-        self.state = state
+    def __init__(self, state: Callable[[], dict], maps: MapStore):
+        self.state, self.maps = state, maps
         self.httpd: ThreadingHTTPServer | None = None
         self.url = ""
         self._static: bytes | None = None
@@ -207,8 +253,9 @@ class TrackerServer:
             name = "data/tracker/index.html"
         elif path == "/fonts/Jost.ttf":
             name = "data/fonts/Jost.ttf"
-        elif path.startswith("/maps/") and path.count("/") == 2 and path.endswith((".bin", ".json")):
-            name = "data/tracker/" + path[6:]
+        elif path.startswith("/maps/") and path.count("/") == 2:
+            data = self.maps.file(path[6:])
+            return None if data is None else (data, CONTENT_TYPES[".bin"])
         else:
             return None
         data = pkgutil.get_data(PACKAGE, name)
@@ -226,9 +273,14 @@ class TrackerServer:
                     if path == "/api/state":
                         body, kind = json.dumps(server.state()).encode("utf-8"), CONTENT_TYPES[".json"]
                     elif path == "/api/static":
-                        if server._static is None:
-                            server._static = json.dumps(static_data()).encode("utf-8")
-                        body, kind = server._static, CONTENT_TYPES[".json"]
+                        server.maps.ensure()
+                        if server.maps.index is None:  # (the page shows this and asks again)
+                            body = json.dumps({"maps": server.maps.status()}).encode("utf-8")
+                        else:
+                            if server._static is None:
+                                server._static = json.dumps(static_data(server.maps.index)).encode("utf-8")
+                            body = server._static
+                        kind = CONTENT_TYPES[".json"]
                     else:
                         found = server.file(path)
                         if found is None:

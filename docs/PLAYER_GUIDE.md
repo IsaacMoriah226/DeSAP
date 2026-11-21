@@ -63,7 +63,7 @@ Next time, open the Demon's Souls Launcher, click PLAY, wait for Ready!, and **C
 - **The map tracker** (MAP TRACKER on the Play page, or type `/tracker` in the launcher) opens in your browser: a 3D
   map of each world with every location in logic (green), out of logic (red) or checked (grey), your position, your
   archstones and keys. Drag to orbit, Shift+drag to pan, scroll to zoom, numpad 1/3/7 for front/side/top, 5 for
-  orthographic. It needs internet the first time it loads.
+  orthographic. The first time, it builds the map from your own game files (a moment) and needs internet.
 - **Pickups that already sat in the area** when you connected change after the next loading screen (die, warp, or
   quit and continue). Bosses, scripted rewards and enemy drops are right away.
 
@@ -98,5 +98,6 @@ Type these in the launcher's command line (Archipelago tab):
 
 ## Credits
 
-Jost font by the Jost Project Authors (indestructible type), SIL Open Font License (`Jost-OFL.txt`). Map shapes come
-from the game's own navmeshes at run time; nothing from the game is distributed.
+Jost font by the Jost Project Authors (indestructible type), SIL Open Font License (`Jost-OFL.txt`). The map
+tracker builds its shapes on your PC from your own game files (the walkable-floor navmeshes); nothing from the game
+is included in this kit.

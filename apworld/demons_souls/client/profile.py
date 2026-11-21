@@ -59,6 +59,16 @@ class Emulator:
                 problems.append(f"{name} is not next to KytyLauncher.exe")
         return problems
 
+    def game_folder(self) -> Path | None:
+        """The Demon's Souls folder KytyLauncher plays (its settings' "game", or game-path.txt)."""
+        game = self.settings().get("game")
+        if not game:
+            try:
+                game = (self.folder / "game-path.txt").read_text(encoding="utf-8-sig").strip()
+            except OSError:
+                return None
+        return Path(game) if game and Path(game).is_dir() else None
+
     def settings(self) -> dict:
         import json
         path = self.folder / "launcher-settings.json"

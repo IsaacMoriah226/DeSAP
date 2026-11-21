@@ -234,13 +234,19 @@ class DemonsSoulsContext(CommonContext):
     def start_tracker(self) -> str:
         """Serve the map tracker (once); returns its address ("" if it could not start)."""
         if self.tracker is None:
-            from .tracker import TrackerFeed, TrackerServer
-            self.tracker = TrackerServer(TrackerFeed(self).state)
+            from .tracker import MapStore, TrackerFeed, TrackerServer
+            self.tracker = TrackerServer(TrackerFeed(self).state, MapStore(data_dir() / "maps", self.game_folder))
         try:
             return self.tracker.start()
         except OSError as error:
             logger.warning(f"The map tracker could not start: {error}")
             return ""
+
+    def game_folder(self) -> Path | None:
+        """The Demon's Souls folder, from the KytyLauncher the launcher is set to (None if unknown)."""
+        if not self.settings.kyty_launcher:
+            return None
+        return Emulator(Path(self.settings.kyty_launcher)).game_folder()
 
     def open_tracker(self) -> str:
         url = self.start_tracker()

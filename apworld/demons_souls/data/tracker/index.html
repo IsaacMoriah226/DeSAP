@@ -85,7 +85,9 @@ h2 { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: va
 .muted { color: var(--faint); font-size: 13px; }
 #toast { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); background: rgba(22,22,26,.92); border: 1px solid var(--border);
   padding: 8px 16px; border-radius: 999px; font-size: 13.5px; color: var(--dim); opacity: 0; transition: opacity .3s; pointer-events: none; }
-#offline { position: absolute; inset: 0; display: none; place-items: center; background: rgba(12,12,14,.7); font-size: 16px; color: var(--dim); }
+#offline, #building { position: absolute; inset: 0; display: none; place-items: center; background: rgba(12,12,14,.7); font-size: 16px; color: var(--dim); text-align: center; padding: 24px; }
+#building .spin { width: 28px; height: 28px; border: 3px solid var(--raise); border-top-color: var(--gold); border-radius: 50%; margin: 0 auto 14px; animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 @media (max-width: 1100px) { #app { grid-template-columns: 260px 1fr; } aside.right { display: none; } #help { display: none; } }
 @media (max-width: 900px) { #search { width: 140px; } }
 </style>
@@ -128,6 +130,7 @@ h2 { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: va
     <div id="tip"></div>
     <div id="toast"></div>
     <div id="offline">The client is not running. Start it from the Demon's Souls launcher.</div>
+    <div id="building"><div><div class="spin"></div><div id="buildingText">Building the map from your game files ...</div></div></div>
   </main>
   <aside class="right">
     <h2 style="margin-top:4px">Archstones</h2>
@@ -654,11 +657,24 @@ function frame() {
 
 window.tracker = { get camera() { return camera; }, get controls() { return controls; }, get follow() { return follow; }, get flight() { return flight; }, get area() { return area; } };  // (for debugging)
 
+async function loadStatic() {  // the map shapes are built from the player's game files on first use: wait for them
+  for (;;) {
+    try {
+      const s = await (await fetch("/api/static", { cache: "no-store" })).json();
+      $("offline").style.display = "none";
+      if (s.maps?.state === "ready") { $("building").style.display = "none"; return s; }
+      $("building").style.display = "grid";
+      $("building").querySelector(".spin").style.display = s.maps?.state === "building" ? "" : "none";
+      $("buildingText").textContent = s.maps?.message || "Building the map from your game files ...";
+    } catch { $("offline").style.display = "grid"; }
+    await new Promise(r => setTimeout(r, 1500));
+  }
+}
+
 // --- start ------------------------------------------------------------------------------------------------
 (async () => {
   resize();
-  try { STATIC = await (await fetch("/api/static")).json(); }
-  catch { $("offline").style.display = "grid"; return; }
+  STATIC = await loadStatic();
   camera.position.set(300, 400, 300);
   frame();
   await poll();
