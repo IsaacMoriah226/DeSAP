@@ -14,6 +14,8 @@ from typing import Any, ClassVar
 
 from BaseClasses import Item, ItemClassification, Location, LocationProgressType, Region, Tutorial
 from worlds.AutoWorld import WebWorld, World
+from worlds.LauncherComponents import Component, Type, components
+from worlds.LauncherComponents import launch as launch_component
 
 from .data import ITEMS, LOCATIONS, ItemData, LocationData
 from .options import DemonsSoulsOptions, option_groups
@@ -29,6 +31,15 @@ _CLASSIFICATION = {
     "useful": ItemClassification.useful,
     "filler": ItemClassification.filler,
 }
+
+
+def launch_client(*args: str) -> None:
+    from .client import launch
+    launch_component(launch, name="Demon's Souls Client", args=args)
+
+
+components.append(Component("Demon's Souls Client", func=launch_client, component_type=Type.CLIENT, game_name=GAME,
+                            supports_uri=True, description="Connects Demon's Souls (KytyPS5) to Archipelago."))
 
 
 def part_requirements(code: str) -> tuple[str, ...]:
@@ -101,6 +112,7 @@ class DemonsSoulsWorld(World):
     options_dataclass = DemonsSoulsOptions
     options: DemonsSoulsOptions
     origin_region_name = "Tutorial"
+    ut_can_gen_without_yaml = True  # Universal Tracker: no option changes the logic
 
     item_name_to_id: ClassVar[dict[str, int]] = {name: item.code for name, item in ITEMS.items()}
     location_name_to_id: ClassVar[dict[str, int]] = {
@@ -205,7 +217,7 @@ class DemonsSoulsWorld(World):
 
     def fill_slot_data(self) -> Mapping[str, Any]:
         return {
-            "world_version": str(self.world_version),
+            "world_version": self.world_version.as_simple_string(),
             "remove_stat_requirements": bool(self.options.remove_stat_requirements),
             "auto_upgrade_weapons": bool(self.options.auto_upgrade_weapons),
             "death_link": bool(self.options.death_link),

@@ -6,8 +6,8 @@ from Options import DeathLink, OptionGroup, PerGameCommonOptions, StartInventory
 
 
 class RemoveStatRequirements(Toggle):
-    """Remove the stat requirements of weapons, shields, catalysts, talismans and spells, so anything you find
-    can be used right away (no "too weak" penalty)."""
+    """Remove the stat requirements of weapons, shields, catalysts and talismans, so anything you find can be
+    used right away (no "too weak" penalty). Spells keep theirs for now."""
     display_name = "Remove Stat Requirements"
 
 

@@ -9,15 +9,11 @@ Private project: an Archipelago world, client and game bridge for Demon's Souls 
 | --- | --- | --- |
 | apworld (items, locations, regions, logic, options) | Python | `apworld/demons_souls/` |
 | client (connects to the AP server, watches checks, grants items) | Python | inside the apworld |
-| game bridge | the emulator's live control (`KYTY_LIVE_FILE`) now; a C++ addition to the fork later if needed | `tools/live.py` |
+| game bridge | the emulator's memory and live control (`KYTY_LIVE_FILE`); no emulator change | `apworld/demons_souls/client/` |
 | data tools (params, item lots, Lua events, maps) | Python | `tools/` |
-| reverse engineering | Ghidra | `C:\Dev\DeSArchi\ghidra_projects` |
+| reverse engineering | Ghidra, capstone | `C:\Dev\DeSArchi\ghidra_projects`, `tools/lua_bindings.py` |
 
-How checks and items work (planned):
-- **Locations:** per seed, item lots are rewritten so pickups give placeholder items; the client watches the
-  pickup event flags in game memory and sends the checks.
-- **Received items:** granted with the game's dev console (`+cp11_addWeapon`, `+cp11_addArmor`, `+cp11_addGoods`,
-  `+cp11_addAccessory`) through the live command `gamecmd`.
+How checks and items work: `docs/CLIENT.md` (with what is verified in game and what is still to test).
 
 ## Layout
 
@@ -25,7 +21,11 @@ How checks and items work (planned):
 - `tools/live.py`: send live-control commands (`where`, `warp MAP SPAWN`, `gamecmd ...`) and print the replies.
 - `tools/list_spawns.py`: every warp destination (map and spawn point) from the game's MSB files.
 - `desap/`: readers for the game's files (`souls.py`: BND3, PARAM, FMG; `msb.py`: maps), `gamedata.py` (items,
-  item lots, treasures with their flags), `memory.py` (reads and writes the running game's memory).
+  item lots, treasures with their flags), `events.py` (Lua rewards and kills).
+- `apworld/demons_souls/client/`: the client and its game access (`memory.py`, `gamecall.py`, `game.py`, ...).
+- `tools/session.py`: drive the client's game access by hand in test sessions (state, give, warp, tables, ...).
+- `tools/lua_bindings.py`: every Lua `proxy:` function with its native handler.
+- `tools/check_lot_users.py`, `tools/check_free_flags.py`: safety checks for lot rewrites and the client's flags.
 - `tools/build_locations.py`: every treasure location with its event flag, as JSON.
 - `tools/flagwatch.py`: print event flag changes live (how the pickup flags were found).
 - `tools/ghidra_run.ps1` with `ghidra_scripts/`: run a Ghidra script on the analyzed eboot.

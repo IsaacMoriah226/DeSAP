@@ -96,3 +96,8 @@ Things no source settled, to look at when playing. None of them can break a seed
 - Prison of Hope: the logic requires the 1F Key for 1F, the bridge, the church and the boss. The Warden's Key may be a second way there (review), through a door that might be one-way. If it is two-way, the logic could accept 1F Key or Warden's Key.
 - Official's Clothes (Smithing Grounds / Tunnel City Fat Official, lot 99911): not a location; the enemy that carries it is not placed on any map. Check whether a Fat Official drops it.
 - Official's Gloves and Leggings (Smithing Grounds): missable until we know whether their one-time flag is set on the kill or on the pickup.
+- Iron Key Ring (IW 1-3, lot 10107): the lot is in NpcParam 208000, which two placed Fat Officials use: entity 451
+  (the location, after the first fog) and entity 453, whom the Penetrator kills in a cutscene (`SetDeadMode`, then
+  warped into the boss room). The lot's one-time flag lets only the first death drop it. Check that 453's scripted
+  death drops nothing (if it did, killing 451 afterwards would give nothing). `tools/check_lot_users.py` lists the
+  other shared lots; all are handled (marked shared, display-only treasures, or test maps).

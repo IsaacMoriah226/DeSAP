@@ -1,4 +1,5 @@
-"""Read and write the game's memory in a running kyty_emulator.exe (Windows, ctypes only).
+"""Read and write the game's memory in a running kyty_emulator.exe (Windows, ctypes only; no Archipelago imports,
+so DeSAP's tools use this module too).
 
 KytyPS5 runs the game's code natively and maps the eboot at 0x900000000, so a game address is the same number
 in the emulator's address space (as in KytyPS5's src/loader/demonsSoulsWarp.cpp and the Ghidra project).
@@ -8,6 +9,7 @@ from __future__ import annotations
 
 import ctypes
 import ctypes.wintypes as wt
+import struct
 from dataclasses import dataclass
 
 EBOOT_BASE = 0x900000000
@@ -56,6 +58,9 @@ class _WSEX(ctypes.Structure):  # PSAPI_WORKING_SET_EX_INFORMATION
 
 
 _k32.K32QueryWorkingSetEx.argtypes = [wt.HANDLE, ctypes.c_void_p, wt.DWORD]
+_k32.GetExitCodeProcess.argtypes = [wt.HANDLE, ctypes.POINTER(wt.DWORD)]
+_k32.QueryFullProcessImageNameW.argtypes = [wt.HANDLE, wt.DWORD, ctypes.c_wchar_p, ctypes.POINTER(wt.DWORD)]
+STILL_ACTIVE = 259
 
 
 def find_pid(exe: str = "kyty_emulator.exe") -> int:
@@ -121,6 +126,39 @@ class GameMemory:
 
     def u64(self, address: int) -> int:
         return int.from_bytes(self.read(address, 8), "little")
+
+    def i32(self, address: int) -> int:
+        return struct.unpack("<i", self.read(address, 4))[0]
+
+    def write_u32(self, address: int, value: int) -> None:
+        self.write(address, struct.pack("<I", value & 0xFFFFFFFF))
+
+    def write_u64(self, address: int, value: int) -> None:
+        self.write(address, struct.pack("<Q", value & 0xFFFFFFFFFFFFFFFF))
+
+    def pointer(self, address: int, *offsets: int) -> int:
+        """Follow a pointer chain: [[address] + offsets[0]] + ...; the last offset is added, not read.
+        Raises LookupError on a null pointer."""
+        value = self.u64(address)
+        for offset in offsets:
+            if value == 0:
+                raise LookupError(f"null pointer in the chain from {address:#x}")
+            value = self.u64(value + offset)
+        if value == 0:
+            raise LookupError(f"null pointer in the chain from {address:#x}")
+        return value
+
+    def alive(self) -> bool:
+        code = wt.DWORD()
+        return bool(_k32.GetExitCodeProcess(self.handle, ctypes.byref(code))) and code.value == STILL_ACTIVE
+
+    def image_path(self) -> str:
+        """The full path of the emulator's executable."""
+        size = wt.DWORD(1024)
+        buffer = ctypes.create_unicode_buffer(size.value)
+        if not _k32.QueryFullProcessImageNameW(self.handle, 0, buffer, ctypes.byref(size)):
+            raise OSError(ctypes.get_last_error(), "QueryFullProcessImageNameW failed")
+        return buffer.value
 
     def alloc(self, size: int, protect: int = PAGE_EXECUTE_READWRITE) -> int:
         address = _k32.VirtualAllocEx(self.handle, 0, size, MEM_COMMIT | MEM_RESERVE, protect)

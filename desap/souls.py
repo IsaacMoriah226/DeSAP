@@ -135,7 +135,9 @@ def _row_name(data: bytes, at: int) -> str:
     return data[at:end].decode("cp932", "replace")
 
 
-def read_param(data: bytes, paramdef: ParamDef | None = None) -> Param:
+def read_param(data: bytes, paramdef: ParamDef | None = None, extended: bool = False) -> Param:
+    """`extended`: the remake made some rows longer than the PS3 paramdef (EquipParamGoods 64 -> 72 bytes,
+    EquipParamProtector 144 -> 256); read the paramdef's fields from the start of each row and ignore the rest."""
     if data[0x2C] != 0:
         raise ValueError("big-endian PARAM")
     flags = data[0x2D]
@@ -150,7 +152,7 @@ def read_param(data: bytes, paramdef: ParamDef | None = None) -> Param:
         rows.append(Row(row_id, _row_name(data, name_at + 4 if name_at else 0), data_offset=data_at))
     row_size = rows[1].data_offset - rows[0].data_offset if len(rows) > 1 else 0
     if paramdef is not None:
-        if paramdef.size != row_size:
+        if paramdef.size != row_size and not (extended and paramdef.size < row_size):
             raise ValueError(f"{param_type}: paramdef size {paramdef.size} != row size {row_size}")
         for row in rows:
             row.values = _unpack(paramdef, data, row.data_offset)

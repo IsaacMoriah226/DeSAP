@@ -12,7 +12,8 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from desap.memory import GameMemory  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "apworld" / "demons_souls"))
+from client.memory import GameMemory  # noqa: E402
 
 FLAG_MAN_PTR = 0x9027bf328
 LIVE, STORED, WORLD = 0x0, 0x8D0, 0x3CD3

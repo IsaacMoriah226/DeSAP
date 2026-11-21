@@ -71,7 +71,5 @@ Missable locations only get filler items.
 ## Implementation notes (not design decisions)
 
 - Locations and their flags: `docs/FINDINGS.md`, `tools/build_locations.py`.
-- World locks: the client watches the loaded map (the flag manager's world byte, `+0x3cd3`) and sends the player
-  back to the Nexus when a locked part loads; archstones of locked parts stay locked.
-- Placeholders: a location's item lot is rewritten in the loaded ItemLotParam when the client connects; the files
-  on disk are not changed.
+- The client: `docs/CLIENT.md` (how placement, checks, delivery, world locks and DeathLink work, and what is still
+  to test in game).
