@@ -456,6 +456,9 @@ class DemonsSoulsContext(CommonContext):
             rows = {row: {params.WEAPON_REQUIREMENTS: bytes(4)}
                     for copy in self.bridge.tables.get("EQUIP_PARAM_WEAPON_ST", []) for row in copy.rows}
             self.bridge.patch_rows("EQUIP_PARAM_WEAPON_ST", rows)
+            rows = {row: {params.MAGIC_FAITH_TO_LEARN: struct.pack("<h", -1)}
+                    for copy in self.bridge.tables.get("MAGIC_PARAM_ST", []) for row in copy.rows}
+            self.bridge.patch_rows("MAGIC_PARAM_ST", rows)
         if not self.texts_set:
             missing = [key for key in texts if not self.text_fields.get(key)]
             if missing:

@@ -25,6 +25,11 @@ world locks, the tutorial, starting gear, the overlay, the map tracker. The rest
 - [ ] **Corpses with several items for others** show one token per item, each named after it.
 - [ ] **Overlay text** is the Jost font (geometric, Futura-like), not a default font.
 - [ ] **Map tracker:** does "in logic" match what you can actually reach? Is your position right?
+- [ ] **Universal Tracker** (install it, connect with your slot): does it open without asking for a YAML, and
+  does its "in logic" list match the map tracker's?
+- [ ] **Saint Urbain's miracles** (with Remove Stat Requirements on): can you learn God's Wrath, Anti-Magic Field
+  and Recovery with low faith?
+- [ ] **Starting gear** matches the launcher's Classes page, and all of it can be equipped.
 
 ## Also worth noting
 

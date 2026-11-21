@@ -11,7 +11,9 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from pathlib import Path
 
-PARAMDEX_DES = Path(r"C:\Dev\DeSArchi\repos\Paramdex\DES")
+from . import local
+
+PARAMDEX_DES = local.path("paramdex") / "DES"  # (desap/local.py)
 
 
 # --- BND3 -------------------------------------------------------------------------------------------------

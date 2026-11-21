@@ -8,7 +8,10 @@ import struct
 import sys
 from pathlib import Path
 
-DEFAULT_GAME = Path(r"C:\Users\Isaac Moriah\Desktop\PPSA01341-app0")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from desap import local  # noqa: E402
+
+DEFAULT_GAME = local.path("game")
 
 
 def text(data: bytes, at: int) -> str:
@@ -42,7 +45,7 @@ def read_msb(path: Path) -> list[tuple[str, float, float, float, float]]:
 
 
 def main() -> None:
-    game = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_GAME
+    game = Path(sys.argv[1]) if len(sys.argv) > 1 else local.require("game")
     folder = game / "cp11demonssouls" / "dvdroot" / "map" / "mapstudio"
     for msb in sorted(folder.glob("m0*.msb")):
         if len(msb.name) != 16:

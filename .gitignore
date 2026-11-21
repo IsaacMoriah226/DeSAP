@@ -9,3 +9,5 @@ __pycache__/
 *.bin
 *.parambnd
 *.msgbnd
+# this PC's paths (desap/local.py; see local_paths.example.json)
+local_paths.json

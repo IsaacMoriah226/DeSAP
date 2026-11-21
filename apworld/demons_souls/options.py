@@ -7,7 +7,8 @@ from Options import DeathLink, DefaultOnToggle, OptionGroup, PerGameCommonOption
 
 class RemoveStatRequirements(Toggle):
     """Remove the stat requirements of weapons, shields, catalysts and talismans, so anything you find can be
-    used right away (no "too weak" penalty). Spells keep theirs for now."""
+    used right away (no "too weak" penalty), and the faith Saint Urbain asks before teaching God's Wrath,
+    Anti-Magic Field and Recovery. (Spells have no requirement to cast: that is the catalyst's or talisman's.)"""
     display_name = "Remove Stat Requirements"
 
 

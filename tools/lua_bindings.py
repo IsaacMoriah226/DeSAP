@@ -20,7 +20,13 @@ FILE_OFFSET = 0x4000  # the converted ELF's code starts at file offset 0x4000 fo
 
 
 def main() -> None:
-    path = sys.argv[1] if len(sys.argv) > 1 else r"C:\Dev\DeSArchi\work\eboot_01.007.000.elf"
+    if len(sys.argv) > 1:
+        path = sys.argv[1]
+    else:
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+        from desap import local
+        path = str(local.path("work") / "eboot_01.007.000.elf")
     data = open(path, "rb").read()
 
     def address(offset: int) -> int:

@@ -13,13 +13,13 @@ from BaseClasses import CollectionState
 
 from ..client import tracker
 from ..data import LOCATIONS
-from . import DemonsSoulsTestBase
+from . import DemonsSoulsTestBase, local_path
 
-GAME_DUMP = Path(r"C:\Users\Isaac Moriah\Desktop\PPSA01341-app0")  # (tests that need the game skip without it)
+GAME_DUMP = local_path("game")  # (tests that need the game skip without it)
 
 
 def needs_game(test):
-    return unittest.skipUnless((GAME_DUMP / "cp11demonssouls").is_dir(), "no game dump on this PC")(test)
+    return unittest.skipUnless(GAME_DUMP and (GAME_DUMP / "cp11demonssouls").is_dir(), "no game dump on this PC")(test)
 
 
 class TestTrackerLogic(DemonsSoulsTestBase):

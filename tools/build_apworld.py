@@ -21,8 +21,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 WORLD = ROOT / "apworld" / "demons_souls"
-ARCHIPELAGO = Path(r"C:\Dev\DeSArchi\repos\Archipelago")
-PYTHON = Path(r"C:\Dev\DeSArchi\venv\Scripts\python.exe")
+sys.path.insert(0, str(ROOT))
+from desap import local  # noqa: E402
+
+ARCHIPELAGO = local.path("archipelago")  # (desap/local.py: an Archipelago checkout with the world junctioned in)
+PYTHON = local.path("python")
 GAME = "Demon's Souls Remake"
 LEAVE_OUT = {"__pycache__", "test"}
 

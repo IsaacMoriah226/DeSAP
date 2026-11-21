@@ -41,7 +41,9 @@ GAME = GameData()
 ITEM_BASE, KINDS, LOCATION_BASE, LOCK_ITEM_OFFSET = _ids.ITEM_BASE, _ids.KINDS, _ids.LOCATION_BASE, _ids.LOCK_ITEM_OFFSET
 LOCK_ITEMS, PARTS = _parts.LOCK_ITEMS, _parts.PARTS
 
-WORK = Path(r"C:\Dev\DeSArchi\work")
+from desap import local  # noqa: E402
+
+WORK = local.path("work")
 OUT = WORLD / "data"
 
 MAP_PART = {part.map: part.code for part in PARTS}

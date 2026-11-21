@@ -25,6 +25,7 @@ TABLES = {
     "EQUIP_PARAM_WEAPON_ST": (1882, 184),
     "EQUIP_PARAM_GOODS_ST": (149, 72),
     "CHARACTER_INIT_PARAM": (122, 288),
+    "MAGIC_PARAM_ST": (34, 56),
 }
 
 # ItemLotParam: 8 entries of 20 bytes from +4: i32 category, i32 id, u16 count, u16 base point, i16 QWC base
@@ -39,6 +40,10 @@ SHOP_EQUIP_TYPES = {0x00000000: 0, 0x10000000: 1, 0x20000000: 2, 0x40000000: 3}
 # EquipParamWeapon: u8 properStrength, properAgility, properMagic, properFaith at +108 (verified: zeroing them lets
 # an under-leveled weapon swing normally).
 WEAPON_REQUIREMENTS = 108
+# MagicParam (rows of 56 bytes: the PS3's 48 and 8 of the remake's): s16 faithForGet at +12, the faith needed to learn
+# the spell; -1 (none) for every spell but three of Saint Urbain's miracles (God's Wrath 10, Anti-Magic Field 20,
+# Recovery 30). No spell has a requirement to cast: that is the catalyst's or talisman's (WEAPON_REQUIREMENTS).
+MAGIC_FAITH_TO_LEARN = 12
 # EquipParamGoods: u16 iconId at +0 (the PS3's; the remake's inventory ignores it), and at +64, past the PS3 fields,
 # a u32 of the remake's (17177 for the Nexial Binding, different for every item): its link to the item's icon and
 # 3D preview, by the look of it (to check in game).

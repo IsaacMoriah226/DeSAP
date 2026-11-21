@@ -1,33 +1,66 @@
-# DeSAP: Archipelago for Demon's Souls (PS5 remake on KytyPS5)
+# Demon's Souls (PS5) for Archipelago
 
-Private project: an Archipelago world, client and game bridge for Demon's Souls (PPSA01341, game version
-01.007.000) running on the [chenxiao07/KytyPS5](https://github.com/chenxiao07/KytyPS5) emulator.
+An [Archipelago](https://archipelago.gg) randomizer for the **Demon's Souls remake** (PPSA01341, game version
+01.007.000) running on the [KytyPS5](https://github.com/chenxiao07/KytyPS5) emulator (chenxiao07 fork), on Windows.
+Every corpse, chest, boss reward, one-time enemy drop and limited shop item can hold anyone's item, and the five
+worlds open as you find their archstones.
 
-## Plan
+**Status: playtest (0.4.0).** Everything below works and has been played; a full playthrough is under way.
 
-| Part | Language | Where |
-| --- | --- | --- |
-| apworld (items, locations, regions, logic, options) | Python | `apworld/demons_souls/` |
-| client (connects to the AP server, watches checks, grants items) | Python | inside the apworld |
-| game bridge | the emulator's memory and live control (`KYTY_LIVE_FILE`); no emulator change | `apworld/demons_souls/client/` |
-| data tools (params, item lots, Lua events, maps) | Python | `tools/` |
-| reverse engineering | Ghidra, capstone | `C:\Dev\DeSArchi\ghidra_projects`, `tools/lua_bindings.py` |
+## What you get
 
-How checks and items work: `docs/CLIENT.md` (with what is verified in game and what is still to test).
+- **A launcher** in the Archipelago Launcher (*Demon's Souls Launcher*): pick your KytyLauncher once, enter the
+  server and slot, press PLAY. It uses your emulator settings, keeps its own save folder (your normal saves are
+  never touched), backs saves up while you play, and pauses the game for a few seconds at the title while it
+  places the items, then says **Ready!**
+- **World locks**: each part past 1-1 needs its archstone item (`1-2 The Lord's Path` ... `5-3 Rotting Haven`).
+- **Items for other players** look like a Nexial Binding and carry their real name ("Friend's Moonlight
+  Greatsword"); items you receive pop up as in the game.
+- **Options**: randomized starting gear per class (DS3-style), no stat requirements, received weapons upgraded to
+  match yours, DeathLink.
+- **An in-game overlay** of what you find, send and receive: draggable, adjustable, in a Futura-like face.
+- **A 3D map tracker** in your browser: each world's walkable map, every location in or out of logic, your live
+  position, your archstones and keys, with Blender-style navigation. The map is built from your own game files.
+- **Universal Tracker** support (no YAML needed).
 
-## Layout
+## Play
 
-- `tools/sce_elf_to_elf.py`: the decrypted eboot as a plain ELF for Ghidra (import at image base `0x900000000`).
-- `tools/live.py`: send live-control commands (`where`, `warp MAP SPAWN`, `gamecmd ...`) and print the replies.
-- `tools/list_spawns.py`: every warp destination (map and spawn point) from the game's MSB files.
-- `desap/`: readers for the game's files (`souls.py`: BND3, PARAM, FMG; `msb.py`: maps), `gamedata.py` (items,
-  item lots, treasures with their flags), `events.py` (Lua rewards and kills).
-- `apworld/demons_souls/client/`: the client and its game access (`memory.py`, `gamecall.py`, `game.py`, ...).
-- `tools/session.py`: drive the client's game access by hand in test sessions (state, give, warp, tables, ...).
-- `tools/lua_bindings.py`: every Lua `proxy:` function with its native handler.
-- `tools/check_lot_users.py`: safety check for lot rewrites. `tools/map_treasures.py`, `tools/treasure_flags.py`: measure treasure pickup flags in game and merge them into `data/treasure_flags.json`.
-- `tools/build_locations.py`: every treasure location with its event flag, as JSON.
-- `tools/flagwatch.py`: print event flag changes live (how the pickup flags were found).
-- `tools/ghidra_run.ps1` with `ghidra_scripts/`: run a Ghidra script on the analyzed eboot.
-- `docs/SETUP.md`: where every repo and tool lives on this PC and how to start them.
-- `docs/FINDINGS.md`: what is verified in game so far (commands, map IDs, data locations).
+1. Get the latest **release** (`DeSAP-<version>.zip`): it has `demons_souls.apworld`, an options template and the
+   guides.
+2. Follow [`docs/PLAYER_GUIDE.md`](docs/PLAYER_GUIDE.md): Archipelago 0.6.8 or newer, KytyPS5 with your own dump of
+   the game, then install, choose options, PLAY.
+
+Testing a build? [`docs/PLAYTEST.md`](docs/PLAYTEST.md) lists what to look for.
+
+## Documentation
+
+| | |
+| --- | --- |
+| [`docs/PLAYER_GUIDE.md`](docs/PLAYER_GUIDE.md) | setting up and playing |
+| [`docs/PLAYTEST.md`](docs/PLAYTEST.md) | the first-playthrough checklist |
+| [`docs/DESIGN.md`](docs/DESIGN.md) | the design decisions (locations, locks, items, options) |
+| [`docs/CLIENT.md`](docs/CLIENT.md) | how the client works: placement, checks, items, the launcher, overlay, tracker |
+| [`docs/FINDINGS.md`](docs/FINDINGS.md) | the research log: addresses, flags, file formats, test sessions |
+| [`docs/IN_GAME_CHECKS.md`](docs/IN_GAME_CHECKS.md) | location hints still to confirm in game |
+| [`docs/SETUP.md`](docs/SETUP.md) | developing: workspace, tools, tests, building a release |
+
+## Repository
+
+- `apworld/demons_souls/`: the world (items, locations, logic, options) and its client (`client/`): everything a
+  player installs, as one `.apworld`.
+- `desap/`: readers for the game's files (BND3, PARAM, FMG, MSB, Lua events), for the tools.
+- `tools/`: building the world's data from the game, research and test-session helpers, the release build.
+- `ghidra_scripts/`: scripts used while reverse engineering the eboot.
+
+Nothing from the game is in this repository or in a release: the world's tables are names, ids and flags, and the
+tracker's map is built on each player's PC from their own dump.
+
+## Credits
+
+- [Archipelago](https://github.com/ArchipelagoMW/Archipelago) and its community; the Dark Souls Remastered and
+  Dark Souls III worlds, for ideas.
+- [KytyPS5](https://github.com/chenxiao07/KytyPS5) (chenxiao07 fork), [Paramdex](https://github.com/soulsmods/Paramdex)
+  and [SoulsFormats](https://github.com/soulsmods/SoulsFormatsNEXT) for the file formats.
+- [Jost](https://github.com/indestructible-type/Jost) by the Jost Project Authors, SIL Open Font License
+  (`apworld/demons_souls/data/fonts/Jost-OFL.txt`).
+- [three.js](https://threejs.org) (MIT) for the map tracker, loaded from a CDN.

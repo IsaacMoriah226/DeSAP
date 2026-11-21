@@ -33,7 +33,10 @@ from client import params  # noqa: E402
 from client.flags import IDENTITY_OFFSET  # noqa: E402
 from client.game import DemonsSoulsGame  # noqa: E402
 
-LIVE_FILE = Path(os.environ.get("DESAP_LIVE_FILE", r"C:\Dev\DeSArchi\work\live.txt"))
+sys.path.insert(0, str(ROOT))
+from desap import local  # noqa: E402
+
+LIVE_FILE = Path(os.environ.get("DESAP_LIVE_FILE") or local.path("work") / "live.txt")
 
 
 def category(name: str) -> int:

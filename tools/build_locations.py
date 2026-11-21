@@ -1,7 +1,7 @@
 """Write every known location, with the event flag that marks it, as JSON from the game dump:
 treasures (map pickups), event rewards (boss souls, key items), limited shop stock, one-time enemy drops.
 
-Usage: python -I build_locations.py [<out.json>] [<game folder>]   (default C:\\Dev\\DeSArchi\\work\\locations.json)
+Usage: python -I build_locations.py [<out.json>] [<game folder>]   (default <work>\\locations.json; desap/local.py)
 """
 
 import json
@@ -11,7 +11,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from desap import souls  # noqa: E402
+from desap import local, souls  # noqa: E402
 from desap.events import enemy_kills, event_rewards  # noqa: E402
 from desap.gamedata import DEFAULT_GAME, GameData  # noqa: E402
 
@@ -37,7 +37,7 @@ def shops(game: GameData) -> list[dict]:
 
 
 def main() -> None:
-    out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(r"C:\Dev\DeSArchi\work\locations.json")
+    out = Path(sys.argv[1]) if len(sys.argv) > 1 else local.path("work") / "locations.json"
     game = GameData(Path(sys.argv[2]) if len(sys.argv) > 2 else DEFAULT_GAME)
     rows: list[dict] = []
     for t in game.treasures():

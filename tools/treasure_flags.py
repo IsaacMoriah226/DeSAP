@@ -21,7 +21,9 @@ sys.path.insert(0, str(ROOT))
 from desap import msb  # noqa: E402
 from desap.gamedata import GameData  # noqa: E402
 
-SCANS = Path(r"C:\Dev\DeSArchi\work\treasure_flags")
+from desap import local  # noqa: E402
+
+SCANS = local.path("work") / "treasure_flags"
 OUT = ROOT / "data" / "treasure_flags.json"
 AREA_OF_SCAN = {"boletaria": 2, "boletaria_old": 2, "stonefang": 6, "latria": 4, "shrine": 3, "valley": 5,
                 "nexus": 1, "tutorial": 8, "tutorial_outpost": 8, "tutorial_egress": 8}

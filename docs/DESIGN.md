@@ -50,7 +50,13 @@ Missable locations only get filler items.
 
 ## Options (YAML)
 
-- **Remove stat requirements** for weapons and spells.
+- **Remove stat requirements** for weapons, shields, catalysts and talismans. Spells have no requirement to cast;
+  the only requirement the spell data has is the faith Saint Urbain asks before teaching God's Wrath, Anti-Magic
+  Field and Recovery, which goes too.
+- **Randomize starting loadout** (on by default; decided 2026-11-21): every class's weapons, shield and armor,
+  DS3-style; weapons the class can use (any, with stat requirements removed), a catalyst or talisman stays, a bow
+  stays a bow, armor of about the same weight that both body types can wear. The launcher shows the gear (the
+  game's class preview cannot).
 - **Auto-upgrade received weapons:** every weapon received (from this world or others) is upgraded to match the
   highest-upgraded weapon held, **proportionally** to each weapon's maximum, rounding up. Highest normal +10 means
   a boss weapon (max +5) arrives at +5; +8 means +4.
@@ -59,7 +65,12 @@ Missable locations only get filler items.
 ## Presentation
 
 - Items for other worlds placed in Demon's Souls show as **"[Player]'s [Item]"** with the **Nexial Binding**
-  icon, so it is clear an item went to someone else. In shops: **"[AP] [Player]'s [Item]"**.
+  icon, so it is clear an item went to someone else (done: named after the nearest corpse's items). In shops:
+  **"[AP] [Player]'s [Item]"** (for now one generic "[AP] Item for another world").
+- An in-game overlay (Futura-like font, colour-coded, adjustable, draggable) shows only what this player finds,
+  sends and receives; a 3D map tracker and Universal Tracker show the logic.
+- Nobody plays before the items are placed: the client pauses the game at the title until it is ready, and says
+  so.
 - Received items show the game's own pickup popup, as when picking something up.
 
 ## Open

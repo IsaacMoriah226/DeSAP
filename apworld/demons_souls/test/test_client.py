@@ -4,6 +4,7 @@ skip rule, world locks, DeathLink, plus the pure helpers (flags, lots, weapon up
 from __future__ import annotations
 
 import struct
+from pathlib import Path
 import unittest
 from types import SimpleNamespace
 
@@ -108,7 +109,8 @@ class FakeGame:
     def find_tables(self):
         weapons = {base + level: 0 for base in (10000, 60000) for level in range(0, 11)}
         self.tables = {"ITEMLOT_PARAM_ST": [params.Table(0, {})], "SHOP_LINEUP_PARAM": [params.Table(0, {})],
-                       "EQUIP_PARAM_WEAPON_ST": [params.Table(0, weapons)], "EQUIP_PARAM_GOODS_ST": []}
+                       "EQUIP_PARAM_WEAPON_ST": [params.Table(0, weapons)], "EQUIP_PARAM_GOODS_ST": [],
+                       "MAGIC_PARAM_ST": [params.Table(0, {1000: 0, 2000: 0})]}
         return self.tables
 
     def patch_rows(self, table, writes):
@@ -284,6 +286,8 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.assertIn(TREASURE, self.ctx.physical)
         self.assertNotIn(SHARED, self.ctx.physical)
         self.assertIn("EQUIP_PARAM_WEAPON_ST", self.game.patched)  # stat requirements removed
+        self.assertEqual(self.game.patched["MAGIC_PARAM_ST"][2000],  # (and Urbain's faith to learn a miracle)
+                         {params.MAGIC_FAITH_TO_LEARN: struct.pack("<h", -1)})
 
     # --- checks and delivery ------------------------------------------------------------------------------------
 
@@ -496,8 +500,8 @@ class HelperTest(unittest.TestCase):
         self.assertEqual(targets, {base + DATA + 0x08, base + DATA + 0x0C, base + DATA + 0x10})
 
     def test_signatures_match_the_eboot(self):
-        from pathlib import Path
-        elf = Path(r"C:\Dev\DeSArchi\work\eboot_01.007.000.elf")
+        from . import local_path
+        elf = (local_path("work") or Path(".")) / "eboot_01.007.000.elf"
         if not elf.exists():
             self.skipTest("the converted eboot is not here")
         data = elf.read_bytes()

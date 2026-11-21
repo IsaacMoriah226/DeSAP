@@ -10,8 +10,10 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-GAME = Path(r"C:\Users\Isaac Moriah\Desktop\PPSA01341-app0")
-OUT = Path(r"C:\Dev\DeSArchi\work\tracker_maps")
+sys.path.insert(0, str(ROOT))
+from desap import local  # noqa: E402
+
+OUT = local.path("work") / "tracker_maps"
 
 spec = importlib.util.spec_from_file_location("mapshapes", ROOT / "apworld" / "demons_souls" / "client" / "mapshapes.py")
 mapshapes = importlib.util.module_from_spec(spec)
@@ -19,7 +21,7 @@ spec.loader.exec_module(mapshapes)
 
 if __name__ == "__main__":
     start = time.monotonic()
-    index = mapshapes.build(Path(sys.argv[1]) if len(sys.argv) > 1 else GAME, OUT)
+    index = mapshapes.build(Path(sys.argv[1]) if len(sys.argv) > 1 else local.require("game"), OUT)
     for area in index["areas"]:
         print(f"{area['id']}: {sum(p['count'] for p in area['parts'])} triangles")
     print(f"{OUT} in {time.monotonic() - start:.1f} s")

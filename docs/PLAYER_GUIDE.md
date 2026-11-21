@@ -23,11 +23,14 @@ double-clicking does nothing, open the **Archipelago Launcher** and choose **Ins
 
 ## 2. Your options
 
-Open `Demon's Souls Remake.yaml` in a text editor:
+Open `Demon's Souls Remake.yaml` in a text editor, or make one with the **Options Creator** in the Archipelago
+Launcher (pick *Demon's Souls Remake*):
 
 - `name`: your slot name (what you type in the launcher later).
 - **Randomize Starting Loadout** (on by default): every class gets random weapons, shield and armor.
-- **Remove Stat Requirements**: use any weapon you find right away.
+- **Remove Stat Requirements**: use any weapon, shield, catalyst or talisman you find right away, and learn God's
+  Wrath, Anti-Magic Field and Recovery from Saint Urbain without the faith he asks. (Spells have no requirement to
+  cast: their power comes from your catalyst or talisman.)
 - **Auto-Upgrade Received Weapons**: received weapons arrive upgraded to match your best weapon.
 - **DeathLink**: when you die, everyone with DeathLink dies, and the other way round.
 
@@ -66,6 +69,12 @@ Next time, open the Demon's Souls Launcher, click PLAY, wait for Ready!, and **C
   orthographic. The first time, it builds the map from your own game files (a moment) and needs internet.
 - **Pickups that already sat in the area** when you connected change after the next loading screen (die, warp, or
   quit and continue). Bosses, scripted rewards and enemy drops are right away.
+
+## Universal Tracker (optional)
+
+[Universal Tracker](https://github.com/FarisTheAncient/Archipelago/releases) works with this world and needs no
+YAML. From its latest `Tracker_v...` release, install `tracker.apworld` like this one, open **Universal Tracker** from the Archipelago Launcher and
+connect with the same server, slot name and password. It lists what is in logic; it agrees with the map tracker.
 
 ## Saves
 

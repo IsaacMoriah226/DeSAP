@@ -15,7 +15,10 @@ sys.path.insert(0, str(ROOT / "tools"))
 import research_rules as rules  # noqa: E402
 
 WORLD = ROOT / "apworld" / "demons_souls"
-RESEARCH = Path(r"C:\Dev\DeSArchi\work\research\out")
+sys.path.insert(0, str(ROOT))
+from desap import local  # noqa: E402
+
+RESEARCH = local.path("work") / "research" / "out"
 
 AREAS = [  # (code, number, area, maps)
     ("NX", "", "The Nexus", ["m01_00_00_00"]),

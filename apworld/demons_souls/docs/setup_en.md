@@ -1,30 +1,35 @@
 # Demon's Souls Remake Setup Guide
 
-This world needs the PS5 remake (PPSA01341, game version 01.007.000) running on the KytyPS5 emulator
-(chenxiao07 fork), on Windows. The client is in testing: expect rough edges.
+This world needs the PS5 remake of Demon's Souls (PPSA01341, game version 01.007.000) running on the KytyPS5
+emulator (chenxiao07 fork), on Windows.
 
 ## What you need
 
-- KytyPS5 (chenxiao07 fork) with the game working.
-- Archipelago 0.6.0 or newer, with `demons_souls.apworld` installed (double-click it, or put it in
-  `custom_worlds`).
+- Windows 10 or 11.
+- Archipelago 0.6.8 or newer.
+- KytyPS5 (chenxiao07 fork, a 2026-11-18 build or later) with KytyLauncher, set up so the game runs for you.
+- Your own dump of the game (PPSA01341, 01.007.000).
+- `demons_souls.apworld`, installed: double-click it, or put it in Archipelago's `custom_worlds` folder.
 
-## Starting a game
+## Playing
 
-1. Turn on the emulator's live control: in KytyLauncher's extra options (Advanced page) add
-   `-Set KYTY_LIVE_FILE=%LOCALAPPDATA%\DemonsSoulsAP\live.txt` (write the folder out in full if the launcher does
-   not expand it). The client looks for that file; `/livefile <path>` in the client changes it.
-2. Start the game in the emulator.
-3. Open the Archipelago Launcher, then **Demon's Souls Client**, and connect to the server with your slot name.
-4. Start a **new character**. The client claims it for your slot in the tutorial. Keep using that save for this
-   seed; the client refuses saves that belong to another slot. `/claim` uses a save that already has progress.
-5. The first time, the client spends about 30 seconds finding the game's item tables, then places the items.
-   Pickups lying in the area you are in change after its next loading screen; everything after that is
-   randomized as you go.
+1. Open the Archipelago Launcher and click **Demon's Souls Launcher**.
+2. The first time, choose your `KytyLauncher.exe` (**Browse...**). Your emulator settings are used as they are.
+3. Enter the server, your slot name and the password, if any, and click **PLAY**. The launcher connects, prepares
+   its own copy of your emulator setup (with its own saves: your normal saves are never touched) and starts the
+   game.
+4. At the title, wait for **Ready!** (top left of the screen, and on the launcher): the game pauses for a few
+   seconds while the items are placed.
+5. Start a **New Game**. The client ties the new character to your slot in the tutorial. Next time: PLAY, wait for
+   Ready!, Continue.
 
 ## In play
 
-- Items for other players appear as **Archipelago** and vanish from your inventory; your own items appear as
-  themselves. Items you receive pop up like any pickup.
+- Items for other players look like a Nexial Binding and are named after what they are; the client takes them out
+  of your inventory once sent. Items you receive pop up like any pickup.
 - Parts of the world you have not unlocked send you back to the Nexus.
-- `/game` shows what the client sees (map, save, placement).
+- The overlay shows what you find, send and receive; drag it anywhere, its gear opens its settings.
+- **MAP TRACKER** on the Play page (or `/tracker`) opens a 3D map of each world in your browser, with every
+  location in or out of logic and your position.
+- Universal Tracker works too, with no YAML.
+- `/game` shows what the client sees; `/claim` uses a save with progress that was not started with Archipelago.

@@ -17,9 +17,9 @@ from dataclasses import dataclass, field
 from functools import cached_property
 from pathlib import Path
 
-from . import msb, souls
+from . import local, msb, souls
 
-DEFAULT_GAME = Path(r"C:\Users\Isaac Moriah\Desktop\PPSA01341-app0")
+DEFAULT_GAME = local.path("game")  # (desap/local.py: DESAP_GAME or local_paths.json)
 TREASURE_FLAGS = Path(__file__).resolve().parent.parent / "data" / "treasure_flags.json"
 
 # ITEMLOT_ITEMCATEGORY -> (kind, item.msgbnd name file id of the PS3 text)
@@ -120,7 +120,8 @@ class TreasureLocation:
 
 
 class GameData:
-    def __init__(self, game: Path = DEFAULT_GAME, language: str = "na_english"):
+    def __init__(self, game: Path | None = None, language: str = "na_english"):
+        game = Path(game) if game else local.require("game")
         self.game = game
         self.dvdroot = game / "cp11demonssouls" / "dvdroot"
         self.language = language

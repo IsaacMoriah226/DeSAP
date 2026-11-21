@@ -1,7 +1,7 @@
 """Send commands to a running KytyPS5 through its live-control file and print the replies.
 
 The emulator has to be started with the live file set, e.g. in KytyLauncher's extra options (Advanced page):
-    -Set KYTY_LIVE_FILE=C:\\Dev\\DeSArchi\\work\\live.txt
+    -Set KYTY_LIVE_FILE=<work>\\live.txt
 It polls that file every 100 ms and runs the lines under a new "id N" first line once; it prints LIVE_* replies
 to its stdout, which run-windows.ps1 saves as logs\\<stamp>.out.log next to the emulator.
 
@@ -10,8 +10,8 @@ Usage:
     python -I live.py "gamecmd +cp11_unlockAllArchstones"
     python -I live.py "warp m02_00_00_00 c0000_0001" "where"
 
-Options (environment): DESAP_LIVE_FILE (default C:\\Dev\\DeSArchi\\work\\live.txt),
-DESAP_EMU_DIR (default C:\\Dev\\DeSArchi\\KytyPS5-v20261120).
+Options (environment): DESAP_LIVE_FILE (default <work>\\live.txt), DESAP_EMULATOR (the KytyPS5 folder whose logs
+hold the replies). <work> and the emulator come from desap/local.py.
 """
 
 import os
@@ -19,8 +19,11 @@ import sys
 import time
 from pathlib import Path
 
-LIVE_FILE = Path(os.environ.get("DESAP_LIVE_FILE", r"C:\Dev\DeSArchi\work\live.txt"))
-EMU_DIR = Path(os.environ.get("DESAP_EMU_DIR", r"C:\Dev\DeSArchi\KytyPS5-v20261120"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from desap import local  # noqa: E402
+
+LIVE_FILE = Path(os.environ.get("DESAP_LIVE_FILE") or local.path("work") / "live.txt")
+EMU_DIR = local.path("emulator")
 
 
 def latest_log() -> Path:
