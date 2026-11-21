@@ -1744,7 +1744,7 @@
   "vanilla_item": "Tower Shield",
   "description": "Through the prison: past the cells and the Crystal Lizard, the corpse at the end of the path by the iron gate.",
   "requires": [
-   "region:1-3"
+   "Iron Key Ring"
   ],
   "missable": "",
   "tendency": "",
@@ -1768,7 +1768,7 @@
   "vanilla_item": "Renowned Hero Soul",
   "description": "In the prison, the locked cell right beside Biorr's (the first cell you open).",
   "requires": [
-   "region:1-3"
+   "Iron Key Ring"
   ],
   "missable": "",
   "tendency": "",
@@ -1792,7 +1792,7 @@
   "vanilla_item": "Storied Hero Soul",
   "description": "In the prison, the second cell on the side wall, past the empty one next to Biorr's corner.",
   "requires": [
-   "region:1-3"
+   "Iron Key Ring"
   ],
   "missable": "",
   "tendency": "",
@@ -2060,8 +2060,7 @@
   "vanilla_item": "Stone of Ephemeral Eyes",
   "description": "Through the Bloody Iron Key door off the starting plaza, at the end of the corridor turn left (in front of the illusory wall).",
   "requires": [
-   "region:1-2",
-   "region:1-3"
+   "Bloody Iron Key"
   ],
   "missable": "",
   "tendency": "",
@@ -2085,8 +2084,7 @@
   "vanilla_item": "Legendary Warrior Soul",
   "description": "Inside the witch's tower (second Bloody Iron Key door), on the way up the stairs.",
   "requires": [
-   "region:1-2",
-   "region:1-3"
+   "Bloody Iron Key"
   ],
   "missable": "",
   "tendency": "",
@@ -2110,8 +2108,7 @@
   "vanilla_item": "Ring of Magical Nature",
   "description": "On the last floor of the witch's tower, before the stairs the Fat Official lowers.",
   "requires": [
-   "region:1-2",
-   "region:1-3"
+   "Bloody Iron Key"
   ],
   "missable": "",
   "tendency": "",
@@ -2135,8 +2132,7 @@
   "vanilla_item": "Ring of the Accursed",
   "description": "On the last floor of the witch's tower, next to the Ring of Magical Nature.",
   "requires": [
-   "region:1-2",
-   "region:1-3"
+   "Bloody Iron Key"
   ],
   "missable": "",
   "tendency": "",
@@ -13253,6 +13249,1955 @@
   "groups": [
    "1-4",
    "Events"
+  ]
+ },
+ {
+  "name": "GB 1-1: Binded Hood - execution grounds stairwell, miniboss drop",
+  "code": 4200000600,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Binded Hood",
+  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "requires": [],
+  "missable": "pure white only (tendency-only enemy)",
+  "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 60,
+   "lot": 370,
+   "entity": 628,
+   "corpse_flag": 15605,
+   "detect_flag": 15605,
+   "npc_param": 37,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Binded Cross - execution grounds stairwell, miniboss drop",
+  "code": 4200000601,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Binded Cross",
+  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "requires": [],
+  "missable": "pure white only (tendency-only enemy)",
+  "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 60,
+   "lot": 371,
+   "entity": 628,
+   "corpse_flag": 15605,
+   "detect_flag": 15605,
+   "npc_param": 37,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Binded Gloves - execution grounds stairwell, miniboss drop",
+  "code": 4200000602,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Binded Gloves",
+  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "requires": [],
+  "missable": "pure white only (tendency-only enemy)",
+  "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 60,
+   "lot": 372,
+   "entity": 628,
+   "corpse_flag": 15605,
+   "detect_flag": 15605,
+   "npc_param": 37,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Binded Boots - execution grounds stairwell, miniboss drop",
+  "code": 4200000603,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Binded Boots",
+  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "requires": [],
+  "missable": "pure white only (tendency-only enemy)",
+  "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 60,
+   "lot": 373,
+   "entity": 628,
+   "corpse_flag": 15605,
+   "detect_flag": 15605,
+   "npc_param": 37,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Master's Ring - execution grounds stairwell, miniboss drop",
+  "code": 4200000604,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Master's Ring",
+  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "requires": [],
+  "missable": "pure white only (tendency-only enemy)",
+  "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 60,
+   "lot": 374,
+   "entity": 628,
+   "corpse_flag": 15605,
+   "detect_flag": 15605,
+   "npc_param": 37,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Guillotine Axe - execution grounds stairwell, phantom drop",
+  "code": 4200000620,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Guillotine Axe",
+  "description": "Black Phantom Miralda's body at the top of the execution grounds pit steps (left side), by the stairwell building. She appears only at pure black world tendency; her corpse stays until looted.",
+  "requires": [],
+  "missable": "pure black only (tendency-only phantom)",
+  "tendency": "world <= -180 (pure black), QWC 20300 (the same check opens the execution grounds door)",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 62,
+   "lot": 430,
+   "entity": 231,
+   "corpse_flag": 15635,
+   "detect_flag": 15635,
+   "npc_param": 43,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Eternal Warrior's Ring - mausoleum, miniboss drop",
+  "code": 4200003320,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Eternal Warrior's Ring",
+  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "requires": [],
+  "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
+  "tendency": "",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 332,
+   "lot": 270,
+   "entity": 697,
+   "corpse_flag": 15610,
+   "detect_flag": 15610,
+   "npc_param": 27,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Ancient King's Mask - mausoleum, miniboss drop",
+  "code": 4200003321,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Ancient King's Mask",
+  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "requires": [],
+  "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
+  "tendency": "",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 332,
+   "lot": 271,
+   "entity": 697,
+   "corpse_flag": 15610,
+   "detect_flag": 15610,
+   "npc_param": 27,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Ancient King's Breastplate - mausoleum, miniboss drop",
+  "code": 4200003322,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Ancient King's Breastplate",
+  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "requires": [],
+  "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
+  "tendency": "",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 332,
+   "lot": 272,
+   "entity": 697,
+   "corpse_flag": 15610,
+   "detect_flag": 15610,
+   "npc_param": 27,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Ancient King's Gauntlets - mausoleum, miniboss drop",
+  "code": 4200003323,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Ancient King's Gauntlets",
+  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "requires": [],
+  "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
+  "tendency": "",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 332,
+   "lot": 273,
+   "entity": 697,
+   "corpse_flag": 15610,
+   "detect_flag": 15610,
+   "npc_param": 27,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "GB 1-1: Ancient King's Greaves - mausoleum, miniboss drop",
+  "code": 4200003324,
+  "part": "1-1",
+  "kind": "enemy",
+  "vanilla_item": "Ancient King's Greaves",
+  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "requires": [],
+  "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
+  "tendency": "",
+  "game": {
+   "map": "m02_00_00_00",
+   "flag": 332,
+   "lot": 274,
+   "entity": 697,
+   "corpse_flag": 15610,
+   "detect_flag": 15610,
+   "npc_param": 27,
+   "host_only": true
+  },
+  "groups": [
+   "1-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "LP 1-2: Bloody Iron Key - prison, miniboss drop",
+  "code": 4201005600,
+  "part": "1-2",
+  "kind": "enemy",
+  "vanilla_item": "Bloody Iron Key",
+  "description": "The Fat Official inside the prison (behind the Iron Key Ring door near the first Blue Eye Knight before the boss fog), guarding Biorr's cell. Loot his body; it stays until looted.",
+  "requires": [
+   "Iron Key Ring"
+  ],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m02_01_00_00",
+   "flag": 560,
+   "lot": 10106,
+   "entity": 115,
+   "corpse_flag": 15622,
+   "detect_flag": 15622,
+   "npc_param": 208001,
+   "host_only": true
+  },
+  "groups": [
+   "1-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "IW 1-3: Iron Key Ring - after first fog, miniboss drop",
+  "code": 4202012800,
+  "part": "1-3",
+  "kind": "enemy",
+  "vanilla_item": "Iron Key Ring",
+  "description": "The Fat Official in the yard right after the first fog (with a Red Eye Knight and the ladders), on the long way round to the gate lever. Loot his body; it stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m02_02_00_00",
+   "flag": 1280,
+   "lot": 10107,
+   "entity": 451,
+   "corpse_flag": 15621,
+   "detect_flag": 15621,
+   "npc_param": 208000,
+   "host_only": true
+  },
+  "groups": [
+   "1-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "IW 1-3: Official's Cap - by gate lever, miniboss drop",
+  "code": 4202012810,
+  "part": "1-3",
+  "kind": "enemy",
+  "vanilla_item": "Official's Cap",
+  "description": "The Fat Official who shut the gate in the opening cutscene, waiting down the stairs from the yard before lever, next to the lever that reopens the closed gate. Loot his body; it stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m02_02_00_00",
+   "flag": 1281,
+   "lot": 10103,
+   "entity": 452,
+   "corpse_flag": 15620,
+   "detect_flag": 15620,
+   "npc_param": 208005,
+   "host_only": true
+  },
+  "groups": [
+   "1-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "KT 1-4: Tower Shield - phantom hall, phantom drop",
+  "code": 4203016900,
+  "part": "1-4",
+  "kind": "enemy",
+  "vanilla_item": "Tower Shield",
+  "description": "One of the three Black Phantoms in the phantom hall past the dragon carcass (Alfred, Knight of the Tower). Always there, killed once for good.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m02_03_00_00",
+   "flag": 1690,
+   "lot": 90,
+   "entity": 530,
+   "corpse_flag": null,
+   "detect_flag": 1690,
+   "npc_param": 9,
+   "host_only": true
+  },
+  "groups": [
+   "1-4",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "KT 1-4: White Bow - phantom hall, phantom drop",
+  "code": 4203016910,
+  "part": "1-4",
+  "kind": "enemy",
+  "vanilla_item": "White Bow",
+  "description": "One of the three Black Phantoms in the phantom hall past the dragon carcass (Long Bow Oolan). Always there, killed once for good.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m02_03_00_00",
+   "flag": 1691,
+   "lot": 110,
+   "entity": 531,
+   "corpse_flag": null,
+   "detect_flag": 1691,
+   "npc_param": 11,
+   "host_only": true
+  },
+  "groups": [
+   "1-4",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "KT 1-4: Penetrating Sword - phantom hall, phantom drop",
+  "code": 4203016920,
+  "part": "1-4",
+  "kind": "enemy",
+  "vanilla_item": "Penetrating Sword",
+  "description": "One of the three Black Phantoms in the phantom hall past the dragon carcass (Metas, Knight of the Lance). Always there, killed once for good.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m02_03_00_00",
+   "flag": 1692,
+   "lot": 100,
+   "entity": 532,
+   "corpse_flag": null,
+   "detect_flag": 1692,
+   "npc_param": 10,
+   "host_only": true
+  },
+  "groups": [
+   "1-4",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "KT 1-4: Rune Sword - long walkway, phantom drop",
+  "code": 4203016400,
+  "part": "1-4",
+  "kind": "enemy",
+  "vanilla_item": "Rune Sword",
+  "description": "Black Phantom Ostrava, who attacks on the long walkway before the elevator to the boss (he appears when you enter the area, event 1706). Always there, whatever you did for Ostrava.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m02_03_00_00",
+   "flag": 1640,
+   "lot": 170,
+   "entity": 502,
+   "corpse_flag": null,
+   "detect_flag": 1640,
+   "npc_param": 47,
+   "host_only": true
+  },
+  "groups": [
+   "1-4",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "KT 1-4: Rune Shield - long walkway, phantom drop",
+  "code": 4203016401,
+  "part": "1-4",
+  "kind": "enemy",
+  "vanilla_item": "Rune Shield",
+  "description": "Black Phantom Ostrava, who attacks on the long walkway before the elevator to the boss (he appears when you enter the area, event 1706). Always there, whatever you did for Ostrava.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m02_03_00_00",
+   "flag": 1640,
+   "lot": 171,
+   "entity": 502,
+   "corpse_flag": null,
+   "detect_flag": 1640,
+   "npc_param": 47,
+   "host_only": true
+  },
+  "groups": [
+   "1-4",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "IE 4-1: Hiltless - start, phantom drop",
+  "code": 4301007110,
+  "part": "4-1",
+  "kind": "enemy",
+  "vanilla_item": "Hiltless",
+  "description": "Black Phantom Satsuki, standing on the ground right of the first archway (by the Silver Skeleton) near the archstone. He appears only at pure black world tendency; his corpse stays until looted.",
+  "requires": [],
+  "missable": "pure black only (tendency-only phantom)",
+  "tendency": "world <= -180 (pure black), QWC 30120",
+  "game": {
+   "map": "m03_01_00_00",
+   "flag": 711,
+   "lot": 450,
+   "entity": 420,
+   "corpse_flag": 15634,
+   "detect_flag": 15634,
+   "npc_param": 45,
+   "host_only": true
+  },
+  "groups": [
+   "4-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "RP 4-2: Moonshadestone Chunk - pit, phantom drop",
+  "code": 4302012500,
+  "part": "4-2",
+  "kind": "enemy",
+  "vanilla_item": "Moonshadestone Chunk x3",
+  "description": "The Black Phantom in Patches' pit, next to Saint Urbain's cell. Always there; killing it is part of freeing Urbain.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m03_02_00_00",
+   "flag": 1250,
+   "lot": 990,
+   "entity": 355,
+   "corpse_flag": 15500,
+   "detect_flag": 1250,
+   "npc_param": 8,
+   "host_only": true
+  },
+  "groups": [
+   "4-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "RP 4-2: Stone of Ephemeral Eyes - pit, phantom drop",
+  "code": 4302012502,
+  "part": "4-2",
+  "kind": "enemy",
+  "vanilla_item": "Stone of Ephemeral Eyes",
+  "description": "The Black Phantom in Patches' pit, next to Saint Urbain's cell. Always there; killing it is part of freeing Urbain.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m03_02_00_00",
+   "flag": 1250,
+   "lot": 992,
+   "entity": 355,
+   "corpse_flag": 15500,
+   "detect_flag": 1250,
+   "npc_param": 8,
+   "host_only": true
+  },
+  "groups": [
+   "4-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "PH 3-1: Phosphorescent Pole - 2F west, phantom drop",
+  "code": 4400001610,
+  "part": "3-1",
+  "kind": "enemy",
+  "vanilla_item": "Phosphorescent Pole",
+  "description": "Black Phantom Lord Rydell, standing on the landing outside his cell at the plate end of 2F West. He appears only at pure black world tendency; his corpse stays until looted.",
+  "requires": [
+   "Prison of Hope, 3F Key",
+   "Prison of Hope, 4F Key"
+  ],
+  "missable": "pure black only (tendency-only phantom)",
+  "tendency": "world <= -180 (pure black), QWC 40120",
+  "game": {
+   "map": "m04_00_00_00",
+   "flag": 161,
+   "lot": 390,
+   "entity": 510,
+   "corpse_flag": 15603,
+   "detect_flag": 15603,
+   "npc_param": 39,
+   "host_only": true
+  },
+  "groups": [
+   "3-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "PH 3-1: Moonlightstone Chunk - below catwalk ledge, phantom drop",
+  "code": 4400001950,
+  "part": "3-1",
+  "kind": "enemy",
+  "vanilla_item": "Moonlightstone Chunk x3",
+  "description": "The crossbow Black Phantom (Baby's Nail) hiding on the ground below the catwalk ledge, under the Liar's balcony, near the church before the boss. Always there.",
+  "requires": [
+   "Prison of Hope, 3F Key",
+   "Prison of Hope, 4F Key",
+   "Prison of Hope, 1F Key"
+  ],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m04_00_00_00",
+   "flag": 195,
+   "lot": 980,
+   "entity": 550,
+   "corpse_flag": 15500,
+   "detect_flag": 195,
+   "npc_param": 61,
+   "host_only": true
+  },
+  "groups": [
+   "3-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "PH 3-1: Stone of Ephemeral Eyes - below catwalk ledge, phantom drop",
+  "code": 4400001952,
+  "part": "3-1",
+  "kind": "enemy",
+  "vanilla_item": "Stone of Ephemeral Eyes x2",
+  "description": "The crossbow Black Phantom (Baby's Nail) hiding on the ground below the catwalk ledge, under the Liar's balcony, near the church before the boss. Always there.",
+  "requires": [
+   "Prison of Hope, 3F Key",
+   "Prison of Hope, 4F Key",
+   "Prison of Hope, 1F Key"
+  ],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m04_00_00_00",
+   "flag": 195,
+   "lot": 982,
+   "entity": 550,
+   "corpse_flag": 15500,
+   "detect_flag": 195,
+   "npc_param": 61,
+   "host_only": true
+  },
+  "groups": [
+   "3-1",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "SS 5-2: Dull Gold Helm - second swamp islet, miniboss drop",
+  "code": 4501007700,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Dull Gold Helm",
+  "description": "The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 770,
+   "lot": 510051,
+   "entity": 440,
+   "corpse_flag": 15626,
+   "detect_flag": 15626,
+   "npc_param": 307001,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SS 5-2: Dull Gold Armor - second swamp islet, miniboss drop",
+  "code": 4501007701,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Dull Gold Armor",
+  "description": "The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 770,
+   "lot": 510052,
+   "entity": 440,
+   "corpse_flag": 15626,
+   "detect_flag": 15626,
+   "npc_param": 307001,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SS 5-2: Dull Gold Gauntlets - second swamp islet, miniboss drop",
+  "code": 4501007702,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Dull Gold Gauntlets",
+  "description": "The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 770,
+   "lot": 510053,
+   "entity": 440,
+   "corpse_flag": 15626,
+   "detect_flag": 15626,
+   "npc_param": 307001,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SS 5-2: Dull Gold Leggings - second swamp islet, miniboss drop",
+  "code": 4501007703,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Dull Gold Leggings",
+  "description": "The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 770,
+   "lot": 510054,
+   "entity": 440,
+   "corpse_flag": 15626,
+   "detect_flag": 15626,
+   "npc_param": 307001,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SS 5-2: Shaman's Garb - lone shaman platform, miniboss drop",
+  "code": 4501007751,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Shaman's Garb",
+  "description": "The lone Shaman on the west boardwalk (shanty town to the shortcut plank), next to the 'west boardwalk, by shaman' corpse. Any tendency; its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 775,
+   "lot": 510021,
+   "entity": 439,
+   "corpse_flag": 15623,
+   "detect_flag": 15623,
+   "npc_param": 210011,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SS 5-2: Shaman's Armbands - lone shaman platform, miniboss drop",
+  "code": 4501007752,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Shaman's Armbands",
+  "description": "The lone Shaman on the west boardwalk (shanty town to the shortcut plank), next to the 'west boardwalk, by shaman' corpse. Any tendency; its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 775,
+   "lot": 510022,
+   "entity": 439,
+   "corpse_flag": 15623,
+   "detect_flag": 15623,
+   "npc_param": 210011,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SS 5-2: Shaman's Tabi - lone shaman platform, miniboss drop",
+  "code": 4501007753,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Shaman's Tabi",
+  "description": "The lone Shaman on the west boardwalk (shanty town to the shortcut plank), next to the 'west boardwalk, by shaman' corpse. Any tendency; its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 775,
+   "lot": 510023,
+   "entity": 439,
+   "corpse_flag": 15623,
+   "detect_flag": 15623,
+   "npc_param": 210011,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SS 5-2: Blind - Selen's island, phantom drop",
+  "code": 4501008200,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Blind",
+  "description": "Black Phantom Selen Vinland on the small island just past the first fog gate. She appears only at pure black world tendency; her corpse stays until looted.",
+  "requires": [],
+  "missable": "pure black only (tendency-only phantom)",
+  "tendency": "world <= -180 (pure black), QWC 50120",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 820,
+   "lot": 410,
+   "entity": 435,
+   "corpse_flag": 15600,
+   "detect_flag": 15600,
+   "npc_param": 41,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "SS 5-2: Faintstone Chunk - northeast island, phantom drop",
+  "code": 4501008420,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Faintstone Chunk x3",
+  "description": "The Meat Cleaver Black Phantom patrolling the first swamp, starting by the northeast island (Cat Ring). Always there.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 842,
+   "lot": 1020,
+   "entity": 470,
+   "corpse_flag": 15500,
+   "detect_flag": 842,
+   "npc_param": 62,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "SS 5-2: Stone of Ephemeral Eyes - northeast island, phantom drop",
+  "code": 4501008422,
+  "part": "5-2",
+  "kind": "enemy",
+  "vanilla_item": "Stone of Ephemeral Eyes x2",
+  "description": "The Meat Cleaver Black Phantom patrolling the first swamp, starting by the northeast island (Cat Ring). Always there.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m05_01_00_00",
+   "flag": 842,
+   "lot": 1022,
+   "entity": 470,
+   "corpse_flag": 15500,
+   "detect_flag": 842,
+   "npc_param": 62,
+   "host_only": true
+  },
+  "groups": [
+   "5-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "RH 5-3: Dark Silver Shield - plague swamp end, miniboss drop",
+  "code": 4502011120,
+  "part": "5-3",
+  "kind": "enemy",
+  "vanilla_item": "Dark Silver Shield",
+  "description": "Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_02_00_00",
+   "flag": 1112,
+   "lot": 210,
+   "entity": 651,
+   "corpse_flag": 15615,
+   "detect_flag": 15615,
+   "npc_param": 21,
+   "host_only": true
+  },
+  "groups": [
+   "5-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "RH 5-3: Dark Silver Helm - plague swamp end, miniboss drop",
+  "code": 4502011121,
+  "part": "5-3",
+  "kind": "enemy",
+  "vanilla_item": "Dark Silver Helm",
+  "description": "Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_02_00_00",
+   "flag": 1112,
+   "lot": 211,
+   "entity": 651,
+   "corpse_flag": 15615,
+   "detect_flag": 15615,
+   "npc_param": 21,
+   "host_only": true
+  },
+  "groups": [
+   "5-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "RH 5-3: Dark Silver Armor - plague swamp end, miniboss drop",
+  "code": 4502011122,
+  "part": "5-3",
+  "kind": "enemy",
+  "vanilla_item": "Dark Silver Armor",
+  "description": "Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_02_00_00",
+   "flag": 1112,
+   "lot": 212,
+   "entity": 651,
+   "corpse_flag": 15615,
+   "detect_flag": 15615,
+   "npc_param": 21,
+   "host_only": true
+  },
+  "groups": [
+   "5-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "RH 5-3: Dark Silver Gauntlets - plague swamp end, miniboss drop",
+  "code": 4502011123,
+  "part": "5-3",
+  "kind": "enemy",
+  "vanilla_item": "Dark Silver Gauntlets",
+  "description": "Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_02_00_00",
+   "flag": 1112,
+   "lot": 213,
+   "entity": 651,
+   "corpse_flag": 15615,
+   "detect_flag": 15615,
+   "npc_param": 21,
+   "host_only": true
+  },
+  "groups": [
+   "5-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "RH 5-3: Dark Silver Greaves - plague swamp end, miniboss drop",
+  "code": 4502011124,
+  "part": "5-3",
+  "kind": "enemy",
+  "vanilla_item": "Dark Silver Greaves",
+  "description": "Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m05_02_00_00",
+   "flag": 1112,
+   "lot": 214,
+   "entity": 651,
+   "corpse_flag": 15615,
+   "detect_flag": 15615,
+   "npc_param": 21,
+   "host_only": true
+  },
+  "groups": [
+   "5-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "RH 5-3: Vinland Crest - plague swamp end, phantom drop",
+  "code": 4502011101,
+  "part": "5-3",
+  "kind": "enemy",
+  "vanilla_item": "Vinland Crest",
+  "description": "Black Phantom Garl Vinland, at the far end of the plague swamp where Garl stood. He appears only after the boss is dead and its demon soul taken, at pure white world tendency; his corpse stays until looted.",
+  "requires": [
+   "boss:5-3"
+  ],
+  "missable": "pure white only (tendency-only phantom), after the area boss",
+  "tendency": "world >= +180 (pure white), QWC 50140, checked only after the Pureblood Demon Soul is taken (flag 5893)",
+  "game": {
+   "map": "m05_02_00_00",
+   "flag": 1110,
+   "lot": 461,
+   "entity": 460,
+   "corpse_flag": 15601,
+   "detect_flag": 15601,
+   "npc_param": 46,
+   "host_only": true
+  },
+  "groups": [
+   "5-3",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "RH 5-3: Bramd - plague swamp end, phantom drop",
+  "code": 4502011100,
+  "part": "5-3",
+  "kind": "enemy",
+  "vanilla_item": "Bramd",
+  "description": "Black Phantom Garl Vinland, at the far end of the plague swamp where Garl stood. He appears only after the boss is dead and its demon soul taken, at pure white world tendency; his corpse stays until looted.",
+  "requires": [
+   "boss:5-3"
+  ],
+  "missable": "pure white only (tendency-only phantom), after the area boss",
+  "tendency": "world >= +180 (pure white), QWC 50140, checked only after the Pureblood Demon Soul is taken (flag 5893)",
+  "game": {
+   "map": "m05_02_00_00",
+   "flag": 1110,
+   "lot": 460,
+   "entity": 460,
+   "corpse_flag": 15601,
+   "detect_flag": 15601,
+   "npc_param": 46,
+   "host_only": true
+  },
+  "groups": [
+   "5-3",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "SG 2-1: Large Hardstone Shard - cliff corridor, mob drop 1",
+  "code": 4600002800,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Large Hardstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone (wiki: 'fight four Scale Miners ... arrive at a cliff'). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 280,
+   "lot": 900000,
+   "entity": 201,
+   "corpse_flag": 15700,
+   "detect_flag": 15700,
+   "npc_param": 211300,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Large Hardstone Shard - cliff corridor, mob drop 2",
+  "code": 4600002801,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Large Hardstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone (wiki: 'fight four Scale Miners ... arrive at a cliff'). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 280,
+   "lot": 900001,
+   "entity": 201,
+   "corpse_flag": 15700,
+   "detect_flag": 15700,
+   "npc_param": 211300,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Large Sharpstone Shard - cliff corridor, mob drop",
+  "code": 4600002802,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Large Sharpstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone (wiki: 'fight four Scale Miners ... arrive at a cliff'). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 280,
+   "lot": 900002,
+   "entity": 201,
+   "corpse_flag": 15700,
+   "detect_flag": 15700,
+   "npc_param": 211300,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - cliff corridor, mob drop 1",
+  "code": 4600002900,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 290,
+   "lot": 900030,
+   "entity": 204,
+   "corpse_flag": 15705,
+   "detect_flag": 15705,
+   "npc_param": 211311,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - cliff corridor, mob drop 2",
+  "code": 4600002901,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 290,
+   "lot": 900031,
+   "entity": 204,
+   "corpse_flag": 15705,
+   "detect_flag": 15705,
+   "npc_param": 211311,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - cliff corridor, mob drop 3",
+  "code": 4600002902,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 290,
+   "lot": 900032,
+   "entity": 204,
+   "corpse_flag": 15705,
+   "detect_flag": 15705,
+   "npc_param": 211311,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - cliff corridor, mob drop 4",
+  "code": 4600002903,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 290,
+   "lot": 900033,
+   "entity": 204,
+   "corpse_flag": 15705,
+   "detect_flag": 15705,
+   "npc_param": 211311,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - cliff corridor, mob drop 5",
+  "code": 4600002904,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 290,
+   "lot": 900034,
+   "entity": 204,
+   "corpse_flag": 15705,
+   "detect_flag": 15705,
+   "npc_param": 211311,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - cliff corridor, mob drop 6",
+  "code": 4600002905,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 290,
+   "lot": 900035,
+   "entity": 204,
+   "corpse_flag": 15705,
+   "detect_flag": 15705,
+   "npc_param": 211311,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Sharpstone Shard - magma wheel room, mob drop 1",
+  "code": 4600002820,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Sharpstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 282,
+   "lot": 900006,
+   "entity": 431,
+   "corpse_flag": 15701,
+   "detect_flag": 15701,
+   "npc_param": 211301,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Sharpstone Shard - magma wheel room, mob drop 2",
+  "code": 4600002821,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Sharpstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 282,
+   "lot": 900007,
+   "entity": 431,
+   "corpse_flag": 15701,
+   "detect_flag": 15701,
+   "npc_param": 211301,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Large Sharpstone Shard - magma wheel room, mob drop",
+  "code": 4600002822,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Large Sharpstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 282,
+   "lot": 900008,
+   "entity": 431,
+   "corpse_flag": 15701,
+   "detect_flag": 15701,
+   "npc_param": 211301,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Clearstone Shard - magma wheel room, mob drop 1",
+  "code": 4600002823,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Clearstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 282,
+   "lot": 900009,
+   "entity": 431,
+   "corpse_flag": 15701,
+   "detect_flag": 15701,
+   "npc_param": 211301,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Clearstone Shard - magma wheel room, mob drop 2",
+  "code": 4600002824,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Clearstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 282,
+   "lot": 900010,
+   "entity": 431,
+   "corpse_flag": 15701,
+   "detect_flag": 15701,
+   "npc_param": 211301,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - miners' path, mob drop 1",
+  "code": 4600002840,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 284,
+   "lot": 900012,
+   "entity": 432,
+   "corpse_flag": 15702,
+   "detect_flag": 15702,
+   "npc_param": 211302,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - miners' path, mob drop 2",
+  "code": 4600002841,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 284,
+   "lot": 900013,
+   "entity": 432,
+   "corpse_flag": 15702,
+   "detect_flag": 15702,
+   "npc_param": 211302,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Sharpstone Shard - miners' path, mob drop 1",
+  "code": 4600002842,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Sharpstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 284,
+   "lot": 900014,
+   "entity": 432,
+   "corpse_flag": 15702,
+   "detect_flag": 15702,
+   "npc_param": 211302,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Sharpstone Shard - miners' path, mob drop 2",
+  "code": 4600002843,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Sharpstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 284,
+   "lot": 900015,
+   "entity": 432,
+   "corpse_flag": 15702,
+   "detect_flag": 15702,
+   "npc_param": 211302,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Clearstone Shard - lever gallery, mob drop 1",
+  "code": 4600002860,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Clearstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 286,
+   "lot": 900018,
+   "entity": 433,
+   "corpse_flag": 15703,
+   "detect_flag": 15703,
+   "npc_param": 211303,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Clearstone Shard - lever gallery, mob drop 2",
+  "code": 4600002861,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Clearstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 286,
+   "lot": 900019,
+   "entity": 433,
+   "corpse_flag": 15703,
+   "detect_flag": 15703,
+   "npc_param": 211303,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Clearstone Chunk - lever gallery, mob drop",
+  "code": 4600002862,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Clearstone Chunk",
+  "description": "A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 286,
+   "lot": 900020,
+   "entity": 433,
+   "corpse_flag": 15703,
+   "detect_flag": 15703,
+   "npc_param": 211303,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Sharpstone Shard - lever gallery, mob drop 1",
+  "code": 4600002880,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Sharpstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 288,
+   "lot": 900024,
+   "entity": 434,
+   "corpse_flag": 15704,
+   "detect_flag": 15704,
+   "npc_param": 211310,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Sharpstone Shard - lever gallery, mob drop 2",
+  "code": 4600002881,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Sharpstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 288,
+   "lot": 900025,
+   "entity": 434,
+   "corpse_flag": 15704,
+   "detect_flag": 15704,
+   "npc_param": 211310,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Large Sharpstone Shard - lever gallery, mob drop",
+  "code": 4600002882,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Large Sharpstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 288,
+   "lot": 900026,
+   "entity": 434,
+   "corpse_flag": 15704,
+   "detect_flag": 15704,
+   "npc_param": 211310,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - lever gallery, mob drop 1",
+  "code": 4600002920,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 292,
+   "lot": 900036,
+   "entity": 436,
+   "corpse_flag": 15706,
+   "detect_flag": 15706,
+   "npc_param": 211312,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Hardstone Shard - lever gallery, mob drop 2",
+  "code": 4600002921,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Hardstone Shard x2",
+  "description": "A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 292,
+   "lot": 900037,
+   "entity": 436,
+   "corpse_flag": 15706,
+   "detect_flag": 15706,
+   "npc_param": 211312,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Large Hardstone Shard - lever gallery, mob drop",
+  "code": 4600002922,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Large Hardstone Shard",
+  "description": "A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 292,
+   "lot": 900038,
+   "entity": 436,
+   "corpse_flag": 15706,
+   "detect_flag": 15706,
+   "npc_param": 211312,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Official's Gloves - Fat Official platform, miniboss drop",
+  "code": 4600099070,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Official's Gloves",
+  "description": "The fire-casting Fat Official on the platform at the far end of the crumbling bridge. The enemy respawns, but this item drops only once.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 9907,
+   "lot": 99912,
+   "entity": -1,
+   "corpse_flag": null,
+   "detect_flag": 9907,
+   "npc_param": 208024,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "SG 2-1: Official's Leggings - barrel room, miniboss drop",
+  "code": 4600099080,
+  "part": "2-1",
+  "kind": "enemy",
+  "vanilla_item": "Official's Leggings",
+  "description": "The Fat Official behind the explosive barrels, up the stairs from the cooled magma pit, before the fog to the boss elevator. The enemy respawns, but this item drops only once.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m06_00_00_00",
+   "flag": 9908,
+   "lot": 99913,
+   "entity": 397,
+   "corpse_flag": null,
+   "detect_flag": 9908,
+   "npc_param": 208025,
+   "host_only": false
+  },
+  "groups": [
+   "2-1",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "TC 2-2: Talisman of Beasts - Scirvir's cave, phantom drop",
+  "code": 4601006750,
+  "part": "2-2",
+  "kind": "enemy",
+  "vanilla_item": "Talisman of Beasts",
+  "description": "Black Phantom Scirvir in his cave halfway down the great pit (with two Crystal Lizards). He appears only at pure black world tendency; his corpse stays until looted (it reappears at his spot after a reload).",
+  "requires": [],
+  "missable": "pure black only (tendency-only phantom)",
+  "tendency": "world <= -180 (pure black), QWC 60120",
+  "game": {
+   "map": "m06_01_00_00",
+   "flag": 675,
+   "lot": 440,
+   "entity": 345,
+   "corpse_flag": 15604,
+   "detect_flag": 15604,
+   "npc_param": 44,
+   "host_only": true
+  },
+  "groups": [
+   "2-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "TC 2-2: Dragonstone Chunk - lizard nest, first phantom drop",
+  "code": 4601008000,
+  "part": "2-2",
+  "kind": "enemy",
+  "vanilla_item": "Dragonstone Chunk x3",
+  "description": "One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the first = the man, who also drops the Dragonstone Chunks). Always there.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m06_01_00_00",
+   "flag": 800,
+   "lot": 1000,
+   "entity": 500,
+   "corpse_flag": 15500,
+   "detect_flag": 800,
+   "npc_param": 63,
+   "host_only": true
+  },
+  "groups": [
+   "2-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "TC 2-2: Stone of Ephemeral Eyes - lizard nest, first phantom drop",
+  "code": 4601008002,
+  "part": "2-2",
+  "kind": "enemy",
+  "vanilla_item": "Stone of Ephemeral Eyes",
+  "description": "One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the first = the man, who also drops the Dragonstone Chunks). Always there.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m06_01_00_00",
+   "flag": 800,
+   "lot": 1002,
+   "entity": 500,
+   "corpse_flag": 15500,
+   "detect_flag": 800,
+   "npc_param": 63,
+   "host_only": true
+  },
+  "groups": [
+   "2-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "TC 2-2: Clearstone Chunk - lizard nest, second phantom drop",
+  "code": 4601008020,
+  "part": "2-2",
+  "kind": "enemy",
+  "vanilla_item": "Clearstone Chunk x3",
+  "description": "One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the second = the woman, who also drops the Clearstone Chunks). Always there.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m06_01_00_00",
+   "flag": 802,
+   "lot": 1010,
+   "entity": 501,
+   "corpse_flag": 15500,
+   "detect_flag": 802,
+   "npc_param": 64,
+   "host_only": true
+  },
+  "groups": [
+   "2-2",
+   "Enemy Drops",
+   "Missable"
+  ]
+ },
+ {
+  "name": "TC 2-2: Stone of Ephemeral Eyes - lizard nest, second phantom drop",
+  "code": 4601008022,
+  "part": "2-2",
+  "kind": "enemy",
+  "vanilla_item": "Stone of Ephemeral Eyes",
+  "description": "One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the second = the woman, who also drops the Clearstone Chunks). Always there.",
+  "requires": [],
+  "missable": "the drop is lost if not picked up before the area reloads",
+  "tendency": "",
+  "game": {
+   "map": "m06_01_00_00",
+   "flag": 802,
+   "lot": 1012,
+   "entity": 501,
+   "corpse_flag": 15500,
+   "detect_flag": 802,
+   "npc_param": 64,
+   "host_only": true
+  },
+  "groups": [
+   "2-2",
+   "Enemy Drops",
+   "Missable"
   ]
  },
  {

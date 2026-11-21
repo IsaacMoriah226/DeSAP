@@ -148,6 +148,8 @@ def research() -> dict[tuple, dict]:
         for entry in json.loads(path.read_text(encoding="utf-8"))["locations"]:
             key = source_key(entry)
             if key in out:
+                if not entry.get("location", True) and not out[key].get("location", True):
+                    continue  # two notes on one rejected source (e.g. both count variants of a random lot)
                 raise ValueError(f"research lists {key} twice")
             out[key] = entry
     return out
@@ -165,12 +167,22 @@ def added_sources(notes: dict[tuple, dict], known: set[tuple]) -> list[dict]:
         if not entry.get("added_not_in_input"):
             raise ValueError(f"research entry {key} matches no item source in the game data")
         if entry["kind"] == "enemy":
-            (it,) = GAME.lot_items(entry["lot"])
+            # The fixed drop is either the lot's host-only item or its one weighted entry (sack miners' lots).
+            host = GAME.host_only_item(entry["lot"])
+            weighted = [i for i in GAME.lot_items(entry["lot"]) if i.chance > 0 or not host]
+            items = [host] if host else weighted
+            if len(items) != 1 or items[0].name != entry["item"] or items[0].count != entry["count"]:
+                raise ValueError(f"{key}: lot {entry['lot']} gives {items}, research says {entry['item']} x{entry['count']}")
+            (it,) = items
+            corpse = entry.get("corpse_flag")
+            # The client's check: a corpse flag of its own marks the loot (the death flag fails for Garl Vinland);
+            # 15500 is shared by every NPC invader, so those use the death flag.
+            detect = corpse if corpse and corpse != 15500 else entry["flag"]
             slot = sum(1 for k in notes if k[:3] == key[:3] and k[3] is not None and k[3] < entry["lot"])
             out.append(enemy_source(entry["map"], entry["flag"], entry["lot"], slot,
                                     {"category": it.category, "id": it.id, "count": it.count, "name": it.name},
-                                    {"entity": entry["entity"], "corpse_flag": entry.get("corpse_flag"),
-                                     "npc_param": entry.get("npc_param")}))
+                                    {"entity": entry["entity"], "corpse_flag": corpse, "detect_flag": detect,
+                                     "npc_param": entry.get("npc_param"), "host_only": bool(host)}))
             continue
         if entry["kind"] != "event":
             raise ValueError(f"added research entry {key} is not an event or an enemy")

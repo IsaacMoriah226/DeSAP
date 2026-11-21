@@ -162,6 +162,18 @@ class GameData:
                                self.item_name(category, item_id), row[f"lotItemBasePoint0{i}"]))
         return out
 
+    def host_only_item(self, lot_id: int) -> LotItem | None:
+        """A lot's host-only item (hostOnlyItemCate/Id/Num): always given to the world's host on top of the weighted
+        entries. NPCs and unique enemies carry their fixed drops here (their weighted entries are "nothing")."""
+        row = self.item_lots.get(lot_id)
+        if row is None:
+            return None
+        category, item_id = row["hostOnlyItemCate"], row["hostOnlyItemId"]
+        if item_id <= 0 or category not in CATEGORIES:
+            return None
+        return LotItem(CATEGORIES[category][0], item_id, row["hostOnlyItemNum"], self.item_name(category, item_id),
+                       1000)
+
     def treasures(self) -> list[TreasureLocation]:
         out = []
         for path in sorted((self.dvdroot / "map" / "mapstudio").glob("m0*.msb")):

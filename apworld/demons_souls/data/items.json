@@ -319,6 +319,17 @@
   ]
  },
  {
+  "name": "Blind",
+  "code": 3004060001,
+  "kind": "weapon",
+  "game_id": 40600,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
   "name": "Magic Sword \"Makoto\"",
   "code": 3004070001,
   "kind": "weapon",
@@ -345,6 +356,17 @@
   "code": 3005020001,
   "kind": "weapon",
   "game_id": 50200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Guillotine Axe",
+  "code": 3005040001,
+  "kind": "weapon",
+  "game_id": 50400,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -389,6 +411,17 @@
   "code": 3006040001,
   "kind": "weapon",
   "game_id": 60400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Bramd",
+  "code": 3006050001,
+  "kind": "weapon",
+  "game_id": 60500,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -451,6 +484,17 @@
   ]
  },
  {
+  "name": "Phosphorescent Pole",
+  "code": 3008030001,
+  "kind": "weapon",
+  "game_id": 80300,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
   "name": "Wooden Catalyst",
   "code": 3009000001,
   "kind": "weapon",
@@ -477,6 +521,17 @@
   "code": 3009040001,
   "kind": "weapon",
   "game_id": 90400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Talisman of Beasts",
+  "code": 3009050001,
+  "kind": "weapon",
+  "game_id": 90500,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -609,6 +664,17 @@
   "code": 3015060001,
   "kind": "weapon",
   "game_id": 150600,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Dark Silver Shield",
+  "code": 3015070001,
+  "kind": "weapon",
+  "game_id": 150700,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -836,6 +902,28 @@
   ]
  },
  {
+  "name": "Dark Silver Helm",
+  "code": 3110090001,
+  "kind": "armor",
+  "game_id": 100900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Ancient King's Mask",
+  "code": 3110110001,
+  "kind": "armor",
+  "game_id": 101100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Venerable Sage's Hood",
   "code": 3110140001,
   "kind": "armor",
@@ -847,10 +935,54 @@
   ]
  },
  {
+  "name": "Official's Cap",
+  "code": 3110180001,
+  "kind": "armor",
+  "game_id": 101800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Dull Gold Helm",
+  "code": 3110190001,
+  "kind": "armor",
+  "game_id": 101900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Binded Hood",
+  "code": 3110200001,
+  "kind": "armor",
+  "game_id": 102000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Three-Cornered Hat",
   "code": 3110210001,
   "kind": "armor",
   "game_id": 102100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Shaman's Garb",
+  "code": 3120000001,
+  "kind": "armor",
+  "game_id": 200000,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -902,6 +1034,28 @@
   ]
  },
  {
+  "name": "Dark Silver Armor",
+  "code": 3120090001,
+  "kind": "armor",
+  "game_id": 200900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Ancient King's Breastplate",
+  "code": 3120110001,
+  "kind": "armor",
+  "game_id": 201100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Saint's Robe",
   "code": 3120120001,
   "kind": "armor",
@@ -935,10 +1089,43 @@
   ]
  },
  {
+  "name": "Dull Gold Armor",
+  "code": 3120190001,
+  "kind": "armor",
+  "game_id": 201900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Binded Cross",
+  "code": 3120200001,
+  "kind": "armor",
+  "game_id": 202000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Old Ragged Robes",
   "code": 3120210001,
   "kind": "armor",
   "game_id": 202100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Shaman's Armbands",
+  "code": 3130000001,
+  "kind": "armor",
+  "game_id": 300000,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -990,6 +1177,28 @@
   ]
  },
  {
+  "name": "Dark Silver Gauntlets",
+  "code": 3130090001,
+  "kind": "armor",
+  "game_id": 300900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Ancient King's Gauntlets",
+  "code": 3130110001,
+  "kind": "armor",
+  "game_id": 301100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Saint's Gloves",
   "code": 3130120001,
   "kind": "armor",
@@ -1034,10 +1243,54 @@
   ]
  },
  {
+  "name": "Dull Gold Gauntlets",
+  "code": 3130190001,
+  "kind": "armor",
+  "game_id": 301900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Binded Gloves",
+  "code": 3130200001,
+  "kind": "armor",
+  "game_id": 302000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Old Ragged Gloves",
   "code": 3130210001,
   "kind": "armor",
   "game_id": 302100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Official's Gloves",
+  "code": 3139990801,
+  "kind": "armor",
+  "game_id": 399908,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Shaman's Tabi",
+  "code": 3140000001,
+  "kind": "armor",
+  "game_id": 400000,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -1089,6 +1342,28 @@
   ]
  },
  {
+  "name": "Dark Silver Greaves",
+  "code": 3140090001,
+  "kind": "armor",
+  "game_id": 400900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Ancient King's Greaves",
+  "code": 3140110001,
+  "kind": "armor",
+  "game_id": 401100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Saint's Boots",
   "code": 3140120001,
   "kind": "armor",
@@ -1122,10 +1397,43 @@
   ]
  },
  {
+  "name": "Dull Gold Leggings",
+  "code": 3140190001,
+  "kind": "armor",
+  "game_id": 401900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Binded Boots",
+  "code": 3140200001,
+  "kind": "armor",
+  "game_id": 402000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
   "name": "Old Ragged Boots",
   "code": 3140210001,
   "kind": "armor",
   "game_id": 402100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Official's Leggings",
+  "code": 3149990801,
+  "kind": "armor",
+  "game_id": 499908,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -1148,6 +1456,17 @@
   "code": 3200010201,
   "kind": "ring",
   "game_id": 102,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Eternal Warrior's Ring",
+  "code": 3200010401,
+  "kind": "ring",
+  "game_id": 104,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -1362,6 +1681,17 @@
   "groups": [
    "Demon Souls",
    "Boss Souls"
+  ]
+ },
+ {
+  "name": "Iron Key Ring",
+  "code": 3300000801,
+  "kind": "goods",
+  "game_id": 8,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "Keys"
   ]
  },
  {
@@ -1641,6 +1971,28 @@
   "classification": "useful",
   "groups": [
    "Demon Souls"
+  ]
+ },
+ {
+  "name": "Bloody Iron Key",
+  "code": 3300003601,
+  "kind": "goods",
+  "game_id": 36,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Vinland Crest",
+  "code": 3300003701,
+  "kind": "goods",
+  "game_id": 37,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
   ]
  },
  {
@@ -2355,6 +2707,15 @@
   "groups": []
  },
  {
+  "name": "Stone of Ephemeral Eyes x2",
+  "code": 3300102102,
+  "kind": "goods",
+  "game_id": 1021,
+  "count": 2,
+  "classification": "useful",
+  "groups": []
+ },
+ {
   "name": "Stone of Ephemeral Eyes x3",
   "code": 3300102103,
   "kind": "goods",
@@ -2507,6 +2868,28 @@
   ]
  },
  {
+  "name": "Hardstone Shard",
+  "code": 3300200001,
+  "kind": "goods",
+  "game_id": 2000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Hardstone Shard x2",
+  "code": 3300200002,
+  "kind": "goods",
+  "game_id": 2000,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
   "name": "Hardstone Shard x3",
   "code": 3300200003,
   "kind": "goods",
@@ -2567,6 +2950,17 @@
   "kind": "goods",
   "game_id": 2003,
   "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Sharpstone Shard x2",
+  "code": 3300200402,
+  "kind": "goods",
+  "game_id": 2004,
+  "count": 2,
   "classification": "useful",
   "groups": [
    "Upgrade Stones"
@@ -2666,6 +3060,17 @@
   "kind": "goods",
   "game_id": 2013,
   "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Clearstone Chunk x3",
+  "code": 3300201303,
+  "kind": "goods",
+  "game_id": 2013,
+  "count": 3,
   "classification": "useful",
   "groups": [
    "Upgrade Stones"
@@ -2804,6 +3209,17 @@
   ]
  },
  {
+  "name": "Dragonstone Chunk x3",
+  "code": 3300203103,
+  "kind": "goods",
+  "game_id": 2031,
+  "count": 3,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
   "name": "Pure Dragonstone",
   "code": 3300203201,
   "kind": "goods",
@@ -2903,6 +3319,17 @@
   ]
  },
  {
+  "name": "Moonlightstone Chunk x3",
+  "code": 3300204003,
+  "kind": "goods",
+  "game_id": 2040,
+  "count": 3,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
   "name": "Moonshadestone Shard",
   "code": 3300204201,
   "kind": "goods",
@@ -2936,6 +3363,17 @@
   ]
  },
  {
+  "name": "Moonshadestone Chunk x3",
+  "code": 3300204303,
+  "kind": "goods",
+  "game_id": 2043,
+  "count": 3,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
   "name": "Faintstone Shard",
   "code": 3300204501,
   "kind": "goods",
@@ -2963,6 +3401,17 @@
   "kind": "goods",
   "game_id": 2046,
   "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Faintstone Chunk x3",
+  "code": 3300204603,
+  "kind": "goods",
+  "game_id": 2046,
+  "count": 3,
   "classification": "useful",
   "groups": [
    "Upgrade Stones"

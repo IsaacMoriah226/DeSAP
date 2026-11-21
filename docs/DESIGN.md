@@ -32,6 +32,7 @@ Reach the ending credits (beat the final boss). The only goal for now.
 | The Nexial Binding (first Nexus arrival) | no, vanilla (the return-to-Nexus item and the icon of other players' items) |
 | The Pantheon's Stone of Ephemeral Eyes | no (the Pantheon only opens online) |
 | Items only at pure white or pure black world tendency | **missable** (filler only) |
+| One-time enemies with a fixed drop (decided 2026-11-20): Primeval Demons, the 4-1 Vanguard, the dragons, Fat Officials (Iron Key Ring, Bloody Iron Key), Miralda, Old King Doran, black phantoms (King's Tower, Satsuki, Rydell, Selen, Garl, Scirvir, invaders), Garl Vinland, the 5-2 slug and Shaman, the 2-1 sack miners | yes; tendency-only ones and drops that vanish on reload (bodies not saved) are **missable**. Random drops and friendly NPCs' kill drops are not locations |
 | Crystal Lizards | no, vanilla drops |
 | Respawning enemies | no, vanilla drops |
 | NPC quest items and NPC gifts/trades | no, vanilla |
@@ -64,8 +65,8 @@ Missable locations only get filler items.
 ## Open
 
 - Weapon upgrade paths (Sharp, Quality, Crescent, ...): proportional to the path's own maximum.
-- Unique non-respawning enemies' drops (Fat Officials' keys, Miralda, NPC black phantoms, Garl Vinland): not
-  locations yet (the Iron Key Ring and Bloody Iron Key stay vanilla; the logic uses where they drop).
+- The Black Eye Stone (five invader phantoms share its one-time flag, so only the first gives it) and the Fat
+  Officials' random-count New Moon Grass: not locations.
 
 ## Implementation notes (not design decisions)
 

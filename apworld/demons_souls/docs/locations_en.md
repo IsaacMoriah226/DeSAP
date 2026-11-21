@@ -127,6 +127,7 @@ Terms used in this area's names:
 - **lever room**: The room at the far end of the dragon bridge with the lever that opens the main gate. 'Past lever room' is the corridor beyond it with breakable furniture.
 - **right tower**: The tower on the right of the courtyard, reached from the lever room side; Hoplites on its bridge and stairs. 'Balcony' is through the hole in its wall on the way down; at the bottom a lever opens its door into the courtyard.
 - **dragon roost**: The open field where the two dragons nest, reached by turning right at the crossroads before the dragon bridge and going down the stairs past the columned hall. 'Entrance' is the corpse nearest the stairs; 'twin corpses 1/2' are the two Renowned Warrior Soul corpses side by side; 'lower ledge' is the lower ledge below the roost where two corpses lie together.
+- **execution grounds stairwell**: The stairwell building of the execution grounds, where Executioner Miralda hides (pure white tendency only).
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -186,6 +187,17 @@ Terms used in this area's names:
 | GB 1-1: Colorless Demon Soul - corpse pit, beam | On one of the beams spanning the corpse pit; walk into the gap by the broken beam near the ladder and drop onto the lower beams. | - | *missable: world tendency world >= +180 (pure white, QWC 20600) or world <= -180 (pure black, QWC 20300) when the map loads, to open the execution grounds door (event 200); once you have passed the door (flag 201) it stays open regardless of tendency* |
 | GB 1-1: Demonbrandt - mausoleum altar | Taken from the altar in the Mausoleum after Old King Doran approves of you (drop him below 80% HP). | - | *missable: Needs the Mausoleum Key, an Ostrava item (KT gift, flag 11790, or his death drop) that stays vanilla under the current design and is permanently lost if Ostrava dies unlooted or his quest chain breaks.* |
 | GB 1-1: Lead Demon Soul - boss drop | From the archstone that appears after defeating the boss behind the main gate. | Phalanx dead |  |
+| GB 1-1: Binded Hood - execution grounds stairwell, miniboss drop | Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it. | - | *missable: world tendency world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)* |
+| GB 1-1: Binded Cross - execution grounds stairwell, miniboss drop | Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it. | - | *missable: world tendency world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)* |
+| GB 1-1: Binded Gloves - execution grounds stairwell, miniboss drop | Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it. | - | *missable: world tendency world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)* |
+| GB 1-1: Binded Boots - execution grounds stairwell, miniboss drop | Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it. | - | *missable: world tendency world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)* |
+| GB 1-1: Master's Ring - execution grounds stairwell, miniboss drop | Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it. | - | *missable: world tendency world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)* |
+| GB 1-1: Guillotine Axe - execution grounds stairwell, phantom drop | Black Phantom Miralda's body at the top of the execution grounds pit steps (left side), by the stairwell building. She appears only at pure black world tendency; her corpse stays until looted. | - | *missable: world tendency world <= -180 (pure black), QWC 20300 (the same check opens the execution grounds door)* |
+| GB 1-1: Eternal Warrior's Ring - mausoleum, miniboss drop | Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted. | - | *missable: needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)* |
+| GB 1-1: Ancient King's Mask - mausoleum, miniboss drop | Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted. | - | *missable: needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)* |
+| GB 1-1: Ancient King's Breastplate - mausoleum, miniboss drop | Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted. | - | *missable: needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)* |
+| GB 1-1: Ancient King's Gauntlets - mausoleum, miniboss drop | Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted. | - | *missable: needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)* |
+| GB 1-1: Ancient King's Greaves - mausoleum, miniboss drop | Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted. | - | *missable: needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)* |
 
 ## LP 1-2: The Lord's Path
 
@@ -225,9 +237,9 @@ Terms used in this area's names:
 | LP 1-2: Crescent Moon Grass - east tunnel, past kennel | Past the dog pack, on the left before the iron gate leading to the Dregling Merchant. | - |  |
 | LP 1-2: Stone of Ephemeral Eyes - palace bridge, first corpse | On the walkway from the second tower's fog door to the Tower Knight's castle (third dragon lane), the first corpse. | - |  |
 | LP 1-2: Full Moon Grass - palace bridge, second corpse | On the walkway toward the Tower Knight's castle (third dragon lane), the second corpse, before the Blue Eye Knights. | - |  |
-| LP 1-2: Tower Shield - prison, tunnel end | Through the prison: past the cells and the Crystal Lizard, the corpse at the end of the path by the iron gate. | access to 1-3 Inner Ward |  |
-| LP 1-2: Renowned Hero Soul - prison, cell next to Biorr | In the prison, the locked cell right beside Biorr's (the first cell you open). | access to 1-3 Inner Ward |  |
-| LP 1-2: Storied Hero Soul - prison, far cell | In the prison, the second cell on the side wall, past the empty one next to Biorr's corner. | access to 1-3 Inner Ward |  |
+| LP 1-2: Tower Shield - prison, tunnel end | Through the prison: past the cells and the Crystal Lizard, the corpse at the end of the path by the iron gate. | Iron Key Ring |  |
+| LP 1-2: Renowned Hero Soul - prison, cell next to Biorr | In the prison, the locked cell right beside Biorr's (the first cell you open). | Iron Key Ring |  |
+| LP 1-2: Storied Hero Soul - prison, far cell | In the prison, the second cell on the side wall, past the empty one next to Biorr's corner. | Iron Key Ring |  |
 | LP 1-2: Noble's Lotus - fog tower top, far wall | At the top of the tower beside the boss fog (Crystal Lizard room below), beyond the barricade on the left side of the wall. | - |  |
 | LP 1-2: Stone of Ephemeral Eyes - fog tower top | At the very top of the tower beside the boss fog, one of the two corpses by the two crossbow soldiers. | - |  |
 | LP 1-2: Renowned Warrior Soul - fog tower top | At the very top of the tower beside the boss fog, the other corpse by the two crossbow soldiers. | - |  |
@@ -237,6 +249,7 @@ Terms used in this area's names:
 | LP 1-2: Crescent Moon Grass - first bridge, tower end | On the first dragon bridge, the corpse at the far end next to the first tower. | - |  |
 | LP 1-2: Iron Demon Soul - boss drop | From the archstone after defeating the boss at the end of the palace bridge. | Tower Knight dead |  |
 | LP 1-2: Small Scaled Flame Demon Soul - optional boss drop | Kill the dragon that bombs the bridges in LP (shoot it from the first tower top or the palace bridge). | - |  |
+| LP 1-2: Bloody Iron Key - prison, miniboss drop | The Fat Official inside the prison (behind the Iron Key Ring door near the first Blue Eye Knight before the boss fog), guarding Biorr's cell. Loot his body; it stays until looted. | Iron Key Ring |  |
 
 ## IW 1-3: Inner Ward
 
@@ -258,6 +271,7 @@ Terms used in this area's names:
 - **yard before lever**: The bigger area down the stairs after the short bridge corridor, before the stairs down to the Official's Cap Fat Official and the lever that reopens the closed gate.
 - **ledge above closed gate**: The ridge above the closed gate, reached by jumping down from the right side of the wall above it.
 - **boss plaza**: The plaza before the Penetrator's stairs, entered through the reopened closed gate: halberd soldiers, crossbow soldiers on a raised platform (where the Primeval Demon appears at black tendency), a crowd of soldiers with three Red Eye Knights, and a large pile of bodies. 'Right of gate' is just past the gate on the right; 'archer platform' the raised platform; 'corpse pile' the bodies on the ground in front of the crowd; 'corner by pile' the corner beside that pile.
+- **by gate lever**: Down the stairs from the yard before the closed gate, next to the lever that reopens it.
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -265,10 +279,10 @@ Terms used in this area's names:
 | IW 1-3: Storied Warrior Soul - fountain 2 | Corpse 2 of the three around the empty fountain in the starting plaza. | - |  |
 | IW 1-3: Storied Warrior Soul - fountain 3 | Corpse 3 of the three around the empty fountain in the starting plaza. | - |  |
 | IW 1-3: Late Moon Grass - plaza, apart from fountain | The fourth body in the starting plaza, apart from the three by the fountain. | - |  |
-| IW 1-3: Stone of Ephemeral Eyes - Bloody Key alley, dead end | Through the Bloody Iron Key door off the starting plaza, at the end of the corridor turn left (in front of the illusory wall). | access to 1-2 The Lord's Path, access to 1-3 Inner Ward |  |
-| IW 1-3: Legendary Warrior Soul - witch tower, lower stairs | Inside the witch's tower (second Bloody Iron Key door), on the way up the stairs. | access to 1-2 The Lord's Path, access to 1-3 Inner Ward |  |
-| IW 1-3: Ring of Magical Nature - witch tower, top floor | On the last floor of the witch's tower, before the stairs the Fat Official lowers. | access to 1-2 The Lord's Path, access to 1-3 Inner Ward |  |
-| IW 1-3: Ring of the Accursed - witch tower, top floor | On the last floor of the witch's tower, next to the Ring of Magical Nature. | access to 1-2 The Lord's Path, access to 1-3 Inner Ward |  |
+| IW 1-3: Stone of Ephemeral Eyes - Bloody Key alley, dead end | Through the Bloody Iron Key door off the starting plaza, at the end of the corridor turn left (in front of the illusory wall). | Bloody Iron Key |  |
+| IW 1-3: Legendary Warrior Soul - witch tower, lower stairs | Inside the witch's tower (second Bloody Iron Key door), on the way up the stairs. | Bloody Iron Key |  |
+| IW 1-3: Ring of Magical Nature - witch tower, top floor | On the last floor of the witch's tower, before the stairs the Fat Official lowers. | Bloody Iron Key |  |
+| IW 1-3: Ring of the Accursed - witch tower, top floor | On the last floor of the witch's tower, next to the Ring of Magical Nature. | Bloody Iron Key |  |
 | IW 1-3: Dregling Shield - first stairs, midway | Midway up the stairs to the left of the starting plaza, where the fire boulders roll down. | - |  |
 | IW 1-3: Full Moon Grass - alleys, drop to ledge | In the alleys past the closing gate, drop from the edge below the alley stairs onto a ledge. | - |  |
 | IW 1-3: Unknown Hero Soul - alleys, behind crates | At the bottom of the alley stairs after the first Imperial Spy, smash the crates on the left. | - |  |
@@ -295,6 +309,8 @@ Terms used in this area's names:
 | IW 1-3: Brushwood Gauntlets - Dregling Merchant after Biorr leaves | Sold (one only) by the Dregling Merchant in the Inner Ward once Biorr of the Twin Fangs has left the world alive. | Phalanx dead, Tower Knight dead, access to 1-3 Inner Ward, Penetrator dead, access to 1-4 The King's Tower | *missable: Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.* |
 | IW 1-3: Brushwood Greaves - Dregling Merchant after Biorr leaves | Sold (one only) by the Dregling Merchant in the Inner Ward once Biorr of the Twin Fangs has left the world alive. | Phalanx dead, Tower Knight dead, access to 1-3 Inner Ward, Penetrator dead, access to 1-4 The King's Tower | *missable: Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.* |
 | IW 1-3: Large Brushwood Shield - Dregling Merchant after Biorr leaves | Sold (one only) by the Dregling Merchant in the Inner Ward once Biorr of the Twin Fangs has left the world alive. | Phalanx dead, Tower Knight dead, access to 1-3 Inner Ward, Penetrator dead, access to 1-4 The King's Tower | *missable: Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.* |
+| IW 1-3: Iron Key Ring - after first fog, miniboss drop | The Fat Official in the yard right after the first fog (with a Red Eye Knight and the ladders), on the long way round to the gate lever. Loot his body; it stays until looted. | - |  |
+| IW 1-3: Official's Cap - by gate lever, miniboss drop | The Fat Official who shut the gate in the opening cutscene, waiting down the stairs from the yard before lever, next to the lever that reopens the closed gate. Loot his body; it stays until looted. | - |  |
 
 ## KT 1-4: The King's Tower
 
@@ -307,6 +323,7 @@ Terms used in this area's names:
 - **staircase foot**: The foot of the great staircase, where three bodies burnt by the dragon lie and where Biorr waits if he survived.
 - **great staircase**: The long staircase the dragon sweeps with fire, up to the hall where Ostrava sits by the steps.
 - **walkway balcony**: One of the little balconies off the long walkway where Black Phantom Ostrava attacks, before the elevator to the boss.
+- **long walkway**: The long walkway before the elevator to the boss, where a black phantom attacks.
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -325,6 +342,11 @@ Terms used in this area's names:
 | KT 1-4: Stone of Ephemeral Eyes - walkway balcony | Near the long walkway where Black Phantom Ostrava attacks, on one of the little balconies behind you. | - |  |
 | KT 1-4: False King Demon Soul - boss drop | From the archstone after defeating the final boss at the top of the elevator. | Old King Allant dead |  |
 | KT 1-4: Large Scaled Flame Demon Soul - optional boss drop | Kill the dragon perched on the broken tower / great staircase in KT. | - |  |
+| KT 1-4: Tower Shield - phantom hall, phantom drop | One of the three Black Phantoms in the phantom hall past the dragon carcass (Alfred, Knight of the Tower). Always there, killed once for good. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| KT 1-4: White Bow - phantom hall, phantom drop | One of the three Black Phantoms in the phantom hall past the dragon carcass (Long Bow Oolan). Always there, killed once for good. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| KT 1-4: Penetrating Sword - phantom hall, phantom drop | One of the three Black Phantoms in the phantom hall past the dragon carcass (Metas, Knight of the Lance). Always there, killed once for good. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| KT 1-4: Rune Sword - long walkway, phantom drop | Black Phantom Ostrava, who attacks on the long walkway before the elevator to the boss (he appears when you enter the area, event 1706). Always there, whatever you did for Ostrava. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| KT 1-4: Rune Shield - long walkway, phantom drop | Black Phantom Ostrava, who attacks on the long walkway before the elevator to the boss (he appears when you enter the area, event 1706). Always there, whatever you did for Ostrava. | - | *missable: the drop is lost if not picked up before the area reloads* |
 
 ## SG 2-1: Smithing Grounds
 
@@ -358,6 +380,8 @@ Terms used in this area's names:
 - **barrel room**: The room of explosive barrels with a Fat Official, up the stairs from the cooled magma pit; a fog gate is behind him.
 - **boss elevator**: The large elevator down to the Armor Spider, past the barrel room fog. A wooden walkway climbs to its left; at its bottom, rails lead left to a small tunnel before the boss fog.
 - **boss arena**: The Armor Spider's long tunnel beyond the last fog gate; the archstone appears behind the boss.
+- **cliff corridor**: The corridor with four miners just before the cliff above the archstone.
+- **magma wheel room**: The room with five miners and the magma wheel at the bottom of the lizard tower.
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -405,6 +429,35 @@ Terms used in this area's names:
 | SG 2-1: Hard Demon Soul - boss drop | Armor Spider's Demon's Soul, taken from the archstone after the boss. | Armor Spider dead |  |
 | SG 2-1: Pure Spiderstone - boss drop | Bonus stone given together with the Hard Demon Soul at the Armor Spider archstone. | Armor Spider dead |  |
 | SG 2-1: Colorless Demon Soul - rotating elevator bottom, miniboss drop | Drop of the Primeval Demon (ore spirit) that appears at the bottom stop of the rotating elevator in black tendency. | - | *missable: world tendency world <= -150 (black; wiki says pure black), QWC 60110* |
+| SG 2-1: Large Hardstone Shard - cliff corridor, mob drop 1 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone (wiki: 'fight four Scale Miners ... arrive at a cliff'). Its corpse stays until looted. | - |  |
+| SG 2-1: Large Hardstone Shard - cliff corridor, mob drop 2 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone (wiki: 'fight four Scale Miners ... arrive at a cliff'). Its corpse stays until looted. | - |  |
+| SG 2-1: Large Sharpstone Shard - cliff corridor, mob drop | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone (wiki: 'fight four Scale Miners ... arrive at a cliff'). Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - cliff corridor, mob drop 1 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - cliff corridor, mob drop 2 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - cliff corridor, mob drop 3 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - cliff corridor, mob drop 4 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - cliff corridor, mob drop 5 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - cliff corridor, mob drop 6 | A sack-carrying Scale Miner (one-time) one of the four miners in the corridor just before the cliff above the archstone; stands next to the other sack miner (entity 201). Its corpse stays until looted. | - |  |
+| SG 2-1: Sharpstone Shard - magma wheel room, mob drop 1 | A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted. | - |  |
+| SG 2-1: Sharpstone Shard - magma wheel room, mob drop 2 | A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted. | - |  |
+| SG 2-1: Large Sharpstone Shard - magma wheel room, mob drop | A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted. | - |  |
+| SG 2-1: Clearstone Shard - magma wheel room, mob drop 1 | A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted. | - |  |
+| SG 2-1: Clearstone Shard - magma wheel room, mob drop 2 | A sack-carrying Scale Miner (one-time) in the room with five miners and the magma wheel at the bottom of the lizard tower. Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - miners' path, mob drop 1 | A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - miners' path, mob drop 2 | A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted. | - |  |
+| SG 2-1: Sharpstone Shard - miners' path, mob drop 1 | A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted. | - |  |
+| SG 2-1: Sharpstone Shard - miners' path, mob drop 2 | A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted. | - |  |
+| SG 2-1: Clearstone Shard - lever gallery, mob drop 1 | A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted. | - |  |
+| SG 2-1: Clearstone Shard - lever gallery, mob drop 2 | A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted. | - |  |
+| SG 2-1: Clearstone Chunk - lever gallery, mob drop | A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted. | - |  |
+| SG 2-1: Sharpstone Shard - lever gallery, mob drop 1 | A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted. | - |  |
+| SG 2-1: Sharpstone Shard - lever gallery, mob drop 2 | A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted. | - |  |
+| SG 2-1: Large Sharpstone Shard - lever gallery, mob drop | A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - lever gallery, mob drop 1 | A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted. | - |  |
+| SG 2-1: Hardstone Shard - lever gallery, mob drop 2 | A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted. | - |  |
+| SG 2-1: Large Hardstone Shard - lever gallery, mob drop | A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted. | - |  |
+| SG 2-1: Official's Gloves - Fat Official platform, miniboss drop | The fire-casting Fat Official on the platform at the far end of the crumbling bridge. The enemy respawns, but this item drops only once. | - |  |
+| SG 2-1: Official's Leggings - barrel room, miniboss drop | The Fat Official behind the explosive barrels, up the stairs from the cooled magma pit, before the fog to the boss elevator. The enemy respawns, but this item drops only once. | - |  |
 
 ## TC 2-2: The Tunnel City
 
@@ -413,19 +466,20 @@ Terms used in this area's names:
 - **elevator hall**: Left branch from the Armor Spider archstone: the wide room with the giant elevator in the middle and a Fat Official on the right.
 - **cart room**: The room with many mine carts and rock worms at the end of the narrow corridor after the elevator hall.
 - **rift platforms**: The wooden platforms you drop through one by one below the cart room, ending in a corridor (Sharpstone Chunk) and stairs down to the bearbug ledge.
-- **bearbug ledge**: The ledge at the bottom of the stairs down from the rift platforms where Patches sets his trap: the Flame Resistance Ring glows on the upper ledge where the Giant Bearbug waits, and the Club (the bait) lies on the ledge below where it lands.
+- **bearbug ledge**: The ledge at the bottom of those stairs where Patches sets his trap: the Club is the bait, a Giant Bearbug drops in, and the Flame Resistance Ring glows beside where it lands.
 - **bearbug den**: Left of the bearbug ledge: four small bearbugs, stairs to the Great Axe, and a Giant Bearbug guarding a corpse.
 - **side room off bearbug den**: The room behind a door along the wall below the bearbug den, with a miner and two corpses.
 - **lizard nest**: The Crystal Lizard nest reached by following the two lizards from the lower elevator room (the elevator goes back up to the elevator hall); two Black Phantoms guard it.
 - **rift path**: The outdoor path that descends from the bearbug area along the rift, with flying bearbugs, three rock worms at a junction, ore carts and the Filthy Man near its bottom.
 - **bug tunnels**: The underground tunnel system entered by a fog gate at the bottom of the rift path; it splits three ways near the lava rift and has several side tunnels with breakable bones and spines. It is the long route to the pit bottom.
-- **worm cliff**: The open ledge with ore carts and three rock worms at the bottom of the rift path, right before the fog entrance to the bug tunnels; flying bearbugs come up from its edge.
+- **worm cliff**: The open area in the bug tunnels with ore carts, three rock worms and flying bearbugs coming from the edge.
 - **lava rift**: The molten area off the bug tunnels full of Giant Bearbugs; the lava is a damage floor.
 - **great pit**: Right branch from the archstone: past two miner groups, the huge pit with wooden platforms you drop down (Plague Resistance Ring, a corpse hanging on a narrow beam, Scirvir's cave with two Crystal Lizards, a lizard walkway and stairs near the bottom). It is the short route.
 - **pit bottom**: The floor of the great pit where the short and long routes meet; rock worms, ladders back up.
 - **worm cave**: The bigger room through the tunnel from the pit bottom, guarded by three spitting rock worms.
 - **boss approach**: The path from the pit bottom to the Flamelurker fog gate.
 - **boss arena**: Flamelurker's room (bones, columns and stairs) where the archstone appears.
+- **Scirvir's cave**: The cave halfway down the great pit with two Crystal Lizards, where Scirvir stands.
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -476,6 +530,11 @@ Terms used in this area's names:
 | TC 2-2: Unknown Hero Soul - great pit, last stairs | Corpse on the last stairs down into the great pit, just before you drop to the floor. | - |  |
 | TC 2-2: Searing Demon Soul - boss drop | Flamelurker's Demon's Soul, taken from the archstone after the boss. | Flamelurker dead |  |
 | TC 2-2: Flame Resistance Ring - bearbug ledge | Glowing item at the bottom of the stairs down from the rift platforms, on the ledge above the Club (Patches runs here to grab it if his trap springs). | - | *missable: Patches can take it first (then lot 10600 is never granted; flag 615 is still set)* |
+| TC 2-2: Talisman of Beasts - Scirvir's cave, phantom drop | Black Phantom Scirvir in his cave halfway down the great pit (with two Crystal Lizards). He appears only at pure black world tendency; his corpse stays until looted (it reappears at his spot after a reload). | - | *missable: world tendency world <= -180 (pure black), QWC 60120* |
+| TC 2-2: Dragonstone Chunk - lizard nest, first phantom drop | One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the first = the man, who also drops the Dragonstone Chunks). Always there. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| TC 2-2: Stone of Ephemeral Eyes - lizard nest, first phantom drop | One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the first = the man, who also drops the Dragonstone Chunks). Always there. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| TC 2-2: Clearstone Chunk - lizard nest, second phantom drop | One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the second = the woman, who also drops the Clearstone Chunks). Always there. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| TC 2-2: Stone of Ephemeral Eyes - lizard nest, second phantom drop | One of the two Black Phantoms guarding the entrance of the Crystal Lizard nest (the second = the woman, who also drops the Clearstone Chunks). Always there. | - | *missable: the drop is lost if not picked up before the area reloads* |
 
 ## UT 2-3: Underground Temple
 
@@ -530,6 +589,7 @@ Terms used in this area's names:
 - **Liar's room**: The room at the end of the opposite (south) church balcony, where the Liar keeps the boss alive; the Special Key hangs on its wall.
 - **catwalk ledge**: The small ledge halfway down the raised catwalk under the Liar's balcony.
 - **boss arena**: The Fool's Idol church hall behind the fog door.
+- **below catwalk ledge**: The ground below the catwalk ledge, under the Liar's balcony, near the church before the boss (a crossbow black phantom hides there).
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -620,6 +680,9 @@ Terms used in this area's names:
 | PH 3-1: Prison of Hope, Special Key - Liar's room wall | Key on the wall behind the Liar, at the end of the south church balcony. | Prison of Hope, 3F Key, Prison of Hope, 4F Key, Prison of Hope, 1F Key |  |
 | PH 3-1: Doll Demon Soul - boss drop | Demon soul on the archstone platform after the Fool's Idol fight. | Prison of Hope, 3F Key, Prison of Hope, 4F Key, Prison of Hope, 1F Key, Fool's Idol dead |  |
 | PH 3-1: Ring of Avarice - Former Noble's Wife | The Former Noble's Wife (Once Royal Mistress), singing in her room on the Prison of Hope 4th floor, sells one Ring of Avarice. | Prison of Hope, 4F Key | *missable: Lost if she dies or turns hostile.* |
+| PH 3-1: Phosphorescent Pole - 2F west, phantom drop | Black Phantom Lord Rydell, standing on the landing outside his cell at the plate end of 2F West. He appears only at pure black world tendency; his corpse stays until looted. | Prison of Hope, 3F Key, Prison of Hope, 4F Key | *missable: world tendency world <= -180 (pure black), QWC 40120* |
+| PH 3-1: Moonlightstone Chunk - below catwalk ledge, phantom drop | The crossbow Black Phantom (Baby's Nail) hiding on the ground below the catwalk ledge, under the Liar's balcony, near the church before the boss. Always there. | Prison of Hope, 3F Key, Prison of Hope, 4F Key, Prison of Hope, 1F Key | *missable: the drop is lost if not picked up before the area reloads* |
+| PH 3-1: Stone of Ephemeral Eyes - below catwalk ledge, phantom drop | The crossbow Black Phantom (Baby's Nail) hiding on the ground below the catwalk ledge, under the Liar's balcony, near the church before the boss. Always there. | Prison of Hope, 3F Key, Prison of Hope, 4F Key, Prison of Hope, 1F Key | *missable: the drop is lost if not picked up before the area reloads* |
 
 ## UL 3-2: Upper Latria
 
@@ -772,6 +835,7 @@ Terms used in this area's names:
 | IE 4-1: Swollen Demon Soul - boss drop | Taken from the archstone that appears after the Adjudicator dies. | Adjudicator dead |  |
 | IE 4-1: Gray Demon Soul - pit courtyard, miniboss drop | Dropped by the optional Vanguard in the courtyard straight through the first fog gate. | - |  |
 | IE 4-1: Sticky White Slime - Blige | Graverobber Blige sells two Sticky White Slime (shared stock) after you free him: in his cell in Island's Edge, and, after the Adjudicator dies, in the tunnel of The Ritual Path. | Copper Key | *missable: Lost if Blige is never freed, dies or turns hostile.* |
+| IE 4-1: Hiltless - start, phantom drop | Black Phantom Satsuki, standing on the ground right of the first archway (by the Silver Skeleton) near the archstone. He appears only at pure black world tendency; his corpse stays until looted. | - | *missable: world tendency world <= -180 (pure black), QWC 30120* |
 
 ## RP 4-2: The Ritual Path
 
@@ -836,6 +900,8 @@ Terms used in this area's names:
 | RP 4-2: Magic Sword "Makoto" - pit, pure white | Corpse on the floor of Patches' pit at the foot of the spire; it only appears at pure white world tendency (the spire corpse 'falls down'). | - | *missable: world tendency world >= +180 (pure white), QWC 30140* |
 | RP 4-2: Hero Demon Soul - boss drop | Taken from the archstone that appears after the Old Hero dies. | Old Hero dead |  |
 | RP 4-2: Colorless Demon Soul - secret cliff, miniboss drop | Dropped by the Primeval Demon on the secret cliff path (past the illusory wall), which only appears at black world tendency. | - | *missable: world tendency world <= -150 (black; wiki says pure black), QWC 30110* |
+| RP 4-2: Moonshadestone Chunk - pit, phantom drop | The Black Phantom in Patches' pit, next to Saint Urbain's cell. Always there; killing it is part of freeing Urbain. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| RP 4-2: Stone of Ephemeral Eyes - pit, phantom drop | The Black Phantom in Patches' pit, next to Saint Urbain's cell. Always there; killing it is part of freeing Urbain. | - | *missable: the drop is lost if not picked up before the area reloads* |
 
 ## AS 4-3: Altar of Storms
 
@@ -950,6 +1016,7 @@ Terms used in this area's names:
 - **west boardwalk**: Raised boardwalk from the shanty town north along the west cliff back to the start (lone Shaman, mosquitoes, crystal lizard).
 - **shortcut plank**: Plank at the north end of the west boardwalk, kicked down from the boardwalk side to link it with the start.
 - **boss arena**: Dirty Colossus arena; after the boss dies its archstone is the 5-3 (Rotting Haven) starting point.
+- **second swamp islet**: The small island in the second swamp, east of the giants' island and west of the slug nest, where a lone Phosphorescent Slug sits.
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -1006,6 +1073,16 @@ Terms used in this area's names:
 | SS 5-2: Eroded Demon Soul - boss drop | Touch the archstone in the Dirty Colossus arena after killing it. | Dirty Colossus dead |  |
 | SS 5-2: Colorless Demon Soul - southeast cave, miniboss drop | Primeval Demon in the cave where the boardwalk dead-ends, southeast of the second fog gate; only at black world tendency. | - | *missable: world tendency world <= -150 in 5-2 at load (QWC 50110 'Ore spirits appear')* |
 | SS 5-2: Dark Moon Grass - Filthy Woman | The Filthy Woman sells three Dark Moon Grass once she has moved to the Swamp of Sorrow (after Leechmonger dies). | Leechmonger dead | *missable: Lost if she dies (wiki: Giant Depraved Ones and Depraved Shaman poison can kill her) or turns hostile.* |
+| SS 5-2: Dull Gold Helm - second swamp islet, miniboss drop | The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted. | - |  |
+| SS 5-2: Dull Gold Armor - second swamp islet, miniboss drop | The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted. | - |  |
+| SS 5-2: Dull Gold Gauntlets - second swamp islet, miniboss drop | The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted. | - |  |
+| SS 5-2: Dull Gold Leggings - second swamp islet, miniboss drop | The lone Phosphorescent Slug on a small island in the second swamp, east of the giants' island and west of the slug nest. Any tendency; its corpse stays until looted. | - |  |
+| SS 5-2: Shaman's Garb - lone shaman platform, miniboss drop | The lone Shaman on the west boardwalk (shanty town to the shortcut plank), next to the 'west boardwalk, by shaman' corpse. Any tendency; its corpse stays until looted. | - |  |
+| SS 5-2: Shaman's Armbands - lone shaman platform, miniboss drop | The lone Shaman on the west boardwalk (shanty town to the shortcut plank), next to the 'west boardwalk, by shaman' corpse. Any tendency; its corpse stays until looted. | - |  |
+| SS 5-2: Shaman's Tabi - lone shaman platform, miniboss drop | The lone Shaman on the west boardwalk (shanty town to the shortcut plank), next to the 'west boardwalk, by shaman' corpse. Any tendency; its corpse stays until looted. | - |  |
+| SS 5-2: Blind - Selen's island, phantom drop | Black Phantom Selen Vinland on the small island just past the first fog gate. She appears only at pure black world tendency; her corpse stays until looted. | - | *missable: world tendency world <= -180 (pure black), QWC 50120* |
+| SS 5-2: Faintstone Chunk - northeast island, phantom drop | The Meat Cleaver Black Phantom patrolling the first swamp, starting by the northeast island (Cat Ring). Always there. | - | *missable: the drop is lost if not picked up before the area reloads* |
+| SS 5-2: Stone of Ephemeral Eyes - northeast island, phantom drop | The Meat Cleaver Black Phantom patrolling the first swamp, starting by the northeast island (Cat Ring). Always there. | - | *missable: the drop is lost if not picked up before the area reloads* |
 
 ## RH 5-3: Rotting Haven
 
@@ -1015,6 +1092,7 @@ Terms used in this area's names:
 - **cavern**: The boss arena past the boss fog gate at the bottom of the upper descent (the fight starts with a cutscene on entry): a vast cavern with Depraved Ones praying to the Maiden.
 - **plague swamp**: Blood/plague pool at the bottom of the cavern full of plague babies, below the entrance cliffs; Maiden Astraea is at its far (east) end behind Garl Vinland.
 - **pier**: Small wooden pier in the plague swamp.
+- **plague swamp end**: The far end of the plague swamp, where Garl Vinland guards Maiden Astraea.
 
 | Location | Where | Needs | |
 | --- | --- | --- | --- |
@@ -1026,3 +1104,10 @@ Terms used in this area's names:
 | RH 5-3: Legendary Hero Soul - plague swamp pier | On a small wooden pier in the plague swamp. | Maiden Astraea dead |  |
 | RH 5-3: Pureblood Demon Soul - boss drop | Touch the archstone after Maiden Astraea dies. | Maiden Astraea dead |  |
 | RH 5-3: Ring of Sincere Prayer - boss drop | Given together with the Pureblood Demon Soul when you touch the archstone after Maiden Astraea. | Maiden Astraea dead |  |
+| RH 5-3: Dark Silver Shield - plague swamp end, miniboss drop | Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted. | - |  |
+| RH 5-3: Dark Silver Helm - plague swamp end, miniboss drop | Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted. | - |  |
+| RH 5-3: Dark Silver Armor - plague swamp end, miniboss drop | Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted. | - |  |
+| RH 5-3: Dark Silver Gauntlets - plague swamp end, miniboss drop | Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted. | - |  |
+| RH 5-3: Dark Silver Greaves - plague swamp end, miniboss drop | Garl Vinland, who guards Maiden Astraea at the far (east) end of the plague swamp. Kill him, or kill the boss first (he then kills himself); either way his corpse stays until looted. | - |  |
+| RH 5-3: Vinland Crest - plague swamp end, phantom drop | Black Phantom Garl Vinland, at the far end of the plague swamp where Garl stood. He appears only after the boss is dead and its demon soul taken, at pure white world tendency; his corpse stays until looted. | Maiden Astraea dead | *missable: world tendency world >= +180 (pure white), QWC 50140, checked only after the Pureblood Demon Soul is taken (flag 5893)* |
+| RH 5-3: Bramd - plague swamp end, phantom drop | Black Phantom Garl Vinland, at the far end of the plague swamp where Garl stood. He appears only after the boss is dead and its demon soul taken, at pure white world tendency; his corpse stays until looted. | Maiden Astraea dead | *missable: world tendency world >= +180 (pure white), QWC 50140, checked only after the Pureblood Demon Soul is taken (flag 5893)* |

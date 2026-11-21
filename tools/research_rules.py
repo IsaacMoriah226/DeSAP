@@ -27,12 +27,8 @@ BOSS_PARTS = {
 }
 
 # Keys whose sources stay vanilla (unique enemy drops, NPC gifts): the logic needs where they are found instead.
-VANILLA_KEYS = {
-    # Dropped by a Fat Official in the Inner Ward.
-    "Iron Key Ring": ["region:1-3"],
-    # Dropped by the Fat Official in the Lord's Path prison, which needs the Iron Key Ring (Inner Ward).
-    "Bloody Iron Key": ["region:1-2", "region:1-3"],
-}
+# (None now: the Iron Key Ring and Bloody Iron Key are Fat Official drops, which are locations since 2026-11-20.)
+VANILLA_KEYS: dict[str, list[str]] = {}
 # Vanilla keys that come from an NPC's quest: the locations they open are missable.
 NPC_KEYS = {"Mausoleum Key"}
 
@@ -283,6 +279,28 @@ OVERRIDES: dict[str, dict] = {
     # Numbered in walking order (index 61 comes first on the way).
     "PH: Renowned Warrior Soul - ballista bridge bodies 1": {"name": "PH: Renowned Warrior Soul - ballista bridge bodies 2"},
     "PH: Renowned Warrior Soul - ballista bridge bodies 2": {"name": "PH: Renowned Warrior Soul - ballista bridge bodies 1"},
+    # --- one-time enemies ---
+    # Their bodies are not saved: the drop is lost if not picked up before the area reloads.
+    **{name: {"missable": "the drop is lost if not picked up before the area reloads"} for name in (
+        'KT: Tower Shield - phantom hall, phantom drop',
+        'KT: White Bow - phantom hall, phantom drop',
+        'KT: Penetrating Sword - phantom hall, phantom drop',
+        'KT: Rune Sword - long walkway, phantom drop',
+        'KT: Rune Shield - long walkway, phantom drop',
+        'RP: Moonshadestone Chunk - pit, phantom drop',
+        'RP: Stone of Ephemeral Eyes - pit, phantom drop',
+        'PH: Moonlightstone Chunk - below catwalk ledge, phantom drop',
+        'PH: Stone of Ephemeral Eyes - below catwalk ledge, phantom drop',
+        'SS: Faintstone Chunk - northeast island, phantom drop',
+        'SS: Stone of Ephemeral Eyes - northeast island, phantom drop',
+        'TC: Dragonstone Chunk - lizard nest, first phantom drop',
+        'TC: Stone of Ephemeral Eyes - lizard nest, first phantom drop',
+        'TC: Clearstone Chunk - lizard nest, second phantom drop',
+        'TC: Stone of Ephemeral Eyes - lizard nest, second phantom drop',
+    )},
+    # The lone Shaman stands on the low platform below the west boardwalk (valley review).
+    **{f"SS: {piece} - west boardwalk, miniboss drop": {"name": f"SS: {piece} - lone shaman platform, miniboss drop"}
+       for piece in ("Shaman's Garb", "Shaman's Armbands", "Shaman's Tabi")},
 }
 
 # Glossary corrections for the location guide (map -> term -> new text; None removes the term). From the review.
@@ -329,7 +347,33 @@ GLOSSARY_FIXES: dict[str, dict[str, str | None]] = {
         "worm cliff": "The open ledge with ore carts and three rock worms at the bottom of the rift path, right before "
                       "the fog entrance to the bug tunnels; flying bearbugs come up from its edge.",
     },
+    "m02_00_00_00": {
+        "execution grounds stairwell": "The stairwell building of the execution grounds, where Executioner Miralda "
+                                       "hides (pure white tendency only).",
+    },
+    "m02_02_00_00": {
+        "by gate lever": "Down the stairs from the yard before the closed gate, next to the lever that reopens it.",
+    },
+    "m02_03_00_00": {
+        "long walkway": "The long walkway before the elevator to the boss, where a black phantom attacks.",
+    },
+    "m04_00_00_00": {
+        "below catwalk ledge": "The ground below the catwalk ledge, under the Liar's balcony, near the church before "
+                               "the boss (a crossbow black phantom hides there).",
+    },
+    "m05_01_00_00": {
+        "second swamp islet": "The small island in the second swamp, east of the giants' island and west of the slug "
+                              "nest, where a lone Phosphorescent Slug sits.",
+    },
+    "m06_00_00_00": {
+        "cliff corridor": "The corridor with four miners just before the cliff above the archstone.",
+        "magma wheel room": "The room with five miners and the magma wheel at the bottom of the lizard tower.",
+    },
+    "m06_01_00_00": {
+        "Scirvir's cave": "The cave halfway down the great pit with two Crystal Lizards, where Scirvir stands.",
+    },
     "m05_02_00_00": {
+        "plague swamp end": "The far end of the plague swamp, where Garl Vinland guards Maiden Astraea.",
         "cavern": "The boss arena past the boss fog gate at the bottom of the upper descent (the fight starts with a "
                   "cutscene on entry): a vast cavern with Depraved Ones praying to the Maiden.",
         "upper descent": "Holes and ladders leading down from the Dirty Colossus archstone to the boss fog gate.",

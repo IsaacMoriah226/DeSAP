@@ -100,7 +100,7 @@ def main() -> None:
     locations = [l for l in json.loads((WORLD / "data" / "locations.json").read_text(encoding="utf-8")) if l["code"]]
     glossaries: dict[str, dict[str, str]] = {}
     for path in sorted(RESEARCH.glob("*.json")):
-        for map_id, region in json.loads(path.read_text(encoding="utf-8"))["regions"].items():
+        for map_id, region in json.loads(path.read_text(encoding="utf-8")).get("regions", {}).items():
             glossaries[map_id] = dict(region.get("glossary", {}))
     for map_id, fixes in rules.GLOSSARY_FIXES.items():
         for term, text in fixes.items():
