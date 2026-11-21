@@ -1,14 +1,18 @@
 """The game data the world and client need, read from the dump: item names, item lots and every map's treasures
 with the event flag a pickup sets.
 
-Treasure flags (verified in game on 1-1 treasures 2-4 and 1-2 treasures 1-2): a map's treasures are its MSB
-treasure events in file order; treasure i of map mWW_SS_00_00 sets flag 10240 + 512 * SS + i. In the flag
-manager (pointer at 0x9027bf328) that is bit (flag % 8) of byte flag // 8 while the world is loaded, and the
-game writes the same bit into the world's saved block at +0x2b1c + (WW - 1) * 0x200 + (flag - 8192) // 8.
+Treasure flags: block SS of world WW uses flags 10240 + 512 * SS + n, but n is NOT the treasure's MSB index (that
+held only for the first treasures checked; the 2026-11-21 test session found most maps differ). The remake assigns
+them from Bluepoint's level data; DeSAP measured them from the game's own treasure records (tools/map_treasures.py)
+into data/treasure_flags.json (map -> first lot -> flag). Treasures it lacks (the tutorial so far) fall back to the
+index rule and are marked unverified. In the flag manager (pointer at 0x9027bf328) a flag is bit (flag % 8) of
+byte flag // 8 while the world is loaded, and the game writes the same bit into the world's saved block at
++0x2b1c + (WW - 1) * 0x200 + (flag - 8192) // 8.
 """
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass, field
 from functools import cached_property
 from pathlib import Path
@@ -16,6 +20,7 @@ from pathlib import Path
 from . import msb, souls
 
 DEFAULT_GAME = Path(r"C:\Users\Isaac Moriah\Desktop\PPSA01341-app0")
+TREASURE_FLAGS = Path(__file__).resolve().parent.parent / "data" / "treasure_flags.json"
 
 # ITEMLOT_ITEMCATEGORY -> (kind, item.msgbnd name file id of the PS3 text)
 CATEGORIES = {
@@ -101,6 +106,7 @@ class TreasureLocation:
     part: str
     position: tuple[float, float, float]
     lots: dict[int, list[LotItem]] = field(default_factory=dict)
+    flag_verified: bool = False  # measured in game (data/treasure_flags.json), not the index rule
 
     @property
     def world(self) -> int:
@@ -175,6 +181,7 @@ class GameData:
                        1000)
 
     def treasures(self) -> list[TreasureLocation]:
+        measured = json.loads(TREASURE_FLAGS.read_text(encoding="utf-8")) if TREASURE_FLAGS.exists() else {}
         out = []
         for path in sorted((self.dvdroot / "map" / "mapstudio").glob("m0*.msb")):
             if len(path.name) != 16:
@@ -187,5 +194,8 @@ class GameData:
                     treasure.part.name if treasure.part else "", treasure.part.position if treasure.part else (0, 0, 0))
                 for lot in treasure.item_lots:
                     location.lots[lot] = self.lot_items(lot)
+                true_flag = measured.get(data.map, {}).get(str(treasure.item_lots[0])) if treasure.item_lots else None
+                if true_flag is not None:
+                    location.flag, location.flag_verified = true_flag, True
                 out.append(location)
         return out

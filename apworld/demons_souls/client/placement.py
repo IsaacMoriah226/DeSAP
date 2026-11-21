@@ -22,9 +22,17 @@ from ..ids import ITEM_BASE, KINDS, LOCK_ITEM_OFFSET
 from .addresses import CATEGORY
 from .flags import Flags, world_of_map
 
-PLACEHOLDER = (CATEGORY["goods"], 9998, 1)  # unused goods row ("UNUSED DATA"; PS3 name "Kick Item")
-PLACEHOLDER_NAME_KEY, PLACEHOLDER_OLD_NAME, PLACEHOLDER_NAME = "GOODS_NAME_9998", "UNUSED DATA", "Archipelago"
-PLACEHOLDER_ICON = 1135  # the Nexial Binding's (EquipParamGoods 1033)
+# Unused goods row 2055 (an upgrade stone cut from the game, "UNUSED DATA"; PS3 "Large Clearstone Shard"). Goods
+# 9998 was tried first (2026-11-21): a key item, one at most, so a corpse with several other-world items showed one
+# popup. 2055 is a stackable material (to check in game). Its text is set through the loaded text tables (any
+# length, verified). Its icon cannot be changed through EquipParamGoods' iconId: the remake draws icons by item id.
+PLACEHOLDER = (CATEGORY["goods"], 2055, 1)
+PLACEHOLDER_TEXTS = {
+    "GOODS_NAME_2055": "Archipelago Item",
+    "GOODS_INFO_2055": "An item for another world",
+    "GOODS_CAPTION_2055": "This item belongs to another player's world in the Archipelago multiworld. "
+                          "It has been sent to them; the client takes this token away.",
+}
 GOAL_FLAG, GOAL_WORLD = 70, 1  # OnCharacterDead(70, 821): False King Allant (m01_00_00_00_eventboss.lua)
 AMMUNITION = range(160000, 170000)
 
@@ -67,7 +75,10 @@ def check_of(location: LocationData) -> Check:
     return Check(flag, world_of_map(game["map"]))
 
 
-CHECKS: dict[int, Check] = {code: check_of(location) for code, location in LOCATION_BY_CODE.items()}
+# Locations whose flag was not measured in game (data/treasure_flags.json: the tutorial so far) are left out: a
+# wrong flag would report the wrong location.
+CHECKS: dict[int, Check] = {code: check_of(location) for code, location in LOCATION_BY_CODE.items()
+                            if not location.game.get("flag_unverified")}
 # Each location's bit in the save's "delivered by the game" flags (flags.py): location id order. A client must
 # match the world version that generated the seed (the slot data carries it).
 LOCATION_INDEX: dict[int, int] = {code: i for i, code in enumerate(sorted(LOCATION_BY_CODE))}

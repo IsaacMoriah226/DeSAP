@@ -100,7 +100,8 @@ def raw_sources() -> list[dict]:
                             "map": source["map"], "item": it, "flag": source["flag"],
                             "code": LOCATION_BASE + map_number(source["map"]) * 10_000 + source["index"] * 10 + slot,
                             "game": {"map": source["map"], "index": source["index"], "lot": int(lot),
-                                     "flag": source["flag"], "part": source["part"]}})
+                                     "flag": source["flag"], "part": source["part"],
+                                     **({} if source.get("flag_verified") else {"flag_unverified": True})}})
         elif kind == "event":
             (it,) = source["items"]
             out.append({"key": ("event", source["map"], source["function"], source["lot"]), "kind": kind,

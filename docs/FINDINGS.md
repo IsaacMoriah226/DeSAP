@@ -56,7 +56,12 @@ Flag manager: pointer at `0x9027bf328` (getter `0x9002edd40`). Found from the Lu
 
 ### Treasure pickups (verified)
 
-Treasure `i` of map `mWW_SS_00_00` (its MSB treasure events in file order) sets **flag 10240 + 512 * SS + i**.
+**Corrected 2026-11-21:** the rule below (flag 10240 + 512 * SS + MSB index) held only for the treasures first
+checked. A pickup sets 10240 + 512 * SS + n with n from Bluepoint's level data; only 1-2 and 4-3 follow the MSB
+order. The true flags were measured from the game's treasure records (see "Treasure records" below) into
+`data/treasure_flags.json`.
+
+Old rule, for the record: treasure `i` of map `mWW_SS_00_00` sets flag 10240 + 512 * SS + i.
 
 | Pickup | Map, treasure | Flag | Live byte, bit | Saved byte, bit |
 | --- | --- | --- | --- | --- |
@@ -162,3 +167,40 @@ the other params), `script\*.lua` (event scripts, plain text, translated by Blue
   fork's own backups in `_SaveData\.kyty-backup`. A different working folder gives separate saves.
 - `gamecmd` keeps one pending console command: a new one replaces a pending one (`QueueCommand`), and it runs on the
   next pad read.
+
+## Test session 2026-11-21 (client mechanisms; KytyPS5 v20261120)
+
+| Mechanism | Result |
+| --- | --- |
+| Title screen | no character pointer: the client reads "not in game" |
+| Current map | MAPUID from the map manager; it changes on the border when walking from Phalanx's arena into the Lord's Path (m02_00 <-> m02_01), both ways |
+| Param tables | all found in 29 s: ItemLotParam x2, `SHOP_LINEUP_PARAM` x2, EquipParamWeapon x1, EquipParamGoods x1 |
+| Batched item-get | 2 and 8 items in one call: one popup each, in order |
+| `RemoveInventoryEquip` | removes the item |
+| Shop row rewrite | Boldwin's Dagger row sold Full Moon Grass (price kept, row unlimited) |
+| Client flags in the save | written, then the title screen clears memory, Continue reloads them from the save: persisted |
+| Death counter | +1 about 6 s after `cp11_playerSuicide`, before the respawn load |
+| `WarpNextStage(1, ...)` from the stub | grey loading screen, then the Nexus in front of world 1's archstone |
+| Text redirection | a 60-character item name shows whole in the inventory list and header |
+| Item icon | EquipParamGoods `iconId` is ignored by the remake (the icon follows the item id); a changed id gives "?" in the large panel |
+| Goods 9998 | one at most: a second grant gives nothing (no popup) |
+| Full Moon Grass | 2 held + 25 given = 25 shown (the rest probably went to storage) |
+| Whole client, 2-player seed | wrong-slot save refused; new character claimed in the tutorial; tables found, texts set, items placed; other worlds' items popped as "Archipelago Item" and were removed; own items given once (server copies skipped) |
+
+The debug warp serves a copy of the save made when it is armed, so a claim made after arming is not in it (the
+client then asks for `/claim`).
+
+### Treasure records (how the true flags were found)
+
+While a world is loaded the game holds a record for every treasure of all its blocks (`tools/map_treasures.py`):
++0x0 ordinal, +0x4 entity (0x20000000 + block << 24 | n), +0x8 the pickup flag, +0xc item slots, +0x10 five lot ids,
++0x24 the items given now (the client's rewrites show there). Most sit behind the allocator qword 0x90260e038
+(at -0x30); every record is also listed in object pointer arrays. Scans of every world (and of a second character
+for 1-1's corpses the first had looted) matched every MSB treasure with an item. Not matched:
+- treasures whose lots are empty in the remake (world-tendency corpses in Stonefang and Latria, second lots of two
+  Prison of Hope corpses): not locations, no records;
+- the Prison of Hope key corpses (the keys are given by script events) and one Nexus corpse (lot 10816);
+- the tutorial: no records when warped into it. Its 13 treasure locations keep the index rule, marked
+  `flag_unverified`, and the client does not report them until measured.
+- In the Shrine of Storms the record's block byte is one less than the map (its maps start at m03_01); the flag
+  gives the map.

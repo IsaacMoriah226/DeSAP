@@ -101,3 +101,6 @@ Things no source settled, to look at when playing. None of them can break a seed
   warped into the boss room). The lot's one-time flag lets only the first death drop it. Check that 453's scripted
   death drops nothing (if it did, killing 451 afterwards would give nothing). `tools/check_lot_users.py` lists the
   other shared lots; all are handled (marked shared, display-only treasures, or test maps).
+- Tutorial treasure flags (13 locations): not measured (the game made no treasure records when warped into the
+  tutorial). Measure them with a new character playing the tutorial normally (`tools/map_treasures.py`); until then
+  the client does not report them.

@@ -32,8 +32,7 @@ from . import addresses as A
 from . import params
 from .game import DemonsSoulsGame, GameState, GameVersionError
 from .placement import (CHECKS, GOAL_FLAG, GOAL_WORLD, LOCATION_BY_CODE, LOCATION_INDEX, LOCK_CODES, PLACEHOLDER,
-                        PLACEHOLDER_ICON, PLACEHOLDER_NAME, PLACEHOLDER_NAME_KEY, PLACEHOLDER_OLD_NAME, game_item,
-                        has_lot, shared, upgraded_weapon)
+                        PLACEHOLDER_TEXTS, game_item, has_lot, shared, upgraded_weapon)
 
 GAME = "Demon's Souls Remake"
 GAME_TICK = 0.25
@@ -111,6 +110,7 @@ class DemonsSoulsContext(CommonContext):
         self.save_problem = ""
         self.placed = False  # lots and shop rows rewritten for this slot
         self.area_safe = False  # the area being played loaded after the rewrite (treasures are fixed at load)
+        self.texts_set = False
         self.lot_writes: dict[int, dict[int, bytes]] = {}
         self.shop_writes: dict[int, dict[int, bytes]] = {}
         self.physical: set[int] = set()  # locations whose lot or shop row gives this world's item by itself
@@ -280,13 +280,16 @@ class DemonsSoulsContext(CommonContext):
             self.bridge.patch_rows("SHOP_LINEUP_PARAM", self.shop_writes)
         else:
             logger.warning("The shop table was not found: shops sell their usual items this session.")
-        self.bridge.patch_rows("EQUIP_PARAM_GOODS_ST",
-                             {PLACEHOLDER[1]: {params.GOODS_ICON: PLACEHOLDER_ICON.to_bytes(2, "little")}})
         if self.slot_data.get("remove_stat_requirements"):
             rows = {row: {params.WEAPON_REQUIREMENTS: bytes(4)}
                     for copy in self.bridge.tables.get("EQUIP_PARAM_WEAPON_ST", []) for row in copy.rows}
             self.bridge.patch_rows("EQUIP_PARAM_WEAPON_ST", rows)
-        self.bridge.rename_text(PLACEHOLDER_NAME_KEY, PLACEHOLDER_OLD_NAME, PLACEHOLDER_NAME)
+        if not self.texts_set:
+            self.say("Setting the text of items for other worlds (about a minute) ...")
+            fields = self.bridge.find_text_entries(list(PLACEHOLDER_TEXTS))
+            for key, text in PLACEHOLDER_TEXTS.items():
+                self.bridge.set_text(fields[key], text)
+            self.texts_set = True
         self.placed = True
         self.area_safe = False
         self.say("Items placed. Pickups lying in the area you are in change after its next loading screen (die, "

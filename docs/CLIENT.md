@@ -65,38 +65,33 @@ them by hand in test sessions.
 
 ## Status
 
+Details of each test: `docs/FINDINGS.md` (test sessions 2026-11-20 and 2026-11-21).
+
 | Mechanism | Status |
 | --- | --- |
-| Lot rewrite, reload needed for treasures | verified in game (2026-11-20) |
-| Item-get popup through the stub | verified (single calls); batches of several: **to test** |
-| Requirement removal, text rename (same length), DeathLink kill, Nexus by debug warp | verified |
-| Current map (MAPUID) from the map manager, changing when walking into the next part | **to test** |
-| `WarpNextStage` to the Nexus from the stub (the kick) | **to test** |
-| Death counter | **to test** |
-| Client flags 16964-17799 saved with the character | **to test** |
-| Shop table (`SHOP_LINEUP_PARAM`) found, shop row rewrite | **to test** |
-| `RemoveInventoryEquip` from the stub | **to test** |
-| Inventory entry layout (count at +8) | **to test** |
-| Title screen: no character pointer (so no false "in game") | **to test** |
-| Whole client against a real seed | **to test**; offline: 24 unit tests, and a dry run with a real MultiServer and a fake game |
+| Lot rewrite (treasures after a reload), item-get popup, batches (2 and 8 items) | verified |
+| Current map, its change on a part border; the kick to the Nexus (`WarpNextStage`) | verified |
+| Death counter, DeathLink kill | verified |
+| Client flags kept in the save across quit and Continue | verified |
+| Shop table found, shop row rewrite | verified |
+| `RemoveInventoryEquip`, inventory reading | verified |
+| Title screen reads as not in game | verified |
+| Item text of any length (name, info, caption) | verified (name); info and caption set the same way |
+| Item icon | **not possible** through the param (the remake draws icons by item id) |
+| Treasure pickup flags | **fixed**: measured in game for every world but the tutorial (13 tutorial locations are not reported until measured) |
+| Placeholder goods 2055 stacks (several other-world items on one corpse each pop up) | **to test** |
+| Whole client against a real seed | verified up to the first courtyard of 1-1 (claim, placement, own and other-world pickups, removal); the treasure flag fix and the new placeholder: **to test** |
 
-## Test session plan
+## Next test session
 
-Run the emulator with live control on, then `python -I tools/session.py <command>`:
+1. A new character: in the tutorial (played normally, not warped in), `tools/map_treasures.py` to measure the
+   tutorial's 13 treasure flags.
+2. The whole client against a local two-player seed: the 1-1 pickups that were reported wrongly (Mail Breaker
+   corpse, barrels corpse) and a corpse with several other-world items (several "Archipelago Item" popups, all
+   removed).
+3. A received weapon with auto-upgrade; a received world lock opening its part.
 
-1. `state` at the title screen, in the tutorial, and in the Nexus: is the character pointer null at the title?
-   Are the map id and death count right?
-2. `watch`, then walk from 1-1 into 1-2 past Phalanx (or across any other part border): does the map change on
-   the border?
-3. `tables`: are both shop table copies found?
-4. `give goods 1000 1 goods 1001 1`: two popups from one batch?
-5. `inventory 1000`, then `remove goods 1000 1`.
-6. `nexus` in 1-1: does it warp to the Nexus without Exit Game?
-7. Die once (`watch` running): does the death count go up?
-8. `mark 0123456789abcdef`, rest at an archstone, quit to the title, Continue, `state`: is the identity still
-   there?
-9. `text-refs GOODS_NAME_9998`: is there a pointer to the text (the way to longer names)?
-10. The whole client against a local seed with a new character.
+`tools/session.py` must not run while the client runs (both drive the same game-call stub).
 
 ## Planned
 

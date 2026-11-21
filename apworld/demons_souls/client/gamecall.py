@@ -96,6 +96,7 @@ class GameCall:
         self.game = game
         self.trigger = trigger
         self.stub = 0
+        self.owned = False  # we installed the jump (an earlier client's stub is reused, not removed)
 
     def install(self) -> None:
         current = self.game.read(addresses.TRIGGER_CALLBACK, JUMP_SIZE)
@@ -107,8 +108,7 @@ class GameCall:
                 ours = False
             if not ours:
                 raise RuntimeError("the console callback is patched by something else")
-            self.stub = stub  # an earlier client's stub: reuse it
-            self.game.write_u32(self.stub + DATA + 8, 0)
+            self.stub = stub  # an earlier (or concurrent) client's stub: reuse it, leave it in place
             return
         if current != ORIGINAL:
             raise RuntimeError(f"unexpected code at the console callback ({current.hex()}): another game version?")
@@ -120,8 +120,11 @@ class GameCall:
         self.game.write(addresses.TRIGGER_CALLBACK, jump)
         self.game.protect(addresses.TRIGGER_CALLBACK, JUMP_SIZE, old)
         self.stub = stub
+        self.owned = True
 
     def uninstall(self) -> None:
+        if not self.owned:
+            return
         current = self.game.read(addresses.TRIGGER_CALLBACK, JUMP_SIZE)
         if current[:2] == b"\x48\xb8":
             old = self.game.protect(addresses.TRIGGER_CALLBACK, JUMP_SIZE, PAGE_EXECUTE_READWRITE)

@@ -19,7 +19,7 @@ from . import params
 from .flags import FREE_END, IDENTITY_FLAG, IDENTITY_OFFSET, RECEIVED_OFFSET, SNAPSHOT_SIZE, Flags, delivered_bit
 from .gamecall import Call, GameCall
 from .live import LiveControl
-from .memory import GameMemory, find_pid
+from .memory import PAGE_READWRITE, GameMemory, find_pid
 
 logger = logging.getLogger("Client")
 
@@ -232,3 +232,34 @@ class DemonsSoulsGame:
                 self.memory.write(text_at, new_bytes + b"\0" * (len(old_bytes) - len(new_bytes)))
                 done += 1
         return done
+
+    def find_text_entries(self, keys: list[str]) -> dict[str, list[int]]:
+        """Each key's loaded text entries (the game loads its text twice): the address of the entry's text field.
+        An entry is a hash-table node with string views (pointer, length): +0x28 the .ctxt hash, +0x30 the text,
+        +0x50 the key (verified on GOODS_NAME_9998, 2026-11-21). Two memory passes (about a minute)."""
+        needles = {key: key.encode("ascii") + b"\0" for key in keys}
+        hits = self.memory.find_guest(list(needles.values()), limit=16)
+        key_at = {address: key for key, needle in needles.items() for address in hits[needle]}
+        if not key_at:
+            return {key: [] for key in keys}
+        pointers = self.memory.find_guest([struct.pack("<Q", address) for address in key_at], limit=16)
+        out: dict[str, list[int]] = {key: [] for key in keys}
+        for address, key in key_at.items():
+            for field in pointers[struct.pack("<Q", address)]:
+                try:
+                    if self.memory.u64(field + 8) == len(key):  # the key's length follows its pointer
+                        out[key].append(field - 0x20)
+                except OSError:
+                    continue
+        return out
+
+    def set_text(self, fields: list[int], text: str) -> None:
+        """Point text entries (from find_text_entries) at a new string of any length (verified: a 60-character
+        item name shows whole in the inventory)."""
+        data = text.encode("utf-8")
+        if len(data) + 1 > 0x1000:
+            raise ValueError("text too long")
+        buffer = self.memory.alloc(0x1000, PAGE_READWRITE)  # (a page per text: few texts, never freed)
+        self.memory.write(buffer, data + b"\0")
+        for field in fields:
+            self.memory.write(field, struct.pack("<QQ", buffer, len(data)))

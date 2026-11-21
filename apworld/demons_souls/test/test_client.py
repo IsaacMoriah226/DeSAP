@@ -106,8 +106,11 @@ class FakeGame:
     def rows_intact(self, table, writes):
         return True
 
-    def rename_text(self, key, old, new):
-        return 2
+    def find_text_entries(self, keys):
+        return {key: [i] for i, key in enumerate(keys)}
+
+    def set_text(self, fields, text):
+        self.texts = getattr(self, "texts", []) + [(tuple(fields), text)]
 
     # test helpers
     def set_flag(self, location_code: int) -> None:
@@ -323,8 +326,21 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
 class HelperTest(unittest.TestCase):
     def test_every_location_has_a_check(self):
         for code, location in LOCATION_BY_CODE.items():
+            if location.game.get("flag_unverified"):
+                self.assertNotIn(code, CHECKS)
+                self.assertEqual(location.part, "Tutorial", "only the tutorial's treasure flags are unmeasured")
+                continue
             check = CHECKS[code]
             self.assertTrue(0 <= check.flag < 18048, location.name)
+
+    def test_treasure_flags_are_distinct(self):
+        seen = {}
+        for code, location in LOCATION_BY_CODE.items():
+            if location.kind != "treasure":
+                continue
+            key = (location.game["map"][:3], location.game["flag"])
+            spot = (location.game["map"], location.game["index"])
+            self.assertEqual(seen.setdefault(key, spot), spot, f"{location.name}: flag shared with another treasure")
 
     def test_delivered_bits_fit(self):
         self.assertLess(DELIVERED_FLAG + len(LOCATION_INDEX), FREE_END)
