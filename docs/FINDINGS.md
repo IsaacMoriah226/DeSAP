@@ -155,7 +155,11 @@ the other params), `script\*.lua` (event scripts, plain text, translated by Blue
   up in hash tables (0x900866150 -> 0x90086d280: buckets at +0x78, count +0x80, nodes with the hash at +0x0 and the
   next node at +0x70). Longer names would need a node's text pointer redirected (to be found in game).
 - **Shop lineup param:** its type name is `SHOP_LINEUP_PARAM` (no `_ST`), which is why the earlier search missed it.
-- **Free event flags:** 16964-17799 (`tools/check_free_flags.py`); the client keeps the save's state there.
+- **Free event flags:** none can be proven free by static checks. Flags 16964-17799 appear in no script, param
+  or constant flag call, yet on 2026-11-21 the game rewrote 17000-17031 and set 17280 during the tutorial (flag
+  numbers computed at run time). The client keeps its state in world 7's saved block instead (the Pantheon,
+  online only): 512 bytes that stayed zero on two characters, and kept a test pattern across quit and Continue and
+  a world change.
 - **The remake's params grew:** EquipParamGoods rows are 72 bytes (PS3 paramdef 64), EquipParamWeapon 184 (176),
   EquipParamProtector 256 (144), Magic 56 (48); the PS3 fields keep their offsets (requirement removal worked).
 
@@ -200,7 +204,21 @@ for 1-1's corpses the first had looted) matched every MSB treasure with an item.
 - treasures whose lots are empty in the remake (world-tendency corpses in Stonefang and Latria, second lots of two
   Prison of Hope corpses): not locations, no records;
 - the Prison of Hope key corpses (the keys are given by script events) and one Nexus corpse (lot 10816);
-- the tutorial: no records when warped into it. Its 13 treasure locations keep the index rule, marked
-  `flag_unverified`, and the client does not report them until measured.
+- the tutorial: no records when warped into it. A new character playing it normally has them, one section at
+  a time (Outpost Passage, Forlorn Outpost, Unknown Egress after the Vanguard); its treasures use global flags
+  14050-14051, 14310-14312 and 14390-14397. All 521 treasure locations now have measured flags.
 - In the Shrine of Storms the record's block byte is one less than the map (its maps start at m03_01); the flag
   gives the map.
+
+## Test session 2026-11-21, second part (fixed client; fresh two-player seed)
+
+| Test | Result |
+| --- | --- |
+| Tutorial treasure flags | measured on a new character (see above) |
+| Client state in world 7's block | a test pattern over all 512 bytes survived quit and Continue and a world change |
+| 1-1 pickups | every one reported to the server under the right location (barrels and Mail Breaker corpses included) |
+| Own items | given once each; weapons placed already upgraded (Penetrating Sword+5, Blind+5 with a Knight Sword+10 held) |
+| Placeholder goods 2055 | a corpse with four other-world items gave four "Archipelago Item" popups; all were removed. Its icon is a fiery stone (the remake's own for that item) |
+| Received weapon (`!getitem Flamberge`) | arrived as Flamberge+10 |
+| World lock | walking into 1-2 without its item: sent to the Nexus; after `!getitem 1-2 The Lord's Path`: allowed |
+| Tutorial Vanguard (shared lot, given by flag) | its check went out and the client gave the item |

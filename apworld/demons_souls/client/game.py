@@ -16,7 +16,7 @@ from pathlib import Path
 
 from . import addresses as A
 from . import params
-from .flags import FREE_END, IDENTITY_FLAG, IDENTITY_OFFSET, RECEIVED_OFFSET, SNAPSHOT_SIZE, Flags, delivered_bit
+from .flags import CLIENT_BLOCK, CLIENT_BLOCK_SIZE, IDENTITY_OFFSET, RECEIVED_OFFSET, SNAPSHOT_SIZE, Flags, delivered_bit
 from .gamecall import Call, GameCall
 from .live import LiveControl
 from .memory import PAGE_READWRITE, GameMemory, find_pid
@@ -159,8 +159,8 @@ class DemonsSoulsGame:
         self.memory.write(at, bytes([self.memory.u8(at) | 1 << bit]))  # (the game never writes these flags)
 
     def clear_client_flags(self) -> None:
-        """Zero the identity, the count and the delivered bits (a save being claimed)."""
-        self.memory.write(self.memory.u64(A.FLAG_MANAGER) + IDENTITY_OFFSET, bytes((FREE_END - IDENTITY_FLAG) // 8))
+        """Zero the client's block (a save being claimed)."""
+        self.memory.write(self.memory.u64(A.FLAG_MANAGER) + CLIENT_BLOCK, bytes(CLIENT_BLOCK_SIZE))
 
     # --- actions -------------------------------------------------------------------------------------------------
 

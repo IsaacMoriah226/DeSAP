@@ -25,7 +25,7 @@ How checks and items work: `docs/CLIENT.md` (with what is verified in game and w
 - `apworld/demons_souls/client/`: the client and its game access (`memory.py`, `gamecall.py`, `game.py`, ...).
 - `tools/session.py`: drive the client's game access by hand in test sessions (state, give, warp, tables, ...).
 - `tools/lua_bindings.py`: every Lua `proxy:` function with its native handler.
-- `tools/check_lot_users.py`, `tools/check_free_flags.py`: safety checks for lot rewrites and the client's flags.
+- `tools/check_lot_users.py`: safety check for lot rewrites. `tools/map_treasures.py`, `tools/treasure_flags.py`: measure treasure pickup flags in game and merge them into `data/treasure_flags.json`.
 - `tools/build_locations.py`: every treasure location with its event flag, as JSON.
 - `tools/flagwatch.py`: print event flag changes live (how the pickup flags were found).
 - `tools/ghidra_run.ps1` with `ghidra_scripts/`: run a Ghidra script on the analyzed eboot.

@@ -11595,9 +11595,8 @@
    "map": "m08_00_00_00",
    "index": 0,
    "lot": 10300,
-   "flag": 10240,
-   "part": "o0502_0003",
-   "flag_unverified": true
+   "flag": 14050,
+   "part": "o0502_0003"
   },
   "groups": [
    "Tutorial",
@@ -11619,9 +11618,8 @@
    "map": "m08_00_00_00",
    "index": 1,
    "lot": 10302,
-   "flag": 10241,
-   "part": "o0502_0000",
-   "flag_unverified": true
+   "flag": 14051,
+   "part": "o0502_0000"
   },
   "groups": [
    "Tutorial",
@@ -11643,9 +11641,8 @@
    "map": "m08_01_00_00",
    "index": 0,
    "lot": 10330,
-   "flag": 10752,
-   "part": "o0500_1000",
-   "flag_unverified": true
+   "flag": 14310,
+   "part": "o0500_1000"
   },
   "groups": [
    "Tutorial",
@@ -11667,9 +11664,8 @@
    "map": "m08_01_00_00",
    "index": 1,
    "lot": 10331,
-   "flag": 10753,
-   "part": "o0502_1000",
-   "flag_unverified": true
+   "flag": 14311,
+   "part": "o0502_1000"
   },
   "groups": [
    "Tutorial",
@@ -11691,9 +11687,8 @@
    "map": "m08_01_00_00",
    "index": 2,
    "lot": 10332,
-   "flag": 10754,
-   "part": "o0503_1000",
-   "flag_unverified": true
+   "flag": 14312,
+   "part": "o0503_1000"
   },
   "groups": [
    "Tutorial",
@@ -11715,9 +11710,8 @@
    "map": "m08_02_00_00",
    "index": 0,
    "lot": 10360,
-   "flag": 11264,
-   "part": "o0503_0002",
-   "flag_unverified": true
+   "flag": 14390,
+   "part": "o0503_0002"
   },
   "groups": [
    "Tutorial",
@@ -11739,9 +11733,8 @@
    "map": "m08_02_00_00",
    "index": 1,
    "lot": 10362,
-   "flag": 11265,
-   "part": "o0503_0003",
-   "flag_unverified": true
+   "flag": 14391,
+   "part": "o0503_0003"
   },
   "groups": [
    "Tutorial",
@@ -11763,9 +11756,8 @@
    "map": "m08_02_00_00",
    "index": 2,
    "lot": 10361,
-   "flag": 11266,
-   "part": "o0500_0001",
-   "flag_unverified": true
+   "flag": 14392,
+   "part": "o0500_0001"
   },
   "groups": [
    "Tutorial",
@@ -11787,9 +11779,8 @@
    "map": "m08_02_00_00",
    "index": 3,
    "lot": 10367,
-   "flag": 11267,
-   "part": "o0502_0001",
-   "flag_unverified": true
+   "flag": 14393,
+   "part": "o0502_0001"
   },
   "groups": [
    "Tutorial",
@@ -11811,9 +11802,8 @@
    "map": "m08_02_00_00",
    "index": 4,
    "lot": 10363,
-   "flag": 11268,
-   "part": "o0503_0000",
-   "flag_unverified": true
+   "flag": 14394,
+   "part": "o0503_0000"
   },
   "groups": [
    "Tutorial",
@@ -11835,9 +11825,8 @@
    "map": "m08_02_00_00",
    "index": 5,
    "lot": 10364,
-   "flag": 11269,
-   "part": "o0502_0002",
-   "flag_unverified": true
+   "flag": 14395,
+   "part": "o0502_0002"
   },
   "groups": [
    "Tutorial",
@@ -11859,9 +11848,8 @@
    "map": "m08_02_00_00",
    "index": 6,
    "lot": 10365,
-   "flag": 11270,
-   "part": "o0503_0001",
-   "flag_unverified": true
+   "flag": 14396,
+   "part": "o0503_0001"
   },
   "groups": [
    "Tutorial",
@@ -11883,9 +11871,8 @@
    "map": "m08_02_00_00",
    "index": 7,
    "lot": 10366,
-   "flag": 11271,
-   "part": "o0502_0003",
-   "flag_unverified": true
+   "flag": 14397,
+   "part": "o0502_0003"
   },
   "groups": [
    "Tutorial",

@@ -7,14 +7,15 @@ being played and are swapped on world change (verified on treasure pickups and t
 Everything else (3200-8191, 12288-18047) is global. The world being played is the byte at +0x3cd3. A world's
 number is its map's area (m02_00_00_00 -> 2; the Nexus is 1, the tutorial 8).
 
-The client keeps its own state in the save, in flags nothing uses: 16964-17799 appears in no Lua script (number
-literals, comments stripped), no param's flag field, and no flag call of the eboot with a constant id (DeSAP
-tools/check_free_flags.py); the scripts' computed flags (archstones visited: 10000 + 200 * area + 1979..1983)
-stay below 13584. Kept in the save with the inventory, so the two never disagree:
-  16968-17031  the save's Archipelago identity (64 bits, 0 = a save the client has not claimed)
-  17032-17063  how many received items the game has been given (32 bits)
-  17064-...    one bit per location (in location id order): the game gave this world's item there by itself,
-               so the server's copy of it is not given again
+The client keeps its own state in the save, in world 7's saved block of the 8192-12287 range (+0x2b1c + 6 * 0x200,
+512 bytes). World 7 is the Pantheon (m07 maps), online only: offline it is never loaded, so nothing swaps that
+block or sets its flags. (Global flags that no data or constant mentions are not safe: on 2026-11-21 the game
+overwrote flags 17000-17031 in the tutorial, computed at run time.) Kept in the save with the inventory, so the two
+never disagree:
+  +0x0  u64  the save's Archipelago identity (0 = a save the client has not claimed)
+  +0x8  u32  how many received items the game has been given
+  +0xc  one bit per location (in location id order): the game gave this world's item there by itself, so the
+        server's copy of it is not given again
 """
 
 from __future__ import annotations
@@ -29,14 +30,13 @@ CURRENT_WORLD = 0x3CD3
 FLAG_COUNT = 18048
 SNAPSHOT_SIZE = 0x3D00
 
-IDENTITY_FLAG = 16968
-RECEIVED_FLAG = 17032
-DELIVERED_FLAG = 17064
-FREE_END = 17800  # first flag past the free range
-IDENTITY_OFFSET = IDENTITY_FLAG // 8  # 8 bytes
-RECEIVED_OFFSET = RECEIVED_FLAG // 8  # 4 bytes
-DELIVERED_OFFSET = DELIVERED_FLAG // 8
-assert IDENTITY_FLAG % 8 == 0 and RECEIVED_OFFSET == IDENTITY_OFFSET + 8 and DELIVERED_OFFSET == RECEIVED_OFFSET + 4
+CLIENT_WORLD = 7  # the Pantheon: never loaded offline
+CLIENT_BLOCK = 0x2B1C + (CLIENT_WORLD - 1) * 0x200
+CLIENT_BLOCK_SIZE = 0x200
+IDENTITY_OFFSET = CLIENT_BLOCK  # 8 bytes
+RECEIVED_OFFSET = CLIENT_BLOCK + 8  # 4 bytes
+DELIVERED_OFFSET = CLIENT_BLOCK + 12
+DELIVERED_BITS = (CLIENT_BLOCK_SIZE - 12) * 8
 
 
 def world_of_map(map_id: str) -> int:
@@ -89,6 +89,6 @@ class Flags:
 
 def delivered_bit(index: int) -> tuple[int, int]:
     """(byte offset from the flag manager, bit) of location `index`'s delivered bit."""
-    if not 0 <= index < (FREE_END - DELIVERED_FLAG):
-        raise ValueError(f"location index {index} past the free flags")
+    if not 0 <= index < DELIVERED_BITS:
+        raise ValueError(f"location index {index} past the client's block")
     return DELIVERED_OFFSET + index // 8, index % 8

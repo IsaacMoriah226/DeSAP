@@ -12,8 +12,8 @@ from NetUtils import NetworkItem
 from ..client import addresses as A
 from ..client import params
 from ..client.context import DemonsSoulsContext
-from ..client.flags import (CURRENT_WORLD, DELIVERED_FLAG, FREE_END, IDENTITY_OFFSET, RECEIVED_OFFSET, SNAPSHOT_SIZE,
-                            Flags, delivered_bit, flag_location)
+from ..client.flags import (CLIENT_BLOCK, CLIENT_BLOCK_SIZE, CURRENT_WORLD, DELIVERED_BITS, IDENTITY_OFFSET,
+                            RECEIVED_OFFSET, SNAPSHOT_SIZE, Flags, delivered_bit, flag_location)
 from ..client.game import GameState, InventoryEntry
 from ..client.gamecall import DATA, build_stub
 from ..client.placement import (CHECKS, LOCATION_BY_CODE, LOCATION_INDEX, LOCK_CODES, PLACEHOLDER, game_item,
@@ -77,7 +77,7 @@ class FakeGame:
         self.flags[offset] |= 1 << bit
 
     def clear_client_flags(self) -> None:
-        for i in range(IDENTITY_OFFSET, FREE_END // 8):
+        for i in range(CLIENT_BLOCK, CLIENT_BLOCK + CLIENT_BLOCK_SIZE):
             self.flags[i] = 0
 
     def give_items(self, items):
@@ -343,7 +343,10 @@ class HelperTest(unittest.TestCase):
             self.assertEqual(seen.setdefault(key, spot), spot, f"{location.name}: flag shared with another treasure")
 
     def test_delivered_bits_fit(self):
-        self.assertLess(DELIVERED_FLAG + len(LOCATION_INDEX), FREE_END)
+        self.assertLessEqual(len(LOCATION_INDEX), DELIVERED_BITS)
+        # the block is world 7's saved block of the world flag range, inside the snapshot
+        self.assertEqual(flag_location(8192, 7, 1)[0], CLIENT_BLOCK)
+        self.assertLessEqual(CLIENT_BLOCK + CLIENT_BLOCK_SIZE, SNAPSHOT_SIZE)
 
     def test_flag_location(self):
         self.assertEqual(flag_location(10242, 2, 2), (0x500, 2))  # verified pickups (docs/FINDINGS.md)

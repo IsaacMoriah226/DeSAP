@@ -23,8 +23,8 @@ them by hand in test sessions.
 
 ## How it works
 
-- **The save.** The client keeps three things in event flags nothing in the game uses (16964-17799, checked by
-  `tools/check_free_flags.py`), so they are saved with the character and roll back with it:
+- **The save.** The client keeps three things in world 7's saved flag block (the Pantheon, online only, never
+  loaded offline), so they are saved with the character and roll back with it:
   - an identity, a hash of (seed, team, slot);
   - how many received items the game has been given;
   - one bit per location for "the game gave this world's item here itself".
@@ -78,20 +78,15 @@ Details of each test: `docs/FINDINGS.md` (test sessions 2026-11-20 and 2026-11-2
 | Title screen reads as not in game | verified |
 | Item text of any length (name, info, caption) | verified (name); info and caption set the same way |
 | Item icon | **not possible** through the param (the remake draws icons by item id) |
-| Treasure pickup flags | **fixed**: measured in game for every world but the tutorial (13 tutorial locations are not reported until measured) |
-| Placeholder goods 2055 stacks (several other-world items on one corpse each pop up) | **to test** |
-| Whole client against a real seed | verified up to the first courtyard of 1-1 (claim, placement, own and other-world pickups, removal); the treasure flag fix and the new placeholder: **to test** |
+| Treasure pickup flags | **fixed**: measured in game for all 521 treasure locations |
+| Client state in the save | moved to world 7's saved block (global "free" flags were overwritten by the game); verified |
+| Placeholder goods 2055 (stacks: one popup per other-world item) | verified |
+| Whole client against a real seed | verified through 1-1's first courtyard: claim, placement, correct checks, own items once, auto-upgrade (placed and received), world lock and unlock |
 
-## Next test session
+## Still to play through
 
-1. A new character: in the tutorial (played normally, not warped in), `tools/map_treasures.py` to measure the
-   tutorial's 13 treasure flags.
-2. The whole client against a local two-player seed: the 1-1 pickups that were reported wrongly (Mail Breaker
-   corpse, barrels corpse) and a corpse with several other-world items (several "Archipelago Item" popups, all
-   removed).
-3. A received weapon with auto-upgrade; a received world lock opening its part.
-
-`tools/session.py` must not run while the client runs (both drive the same game-call stub).
+A longer real playthrough: boss souls and scripted rewards, one-time enemy drops, shop purchases through the
+client, DeathLink with a second player, the goal. `tools/session.py` should not run while the client runs.
 
 ## Planned
 
