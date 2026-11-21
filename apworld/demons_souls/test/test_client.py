@@ -55,6 +55,8 @@ class FakeGame:
         self.live = SimpleNamespace(path=None)
         self.memory = object()
         self.attached = True
+        self.exe_path = ""
+        self.restored = 0
 
     # what the context calls
     def attach(self): pass
@@ -105,6 +107,10 @@ class FakeGame:
 
     def rows_intact(self, table, writes):
         return True
+
+    def restore_rows(self):
+        self.restored += 1
+        return 1
 
     def find_text_entries(self, keys):
         return {key: [i] for i, key in enumerate(keys)}
@@ -191,6 +197,20 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.game.given, [])
         self.assertEqual(Flags(bytes(self.game.flags)).identity, 12345)
 
+    def test_launcher_places_at_the_title_and_undoes_it_for_another_save(self):
+        self.ctx.launcher_mode = True
+        self.scout({TREASURE: (CLUB, 1)})
+        self.game.in_game = False  # the title screen
+        self.tick()
+        self.assertTrue(self.ctx.placed)
+        self.assertTrue(self.ctx.area_safe)
+        self.game.in_game = True
+        self.game.enter(GATES_UID)
+        self.game.write_identity(12345)  # another seed's save
+        self.tick()
+        self.assertFalse(self.ctx.placed)
+        self.assertEqual(self.game.restored, 1)
+
     # --- placement ----------------------------------------------------------------------------------------------
 
     def test_placement(self):
@@ -251,19 +271,21 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.assertIn(TREASURE, self.ctx.checked_locations)
         self.assertFalse(Flags(bytes(self.game.flags)).delivered(LOCATION_INDEX[TREASURE]))
 
-    def test_items_from_others_one_per_tick_and_count_kept(self):
+    def test_items_from_others_batched_and_count_kept(self):
         self.placed_game()
         self.receive(GRASS, 1234, OTHER_PLAYER)
         self.receive(CLUB, 1235, OTHER_PLAYER)
         self.receive(LOCK_CODES["1-2 The Lord's Path"], 1236, OTHER_PLAYER)
+        for _ in range(5):
+            self.receive(GRASS, 2000, OTHER_PLAYER)
         self.tick()
-        self.assertEqual(self.game.given, [game_item(GRASS)])
+        self.assertEqual(self.game.given, [game_item(GRASS), game_item(CLUB)] + [game_item(GRASS)] * 2)
+        self.assertEqual(Flags(bytes(self.game.flags)).received, 5)  # (the lock took a place, nothing to give)
         self.tick()
+        self.assertEqual(len(self.game.given), 7)
+        self.assertEqual(Flags(bytes(self.game.flags)).received, 8)
         self.tick()
-        self.assertEqual(self.game.given, [game_item(GRASS), game_item(CLUB)])
-        self.assertEqual(Flags(bytes(self.game.flags)).received, 3)
-        self.tick()
-        self.assertEqual(len(self.game.given), 2)
+        self.assertEqual(len(self.game.given), 7)
 
     def test_placeholders_are_removed(self):
         self.placed_game()

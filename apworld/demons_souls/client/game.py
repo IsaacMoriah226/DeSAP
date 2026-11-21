@@ -59,6 +59,8 @@ class DemonsSoulsGame:
         self.memory: GameMemory | None = None
         self.call: GameCall | None = None
         self.tables: dict[str, list[params.Table]] = {}
+        self.originals: dict[int, bytes] = {}  # address -> the bytes there before the first rewrite
+        self.exe_path = ""
 
     # --- attaching ---------------------------------------------------------------------------------------------
 
@@ -85,6 +87,11 @@ class DemonsSoulsGame:
             raise
         self.memory, self.call = memory, call
         self.tables = {}
+        self.originals = {}
+        try:
+            self.exe_path = memory.image_path()
+        except OSError:
+            self.exe_path = ""
 
     def detach(self) -> None:
         if self.memory is not None:
@@ -96,6 +103,7 @@ class DemonsSoulsGame:
             self.memory.close()
         self.memory = self.call = None
         self.tables = {}
+        self.originals = {}
 
     # --- reading -------------------------------------------------------------------------------------------------
 
@@ -197,9 +205,19 @@ class DemonsSoulsGame:
             for row_id, row_writes in writes.items():
                 row = copy.row(row_id)
                 if row is not None:
+                    for offset, data in row_writes.items():
+                        self.originals.setdefault(row + offset, self.memory.read(row + offset, len(data)))
                     params.write_row(self.memory, row, row_writes)
                     done += 1
         return done
+
+    def restore_rows(self) -> int:
+        """Put back every param byte the client rewrote (the vanilla game again)."""
+        for address, data in self.originals.items():
+            self.memory.write(address, data)
+        restored = len(self.originals)
+        self.originals = {}
+        return restored
 
     def rows_intact(self, table: str, writes: dict[int, dict[int, bytes]]) -> bool:
         """Whether the patch is still in place (the game could reload its params, e.g. on returning to the title)."""

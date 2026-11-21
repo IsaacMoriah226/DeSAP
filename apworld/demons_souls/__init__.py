@@ -35,11 +35,11 @@ _CLASSIFICATION = {
 
 def launch_client(*args: str) -> None:
     from .client import launch
-    launch_component(launch, name="Demon's Souls Client", args=args)
+    launch_component(launch, name="Demon's Souls Launcher", args=args)
 
 
-components.append(Component("Demon's Souls Client", func=launch_client, component_type=Type.CLIENT, game_name=GAME,
-                            supports_uri=True, description="Connects Demon's Souls (KytyPS5) to Archipelago."))
+components.append(Component("Demon's Souls Launcher", func=launch_client, component_type=Type.CLIENT, game_name=GAME,
+                            supports_uri=True, description="Starts Demon's Souls (KytyPS5) for Archipelago and connects it."))
 
 
 def part_requirements(code: str) -> tuple[str, ...]:

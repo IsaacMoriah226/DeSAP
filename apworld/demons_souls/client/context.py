@@ -31,6 +31,8 @@ from ..parts import PARTS
 from . import addresses as A
 from . import params
 from .game import DemonsSoulsGame, GameState, GameVersionError
+from .profile import Emulator, Profile, ProfileError
+from .settings import LauncherSettings
 from .placement import (CHECKS, GOAL_FLAG, GOAL_WORLD, LOCATION_BY_CODE, LOCATION_INDEX, LOCK_CODES, PLACEHOLDER,
                         PLACEHOLDER_TEXTS, game_item, has_lot, shared, upgraded_weapon)
 
@@ -38,7 +40,7 @@ GAME = "Demon's Souls Remake"
 GAME_TICK = 0.25
 ATTACH_RETRY = 5.0
 KICK_RETRY = 15.0
-GIVE_PER_TICK = 1  # items per game call (one popup each; raise once batching is checked in game)
+GIVE_PER_TICK = 4  # items per game call (one popup each; batches of 2 and 8 verified in game)
 PART_OF_MAP = {part.map: part for part in PARTS}
 
 
@@ -95,6 +97,11 @@ class DemonsSoulsContext(CommonContext):
 
     def __init__(self, server_address: str | None, password: str | None):
         super().__init__(server_address, password)
+        self.settings = LauncherSettings.load()
+        self.profile = Profile()
+        self.emulator_process = None
+        self.launch_status = ""
+        self.last_backup = 0.0
         self.bridge = DemonsSoulsGame(default_live_file())
         self.slot_data: dict[str, Any] = {}
         self.scouted: dict[int, NetworkItem] = {}
@@ -119,6 +126,7 @@ class DemonsSoulsContext(CommonContext):
         self.last_kick = 0.0
         self.last_attach_try = 0.0
         self.last_message = ""
+        self.launcher_mode = False  # the emulator runs from the Archipelago profile: every save there is ours
 
     # --- server ---------------------------------------------------------------------------------------------------
 
@@ -163,13 +171,8 @@ class DemonsSoulsContext(CommonContext):
         return int.from_bytes(hashlib.sha256(text).digest()[:8], "little") | 1
 
     def run_gui(self):
-        from kvui import GameManager
-
-        class DemonsSoulsManager(GameManager):
-            logging_pairs = [("Client", "Archipelago")]
-            base_title = "Archipelago Demon's Souls Client"
-
-        self.ui = DemonsSoulsManager(self)
+        from .gui import make_manager
+        self.ui = make_manager(self)
         self.ui_task = asyncio.create_task(self.ui.async_run(), name="UI")
 
     def game_summary(self) -> str:
@@ -204,19 +207,25 @@ class DemonsSoulsContext(CommonContext):
             self.last_attach_try = time.monotonic()
             try:
                 self.bridge.attach()
-                self.say("Attached to the emulator.")
+                self.launcher_mode = self.in_profile(self.bridge.exe_path)
+                if self.launcher_mode:
+                    self.bridge.live.path = self.profile.live_file
+                self.say("Attached to the emulator" + (" (Archipelago profile)." if self.launcher_mode else "."))
             except LookupError:
                 self.say("Waiting for kyty_emulator.exe ...")
                 return out
             except GameVersionError as error:
                 self.say(str(error))
                 return out
+        self.periodic_backup()
         if not self.slot or self.server_seed_name is None:
             return out
         state = self.bridge.state()
         if not state.in_game:
             # a loading screen or the title: the next area loads with the current lots (another save may be loaded
             # next; check_save tells)
+            if self.launcher_mode:
+                self.place(view)  # ready before a save is even loaded (the profile holds Archipelago saves only)
             if self.placed:
                 self.area_safe = True
             return out
@@ -242,6 +251,9 @@ class DemonsSoulsContext(CommonContext):
         self.save_ok = False
         self.game_checked = None  # another save: what its flags say is not this slot's
         self.last_deaths = -1
+        if self.placed and not (identity == 0 and (state.area == A.TUTORIAL_AREA or self.claim_requested)):
+            self.bridge.restore_rows()  # not this slot's save: the vanilla items again
+            self.placed = False
         if identity == 0 and (state.area == A.TUTORIAL_AREA or self.claim_requested):
             self.bridge.clear_client_flags()
             self.bridge.write_identity(self.identity)
@@ -295,6 +307,86 @@ class DemonsSoulsContext(CommonContext):
         self.say("Items placed. Pickups lying in the area you are in change after its next loading screen (die, "
                  "warp, or quit and continue); bosses, scripted rewards and enemy drops already give their new items.")
 
+    def in_profile(self, exe_path: str) -> bool:
+        try:
+            return Path(exe_path).resolve().parent == self.profile.root.resolve()
+        except OSError:
+            return False
+
+    def periodic_backup(self) -> None:
+        minutes = self.settings.backup_minutes
+        if self.launcher_mode and minutes > 0 and time.monotonic() - self.last_backup > minutes * 60:
+            self.last_backup = time.monotonic()
+            try:
+                if self.profile.backup():
+                    logger.debug("Saves backed up.")
+            except OSError as error:
+                logger.warning(f"Save backup failed: {error}")
+
+    async def launch(self) -> None:
+        """The launcher's Play button: connect, prepare the profile, back up its saves, start the game."""
+        s = self.settings
+        s.save()
+        emulator = Emulator(Path(s.kyty_launcher))
+        problems = emulator.check() if s.kyty_launcher else ["choose KytyLauncher.exe first"]
+        if problems:
+            self.launch_status = "Cannot start: " + "; ".join(problems)
+            logger.error(self.launch_status)
+            return
+        if self.bridge.attached:
+            self.launch_status = "The game is already running."
+            return
+        try:
+            from .memory import find_pid
+            find_pid()
+            self.launch_status = "Another KytyPS5 is running: close it first."
+            logger.error(self.launch_status)
+            return
+        except LookupError:
+            pass
+        if not (self.server and self.slot and self.auth == s.slot):
+            self.launch_status = f"Connecting to {s.server} as {s.slot} ..."
+            self.username, self.auth = s.slot, None
+            self.password = s.password or None
+            await self.connect(s.server)
+            for _ in range(300):
+                if self.slot and self.scouted:
+                    break
+                await asyncio.sleep(0.1)
+            else:
+                self.launch_status = "Could not connect (check the server, the slot name and the password)."
+                logger.error(self.launch_status)
+                return
+        self.launch_status = "Preparing the Archipelago profile ..."
+        try:
+            await asyncio.to_thread(self.profile.sync, emulator)
+            await asyncio.to_thread(self.profile.backup, "launch")
+            self.bridge.live.path = self.profile.live_file
+            self.emulator_process = await asyncio.to_thread(self.profile.start, emulator)
+        except (ProfileError, OSError) as error:
+            self.launch_status = f"Cannot start: {error}"
+            logger.error(self.launch_status)
+            return
+        self.launch_status = "Starting Demon's Souls ..."
+        logger.info("Starting Demon's Souls in the Archipelago profile; the items are placed at the title screen.")
+
+    def status(self) -> dict:
+        """What the launcher's Play page shows."""
+        state = None
+        if self.bridge.attached:
+            try:
+                state = self.bridge.state()
+            except OSError:
+                state = None
+        return {
+            "connected": bool(self.server and self.slot), "slot": self.player_names.get(self.slot, "") if self.slot else "",
+            "scouted": len(self.scouted), "attached": self.bridge.attached, "launcher_mode": self.launcher_mode,
+            "placed": self.placed, "save_ok": self.save_ok, "save_problem": self.save_problem,
+            "in_game": bool(state and state.in_game), "map": state.map_id if state else "",
+            "checked": len(self.checked_locations), "locations": len(self.checked_locations | self.missing_locations),
+            "received": len(self.items_received), "goal": self.finished_game, "launch": self.launch_status,
+        }
+
     def weapon_rows(self) -> set[int]:
         copies = self.bridge.tables.get("EQUIP_PARAM_WEAPON_ST")
         return set(copies[0].rows) if copies else set()
@@ -302,7 +394,7 @@ class DemonsSoulsContext(CommonContext):
     def build_writes(self, view: View) -> None:
         rows = self.weapon_rows()
         upgrade = bool(self.slot_data.get("auto_upgrade_weapons")) and bool(rows)
-        held = [e.item_id for e in self.bridge.inventory() if e.category == 0] if upgrade else []
+        held = self.held_weapons() if upgrade else []
         self.lot_writes, self.shop_writes, self.physical = {}, {}, set()
         for code, item in view.scouted.items():
             location = LOCATION_BY_CODE.get(code)
@@ -344,7 +436,7 @@ class DemonsSoulsContext(CommonContext):
         if given >= len(view.items):
             return
         rows = self.weapon_rows() if self.slot_data.get("auto_upgrade_weapons") else set()
-        held = [e.item_id for e in self.bridge.inventory() if e.category == 0] if rows else []
+        held = self.held_weapons() if rows else []
         batch: list[tuple[int, int, int]] = []
         index = given
         while index < len(view.items) and len(batch) < GIVE_PER_TICK:
@@ -362,6 +454,12 @@ class DemonsSoulsContext(CommonContext):
         if batch:
             self.bridge.give_items(batch)
         self.bridge.write_received(index)
+
+    def held_weapons(self) -> list[int]:
+        try:
+            return [e.item_id for e in self.bridge.inventory() if e.category == 0]
+        except (OSError, LookupError):
+            return []  # (no character loaded: the title screen)
 
     def clean_placeholders(self) -> None:
         count = sum(e.count for e in self.bridge.inventory() if (e.category, e.item_id) == PLACEHOLDER[:2])
