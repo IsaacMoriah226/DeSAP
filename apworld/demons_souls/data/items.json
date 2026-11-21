@@ -2304,6 +2304,17 @@
   ]
  },
  {
+  "name": "New Moon Grass",
+  "code": 3300100401,
+  "kind": "goods",
+  "game_id": 1004,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
   "name": "New Moon Grass x2",
   "code": 3300100402,
   "kind": "goods",

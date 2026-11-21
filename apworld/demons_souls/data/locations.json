@@ -13257,7 +13257,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Binded Hood",
-  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "description": "Executioner Miralda, alive at the top of the pit steps (right side) by the execution grounds stairwell; only at pure white world tendency. Her body stays until looted.",
   "requires": [],
   "missable": "pure white only (tendency-only enemy)",
   "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
@@ -13283,7 +13283,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Binded Cross",
-  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "description": "Executioner Miralda, alive at the top of the pit steps (right side) by the execution grounds stairwell; only at pure white world tendency. Her body stays until looted.",
   "requires": [],
   "missable": "pure white only (tendency-only enemy)",
   "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
@@ -13309,7 +13309,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Binded Gloves",
-  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "description": "Executioner Miralda, alive at the top of the pit steps (right side) by the execution grounds stairwell; only at pure white world tendency. Her body stays until looted.",
   "requires": [],
   "missable": "pure white only (tendency-only enemy)",
   "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
@@ -13335,7 +13335,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Binded Boots",
-  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "description": "Executioner Miralda, alive at the top of the pit steps (right side) by the execution grounds stairwell; only at pure white world tendency. Her body stays until looted.",
   "requires": [],
   "missable": "pure white only (tendency-only enemy)",
   "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
@@ -13361,7 +13361,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Master's Ring",
-  "description": "Executioner Miralda's body in the stairwell building of the execution grounds. She is there only at pure white world tendency; her corpse stays (and can be looted later) until you examine it.",
+  "description": "Executioner Miralda, alive at the top of the pit steps (right side) by the execution grounds stairwell; only at pure white world tendency. Her body stays until looted.",
   "requires": [],
   "missable": "pure white only (tendency-only enemy)",
   "tendency": "world >= +180 (pure white), QWC 20500 (she appears); the execution grounds door also opens at pure white (QWC 20600, event 200)",
@@ -13413,7 +13413,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Eternal Warrior's Ring",
-  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "description": "Old King Doran in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Below 80% HP he lets you take Demonbrandt; below 60% he fights again. Killing him does not lose the sword. His body stays until looted.",
   "requires": [],
   "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
   "tendency": "",
@@ -13439,7 +13439,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Ancient King's Mask",
-  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "description": "Old King Doran in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Below 80% HP he lets you take Demonbrandt; below 60% he fights again. Killing him does not lose the sword. His body stays until looted.",
   "requires": [],
   "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
   "tendency": "",
@@ -13465,7 +13465,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Ancient King's Breastplate",
-  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "description": "Old King Doran in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Below 80% HP he lets you take Demonbrandt; below 60% he fights again. Killing him does not lose the sword. His body stays until looted.",
   "requires": [],
   "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
   "tendency": "",
@@ -13491,7 +13491,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Ancient King's Gauntlets",
-  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "description": "Old King Doran in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Below 80% HP he lets you take Demonbrandt; below 60% he fights again. Killing him does not lose the sword. His body stays until looted.",
   "requires": [],
   "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
   "tendency": "",
@@ -13517,7 +13517,7 @@
   "part": "1-1",
   "kind": "enemy",
   "vanilla_item": "Ancient King's Greaves",
-  "description": "Old King Doran's body in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Damage him below 80% and he lets you take Demonbrandt; keep attacking (about 50%) and he fights back. Killing him does not lose the sword. The corpse stays until looted.",
+  "description": "Old King Doran in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Below 80% HP he lets you take Demonbrandt; below 60% he fights again. Killing him does not lose the sword. His body stays until looted.",
   "requires": [],
   "missable": "needs the Mausoleum Key, an Ostrava item (KT gift or his drop) that stays vanilla under the current design and is lost for the playthrough if Ostrava dies unlooted (same as GB: Demonbrandt)",
   "tendency": "",
@@ -13565,6 +13565,33 @@
   ]
  },
  {
+  "name": "LP 1-2: New Moon Grass - prison, miniboss drop",
+  "code": 4201005602,
+  "part": "1-2",
+  "kind": "enemy",
+  "vanilla_item": "New Moon Grass",
+  "description": "The Fat Official inside the prison, who also drops the Bloody Iron Key.",
+  "requires": [
+   "Iron Key Ring"
+  ],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m02_01_00_00",
+   "flag": 560,
+   "lot": 220080,
+   "entity": 115,
+   "corpse_flag": 15622,
+   "detect_flag": 15622,
+   "npc_param": null,
+   "host_only": false
+  },
+  "groups": [
+   "1-2",
+   "Enemy Drops"
+  ]
+ },
+ {
   "name": "IW 1-3: Iron Key Ring - after first fog, miniboss drop",
   "code": 4202012800,
   "part": "1-3",
@@ -13590,12 +13617,64 @@
   ]
  },
  {
+  "name": "IW 1-3: New Moon Grass - after first fog, miniboss drop",
+  "code": 4202012802,
+  "part": "1-3",
+  "kind": "enemy",
+  "vanilla_item": "New Moon Grass",
+  "description": "The Fat Official in the yard right after the first fog, who also drops the Iron Key Ring.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m02_02_00_00",
+   "flag": 1280,
+   "lot": 230090,
+   "entity": 451,
+   "corpse_flag": 15621,
+   "detect_flag": 15621,
+   "npc_param": null,
+   "host_only": false,
+   "shared_lot": true
+  },
+  "groups": [
+   "1-3",
+   "Enemy Drops"
+  ]
+ },
+ {
+  "name": "IW 1-3: New Moon Grass - by gate lever, miniboss drop",
+  "code": 4202012812,
+  "part": "1-3",
+  "kind": "enemy",
+  "vanilla_item": "New Moon Grass",
+  "description": "The Fat Official by the gate lever, who also drops the Official's Cap.",
+  "requires": [],
+  "missable": "",
+  "tendency": "",
+  "game": {
+   "map": "m02_02_00_00",
+   "flag": 1281,
+   "lot": 230090,
+   "entity": 452,
+   "corpse_flag": 15620,
+   "detect_flag": 15620,
+   "npc_param": null,
+   "host_only": false,
+   "shared_lot": true
+  },
+  "groups": [
+   "1-3",
+   "Enemy Drops"
+  ]
+ },
+ {
   "name": "IW 1-3: Official's Cap - by gate lever, miniboss drop",
   "code": 4202012810,
   "part": "1-3",
   "kind": "enemy",
   "vanilla_item": "Official's Cap",
-  "description": "The Fat Official who shut the gate in the opening cutscene, waiting down the stairs from the yard before lever, next to the lever that reopens the closed gate. Loot his body; it stays until looted.",
+  "description": "The Fat Official who shut the gate in the opening cutscene, waiting at the bottom of the stairs below the Iron Key Ring yard, next to the lever that reopens that gate. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -13912,7 +13991,7 @@
   ]
  },
  {
-  "name": "SS 5-2: Dull Gold Helm - second swamp islet, miniboss drop",
+  "name": "SS 5-2: Dull Gold Helm - second swamp islet, mob drop",
   "code": 4501007700,
   "part": "5-2",
   "kind": "enemy",
@@ -13937,7 +14016,7 @@
   ]
  },
  {
-  "name": "SS 5-2: Dull Gold Armor - second swamp islet, miniboss drop",
+  "name": "SS 5-2: Dull Gold Armor - second swamp islet, mob drop",
   "code": 4501007701,
   "part": "5-2",
   "kind": "enemy",
@@ -13962,7 +14041,7 @@
   ]
  },
  {
-  "name": "SS 5-2: Dull Gold Gauntlets - second swamp islet, miniboss drop",
+  "name": "SS 5-2: Dull Gold Gauntlets - second swamp islet, mob drop",
   "code": 4501007702,
   "part": "5-2",
   "kind": "enemy",
@@ -13987,7 +14066,7 @@
   ]
  },
  {
-  "name": "SS 5-2: Dull Gold Leggings - second swamp islet, miniboss drop",
+  "name": "SS 5-2: Dull Gold Leggings - second swamp islet, mob drop",
   "code": 4501007703,
   "part": "5-2",
   "kind": "enemy",
@@ -14012,7 +14091,7 @@
   ]
  },
  {
-  "name": "SS 5-2: Shaman's Garb - lone shaman platform, miniboss drop",
+  "name": "SS 5-2: Shaman's Garb - lone shaman platform, mob drop",
   "code": 4501007751,
   "part": "5-2",
   "kind": "enemy",
@@ -14037,7 +14116,7 @@
   ]
  },
  {
-  "name": "SS 5-2: Shaman's Armbands - lone shaman platform, miniboss drop",
+  "name": "SS 5-2: Shaman's Armbands - lone shaman platform, mob drop",
   "code": 4501007752,
   "part": "5-2",
   "kind": "enemy",
@@ -14062,7 +14141,7 @@
   ]
  },
  {
-  "name": "SS 5-2: Shaman's Tabi - lone shaman platform, miniboss drop",
+  "name": "SS 5-2: Shaman's Tabi - lone shaman platform, mob drop",
   "code": 4501007753,
   "part": "5-2",
   "kind": "enemy",
@@ -14701,7 +14780,7 @@
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Hardstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "description": "The sack-carrying miner among the six miners in the second room of the miners' path (the room whose far end has the dog jars), before the ore room. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14726,7 +14805,7 @@
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Hardstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "description": "The sack-carrying miner among the six miners in the second room of the miners' path (the room whose far end has the dog jars), before the ore room. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14751,7 +14830,7 @@
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Sharpstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "description": "The sack-carrying miner among the six miners in the second room of the miners' path (the room whose far end has the dog jars), before the ore room. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14776,7 +14855,7 @@
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Sharpstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) in a miner group on the lower miners' path, before the pottery room and the ore room. Its corpse stays until looted.",
+  "description": "The sack-carrying miner among the six miners in the second room of the miners' path (the room whose far end has the dog jars), before the ore room. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14796,12 +14875,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Clearstone Shard - lever gallery, mob drop 1",
+  "name": "SG 2-1: Clearstone Shard - by gate lever, mob drop 1",
   "code": 4600002860,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Clearstone Shard",
-  "description": "A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted.",
+  "description": "The sack-carrying miner in the last group of three miners, right beside the gate lever in the lever gallery. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14821,12 +14900,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Clearstone Shard - lever gallery, mob drop 2",
+  "name": "SG 2-1: Clearstone Shard - by gate lever, mob drop 2",
   "code": 4600002861,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Clearstone Shard",
-  "description": "A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted.",
+  "description": "The sack-carrying miner in the last group of three miners, right beside the gate lever in the lever gallery. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14846,12 +14925,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Clearstone Chunk - lever gallery, mob drop",
+  "name": "SG 2-1: Clearstone Chunk - by gate lever, mob drop",
   "code": 4600002862,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Clearstone Chunk",
-  "description": "A sack-carrying Scale Miner (one-time) in the corridors below the crumbling bridge (lever gallery), near where you land. Its corpse stays until looted.",
+  "description": "The sack-carrying miner in the last group of three miners, right beside the gate lever in the lever gallery. His body stays until looted.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14871,12 +14950,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Sharpstone Shard - lever gallery, mob drop 1",
+  "name": "SG 2-1: Sharpstone Shard - above ore room, mob drop 1",
   "code": 4600002880,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Sharpstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted.",
+  "description": "The sack-carrying miner at the end of the lever gallery's east corridor, across the little stone bridge, standing above the ore room.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14896,12 +14975,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Sharpstone Shard - lever gallery, mob drop 2",
+  "name": "SG 2-1: Sharpstone Shard - above ore room, mob drop 2",
   "code": 4600002881,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Sharpstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted.",
+  "description": "The sack-carrying miner at the end of the lever gallery's east corridor, across the little stone bridge, standing above the ore room.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14921,12 +15000,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Large Sharpstone Shard - lever gallery, mob drop",
+  "name": "SG 2-1: Large Sharpstone Shard - above ore room, mob drop",
   "code": 4600002882,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Large Sharpstone Shard",
-  "description": "A sack-carrying Scale Miner (one-time) below the far (east) end of the crumbling bridge, above the ore room; could also be counted as the side tunnel stairs. Its corpse stays until looted.",
+  "description": "The sack-carrying miner at the end of the lever gallery's east corridor, across the little stone bridge, standing above the ore room.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14946,12 +15025,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Hardstone Shard - lever gallery, mob drop 1",
+  "name": "SG 2-1: Hardstone Shard - lever corridor, first trio, mob drop 1",
   "code": 4600002920,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Hardstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted.",
+  "description": "The sack-carrying miner in the first group of three miners in the corridor leading to the gate lever (the second group stands at the lever).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14971,12 +15050,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Hardstone Shard - lever gallery, mob drop 2",
+  "name": "SG 2-1: Hardstone Shard - lever corridor, first trio, mob drop 2",
   "code": 4600002921,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Hardstone Shard x2",
-  "description": "A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted.",
+  "description": "The sack-carrying miner in the first group of three miners in the corridor leading to the gate lever (the second group stands at the lever).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -14996,12 +15075,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Large Hardstone Shard - lever gallery, mob drop",
+  "name": "SG 2-1: Large Hardstone Shard - lever corridor, first trio, mob drop",
   "code": 4600002922,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Large Hardstone Shard",
-  "description": "A sack-carrying Scale Miner (one-time) in a miner group of the lever gallery corridors. Its corpse stays until looted.",
+  "description": "The sack-carrying miner in the first group of three miners in the corridor leading to the gate lever (the second group stands at the lever).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -15028,7 +15107,7 @@
   "vanilla_item": "Official's Gloves",
   "description": "The fire-casting Fat Official on the platform at the far end of the crumbling bridge. The enemy respawns, but this item drops only once.",
   "requires": [],
-  "missable": "",
+  "missable": "the one-time drop may be lost if not looted",
   "tendency": "",
   "game": {
    "map": "m06_00_00_00",
@@ -15042,7 +15121,8 @@
   },
   "groups": [
    "2-1",
-   "Enemy Drops"
+   "Enemy Drops",
+   "Missable"
   ]
  },
  {
@@ -15053,7 +15133,7 @@
   "vanilla_item": "Official's Leggings",
   "description": "The Fat Official behind the explosive barrels, up the stairs from the cooled magma pit, before the fog to the boss elevator. The enemy respawns, but this item drops only once.",
   "requires": [],
-  "missable": "",
+  "missable": "the one-time drop may be lost if not looted",
   "tendency": "",
   "game": {
    "map": "m06_00_00_00",
@@ -15067,7 +15147,8 @@
   },
   "groups": [
    "2-1",
-   "Enemy Drops"
+   "Enemy Drops",
+   "Missable"
   ]
  },
  {
@@ -15097,7 +15178,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Dragonstone Chunk - lizard nest, first phantom drop",
+  "name": "TC 2-2: Dragonstone Chunk - lizard nest, phantom drop",
   "code": 4601008000,
   "part": "2-2",
   "kind": "enemy",
@@ -15123,7 +15204,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Stone of Ephemeral Eyes - lizard nest, first phantom drop",
+  "name": "TC 2-2: Stone of Ephemeral Eyes - lizard nest, phantom drop 1",
   "code": 4601008002,
   "part": "2-2",
   "kind": "enemy",
@@ -15149,7 +15230,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Clearstone Chunk - lizard nest, second phantom drop",
+  "name": "TC 2-2: Clearstone Chunk - lizard nest, phantom drop",
   "code": 4601008020,
   "part": "2-2",
   "kind": "enemy",
@@ -15175,7 +15256,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Stone of Ephemeral Eyes - lizard nest, second phantom drop",
+  "name": "TC 2-2: Stone of Ephemeral Eyes - lizard nest, phantom drop 2",
   "code": 4601008022,
   "part": "2-2",
   "kind": "enemy",

@@ -299,8 +299,50 @@ OVERRIDES: dict[str, dict] = {
         'TC: Stone of Ephemeral Eyes - lizard nest, second phantom drop',
     )},
     # The lone Shaman stands on the low platform below the west boardwalk (valley review).
-    **{f"SS: {piece} - west boardwalk, miniboss drop": {"name": f"SS: {piece} - lone shaman platform, miniboss drop"}
+    **{f"SS: {piece} - west boardwalk, miniboss drop": {"name": f"SS: {piece} - lone shaman platform, mob drop"}
        for piece in ("Shaman's Garb", "Shaman's Armbands", "Shaman's Tabi")},
+    # --- one-time enemies: review (work/research/review/unique_enemies.json) ---
+    **{f"GB: {piece} - mausoleum, miniboss drop": {"description": 'Old King Doran in the Mausoleum (door behind the Red Eye Knight, needs the Mausoleum Key). Below 80% HP he lets you take Demonbrandt; below 60% he fights again. Killing him does not lose the sword. His body stays until looted.'}
+       for piece in ("Eternal Warrior's Ring", "Ancient King's Mask", "Ancient King's Breastplate",
+                     "Ancient King's Gauntlets", "Ancient King's Greaves")},
+    **{f"GB: {piece} - execution grounds stairwell, miniboss drop": {"description": 'Executioner Miralda, alive at the top of the pit steps (right side) by the execution grounds stairwell; only at pure white world tendency. Her body stays until looted.'}
+       for piece in ("Binded Hood", "Binded Cross", "Binded Gloves", "Binded Boots", "Master's Ring")},
+    "IW: Official's Cap - by gate lever, miniboss drop": {
+        "description": "The Fat Official who shut the gate in the opening cutscene, waiting at the bottom of the "
+                       "stairs below the Iron Key Ring yard, next to the lever that reopens that gate. His body "
+                       "stays until looted."},
+    # Sack miners placed against the map and the wiki by the review.
+    **{name: {"description": "The sack-carrying miner among the six miners in the second room of the miners' path "
+                             "(the room whose far end has the dog jars), before the ore room. His body stays until "
+                             "looted."}
+       for name in ("SG: Hardstone Shard - miners' path, mob drop 1", "SG: Hardstone Shard - miners' path, mob drop 2",
+                    "SG: Sharpstone Shard - miners' path, mob drop 1", "SG: Sharpstone Shard - miners' path, mob drop 2")},
+    **{old: {"name": new, "description": "The sack-carrying miner in the last group of three miners, right beside "
+                                         "the gate lever in the lever gallery. His body stays until looted."}
+       for old, new in (("SG: Clearstone Shard - lever gallery, mob drop 1", "SG: Clearstone Shard - by gate lever, mob drop 1"),
+                        ("SG: Clearstone Shard - lever gallery, mob drop 2", "SG: Clearstone Shard - by gate lever, mob drop 2"),
+                        ("SG: Clearstone Chunk - lever gallery, mob drop", "SG: Clearstone Chunk - by gate lever, mob drop"))},
+    **{old: {"name": new, "description": "The sack-carrying miner in the first group of three miners in the corridor "
+                                         "leading to the gate lever (the second group stands at the lever)."}
+       for old, new in (("SG: Hardstone Shard - lever gallery, mob drop 1", "SG: Hardstone Shard - lever corridor, first trio, mob drop 1"),
+                        ("SG: Hardstone Shard - lever gallery, mob drop 2", "SG: Hardstone Shard - lever corridor, first trio, mob drop 2"),
+                        ("SG: Large Hardstone Shard - lever gallery, mob drop", "SG: Large Hardstone Shard - lever corridor, first trio, mob drop"))},
+    **{old: {"name": new, "description": "The sack-carrying miner at the end of the lever gallery's east corridor, "
+                                         "across the little stone bridge, standing above the ore room."}
+       for old, new in (("SG: Sharpstone Shard - lever gallery, mob drop 1", "SG: Sharpstone Shard - above ore room, mob drop 1"),
+                        ("SG: Sharpstone Shard - lever gallery, mob drop 2", "SG: Sharpstone Shard - above ore room, mob drop 2"),
+                        ("SG: Large Sharpstone Shard - lever gallery, mob drop", "SG: Large Sharpstone Shard - above ore room, mob drop"))},
+    # Whether these lots' one-time flags are set on the kill or on the pickup is unverified: if on the kill, an
+    # unlooted drop is lost.
+    "SG: Official's Gloves - Fat Official platform, miniboss drop": {"missable": "the one-time drop may be lost if not looted"},
+    "SG: Official's Leggings - barrel room, miniboss drop": {"missable": "the one-time drop may be lost if not looted"},
+    # Ordinary-looking enemies: "mob drop", like the sack miners.
+    **{f"SS: {piece} - second swamp islet, miniboss drop": {"name": f"SS: {piece} - second swamp islet, mob drop"}
+       for piece in ("Dull Gold Helm", "Dull Gold Armor", "Dull Gold Gauntlets", "Dull Gold Leggings")},
+    'TC: Dragonstone Chunk - lizard nest, first phantom drop': {"name": 'TC: Dragonstone Chunk - lizard nest, phantom drop', "missable": 'the drop is lost if not picked up before the area reloads'},
+    'TC: Clearstone Chunk - lizard nest, second phantom drop': {"name": 'TC: Clearstone Chunk - lizard nest, phantom drop', "missable": 'the drop is lost if not picked up before the area reloads'},
+    'TC: Stone of Ephemeral Eyes - lizard nest, first phantom drop': {"name": 'TC: Stone of Ephemeral Eyes - lizard nest, phantom drop 1', "missable": 'the drop is lost if not picked up before the area reloads'},
+    'TC: Stone of Ephemeral Eyes - lizard nest, second phantom drop': {"name": 'TC: Stone of Ephemeral Eyes - lizard nest, phantom drop 2', "missable": 'the drop is lost if not picked up before the area reloads'},
 }
 
 # Glossary corrections for the location guide (map -> term -> new text; None removes the term). From the review.
@@ -379,3 +421,21 @@ GLOSSARY_FIXES: dict[str, dict[str, str | None]] = {
         "upper descent": "Holes and ladders leading down from the Dirty Colossus archstone to the boss fog gate.",
     },
 }
+
+
+# Locations the owner added on top of the research (review recommendation): the Fat Officials' New Moon Grass is
+# always dropped, only its count is random (x1 or x2). Vanilla item: New Moon Grass x1. Same corpse as their key.
+ADDITIONS = [
+    {"map": "m02_01_00_00", "kind": "enemy", "flag": 560, "lot": 220080, "entity": 115, "corpse_flag": 15622,
+     "item": "New Moon Grass", "count": 1, "random_count": True, "name": "LP: New Moon Grass - prison, miniboss drop",
+     "description": "The Fat Official inside the prison, who also drops the Bloody Iron Key.",
+     "requires": ["Iron Key Ring"], "added_not_in_input": True},
+    {"map": "m02_02_00_00", "kind": "enemy", "flag": 1280, "lot": 230090, "entity": 451, "corpse_flag": 15621,
+     "item": "New Moon Grass", "count": 1, "random_count": True, "name": "IW: New Moon Grass - after first fog, miniboss drop",
+     "description": "The Fat Official in the yard right after the first fog, who also drops the Iron Key Ring.",
+     "requires": [], "added_not_in_input": True},
+    {"map": "m02_02_00_00", "kind": "enemy", "flag": 1281, "lot": 230090, "entity": 452, "corpse_flag": 15620,
+     "item": "New Moon Grass", "count": 1, "random_count": True, "name": "IW: New Moon Grass - by gate lever, miniboss drop",
+     "description": "The Fat Official by the gate lever, who also drops the Official's Cap.",
+     "requires": [], "added_not_in_input": True},
+]

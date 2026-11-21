@@ -171,6 +171,8 @@ def added_sources(notes: dict[tuple, dict], known: set[tuple]) -> list[dict]:
             host = GAME.host_only_item(entry["lot"])
             weighted = [i for i in GAME.lot_items(entry["lot"]) if i.chance > 0 or not host]
             items = [host] if host else weighted
+            if entry.get("random_count") and items and len({(i.category, i.id) for i in items}) == 1:
+                items = [i for i in items if i.count == entry["count"]]  # always this item, the count varies
             if len(items) != 1 or items[0].name != entry["item"] or items[0].count != entry["count"]:
                 raise ValueError(f"{key}: lot {entry['lot']} gives {items}, research says {entry['item']} x{entry['count']}")
             (it,) = items
@@ -205,6 +207,8 @@ def with_world_number(name: str, abbreviation_part: dict[str, str]) -> str:
 
 def main() -> None:
     notes = research()
+    for entry in rules.ADDITIONS:
+        notes[source_key(entry)] = entry  # replaces the research's rejected note on the same source
     sources = raw_sources()
     sources += added_sources(notes, {s["key"] for s in sources})
     base_names = {s["item"]["name"] for s in sources}
