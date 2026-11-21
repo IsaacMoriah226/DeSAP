@@ -18,6 +18,7 @@ from worlds.LauncherComponents import Component, Type, components
 from worlds.LauncherComponents import launch as launch_component
 
 from .data import ITEMS, LOCATIONS, ItemData, LocationData
+from .loadout import describe, starting_loadouts
 from .options import DemonsSoulsOptions, option_groups
 from .parts import ARCHDEMON_PARTS, LOCK_ITEMS, LOCKED_PARTS, PART_BY_CODE, PARTS
 
@@ -122,6 +123,12 @@ class DemonsSoulsWorld(World):
     location_descriptions = {name: location.description for name, location in LOCATIONS.items()
                              if location.code is not None and location.description}
 
+    loadouts: dict[str, dict[str, int]]
+
+    def generate_early(self) -> None:
+        self.loadouts = starting_loadouts(self.random, bool(self.options.remove_stat_requirements)) \
+            if self.options.randomize_starting_loadout else {}
+
     # --- regions and locations -------------------------------------------------------------------------------
 
     def create_regions(self) -> None:
@@ -221,4 +228,11 @@ class DemonsSoulsWorld(World):
             "remove_stat_requirements": bool(self.options.remove_stat_requirements),
             "auto_upgrade_weapons": bool(self.options.auto_upgrade_weapons),
             "death_link": bool(self.options.death_link),
+            "starting_loadouts": self.loadouts,
         }
+
+    def write_spoiler(self, spoiler_handle) -> None:
+        if self.loadouts:
+            spoiler_handle.write(f"\n\nStarting loadouts ({self.multiworld.get_player_name(self.player)}):\n")
+            for name, gear in describe(self.loadouts).items():
+                spoiler_handle.write(f"    {name}: {', '.join(gear)}\n")

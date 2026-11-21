@@ -16,7 +16,11 @@ from kivy.clock import Clock
 from kivy.core.text import LabelBase
 from kivy.graphics import Color, Line, Rectangle, RoundedRectangle
 from kivy.metrics import dp
+from kivy.core.image import Image as CoreImage
 from kivy.uix.anchorlayout import AnchorLayout
+from kivy.uix.checkbox import CheckBox
+from kivy.uix.image import Image as KivyImage
+from kivy.uix.slider import Slider
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
@@ -374,6 +378,146 @@ class SavesPage(BoxLayout):
             self.backups.add_widget(row)
 
 
+class ClassesPage(BoxLayout):
+    """The starting classes of this seed (RandomizeStartingLoadout), as the class selection will show them."""
+    STATS = (("Vit", "baseVit"), ("Int", "baseWil"), ("End", "baseEnd"), ("Str", "baseStr"), ("Dex", "baseDex"),
+             ("Mag", "baseMag"), ("Fai", "baseFai"), ("Luck", "baseLuc"))
+
+    def __init__(self, ctx):
+        super().__init__(orientation="vertical")
+        self.ctx = ctx
+        self.intro = text("", 13, TEXT_DIM)
+        self.grid = GridLayout(cols=2, spacing=dp(14), size_hint_y=None)
+        self.grid.bind(minimum_height=self.grid.setter("height"))
+        self.add_widget(page(self.intro, self.grid))
+        self.shown = None
+        Clock.schedule_interval(self.refresh, 1)
+        self.refresh()
+
+    def refresh(self, *_):
+        loadouts = (self.ctx.slot_data or {}).get("starting_loadouts")
+        key = repr(loadouts) if loadouts is not None else None
+        if key == self.shown:
+            return
+        self.shown = key
+        self.grid.clear_widgets()
+        if loadouts is None:
+            self.intro.text = "Connect (PLAY) to see this seed's starting classes."
+            return
+        from ..loadout import EQUIPMENT, describe
+        if not loadouts:
+            self.intro.text = "This seed keeps the vanilla starting classes (Randomize Starting Loadout is off)."
+            return
+        self.intro.text = ("This seed's starting classes: random weapons, shield and armor each class can use, as the "
+                           "class selection in game shows them. Stats, spells, rings and items are the vanilla ones.")
+        gear = describe(loadouts)
+        for row_id, row in sorted(EQUIPMENT["classes"].items()):
+            card = Card(row["name"])
+            card.add_widget(text("   ".join(f"{label} {row[key]}" for label, key in self.STATS), 12, TEXT_DIM))
+            for item in gear[row["name"]]:
+                card.add_widget(text(item, 13.5, TEXT, height=22))
+            self.grid.add_widget(card)
+
+
+class OverlayPage(BoxLayout):
+    """The in-game overlay's settings, with a live preview."""
+    BACKGROUNDS = ("#101012", "#000000", "#1B241B", "#2A1A1A", "#191D2A", "#2C2416", "#3A3A42")
+    SLIDERS = (("Background opacity", "background_alpha", 0, 255), ("Text opacity", "text_alpha", 60, 255),
+               ("Text size", "font_size", 14, 40), ("Width", "width", 300, 1100), ("Messages shown", "lines", 1, 12),
+               ("Seconds a message stays (0: until pushed out)", "seconds", 0, 60))
+
+    def __init__(self, ctx):
+        super().__init__(orientation="vertical")
+        self.ctx = ctx
+        o = ctx.settings.overlay
+        settings = Card("In-game messages")
+        settings.add_widget(text("A window over Demon's Souls with the items you find, send and receive (other players' "
+                                 "items stay in the Archipelago log). Drag it anywhere in game; its gear opens this "
+                                 "page. It shows only while the game is the window in front.", 13, TEXT_DIM))
+        row = BoxLayout(size_hint_y=None, height=dp(34), spacing=dp(8))
+        self.enabled = CheckBox(active=o.enabled, size_hint_x=None, width=dp(34), color=GOLD)
+        self.enabled.bind(active=lambda w, v: self.change("enabled", v))
+        row.add_widget(self.enabled)
+        row.add_widget(text("Show the overlay", 13.5, TEXT, height=34))
+        settings.add_widget(row)
+        settings.add_widget(text("Background", 12, TEXT_DIM, height=18))
+        swatches = BoxLayout(size_hint_y=None, height=dp(30), spacing=dp(8))
+        for colour in self.BACKGROUNDS:
+            swatch = FlatButton("", color=_rgba(colour), hover=_rgba(colour), size_hint_x=None, width=dp(44))
+            swatch.bind(on_release=lambda w, c=colour: self.change("background", c))
+            swatches.add_widget(swatch)
+        swatches.add_widget(Widget())
+        settings.add_widget(swatches)
+        self.value_labels = {}
+        for label, key, low, high in self.SLIDERS:
+            caption = text(f"{label}: {getattr(o, key)}", 12, TEXT_DIM, height=18)
+            self.value_labels[key] = (caption, label)
+            settings.add_widget(caption)
+            slider = Slider(min=low, max=high, step=1, value=getattr(o, key), size_hint_y=None, height=dp(30),
+                            cursor_size=(dp(16), dp(16)), value_track=True, value_track_color=GOLD)
+            slider.bind(value=lambda w, v, k=key: self.change(k, int(v)))
+            settings.add_widget(slider)
+        buttons = BoxLayout(size_hint_y=None, height=dp(36), spacing=dp(10))
+        for label, action in (("Show a test message", self.test), ("Reset position", self.reset)):
+            button = FlatButton(label, size_hint_x=None, width=dp(180))
+            button.bind(on_release=action)
+            buttons.add_widget(button)
+        buttons.add_widget(Widget())
+        settings.add_widget(buttons)
+        preview = Card("Preview")
+        self.preview = KivyImage(size_hint_y=None, height=dp(200), fit_mode="contain")
+        preview.add_widget(self.preview)
+        self.add_widget(page(preview, settings))
+        self._save = None
+        self.draw_preview()
+
+    def change(self, key: str, value) -> None:
+        setattr(self.ctx.settings.overlay, key, value)
+        if key in self.value_labels:
+            caption, label = self.value_labels[key]
+            caption.text = f"{label}: {value}"
+        if self.ctx.overlay is not None:
+            self.ctx.overlay.refresh()
+        self.draw_preview()
+        if self._save:
+            self._save.cancel()
+        self._save = Clock.schedule_once(lambda *_: self.ctx.settings.save(), 0.6)
+
+    def test(self, *_):
+        self.ctx.overlay_message([("You received ", "text"), ("Moonlight Greatsword", "progression"),
+                                  (" from ", "text"), ("Archipelago", "player")])
+        self.ctx.launch_status = "Test message sent (it shows while the game is in front)."
+
+    def reset(self, *_):
+        self.change("x", 40)
+        self.change("y", 120)
+        if self.ctx.overlay is not None and self.ctx.overlay.hwnd:
+            ctypes.windll.user32.SetWindowPos(self.ctx.overlay.hwnd, 0, 40, 120, 0, 0, 0x0001 | 0x0004 | 0x0010)
+
+    def draw_preview(self) -> None:
+        import io
+        import time as _time
+        from PIL import Image as PilImage
+        from .overlay import Message, Overlay
+        sample = Overlay(self.ctx.settings.overlay, on_settings=lambda: None)
+        now = _time.monotonic()
+        sample.messages = [
+            Message([("You found your ", "text"), ("Penetrating Sword", "useful"),
+                     (" (GB 1-1: Crescent Moon Grass - start, before stairs)", "location")], now),
+            Message([("You sent ", "text"), ("Half Moon Grass x5", "filler"), (" to ", "text"), ("Friend", "player")],
+                    now),
+            Message([("You received ", "text"), ("1-2 The Lord's Path", "progression"), (" from ", "text"),
+                     ("Friend", "player")], now)][-max(1, self.ctx.settings.overlay.lines):]
+        image = sample.render()
+        scene = PilImage.new("RGBA", (image.width + 40, image.height + 40), (74, 82, 70, 255))  # a stand-in for the game
+        scene.alpha_composite(image, (20, 20))
+        data = io.BytesIO()
+        scene.save(data, format="png")
+        data.seek(0)
+        self.preview.texture = CoreImage(data, ext="png").texture
+        self.preview.height = min(dp(320), scene.height)
+
+
 class Sidebar(BoxLayout):
     def __init__(self, pages: list[str], select):
         super().__init__(orientation="vertical", size_hint_x=None, width=dp(230), padding=[0, dp(30), 0, dp(20)],
@@ -437,6 +581,8 @@ def make_manager(ctx):
             content = {
                 "Play": PlayPage(ctx),
                 "Archipelago": client_view,
+                "Classes": ClassesPage(ctx),
+                "Overlay": OverlayPage(ctx),
                 "Saves": SavesPage(ctx),
             }
             for name, widget in content.items():
@@ -450,6 +596,25 @@ def make_manager(ctx):
             self.sidebar.choose("Play")
             from .. import DemonsSoulsWorld
             self.sidebar.footer.text = f"World version {DemonsSoulsWorld.world_version.as_simple_string()}"
+            self.start_overlay()
             return root
+
+        def start_overlay(self):
+            from .overlay import Overlay
+
+            def open_settings():  # (the overlay's thread)
+                def show(*_):
+                    self.sidebar.choose("Overlay")
+                    from kivy.core.window import Window
+                    Window.raise_window()
+                Clock.schedule_once(show)
+
+            def emulator_pid():
+                memory = ctx.bridge.memory
+                return memory.pid if memory is not None and ctx.bridge.attached else 0
+
+            ctx.overlay = Overlay(ctx.settings.overlay, open_settings, emulator_pid,
+                                  on_moved=lambda: Clock.schedule_once(lambda *_: ctx.settings.save()))
+            ctx.overlay.start()
 
     return DemonsSoulsManager(ctx)

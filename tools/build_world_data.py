@@ -34,6 +34,7 @@ _ids, _parts = _load("ids"), _load("parts")
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "tools"))
 import research_rules as rules  # noqa: E402
+from desap import souls  # noqa: E402
 from desap.gamedata import GameData  # noqa: E402
 
 GAME = GameData()
@@ -198,6 +199,60 @@ def added_sources(notes: dict[tuple, dict], known: set[tuple]) -> list[dict]:
     return out
 
 
+CLASS_ROWS = {1000: "Soldier", 1001: "Knight", 1002: "Hunter", 1003: "Priest", 1004: "Magician", 1005: "Wanderer",
+              1006: "Barbarian", 1007: "Thief", 1008: "Temple Knight", 1009: "Royalty"}
+CLASS_FIELDS = ("baseVit", "baseWil", "baseEnd", "baseStr", "baseDex", "baseMag", "baseFai", "baseLuc",
+                "equip_Wep_Right", "equip_Subwep_Right", "equip_Wep_Left", "equip_Subwep_Left",
+                "equip_Helm", "equip_Armer", "equip_Gaunt", "equip_Leg")
+
+
+def equipment(items: dict) -> dict:
+    """What the starting-loadout randomizer needs (data/equipment.json): every weapon and armor piece among the
+    world's items (base ids; requirements, weight, category / slot) and the ten classes' rows of CharaInitParam
+    (stats and gear). Weapon categories: 0-7 and 9 melee, 8 catalysts and talismans, 10 bows, 11 crossbows,
+    12 shields, 13 arrows, 14 bolts. Armor slots by id: 1xxxxx head, 2 body, 3 arms, 4 legs."""
+    weapon_def, armor_def = souls.load_paramdef("EquipParamWeapon"), souls.load_paramdef("EquipParamProtector")
+    weapon_rows = souls.read_param(GAME.params["EquipParamWeapon"].data, weapon_def, extended=True).by_id()
+    armor_rows = souls.read_param(GAME.params["EquipParamProtector"].data, armor_def, extended=True).by_id()
+    weapons, armor = {}, {}
+    candidates = [{"kind": i["kind"], "game_id": i["game_id"], "name": i["name"]} for i in items.values()]
+    shop = souls.read_param(GAME.params["ShopLineupParam"].data, souls.load_paramdef("ShopLineupParam")).rows
+    for row in shop:  # what merchants sell (unlimited stock included): obtainable in normal play too
+        kind = {0: "weapon", 1: "armor"}.get(row["equipType"])
+        if kind and row["equipId"] > 0:
+            candidates.append({"kind": kind, "game_id": row["equipId"],
+                               "name": GAME.item_name({"weapon": 0, "armor": 0x10000000}[kind], row["equipId"])})
+    for item in candidates:
+        game_id = item["game_id"]
+        if item["name"].startswith("?") or "(PS3 name)" in item["name"]:
+            continue
+        if item["kind"] == "weapon" and game_id in weapon_rows:
+            row = weapon_rows[game_id]
+            weapons[str(game_id)] = {
+                "name": item["name"], "category": row["weaponCategory"], "weight": round(row["weight"], 2),
+                "str": row["properStrength"], "dex": row["properAgility"], "mag": row["properMagic"],
+                "fai": row["properFaith"], "right": bool(row["rightHandEquipable"]),
+                "left": bool(row["leftHandEquipable"])}
+        elif item["kind"] == "armor" and game_id in armor_rows:
+            armor[str(game_id)] = {"name": item["name"], "slot": game_id // 100000,
+                                   "weight": round(armor_rows[game_id]["weight"], 2)}
+    class_def = souls.load_paramdef("CharaInitParam")
+    class_rows = souls.read_param(GAME.params["CharaInitParam"].data, class_def).by_id()
+    classes = {}
+    for row_id, name in CLASS_ROWS.items():
+        row = class_rows[row_id]
+        entry = {"name": name, **{field: row[field] for field in CLASS_FIELDS}}
+        for field in ("equip_Wep_Right", "equip_Subwep_Right", "equip_Wep_Left", "equip_Subwep_Left"):
+            if row[field] > 0 and row[field] in weapon_rows:
+                w = weapon_rows[row[field]]
+                entry[field + "_info"] = {"category": w["weaponCategory"], "weight": round(w["weight"], 2)}
+        for field in ("equip_Helm", "equip_Armer", "equip_Gaunt", "equip_Leg"):
+            entry[field + "_weight"] = round(armor_rows[row[field]]["weight"], 2) if row[field] in armor_rows else 0
+        classes[str(row_id)] = entry
+    offsets = {f.name: f.offset for f in class_def.fields if f.name in CLASS_FIELDS}
+    return {"weapons": weapons, "armor": armor, "classes": classes, "class_offsets": offsets}
+
+
 def with_world_number(name: str, abbreviation_part: dict[str, str]) -> str:
     """"GB: Mail Breaker - ..." -> "GB 1-1: Mail Breaker - ...": the area code, then its world number (the owner
     asked for the number in every name it applies to; the Nexus and the tutorial have none)."""
@@ -314,6 +369,7 @@ def main() -> None:
     (OUT / "items.json").write_text(json.dumps(sorted(items.values(), key=lambda i: i["code"]), indent=1,
                                                ensure_ascii=False), encoding="utf-8")
     (OUT / "locations.json").write_text(json.dumps(locations, indent=1, ensure_ascii=False), encoding="utf-8")
+    (OUT / "equipment.json").write_text(json.dumps(equipment(items), indent=1, ensure_ascii=False), encoding="utf-8")
     real = [l for l in locations if l["code"] is not None]
     print(f"{len(real)} locations ({dict(Counter(l['kind'] for l in real))}), "
           f"{sum(1 for l in real if l['missable'] or l['tendency'])} missable; dropped {dict(dropped)}")

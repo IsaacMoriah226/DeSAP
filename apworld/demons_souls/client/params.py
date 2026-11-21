@@ -20,6 +20,7 @@ TABLES = {
     "SHOP_LINEUP_PARAM": (177, 32),
     "EQUIP_PARAM_WEAPON_ST": (1882, 184),
     "EQUIP_PARAM_GOODS_ST": (149, 72),
+    "CHARACTER_INIT_PARAM": (122, 288),
 }
 
 # ItemLotParam: 8 entries of 20 bytes from +4: i32 category, i32 id, u16 count, u16 base point, i16 QWC base

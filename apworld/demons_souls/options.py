@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from Options import DeathLink, OptionGroup, PerGameCommonOptions, StartInventoryPool, Toggle
+from Options import DeathLink, DefaultOnToggle, OptionGroup, PerGameCommonOptions, StartInventoryPool, Toggle
 
 
 class RemoveStatRequirements(Toggle):
@@ -18,14 +18,23 @@ class AutoUpgradeWeapons(Toggle):
     display_name = "Auto-Upgrade Received Weapons"
 
 
+class RandomizeStartingLoadout(DefaultOnToggle):
+    """Give every class random starting weapons, shield and armor, as Dark Souls III's randomizer does. Each class
+    keeps its stats, spells, ring and items; its new weapons are ones it can use (any weapon with Remove Stat
+    Requirements), its catalyst or talisman stays, a bow stays a bow, and its armor weighs about what it did. The
+    class selection screen shows the new gear."""
+    display_name = "Randomize Starting Loadout"
+
+
 @dataclass
 class DemonsSoulsOptions(PerGameCommonOptions):
     remove_stat_requirements: RemoveStatRequirements
     auto_upgrade_weapons: AutoUpgradeWeapons
+    randomize_starting_loadout: RandomizeStartingLoadout
     death_link: DeathLink
     start_inventory_from_pool: StartInventoryPool
 
 
 option_groups = [
-    OptionGroup("Equipment", [RemoveStatRequirements, AutoUpgradeWeapons]),
+    OptionGroup("Equipment", [RandomizeStartingLoadout, RemoveStatRequirements, AutoUpgradeWeapons]),
 ]

@@ -18,6 +18,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import os
+import struct
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -102,6 +103,7 @@ class DemonsSoulsContext(CommonContext):
         self.emulator_process = None
         self.launch_status = ""
         self.last_backup = 0.0
+        self.overlay = None  # the in-game message window (GUI only; overlay.py)
         self.bridge = DemonsSoulsGame(default_live_file())
         self.slot_data: dict[str, Any] = {}
         self.scouted: dict[int, NetworkItem] = {}
@@ -158,6 +160,34 @@ class DemonsSoulsContext(CommonContext):
         super().on_deathlink(data)
         if self.death_link_enabled:
             self.pending_death = True
+            self.overlay_message([("DeathLink: ", "trap"), (data.get("cause") or f"{data.get('source', '?')} died",
+                                                             "text")])
+
+    def overlay_message(self, parts: list[tuple[str, str]]) -> None:
+        if self.overlay is not None:
+            self.overlay.push(parts)
+
+    def on_print_json(self, args: dict) -> None:
+        super().on_print_json(args)
+        if self.overlay is None or args.get("type") not in ("ItemSend", "ItemCheat") or not self.slot:
+            return
+        from .overlay import item_color
+        item, receiver = args["item"], args["receiving"]
+        finder = item.player
+        if self.slot not in (finder, receiver):
+            return  # other players' items: the launcher's log only
+        name = self.item_names.lookup_in_slot(item.item, receiver)
+        color = item_color(item.flags)
+        where = self.location_names.lookup_in_slot(item.location, finder) if item.location > 0 else ""
+        if finder == receiver == self.slot:
+            parts = [("You found your ", "text"), (name, color)] + ([(f" ({where})", "location")] if where else [])
+        elif finder == self.slot:
+            parts = [("You sent ", "text"), (name, color), (" to ", "text"),
+                     (self.player_names.get(receiver, "?"), "player")] + ([(f" ({where})", "location")] if where else [])
+        else:
+            parts = [("You received ", "text"), (name, color), (" from ", "text"),
+                     (self.player_names.get(finder, "Archipelago"), "player")]
+        self.overlay.push(parts)
 
     async def disconnect(self, allow_autoreconnect: bool = False):
         self.slot_data = {}
@@ -292,6 +322,13 @@ class DemonsSoulsContext(CommonContext):
             self.bridge.patch_rows("SHOP_LINEUP_PARAM", self.shop_writes)
         else:
             logger.warning("The shop table was not found: shops sell their usual items this session.")
+        loadouts = self.slot_data.get("starting_loadouts") or {}
+        if loadouts:  # the classes' gear: before a character is made, so the class selection shows it
+            from ..loadout import EQUIPMENT
+            offsets = EQUIPMENT["class_offsets"]
+            self.bridge.patch_rows("CHARACTER_INIT_PARAM", {
+                int(row): {offsets[field]: struct.pack("<i", item) for field, item in fields.items()}
+                for row, fields in loadouts.items()})
         if self.slot_data.get("remove_stat_requirements"):
             rows = {row: {params.WEAPON_REQUIREMENTS: bytes(4)}
                     for copy in self.bridge.tables.get("EQUIP_PARAM_WEAPON_ST", []) for row in copy.rows}
@@ -507,8 +544,11 @@ async def game_loop(ctx: DemonsSoulsContext) -> None:
             await ctx.send_msgs([{"cmd": "StatusUpdate", "status": ClientStatus.CLIENT_GOAL}])
             ctx.finished_game = True
             logger.info("Goal: False King Allant defeated.")
+            ctx.overlay_message([("Goal complete: ", "progression"), ("False King Allant defeated.", "text")])
         await asyncio.sleep(GAME_TICK)
     await asyncio.to_thread(ctx.bridge.detach)
+    if ctx.overlay is not None:
+        ctx.overlay.stop()
 
 
 def launch(*args: str) -> None:

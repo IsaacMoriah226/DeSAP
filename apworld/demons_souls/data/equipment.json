@@ -1,0 +1,1830 @@
+{
+ "weapons": {
+  "140000": {
+   "name": "Light Crossbow",
+   "category": 11,
+   "weight": 2.5,
+   "str": 10,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "170300": {
+   "name": "Wooden Bolt",
+   "category": 14,
+   "weight": 0.1,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "40000": {
+   "name": "Scimitar",
+   "category": 3,
+   "weight": 1.0,
+   "str": 8,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "151400": {
+   "name": "Purple Flame Shield",
+   "category": 12,
+   "weight": 8.0,
+   "str": 22,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "151200": {
+   "name": "Large Brushwood Shield",
+   "category": 12,
+   "weight": 13.0,
+   "str": 26,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20400": {
+   "name": "Bastard Sword",
+   "category": 1,
+   "weight": 5.0,
+   "str": 18,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "10200": {
+   "name": "Mail Breaker",
+   "category": 2,
+   "weight": 0.5,
+   "str": 6,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "70100": {
+   "name": "Winged Spear",
+   "category": 6,
+   "weight": 3.0,
+   "str": 13,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "90000": {
+   "name": "Wooden Catalyst",
+   "category": 8,
+   "weight": 0.3,
+   "str": 5,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150500": {
+   "name": "Spiked Shield",
+   "category": 12,
+   "weight": 3.0,
+   "str": 11,
+   "dex": 14,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "130100": {
+   "name": "Compound Short Bow",
+   "category": 10,
+   "weight": 1.0,
+   "str": 18,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "160100": {
+   "name": "Heavy Arrow",
+   "category": 13,
+   "weight": 0.2,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "150600": {
+   "name": "Tower Shield",
+   "category": 12,
+   "weight": 30.0,
+   "str": 30,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "151000": {
+   "name": "Dregling Shield",
+   "category": 12,
+   "weight": 0.5,
+   "str": 5,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20600": {
+   "name": "Great Sword",
+   "category": 1,
+   "weight": 10.0,
+   "str": 26,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "21800": {
+   "name": "Penetrating Sword",
+   "category": 1,
+   "weight": 6.0,
+   "str": 22,
+   "dex": 16,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "21300": {
+   "name": "Knight Sword",
+   "category": 1,
+   "weight": 3.0,
+   "str": 14,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150900": {
+   "name": "Knight's Shield",
+   "category": 12,
+   "weight": 5.0,
+   "str": 16,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "90400": {
+   "name": "Talisman of God",
+   "category": 8,
+   "weight": 0.2,
+   "str": 4,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "40100": {
+   "name": "Kilij",
+   "category": 3,
+   "weight": 3.0,
+   "str": 14,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "40331": {
+   "name": "Crescent Falchion+1",
+   "category": 3,
+   "weight": 1.5,
+   "str": 9,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "130300": {
+   "name": "Compound Long Bow",
+   "category": 10,
+   "weight": 2.0,
+   "str": 22,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "160200": {
+   "name": "Light Arrow",
+   "category": 13,
+   "weight": 0.1,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "40400": {
+   "name": "Uchigatana",
+   "category": 3,
+   "weight": 5.0,
+   "str": 18,
+   "dex": 13,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150400": {
+   "name": "Adjudicator's Shield",
+   "category": 12,
+   "weight": 3.5,
+   "str": 14,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "10000": {
+   "name": "Dagger",
+   "category": 0,
+   "weight": 0.5,
+   "str": 6,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "40500": {
+   "name": "Hiltless",
+   "category": 3,
+   "weight": 4.5,
+   "str": 18,
+   "dex": 19,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "160600": {
+   "name": "Holy Arrow",
+   "category": 13,
+   "weight": 0.2,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "130400": {
+   "name": "White Bow",
+   "category": 10,
+   "weight": 1.5,
+   "str": 30,
+   "dex": 24,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "160700": {
+   "name": "White Arrow",
+   "category": 13,
+   "weight": 0.2,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "40700": {
+   "name": "Magic Sword \"Makoto\"",
+   "category": 3,
+   "weight": 5.5,
+   "str": 18,
+   "dex": 13,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "10700": {
+   "name": "Secret Dagger",
+   "category": 0,
+   "weight": 0.5,
+   "str": 6,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "140100": {
+   "name": "Heavy Crossbow",
+   "category": 11,
+   "weight": 5.0,
+   "str": 16,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "170200": {
+   "name": "Black Bolt",
+   "category": 14,
+   "weight": 0.2,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "10100": {
+   "name": "Parrying Dagger",
+   "category": 0,
+   "weight": 0.5,
+   "str": 6,
+   "dex": 16,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150200": {
+   "name": "Kite Shield",
+   "category": 12,
+   "weight": 3.5,
+   "str": 12,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "30100": {
+   "name": "Estoc",
+   "category": 2,
+   "weight": 1.5,
+   "str": 9,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "90100": {
+   "name": "Silver Catalyst",
+   "category": 8,
+   "weight": 0.5,
+   "str": 6,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "10400": {
+   "name": "Baby's Nail",
+   "category": 0,
+   "weight": 0.7,
+   "str": 7,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "100100": {
+   "name": "Claws",
+   "category": 9,
+   "weight": 1.0,
+   "str": 8,
+   "dex": 14,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "30021": {
+   "name": "Mercury Rapier+1",
+   "category": 2,
+   "weight": 0.8,
+   "str": 8,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20800": {
+   "name": "Rune Sword",
+   "category": 1,
+   "weight": 2.0,
+   "str": 10,
+   "dex": 0,
+   "mag": 18,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "151100": {
+   "name": "Rune Shield",
+   "category": 12,
+   "weight": 3.0,
+   "str": 12,
+   "dex": 0,
+   "mag": 18,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20300": {
+   "name": "Flamberge",
+   "category": 1,
+   "weight": 5.0,
+   "str": 18,
+   "dex": 14,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "30200": {
+   "name": "Epee Rapier",
+   "category": 2,
+   "weight": 1.5,
+   "str": 9,
+   "dex": 14,
+   "mag": 24,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20031": {
+   "name": "Moon Short Sword+1",
+   "category": 1,
+   "weight": 1.0,
+   "str": 9,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60300": {
+   "name": "Morning Star",
+   "category": 5,
+   "weight": 2.5,
+   "str": 11,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60111": {
+   "name": "Blessed Mace+1",
+   "category": 5,
+   "weight": 2.5,
+   "str": 11,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60400": {
+   "name": "Great Club",
+   "category": 5,
+   "weight": 5.0,
+   "str": 20,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "80100": {
+   "name": "Mirdan Hammer",
+   "category": 7,
+   "weight": 3.5,
+   "str": 14,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "80000": {
+   "name": "War Scythe",
+   "category": 7,
+   "weight": 3.0,
+   "str": 13,
+   "dex": 13,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "21400": {
+   "name": "Broken Sword",
+   "category": 1,
+   "weight": 1.0,
+   "str": 8,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "160500": {
+   "name": "Rotten Arrow",
+   "category": 13,
+   "weight": 0.1,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "40200": {
+   "name": "Shotel",
+   "category": 3,
+   "weight": 1.5,
+   "str": 10,
+   "dex": 16,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "50011": {
+   "name": "Crushing Battle Axe+1",
+   "category": 4,
+   "weight": 2.5,
+   "str": 11,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "151300": {
+   "name": "Steel Shield",
+   "category": 12,
+   "weight": 6.0,
+   "str": 18,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "10600": {
+   "name": "Kris Blade",
+   "category": 1,
+   "weight": 1.0,
+   "str": 8,
+   "dex": 0,
+   "mag": 16,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60600": {
+   "name": "Pickaxe",
+   "category": 5,
+   "weight": 3.0,
+   "str": 13,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "50200": {
+   "name": "Great Axe",
+   "category": 4,
+   "weight": 10.0,
+   "str": 26,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60000": {
+   "name": "Club",
+   "category": 5,
+   "weight": 1.0,
+   "str": 9,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150322": {
+   "name": "Shade Heater Shield+2",
+   "category": 12,
+   "weight": 3.0,
+   "str": 11,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20221": {
+   "name": "Dragon Long Sword+1",
+   "category": 1,
+   "weight": 2.0,
+   "str": 10,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "100200": {
+   "name": "Hands of God",
+   "category": 9,
+   "weight": 4.0,
+   "str": 19,
+   "dex": 0,
+   "mag": 0,
+   "fai": 16,
+   "right": true,
+   "left": true
+  },
+  "20900": {
+   "name": "Soulbrandt",
+   "category": 1,
+   "weight": 5.5,
+   "str": 18,
+   "dex": 14,
+   "mag": 12,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "21000": {
+   "name": "Demonbrandt",
+   "category": 1,
+   "weight": 5.5,
+   "str": 18,
+   "dex": 14,
+   "mag": 0,
+   "fai": 12,
+   "right": true,
+   "left": true
+  },
+  "21100": {
+   "name": "Storm Ruler",
+   "category": 1,
+   "weight": 6.0,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "70300": {
+   "name": "Istarelle",
+   "category": 6,
+   "weight": 1.0,
+   "str": 9,
+   "dex": 18,
+   "mag": 0,
+   "fai": 24,
+   "right": true,
+   "left": true
+  },
+  "21600": {
+   "name": "Large Sword of Moonlight",
+   "category": 1,
+   "weight": 2.0,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 24,
+   "right": true,
+   "left": true
+  },
+  "20700": {
+   "name": "Dragon Bone Smasher",
+   "category": 1,
+   "weight": 20.0,
+   "str": 30,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "50400": {
+   "name": "Guillotine Axe",
+   "category": 4,
+   "weight": 6.0,
+   "str": 20,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "80300": {
+   "name": "Phosphorescent Pole",
+   "category": 7,
+   "weight": 4.0,
+   "str": 16,
+   "dex": 16,
+   "mag": 12,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "40600": {
+   "name": "Blind",
+   "category": 3,
+   "weight": 0.1,
+   "str": 3,
+   "dex": 24,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150700": {
+   "name": "Dark Silver Shield",
+   "category": 12,
+   "weight": 5.0,
+   "str": 16,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60500": {
+   "name": "Bramd",
+   "category": 5,
+   "weight": 36.0,
+   "str": 36,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "90500": {
+   "name": "Talisman of Beasts",
+   "category": 8,
+   "weight": 0.2,
+   "str": 4,
+   "dex": 0,
+   "mag": 18,
+   "fai": 18,
+   "right": true,
+   "left": true
+  },
+  "20200": {
+   "name": "Long Sword",
+   "category": 1,
+   "weight": 2.0,
+   "str": 10,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "70000": {
+   "name": "Short Spear",
+   "category": 6,
+   "weight": 2.5,
+   "str": 11,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150100": {
+   "name": "Wooden Shield",
+   "category": 12,
+   "weight": 0.7,
+   "str": 6,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150800": {
+   "name": "Soldier's Shield",
+   "category": 12,
+   "weight": 2.0,
+   "str": 10,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20100": {
+   "name": "Broadsword",
+   "category": 1,
+   "weight": 2.0,
+   "str": 10,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20500": {
+   "name": "Claymore",
+   "category": 1,
+   "weight": 6.0,
+   "str": 20,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "170000": {
+   "name": "Bolt",
+   "category": 14,
+   "weight": 0.1,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "50300": {
+   "name": "Crescent Axe",
+   "category": 4,
+   "weight": 7.0,
+   "str": 16,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "170100": {
+   "name": "Heavy Bolt",
+   "category": 14,
+   "weight": 0.2,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "40300": {
+   "name": "Falchion",
+   "category": 3,
+   "weight": 1.5,
+   "str": 9,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "130000": {
+   "name": "Short Bow",
+   "category": 10,
+   "weight": 0.6,
+   "str": 12,
+   "dex": 10,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "130200": {
+   "name": "Long Bow",
+   "category": 10,
+   "weight": 1.2,
+   "str": 15,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "151500": {
+   "name": "Leather Shield",
+   "category": 12,
+   "weight": 1.0,
+   "str": 8,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "160000": {
+   "name": "Arrow",
+   "category": 13,
+   "weight": 0.1,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "160800": {
+   "name": "Wooden Arrow",
+   "category": 13,
+   "weight": 0.1,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "160400": {
+   "name": "Fire Arrow",
+   "category": 13,
+   "weight": 0.2,
+   "str": 0,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": false,
+   "left": false
+  },
+  "30000": {
+   "name": "Rapier",
+   "category": 2,
+   "weight": 0.8,
+   "str": 8,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150000": {
+   "name": "Buckler",
+   "category": 12,
+   "weight": 2.5,
+   "str": 9,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60100": {
+   "name": "Mace",
+   "category": 5,
+   "weight": 2.5,
+   "str": 11,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "60200": {
+   "name": "War Pick",
+   "category": 5,
+   "weight": 1.5,
+   "str": 10,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "80200": {
+   "name": "Halberd",
+   "category": 7,
+   "weight": 3.5,
+   "str": 14,
+   "dex": 12,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "20000": {
+   "name": "Short Sword",
+   "category": 1,
+   "weight": 1.0,
+   "str": 9,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "50000": {
+   "name": "Battle Axe",
+   "category": 4,
+   "weight": 2.5,
+   "str": 11,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  },
+  "150300": {
+   "name": "Heater Shield",
+   "category": 12,
+   "weight": 3.0,
+   "str": 11,
+   "dex": 0,
+   "mag": 0,
+   "fai": 0,
+   "right": true,
+   "left": true
+  }
+ },
+ "armor": {
+  "202100": {
+   "name": "Old Ragged Robes",
+   "slot": 2,
+   "weight": 3.5
+  },
+  "302100": {
+   "name": "Old Ragged Gloves",
+   "slot": 3,
+   "weight": 2.1
+  },
+  "402100": {
+   "name": "Old Ragged Boots",
+   "slot": 4,
+   "weight": 2.1
+  },
+  "100800": {
+   "name": "Brushwood Helm",
+   "slot": 1,
+   "weight": 6.9
+  },
+  "200800": {
+   "name": "Brushwood Armor",
+   "slot": 2,
+   "weight": 17.3
+  },
+  "300800": {
+   "name": "Brushwood Gauntlets",
+   "slot": 3,
+   "weight": 10.4
+  },
+  "400800": {
+   "name": "Brushwood Greaves",
+   "slot": 4,
+   "weight": 10.4
+  },
+  "200100": {
+   "name": "Wizard's Clothes",
+   "slot": 2,
+   "weight": 1.9
+  },
+  "300100": {
+   "name": "Wizard's Gloves",
+   "slot": 3,
+   "weight": 1.2
+  },
+  "400100": {
+   "name": "Wizard's Shoes",
+   "slot": 4,
+   "weight": 1.2
+  },
+  "100200": {
+   "name": "Assassin's Mask",
+   "slot": 1,
+   "weight": 0.5
+  },
+  "200200": {
+   "name": "Black Leather Garb",
+   "slot": 2,
+   "weight": 1.2
+  },
+  "300200": {
+   "name": "Black Gloves",
+   "slot": 3,
+   "weight": 0.7
+  },
+  "400200": {
+   "name": "Black Boots",
+   "slot": 4,
+   "weight": 0.7
+  },
+  "102100": {
+   "name": "Three-Cornered Hat",
+   "slot": 1,
+   "weight": 1.4
+  },
+  "101400": {
+   "name": "Venerable Sage's Hood",
+   "slot": 1,
+   "weight": 1.5
+  },
+  "201400": {
+   "name": "Venerable Sage's Robe",
+   "slot": 2,
+   "weight": 3.8
+  },
+  "301400": {
+   "name": "Venerable Sage's Gloves",
+   "slot": 3,
+   "weight": 2.3
+  },
+  "401400": {
+   "name": "Venerable Sage's Boots",
+   "slot": 4,
+   "weight": 2.3
+  },
+  "201800": {
+   "name": "Rogue's Clothes",
+   "slot": 2,
+   "weight": 1.5
+  },
+  "301800": {
+   "name": "Rogue's Gloves",
+   "slot": 3,
+   "weight": 0.9
+  },
+  "401800": {
+   "name": "Rogue's Boots",
+   "slot": 4,
+   "weight": 0.9
+  },
+  "301700": {
+   "name": "Silver Bracelets",
+   "slot": 3,
+   "weight": 0.5
+  },
+  "100700": {
+   "name": "Fluted Helm",
+   "slot": 1,
+   "weight": 4.6
+  },
+  "200700": {
+   "name": "Fluted Armor",
+   "slot": 2,
+   "weight": 11.5
+  },
+  "300700": {
+   "name": "Fluted Gauntlets",
+   "slot": 3,
+   "weight": 6.9
+  },
+  "400700": {
+   "name": "Fluted Greaves",
+   "slot": 4,
+   "weight": 6.9
+  },
+  "100100": {
+   "name": "Silver Coronet",
+   "slot": 1,
+   "weight": 0.9
+  },
+  "100000": {
+   "name": "Gold Mask",
+   "slot": 1,
+   "weight": 0.6
+  },
+  "201200": {
+   "name": "Saint's Robe",
+   "slot": 2,
+   "weight": 4.6
+  },
+  "301200": {
+   "name": "Saint's Gloves",
+   "slot": 3,
+   "weight": 2.8
+  },
+  "401200": {
+   "name": "Saint's Boots",
+   "slot": 4,
+   "weight": 2.8
+  },
+  "102000": {
+   "name": "Binded Hood",
+   "slot": 1,
+   "weight": 2.3
+  },
+  "202000": {
+   "name": "Binded Cross",
+   "slot": 2,
+   "weight": 5.8
+  },
+  "302000": {
+   "name": "Binded Gloves",
+   "slot": 3,
+   "weight": 3.5
+  },
+  "402000": {
+   "name": "Binded Boots",
+   "slot": 4,
+   "weight": 3.5
+  },
+  "101100": {
+   "name": "Ancient King's Mask",
+   "slot": 1,
+   "weight": 3.1
+  },
+  "201100": {
+   "name": "Ancient King's Breastplate",
+   "slot": 2,
+   "weight": 7.7
+  },
+  "301100": {
+   "name": "Ancient King's Gauntlets",
+   "slot": 3,
+   "weight": 4.6
+  },
+  "401100": {
+   "name": "Ancient King's Greaves",
+   "slot": 4,
+   "weight": 4.6
+  },
+  "101800": {
+   "name": "Official's Cap",
+   "slot": 1,
+   "weight": 0.5
+  },
+  "101900": {
+   "name": "Dull Gold Helm",
+   "slot": 1,
+   "weight": 3.8
+  },
+  "201900": {
+   "name": "Dull Gold Armor",
+   "slot": 2,
+   "weight": 9.6
+  },
+  "301900": {
+   "name": "Dull Gold Gauntlets",
+   "slot": 3,
+   "weight": 5.8
+  },
+  "401900": {
+   "name": "Dull Gold Leggings",
+   "slot": 4,
+   "weight": 5.8
+  },
+  "200000": {
+   "name": "Shaman's Garb",
+   "slot": 2,
+   "weight": 1.5
+  },
+  "300000": {
+   "name": "Shaman's Armbands",
+   "slot": 3,
+   "weight": 0.9
+  },
+  "400000": {
+   "name": "Shaman's Tabi",
+   "slot": 4,
+   "weight": 0.9
+  },
+  "100900": {
+   "name": "Dark Silver Helm",
+   "slot": 1,
+   "weight": 5.4
+  },
+  "200900": {
+   "name": "Dark Silver Armor",
+   "slot": 2,
+   "weight": 13.5
+  },
+  "300900": {
+   "name": "Dark Silver Gauntlets",
+   "slot": 3,
+   "weight": 8.1
+  },
+  "400900": {
+   "name": "Dark Silver Greaves",
+   "slot": 4,
+   "weight": 8.1
+  },
+  "399908": {
+   "name": "Official's Gloves",
+   "slot": 3,
+   "weight": 1.2
+  },
+  "499908": {
+   "name": "Official's Leggings",
+   "slot": 4,
+   "weight": 1.2
+  },
+  "100600": {
+   "name": "Plate Helm",
+   "slot": 1,
+   "weight": 3.8
+  },
+  "200600": {
+   "name": "Coat of Plates",
+   "slot": 2,
+   "weight": 9.6
+  },
+  "300600": {
+   "name": "Plate Gauntlets",
+   "slot": 3,
+   "weight": 5.8
+  },
+  "400600": {
+   "name": "Plate Greaves",
+   "slot": 4,
+   "weight": 5.8
+  },
+  "100300": {
+   "name": "Leather Cap",
+   "slot": 1,
+   "weight": 1.2
+  },
+  "200300": {
+   "name": "Leather Armor",
+   "slot": 2,
+   "weight": 3.1
+  },
+  "300300": {
+   "name": "Leather Gloves",
+   "slot": 3,
+   "weight": 1.8
+  },
+  "400300": {
+   "name": "Leather Boots",
+   "slot": 4,
+   "weight": 1.8
+  },
+  "299900": {
+   "name": "Barbarian Clothes",
+   "slot": 2,
+   "weight": 0.0
+  },
+  "399900": {
+   "name": "Barbarian Armbands",
+   "slot": 3,
+   "weight": 0.0
+  },
+  "499900": {
+   "name": "Barbarian Leggings",
+   "slot": 4,
+   "weight": 0.0
+  },
+  "100400": {
+   "name": "Mail Coif",
+   "slot": 1,
+   "weight": 3.8
+  },
+  "200400": {
+   "name": "Chain Mail",
+   "slot": 2,
+   "weight": 9.6
+  },
+  "300400": {
+   "name": "Chain Gloves",
+   "slot": 3,
+   "weight": 5.8
+  },
+  "400400": {
+   "name": "Hard Leather Boots",
+   "slot": 4,
+   "weight": 5.8
+  },
+  "100500": {
+   "name": "Mirdan Helm",
+   "slot": 1,
+   "weight": 5.4
+  },
+  "200500": {
+   "name": "Mirdan Scale Armor",
+   "slot": 2,
+   "weight": 13.5
+  },
+  "300500": {
+   "name": "Mirdan Gauntlets",
+   "slot": 3,
+   "weight": 8.1
+  },
+  "400500": {
+   "name": "Mirdan Greaves",
+   "slot": 4,
+   "weight": 8.1
+  }
+ },
+ "classes": {
+  "1000": {
+   "name": "Soldier",
+   "baseVit": 14,
+   "baseWil": 9,
+   "baseEnd": 12,
+   "baseStr": 12,
+   "baseDex": 11,
+   "baseMag": 8,
+   "baseFai": 10,
+   "baseLuc": 10,
+   "equip_Wep_Right": 20100,
+   "equip_Subwep_Right": 70000,
+   "equip_Wep_Left": 150800,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 100600,
+   "equip_Armer": 200600,
+   "equip_Gaunt": 300600,
+   "equip_Leg": 400600,
+   "equip_Wep_Right_info": {
+    "category": 1,
+    "weight": 2.0
+   },
+   "equip_Subwep_Right_info": {
+    "category": 6,
+    "weight": 2.5
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 2.0
+   },
+   "equip_Helm_weight": 3.8,
+   "equip_Armer_weight": 9.6,
+   "equip_Gaunt_weight": 5.8,
+   "equip_Leg_weight": 5.8
+  },
+  "1001": {
+   "name": "Knight",
+   "baseVit": 10,
+   "baseWil": 11,
+   "baseEnd": 11,
+   "baseStr": 14,
+   "baseDex": 10,
+   "baseMag": 10,
+   "baseFai": 11,
+   "baseLuc": 7,
+   "equip_Wep_Right": 20200,
+   "equip_Subwep_Right": 10200,
+   "equip_Wep_Left": 150200,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 100700,
+   "equip_Armer": 200700,
+   "equip_Gaunt": 300700,
+   "equip_Leg": 400700,
+   "equip_Wep_Right_info": {
+    "category": 1,
+    "weight": 2.0
+   },
+   "equip_Subwep_Right_info": {
+    "category": 2,
+    "weight": 0.5
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 3.5
+   },
+   "equip_Helm_weight": 4.6,
+   "equip_Armer_weight": 11.5,
+   "equip_Gaunt_weight": 6.9,
+   "equip_Leg_weight": 6.9
+  },
+  "1002": {
+   "name": "Hunter",
+   "baseVit": 12,
+   "baseWil": 10,
+   "baseEnd": 13,
+   "baseStr": 11,
+   "baseDex": 12,
+   "baseMag": 8,
+   "baseFai": 8,
+   "baseLuc": 12,
+   "equip_Wep_Right": 50000,
+   "equip_Subwep_Right": 130200,
+   "equip_Wep_Left": 151500,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 100300,
+   "equip_Armer": 200300,
+   "equip_Gaunt": 300300,
+   "equip_Leg": 400300,
+   "equip_Wep_Right_info": {
+    "category": 4,
+    "weight": 2.5
+   },
+   "equip_Subwep_Right_info": {
+    "category": 10,
+    "weight": 1.2
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 1.0
+   },
+   "equip_Helm_weight": 1.2,
+   "equip_Armer_weight": 3.1,
+   "equip_Gaunt_weight": 1.8,
+   "equip_Leg_weight": 1.8
+  },
+  "1003": {
+   "name": "Priest",
+   "baseVit": 13,
+   "baseWil": 11,
+   "baseEnd": 12,
+   "baseStr": 13,
+   "baseDex": 8,
+   "baseMag": 8,
+   "baseFai": 13,
+   "baseLuc": 8,
+   "equip_Wep_Right": 60100,
+   "equip_Subwep_Right": 90400,
+   "equip_Wep_Left": 150300,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 100400,
+   "equip_Armer": 200400,
+   "equip_Gaunt": 300400,
+   "equip_Leg": 400400,
+   "equip_Wep_Right_info": {
+    "category": 5,
+    "weight": 2.5
+   },
+   "equip_Subwep_Right_info": {
+    "category": 8,
+    "weight": 0.2
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 3.0
+   },
+   "equip_Helm_weight": 3.8,
+   "equip_Armer_weight": 9.6,
+   "equip_Gaunt_weight": 5.8,
+   "equip_Leg_weight": 5.8
+  },
+  "1004": {
+   "name": "Magician",
+   "baseVit": 9,
+   "baseWil": 15,
+   "baseEnd": 10,
+   "baseStr": 9,
+   "baseDex": 11,
+   "baseMag": 15,
+   "baseFai": 6,
+   "baseLuc": 11,
+   "equip_Wep_Right": 20000,
+   "equip_Subwep_Right": 90000,
+   "equip_Wep_Left": 151500,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 101700,
+   "equip_Armer": 200100,
+   "equip_Gaunt": 300100,
+   "equip_Leg": 400100,
+   "equip_Wep_Right_info": {
+    "category": 1,
+    "weight": 1.0
+   },
+   "equip_Subwep_Right_info": {
+    "category": 8,
+    "weight": 0.3
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 1.0
+   },
+   "equip_Helm_weight": 0.0,
+   "equip_Armer_weight": 1.9,
+   "equip_Gaunt_weight": 1.2,
+   "equip_Leg_weight": 1.2
+  },
+  "1005": {
+   "name": "Wanderer",
+   "baseVit": 10,
+   "baseWil": 10,
+   "baseEnd": 11,
+   "baseStr": 11,
+   "baseDex": 15,
+   "baseMag": 9,
+   "baseFai": 7,
+   "baseLuc": 13,
+   "equip_Wep_Right": 40300,
+   "equip_Subwep_Right": 10000,
+   "equip_Wep_Left": 150100,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 101700,
+   "equip_Armer": 200300,
+   "equip_Gaunt": 301500,
+   "equip_Leg": 400400,
+   "equip_Wep_Right_info": {
+    "category": 3,
+    "weight": 1.5
+   },
+   "equip_Subwep_Right_info": {
+    "category": 0,
+    "weight": 0.5
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 0.7
+   },
+   "equip_Helm_weight": 0.0,
+   "equip_Armer_weight": 3.1,
+   "equip_Gaunt_weight": 0.0,
+   "equip_Leg_weight": 5.8
+  },
+  "1006": {
+   "name": "Barbarian",
+   "baseVit": 15,
+   "baseWil": 7,
+   "baseEnd": 13,
+   "baseStr": 15,
+   "baseDex": 9,
+   "baseMag": 11,
+   "baseFai": 8,
+   "baseLuc": 11,
+   "equip_Wep_Right": 60000,
+   "equip_Subwep_Right": 60000,
+   "equip_Wep_Left": 150100,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 101700,
+   "equip_Armer": 299900,
+   "equip_Gaunt": 399900,
+   "equip_Leg": 499900,
+   "equip_Wep_Right_info": {
+    "category": 5,
+    "weight": 1.0
+   },
+   "equip_Subwep_Right_info": {
+    "category": 5,
+    "weight": 1.0
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 0.7
+   },
+   "equip_Helm_weight": 0.0,
+   "equip_Armer_weight": 0.0,
+   "equip_Gaunt_weight": 0.0,
+   "equip_Leg_weight": 0.0
+  },
+  "1007": {
+   "name": "Thief",
+   "baseVit": 10,
+   "baseWil": 13,
+   "baseEnd": 10,
+   "baseStr": 9,
+   "baseDex": 14,
+   "baseMag": 10,
+   "baseFai": 8,
+   "baseLuc": 15,
+   "equip_Wep_Right": 10000,
+   "equip_Subwep_Right": 130000,
+   "equip_Wep_Left": 150000,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 100200,
+   "equip_Armer": 200200,
+   "equip_Gaunt": 300200,
+   "equip_Leg": 400200,
+   "equip_Wep_Right_info": {
+    "category": 0,
+    "weight": 0.5
+   },
+   "equip_Subwep_Right_info": {
+    "category": 10,
+    "weight": 0.6
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 2.5
+   },
+   "equip_Helm_weight": 0.5,
+   "equip_Armer_weight": 1.2,
+   "equip_Gaunt_weight": 0.7,
+   "equip_Leg_weight": 0.7
+  },
+  "1008": {
+   "name": "Temple Knight",
+   "baseVit": 11,
+   "baseWil": 8,
+   "baseEnd": 13,
+   "baseStr": 14,
+   "baseDex": 12,
+   "baseMag": 6,
+   "baseFai": 13,
+   "baseLuc": 7,
+   "equip_Wep_Right": 80200,
+   "equip_Subwep_Right": 90400,
+   "equip_Wep_Left": 150300,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 100500,
+   "equip_Armer": 200500,
+   "equip_Gaunt": 300500,
+   "equip_Leg": 400500,
+   "equip_Wep_Right_info": {
+    "category": 7,
+    "weight": 3.5
+   },
+   "equip_Subwep_Right_info": {
+    "category": 8,
+    "weight": 0.2
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 3.0
+   },
+   "equip_Helm_weight": 5.4,
+   "equip_Armer_weight": 13.5,
+   "equip_Gaunt_weight": 8.1,
+   "equip_Leg_weight": 8.1
+  },
+  "1009": {
+   "name": "Royalty",
+   "baseVit": 8,
+   "baseWil": 12,
+   "baseEnd": 8,
+   "baseStr": 9,
+   "baseDex": 12,
+   "baseMag": 13,
+   "baseFai": 12,
+   "baseLuc": 7,
+   "equip_Wep_Right": 30000,
+   "equip_Subwep_Right": 90100,
+   "equip_Wep_Left": 150000,
+   "equip_Subwep_Left": -1,
+   "equip_Helm": 100100,
+   "equip_Armer": 200100,
+   "equip_Gaunt": 300100,
+   "equip_Leg": 400100,
+   "equip_Wep_Right_info": {
+    "category": 2,
+    "weight": 0.8
+   },
+   "equip_Subwep_Right_info": {
+    "category": 8,
+    "weight": 0.5
+   },
+   "equip_Wep_Left_info": {
+    "category": 12,
+    "weight": 2.5
+   },
+   "equip_Helm_weight": 0.9,
+   "equip_Armer_weight": 1.9,
+   "equip_Gaunt_weight": 1.2,
+   "equip_Leg_weight": 1.2
+  }
+ },
+ "class_offsets": {
+  "baseVit": 0,
+  "baseWil": 4,
+  "baseEnd": 8,
+  "baseStr": 12,
+  "baseDex": 16,
+  "baseMag": 20,
+  "baseFai": 24,
+  "baseLuc": 28,
+  "equip_Wep_Right": 60,
+  "equip_Subwep_Right": 64,
+  "equip_Wep_Left": 68,
+  "equip_Subwep_Left": 72,
+  "equip_Helm": 76,
+  "equip_Armer": 80,
+  "equip_Gaunt": 84,
+  "equip_Leg": 88
+ }
+}
