@@ -9,7 +9,7 @@ Location ids:
     LOCATION_BASE + (world * 100 + part) * 10_000 + treasure index * 10 + lot slot   treasures (map mWW_PP)
     LOCATION_BASE + 100_000_000 + (world * 100 + part) * 100_000 + lot              scripted events (boss souls)
     LOCATION_BASE + 200_000_000 + ShopLineupParam row                               shop entries
-    LOCATION_BASE + 300_000_000 + event flag                                         scripted enemy kills
+    LOCATION_BASE + 1_000_000_000 + (world * 100 + part) * 1_000_000 + death flag * 10 + lot slot   one-time enemy drops
 """
 
 from __future__ import annotations

@@ -137,3 +137,201 @@ RENAMES = {
     # "CMG" was the researcher's shorthand for the Crescent Moon Grass x11 corpse 15 m away.
     "SS: Dark Moon Grass - north islands, by big CMG": "SS: Dark Moon Grass - north islands, platform",
 }
+
+# Corrections from the independent review (work/research/review/<world>.json), keyed by the research's name.
+# Fields: name, description, add_requires / requires (requirement texts, normalized like the research's),
+# tokens (logic tokens added as they are), missable.
+OVERRIDES: dict[str, dict] = {
+    # --- valley ---
+    # The plague swamp is the boss arena (light wall o5985 is the boss fog; boss regions 2893/2897 right behind).
+    "RH: Stone of Ephemeral Eyes - plague swamp edge": {"add_requires": ["Maiden Astraea defeated"]},
+    "RH: Pure Marrowstone - plague swamp, grass patch": {"add_requires": ["Maiden Astraea defeated"]},
+    "RH: Pure Suckerstone - ledge above plague swamp": {"add_requires": ["Maiden Astraea defeated"]},
+    "RH: Pure Mercurystone - plague swamp": {"add_requires": ["Maiden Astraea defeated"]},
+    "RH: Legendary Hero Soul - plague swamp pier": {"add_requires": ["Maiden Astraea defeated"]},
+    # The fog wall's rotation puts the corpse just past the first fog gate, not before it.
+    "DC: Noble's Lotus - first fog gate": {
+        "name": "DC: Noble's Lotus - past first fog gate",
+        "description": "Just through the first fog gate (the one by the four Depraved Ones), at the top of the way "
+                       "down to the brush ledge."},
+    # On the lone Shaman's platform 7 m below the boardwalk.
+    "SS: Unknown Hero Soul - west boardwalk, by shaman": {
+        "name": "SS: Unknown Hero Soul - lone shaman platform",
+        "description": "On the low platform of the lone Shaman, below the start of the west boardwalk north of the "
+                       "shanty town (drop down from the boardwalk)."},
+    # --- boletaria ---
+    # On the archer walls inside the Tower Knight arena, reached by the arena's own stairs.
+    "LP: Renowned Warrior Soul - boss arena ramparts": {
+        "add_requires": ["Tower Knight defeated"],
+        "description": "On the walls of the boss arena, up the arena's side stairs, by the crossbow soldier at the "
+                       "far (exit) end."},
+    # Treasures 13 and 16 had each other's descriptions (positions, enemies and floor heights in the map data).
+    "GB: Unknown Warrior Soul - Ostrava's route, corner": {
+        "name": "GB: Unknown Warrior Soul - long corridor end",
+        "description": "Back in the building past Ostrava's pit, at the left end of the long corridor, before the "
+                       "gate guarded by an axe soldier."},
+    "GB: Unknown Hero Soul - long corridor end": {
+        "name": "GB: Unknown Hero Soul - Ostrava's route, corner",
+        "description": "Following Ostrava right from the Blue Eye Knight's building, in the little corner guarded by "
+                       "a melee Dregling and a crossbow soldier, beside the little staircase down to the barrel room."},
+    # The cell doors sit side by side on one wall.
+    "LP: Renowned Hero Soul - prison, cell opposite Biorr": {
+        "name": "LP: Renowned Hero Soul - prison, cell next to Biorr",
+        "description": "In the prison, the locked cell right beside Biorr's (the first cell you open)."},
+    "LP: Storied Hero Soul - prison, far cell": {
+        "description": "In the prison, the second cell on the side wall, past the empty one next to Biorr's corner."},
+    "IW: Full Moon Grass - alleys, below ledge": {"name": "IW: Full Moon Grass - alleys, drop to ledge"},
+    # --- stonefang ---
+    # Behind the boss elevator by its upper call handle (wikidot walk2-1 point 20), not below the Kris Blade walkway.
+    "SG: Spiderstone Shard - boss elevator top": {
+        "name": "SG: Spiderstone Shard - behind boss elevator top",
+        "description": "Corpse behind the big boss elevator at its top, next to the upper call handle, before you "
+                       "ride down (the Kris Blade walkway is on the other side of the lift)."},
+    # 39 m from the lever: by the two miners just over the wooden bridge.
+    "SG: Ed's Sharpening Stone - lever gallery, behind rubble": {
+        "description": "Corpse behind breakable rubble by the two miners just over the wooden bridge in the lever "
+                       "gallery, before the corridor that leads to the gate lever."},
+    # The worm cliff is outside the fog into the bug tunnels.
+    "TC: Storied Warrior Soul - bug tunnels, worm cliff": {
+        "name": "TC: Storied Warrior Soul - worm cliff, ore carts",
+        "description": "Corpse among the ore carts on the open ledge at the bottom of the rift path, just before the "
+                       "fog into the bug tunnels."},
+    "TC: Storied Warrior Soul - bug tunnels, side branch": {
+        "description": "Corpse down the right-hand branch at the first junction just inside the fog into the bug "
+                       "tunnels (the left branch when coming from the pit bottom)."},
+    # The ring is on the upper ledge; the Giant Bearbug lands below it.
+    "TC: Flame Resistance Ring - bearbug ledge": {
+        "description": "Glowing item at the bottom of the stairs down from the rift platforms, on the ledge above "
+                       "the Club (Patches runs here to grab it if his trap springs)."},
+    # Enemies are not landmarks (naming guide).
+    "TC: Dragonstone Shard - bearbug den, past giant bearbug": {"name": "TC: Dragonstone Shard - bearbug den, right corner"},
+    "TC: Clearstone Chunk - bug tunnels, behind bearbug": {"name": "TC: Clearstone Chunk - bug tunnels, right branch"},
+    "TC: Hardstone Chunk - rift path, past three worms": {"name": "TC: Hardstone Chunk - rift path junction"},
+    "TC: Greystone Shard - bearbug ledge, rock worm": {"name": "TC: Greystone Shard - bearbug ledge, right side"},
+    "SG: Unknown Hero Soul - archstone ledge, past lizard": {"name": "SG: Unknown Hero Soul - archstone ledge, broken cart"},
+    # --- shrine ---
+    # The Vanguard's courtyard is level with the first fog gate (not sunken); the second fog gate is on its far side.
+    "IE: Kilij - pit courtyard": {
+        "description": "Corpse in the Vanguard's courtyard straight through the first fog gate, to the right near "
+                       "the well."},
+    "IE: Full Moon Grass - pit courtyard": {
+        "description": "Corpse in the far left corner by the rubble of the Vanguard's courtyard, straight through "
+                       "the first fog gate."},
+    "IE: Storied Hero Soul - pit courtyard": {
+        "description": "Corpse further into the Vanguard's courtyard (straight through the first fog gate), on the "
+                       "right, near the miniboss."},
+    "IE: Uchigatana - before second fog gate": {
+        "description": "Corpse by the second fog gate on the far side of the Vanguard's courtyard, to the right of "
+                       "the gate."},
+    # Two illusory walls lead into the cell tunnels, and both come back on every load: nothing is required.
+    "IE: Crescent Moon Grass - cell tunnels": {"requires": []},
+    "IE: Renowned Hero Soul - Blige's cell": {"requires": ["Copper Key"]},
+    "IE: Augite of Guidance - crow's cliff": {
+        "description": "Corpse on the path up the cliff toward Sparkly the Crow, through the other door of the east "
+                       "tower (past the archer walkway, not the key tower)."},
+    "IE: Gray Demon Soul - pit courtyard miniboss": {
+        "name": "IE: Gray Demon Soul - pit courtyard, miniboss drop",
+        "description": "Dropped by the optional Vanguard in the courtyard straight through the first fog gate."},
+    "RP: Colorless Demon Soul - secret cliff, black tendency": {"name": "RP: Colorless Demon Soul - secret cliff, miniboss drop"},
+    "RP: Storied Warrior Soul - stairs to slug cavern": {
+        "description": "Corpse midway down the left-hand stairs past the third Reaper (beyond the second fog gate), "
+                       "on the way down to the slug cavern."},
+    "RP: Kunai - across bridge": {
+        "name": "RP: Kunai - casket hall upper walkway",
+        "description": "Corpse on the upper walkway of the casket (first Reaper) hall, to the left as you come in "
+                       "from the tunnel."},
+    "RP: Sticky White Slime - slug cavern, first slugs": {
+        "name": "RP: Sticky White Slime - slug cavern, below sarcophagus",
+        "description": "Corpse on the cavern floor a few metres from the sarcophagus, on the opposite side from the "
+                       "Moonshadestone Chunk column."},
+    "RP: Full Moon Grass - boss arena": {
+        "description": "Corpse on the left side of the Old Hero's battlefield (as you come in from the fog gate)."},
+    # The game has no compass: left/right as seen on the way in.
+    "RP: Unknown Warrior Soul - west stairs, midway": {"name": "RP: Unknown Warrior Soul - left stairs, midway"},
+    "RP: Stone of Ephemeral Eyes - top of west stairs, trap": {"name": "RP: Stone of Ephemeral Eyes - top of left stairs, trap"},
+    # --- nexus / shops ---
+    # Biorr's cell needs the Iron Key Ring; he leaves only after Penetrator and the King's Tower dragon or Allant.
+    **{f"IW: {item} - Dregling Merchant after Biorr leaves": {"tokens": ["region:1-3", "boss:1-3", "region:1-4"]}
+       for item in ("Brushwood Helm", "Brushwood Armor", "Brushwood Gauntlets", "Brushwood Greaves",
+                    "Large Brushwood Shield")},
+    # Yurt is freed in Upper Latria (3-2), not the Prison of Hope.
+    "NX: Renowned Warrior Soul - outer stairs, after rescuing Yurt": {"tokens": ["region:3-2"]},
+    "NX: Storied Warrior Soul - second floor, after rescuing Yurt": {"tokens": ["region:3-2"]},
+    # --- latria ---
+    # Kept as locations (missable, filler only) against the reviewer's suggestion: they are corpse pickups that
+    # appear after Rydell's quest step; logic treats them as NPC-dependent.
+    # Cell numbering from the map's door positions (review): the third inner-row cell from the plate end.
+    "PH: Renowned Hero Soul - 2F east, inner cell": {
+        "name": "PH: Renowned Hero Soul - 2F east, middle inner cell",
+        "description": "Corpse in the third inner-row cell from the plate end of 2F East, the locked one nearest the "
+                       "middle of the block (2F E. Cell Key door)."},
+    "PH: Mercurystone Chunk - 2F east, inner cell": {
+        "name": "PH: Mercurystone Chunk - 2F east, middle inner cell",
+        "description": "Corpse at the back of the third inner-row cell from the plate end of 2F East (2F E. Cell "
+                       "Key door)."},
+    # The Venerable Sage set and the Three-Cornered Hat are in different locked cells.
+    **{f"PH: Venerable Sage's {piece} - 2F west inner row, locked cell": {
+        "name": f"PH: Venerable Sage's {piece} - 2F west inner row, stair-end locked cell", "description": 'Corpse in the second inner-row cell from the stair end of 2F West, the locked one nearest the stairs, beyond the rubble, behind a 2F W. Cell Key door.'}
+       for piece in ("Hood", "Robe", "Gloves", "Boots")},
+    "PH: Three-Cornered Hat - 2F west inner row, locked cell": {
+        "name": "PH: Three-Cornered Hat - 2F west inner row, middle locked cell",
+        "description": "Corpse in the third inner-row cell from the plate end of 2F West, beyond the rubble, behind "
+                       "a 2F W. Cell Key door."},
+    "PH: Mercurystone Shard - 3F east, stair-end inner cell": {
+        "name": "PH: Mercurystone Shard - 3F east, inner cell near stair end",
+        "description": "Corpse in the second inner-row cell from the stair end of 3F East (open door)."},
+    # Numbered in walking order (index 61 comes first on the way).
+    "PH: Renowned Warrior Soul - ballista bridge bodies 1": {"name": "PH: Renowned Warrior Soul - ballista bridge bodies 2"},
+    "PH: Renowned Warrior Soul - ballista bridge bodies 2": {"name": "PH: Renowned Warrior Soul - ballista bridge bodies 1"},
+}
+
+# Glossary corrections for the location guide (map -> term -> new text; None removes the term). From the review.
+GLOSSARY_FIXES: dict[str, dict[str, str | None]] = {
+    "m02_01_00_00": {
+        "prison": "Behind the locked door near the first Blue Eye Knight before the boss fog (Iron Key Ring): a "
+                  "corridor of locked cells (Biorr in one), a Fat Official, then a tunnel past a Crystal Lizard to an "
+                  "iron gate. 'Cell next to Biorr' is the cell beside Biorr's on the end wall; 'far cell' is the second "
+                  "cell on the side wall; 'tunnel end' is the corpse by the iron gate at the end.",
+    },
+    "m03_01_00_00": {
+        "key tower": "The crumbled tower at the end of the rampart; stairs down to a floor-switch spear trap and the "
+                     "closed steel gate opened with the Copper Key; its broken top is where you can roll off to the "
+                     "hidden ledge.",
+        "east tower": "The tower past the archer walkway: the left way up leads to the archer tower, its other door to "
+                      "the crow's cliff, its stairs down to the first illusory wall into the cell tunnels.",
+        "crow's cliff": "The path up the cliff from the east tower to Sparkly the Crow's nest; the lizard ledge with a "
+                        "Crystal Lizard is below the nest (drop down).",
+        "cell tunnels": "The corridors behind the illusory wall at the bottom of the small stairs below the east tower: "
+                        "a crossroad with a two-skeleton ambush, Graverobber Blige's locked cell at one end, a second "
+                        "illusory wall at the other, beyond which an arrow trap and a rubble climb lead up into the pit "
+                        "courtyard. Both illusory walls come back every time the area loads.",
+        "pit courtyard": "The open courtyard straight through the first fog gate, on the same level, where the optional "
+                         "Vanguard (miniboss) stands; an open pit in its floor drops to the corridor outside the cell "
+                         "tunnels, and the rubble there climbs back up. The second fog gate is on its far side.",
+        "second fog gate": "The fog gate on the far side of the pit courtyard (also reached by the rubble climb out of "
+                           "the courtyard pit).",
+    },
+    "m03_02_00_00": {
+        "bridge": "The upper walkway of the casket hall; coming in from the tunnel it is on the left (it is across the "
+                  "bridge if you come back up the stairs from below).",
+        "west stairs": None,
+        "left stairs": "The staircase by the casket hall, past Patches through the gate, climbing to the trapped Stone "
+                       "of Ephemeral Eyes at the top; the illusory wall to the secret cliff is halfway up on the right.",
+        "secret cliff": "The path behind the illusory wall on the left stairs: a dual-katana Black Skeleton at the cliff "
+                        "edge, then a narrow path up past a Crystal Lizard (and the Primeval Demon at black tendency) to "
+                        "the White Bow at the top.",
+        "first slugs": None,
+    },
+    "m06_01_00_00": {
+        "bearbug ledge": "The ledge at the bottom of the stairs down from the rift platforms where Patches sets his "
+                         "trap: the Flame Resistance Ring glows on the upper ledge where the Giant Bearbug waits, and the "
+                         "Club (the bait) lies on the ledge below where it lands.",
+        "worm cliff": "The open ledge with ore carts and three rock worms at the bottom of the rift path, right before "
+                      "the fog entrance to the bug tunnels; flying bearbugs come up from its edge.",
+    },
+    "m05_02_00_00": {
+        "cavern": "The boss arena past the boss fog gate at the bottom of the upper descent (the fight starts with a "
+                  "cutscene on entry): a vast cavern with Depraved Ones praying to the Maiden.",
+        "upper descent": "Holes and ladders leading down from the Dirty Colossus archstone to the boss fog gate.",
+    },
+}

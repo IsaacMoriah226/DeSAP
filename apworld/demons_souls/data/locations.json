@@ -74,7 +74,9 @@
   "kind": "treasure",
   "vanilla_item": "Renowned Warrior Soul",
   "description": "Unnamed corpse on the outer staircase, visible from near Boldwin. Only there while Yurt, the Silent Chief is living in the Nexus.",
-  "requires": [],
+  "requires": [
+   "region:3-2"
+  ],
   "missable": "Exists only while Yurt is in the Nexus: never there if Yurt is not rescued, gone once he dies (killing him is the usual advice).",
   "tendency": "",
   "game": {
@@ -97,7 +99,9 @@
   "kind": "treasure",
   "vanilla_item": "Storied Warrior Soul",
   "description": "Unnamed corpse on the Nexus second floor near the top of the outer stairs (where Yurt waits). Only there while Yurt is living in the Nexus.",
-  "requires": [],
+  "requires": [
+   "region:3-2"
+  ],
   "missable": "Exists only while Yurt is in the Nexus: never there if Yurt is not rescued, gone once he dies.",
   "tendency": "",
   "game": {
@@ -488,12 +492,12 @@
   ]
  },
  {
-  "name": "GB 1-1: Unknown Warrior Soul - Ostrava's route, corner",
+  "name": "GB 1-1: Unknown Warrior Soul - long corridor end",
   "code": 3002000130,
   "part": "1-1",
   "kind": "treasure",
   "vanilla_item": "Unknown Warrior Soul",
-  "description": "Following Ostrava past the building with the Scimitar, in the little corner where a melee soldier and a ranged soldier wait.",
+  "description": "Back in the building past Ostrava's pit, at the left end of the long corridor, before the gate guarded by an axe soldier.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -576,12 +580,12 @@
   ]
  },
  {
-  "name": "GB 1-1: Unknown Hero Soul - long corridor end",
+  "name": "GB 1-1: Unknown Hero Soul - Ostrava's route, corner",
   "code": 3002000160,
   "part": "1-1",
   "kind": "treasure",
   "vanilla_item": "Unknown Hero Soul",
-  "description": "From Ostrava's room go into the building and to the left end of the long corridor, before the gate guarded by a soldier.",
+  "description": "Following Ostrava right from the Blue Eye Knight's building, in the little corner guarded by a melee Dregling and a crossbow soldier, beside the little staircase down to the barrel room.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -1757,12 +1761,12 @@
   ]
  },
  {
-  "name": "LP 1-2: Renowned Hero Soul - prison, cell opposite Biorr",
+  "name": "LP 1-2: Renowned Hero Soul - prison, cell next to Biorr",
   "code": 3002010190,
   "part": "1-2",
   "kind": "treasure",
   "vanilla_item": "Renowned Hero Soul",
-  "description": "In the prison, in the locked cell directly across the corridor from Biorr's cell.",
+  "description": "In the prison, the locked cell right beside Biorr's (the first cell you open).",
   "requires": [
    "region:1-3"
   ],
@@ -1786,7 +1790,7 @@
   "part": "1-2",
   "kind": "treasure",
   "vanilla_item": "Storied Hero Soul",
-  "description": "In the prison, the cell two doors down from Biorr's, on the same side.",
+  "description": "In the prison, the second cell on the side wall, past the empty one next to Biorr's corner.",
   "requires": [
    "region:1-3"
   ],
@@ -1920,8 +1924,10 @@
   "part": "1-2",
   "kind": "treasure",
   "vanilla_item": "Renowned Warrior Soul",
-  "description": "On the ramparts around the Tower Knight's arena, where the crossbow soldiers shoot during the fight.",
-  "requires": [],
+  "description": "On the walls of the boss arena, up the arena's side stairs, by the crossbow soldier at the far (exit) end.",
+  "requires": [
+   "boss:1-2"
+  ],
   "missable": "",
   "tendency": "",
   "game": {
@@ -2169,7 +2175,7 @@
   ]
  },
  {
-  "name": "IW 1-3: Full Moon Grass - alleys, below ledge",
+  "name": "IW 1-3: Full Moon Grass - alleys, drop to ledge",
   "code": 3002020090,
   "part": "1-3",
   "kind": "treasure",
@@ -2922,7 +2928,7 @@
   "part": "4-1",
   "kind": "treasure",
   "vanilla_item": "Kilij",
-  "description": "One of three corpses in the sunken courtyard where the optional miniboss (Vanguard) waits.",
+  "description": "Corpse in the Vanguard's courtyard straight through the first fog gate, to the right near the well.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -2944,7 +2950,7 @@
   "part": "4-1",
   "kind": "treasure",
   "vanilla_item": "Full Moon Grass x3",
-  "description": "One of three corpses in the sunken courtyard where the optional miniboss (Vanguard) waits.",
+  "description": "Corpse in the far left corner by the rubble of the Vanguard's courtyard, straight through the first fog gate.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -2966,7 +2972,7 @@
   "part": "4-1",
   "kind": "treasure",
   "vanilla_item": "Storied Hero Soul",
-  "description": "One of three corpses in the sunken courtyard where the optional miniboss (Vanguard) waits.",
+  "description": "Corpse further into the Vanguard's courtyard (straight through the first fog gate), on the right, near the miniboss.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -3032,7 +3038,7 @@
   "part": "4-1",
   "kind": "treasure",
   "vanilla_item": "Augite of Guidance",
-  "description": "Corpse on the path up the cliff toward Sparkly the Crow, through the other door of the key tower.",
+  "description": "Corpse on the path up the cliff toward Sparkly the Crow, through the other door of the east tower (past the archer walkway, not the key tower).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -3144,7 +3150,7 @@
   "part": "4-1",
   "kind": "treasure",
   "vanilla_item": "Uchigatana",
-  "description": "Corpse to the right when you climb the rubble up to the second fog gate, above the pit courtyard.",
+  "description": "Corpse by the second fog gate on the far side of the Vanguard's courtyard, to the right of the gate.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -3693,12 +3699,12 @@
   ]
  },
  {
-  "name": "RP 4-2: Kunai - across bridge",
+  "name": "RP 4-2: Kunai - casket hall upper walkway",
   "code": 3003020040,
   "part": "4-2",
   "kind": "treasure",
   "vanilla_item": "Kunai x11",
-  "description": "Corpse on the upper walkway across the bridge, up the stairs from the casket (first Reaper) hall.",
+  "description": "Corpse on the upper walkway of the casket (first Reaper) hall, to the left as you come in from the tunnel.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -3781,7 +3787,7 @@
   ]
  },
  {
-  "name": "RP 4-2: Unknown Warrior Soul - west stairs, midway",
+  "name": "RP 4-2: Unknown Warrior Soul - left stairs, midway",
   "code": 3003020080,
   "part": "4-2",
   "kind": "treasure",
@@ -4006,7 +4012,7 @@
   "part": "4-2",
   "kind": "treasure",
   "vanilla_item": "Storied Warrior Soul",
-  "description": "Corpse midway down the left-hand stairs from the second Reaper's chamber to the slug cavern.",
+  "description": "Corpse midway down the left-hand stairs past the third Reaper (beyond the second fog gate), on the way down to the slug cavern.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -4023,12 +4029,12 @@
   ]
  },
  {
-  "name": "RP 4-2: Sticky White Slime - slug cavern, first slugs",
+  "name": "RP 4-2: Sticky White Slime - slug cavern, below sarcophagus",
   "code": 3003020190,
   "part": "4-2",
   "kind": "treasure",
   "vanilla_item": "Sticky White Slime x2",
-  "description": "Corpse on the cavern floor where the first two Phosphorescent Slugs wait, below the sarcophagus (the pair of slimes).",
+  "description": "Corpse on the cavern floor a few metres from the sarcophagus, on the opposite side from the Moonshadestone Chunk column.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -4206,7 +4212,7 @@
   "part": "4-2",
   "kind": "treasure",
   "vanilla_item": "Full Moon Grass x3",
-  "description": "Corpse on the side of the Old Hero's battlefield.",
+  "description": "Corpse on the left side of the Old Hero's battlefield (as you come in from the fog gate).",
   "requires": [
    "boss:4-2"
   ],
@@ -4291,7 +4297,7 @@
   ]
  },
  {
-  "name": "RP 4-2: Stone of Ephemeral Eyes - top of west stairs, trap",
+  "name": "RP 4-2: Stone of Ephemeral Eyes - top of left stairs, trap",
   "code": 3003020290,
   "part": "4-2",
   "kind": "treasure",
@@ -4840,12 +4846,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Mercurystone Shard - 3F east, stair-end inner cell",
+  "name": "PH 3-1: Mercurystone Shard - 3F east, inner cell near stair end",
   "code": 3004000150,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Mercurystone Shard",
-  "description": "Corpse in the 3F East inner-row cell next to the first Mind Flayer of that corridor (open door).",
+  "description": "Corpse in the second inner-row cell from the stair end of 3F East (open door).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -5337,12 +5343,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Three-Cornered Hat - 2F west inner row, locked cell",
+  "name": "PH 3-1: Three-Cornered Hat - 2F west inner row, middle locked cell",
   "code": 3004000310,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Three-Cornered Hat",
-  "description": "Corpse in an inner-row cell of 2F West beyond the rubble, behind a 2F W. Cell Key door.",
+  "description": "Corpse in the third inner-row cell from the plate end of 2F West, beyond the rubble, behind a 2F W. Cell Key door.",
   "requires": [
    "Prison of Hope, 3F Key",
    "Prison of Hope, 4F Key",
@@ -5364,12 +5370,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Venerable Sage's Hood - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Hood - 2F west inner row, stair-end locked cell",
   "code": 3004000320,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Venerable Sage's Hood",
-  "description": "Corpse in the stair-end inner-row cell of 2F West beyond the rubble, behind a 2F W. Cell Key door.",
+  "description": "Corpse in the second inner-row cell from the stair end of 2F West, the locked one nearest the stairs, beyond the rubble, behind a 2F W. Cell Key door.",
   "requires": [
    "Prison of Hope, 3F Key",
    "Prison of Hope, 4F Key",
@@ -5391,12 +5397,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Venerable Sage's Robe - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Robe - 2F west inner row, stair-end locked cell",
   "code": 3004000321,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Venerable Sage's Robe",
-  "description": "Corpse in the stair-end inner-row cell of 2F West beyond the rubble, behind a 2F W. Cell Key door.",
+  "description": "Corpse in the second inner-row cell from the stair end of 2F West, the locked one nearest the stairs, beyond the rubble, behind a 2F W. Cell Key door.",
   "requires": [
    "Prison of Hope, 3F Key",
    "Prison of Hope, 4F Key",
@@ -5418,12 +5424,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Venerable Sage's Gloves - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Gloves - 2F west inner row, stair-end locked cell",
   "code": 3004000322,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Venerable Sage's Gloves",
-  "description": "Corpse in the stair-end inner-row cell of 2F West beyond the rubble, behind a 2F W. Cell Key door.",
+  "description": "Corpse in the second inner-row cell from the stair end of 2F West, the locked one nearest the stairs, beyond the rubble, behind a 2F W. Cell Key door.",
   "requires": [
    "Prison of Hope, 3F Key",
    "Prison of Hope, 4F Key",
@@ -5445,12 +5451,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Venerable Sage's Boots - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Boots - 2F west inner row, stair-end locked cell",
   "code": 3004000323,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Venerable Sage's Boots",
-  "description": "Corpse in the stair-end inner-row cell of 2F West beyond the rubble, behind a 2F W. Cell Key door.",
+  "description": "Corpse in the second inner-row cell from the stair end of 2F West, the locked one nearest the stairs, beyond the rubble, behind a 2F W. Cell Key door.",
   "requires": [
    "Prison of Hope, 3F Key",
    "Prison of Hope, 4F Key",
@@ -5674,12 +5680,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Renowned Hero Soul - 2F east, inner cell",
+  "name": "PH 3-1: Renowned Hero Soul - 2F east, middle inner cell",
   "code": 3004000370,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Renowned Hero Soul",
-  "description": "Corpse in the second inner-row cell from the plate end of 2F East (2F E. Cell Key door).",
+  "description": "Corpse in the third inner-row cell from the plate end of 2F East, the locked one nearest the middle of the block (2F E. Cell Key door).",
   "requires": [
    "Prison of Hope, 3F Key",
    "Prison of Hope, 4F Key",
@@ -5703,12 +5709,12 @@
   ]
  },
  {
-  "name": "PH 3-1: Mercurystone Chunk - 2F east, inner cell",
+  "name": "PH 3-1: Mercurystone Chunk - 2F east, middle inner cell",
   "code": 3004000380,
   "part": "3-1",
   "kind": "treasure",
   "vanilla_item": "Mercurystone Chunk",
-  "description": "Corpse in the second inner-row cell from the plate end of 2F East (2F E. Cell Key door).",
+  "description": "Corpse at the back of the third inner-row cell from the plate end of 2F East (2F E. Cell Key door).",
   "requires": [
    "Prison of Hope, 3F Key",
    "Prison of Hope, 4F Key",
@@ -6388,7 +6394,7 @@
   ]
  },
  {
-  "name": "PH 3-1: Renowned Warrior Soul - ballista bridge bodies 1",
+  "name": "PH 3-1: Renowned Warrior Soul - ballista bridge bodies 2",
   "code": 3004000600,
   "part": "3-1",
   "kind": "treasure",
@@ -6414,7 +6420,7 @@
   ]
  },
  {
-  "name": "PH 3-1: Renowned Warrior Soul - ballista bridge bodies 2",
+  "name": "PH 3-1: Renowned Warrior Soul - ballista bridge bodies 1",
   "code": 3004000610,
   "part": "3-1",
   "kind": "treasure",
@@ -7785,12 +7791,12 @@
   ]
  },
  {
-  "name": "DC 5-1: Noble's Lotus - first fog gate",
+  "name": "DC 5-1: Noble's Lotus - past first fog gate",
   "code": 3005000090,
   "part": "5-1",
   "kind": "treasure",
   "vanilla_item": "Noble's Lotus x3",
-  "description": "On the platform of the four Depraved Ones in front of the first fog gate.",
+  "description": "Just through the first fog gate (the one by the four Depraved Ones), at the top of the way down to the brush ledge.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -9248,12 +9254,12 @@
   ]
  },
  {
-  "name": "SS 5-2: Unknown Hero Soul - west boardwalk, by shaman",
+  "name": "SS 5-2: Unknown Hero Soul - lone shaman platform",
   "code": 3005010400,
   "part": "5-2",
   "kind": "treasure",
   "vanilla_item": "Unknown Hero Soul",
-  "description": "Start of the west boardwalk leaving the shanty town north, beside the lone Shaman.",
+  "description": "On the low platform of the lone Shaman, below the start of the west boardwalk north of the shanty town (drop down from the boardwalk).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -9478,7 +9484,9 @@
   "kind": "treasure",
   "vanilla_item": "Stone of Ephemeral Eyes",
   "description": "Bottom of the cavern, along the edge of the plague swamp (east of the Legendary Hero Soul pier).",
-  "requires": [],
+  "requires": [
+   "boss:5-3"
+  ],
   "missable": "",
   "tendency": "",
   "game": {
@@ -9500,7 +9508,9 @@
   "kind": "treasure",
   "vanilla_item": "Pure Marrowstone",
   "description": "Bottom of the cavern, on a patch of grass at the north end of the plague swamp.",
-  "requires": [],
+  "requires": [
+   "boss:5-3"
+  ],
   "missable": "",
   "tendency": "",
   "game": {
@@ -9522,7 +9532,9 @@
   "kind": "treasure",
   "vanilla_item": "Pure Suckerstone",
   "description": "On the way down to the swamp, one level above it where the path turns right and narrows.",
-  "requires": [],
+  "requires": [
+   "boss:5-3"
+  ],
   "missable": "",
   "tendency": "",
   "game": {
@@ -9544,7 +9556,9 @@
   "kind": "treasure",
   "vanilla_item": "Pure Mercurystone",
   "description": "At the bottom of the cavern in the plague swamp, west side, below the Pure Suckerstone ledge.",
-  "requires": [],
+  "requires": [
+   "boss:5-3"
+  ],
   "missable": "",
   "tendency": "",
   "game": {
@@ -9566,7 +9580,9 @@
   "kind": "treasure",
   "vanilla_item": "Legendary Hero Soul",
   "description": "On a small wooden pier in the plague swamp.",
-  "requires": [],
+  "requires": [
+   "boss:5-3"
+  ],
   "missable": "",
   "tendency": "",
   "game": {
@@ -9807,7 +9823,7 @@
   "part": "2-1",
   "kind": "treasure",
   "vanilla_item": "Ed's Sharpening Stone x2",
-  "description": "Corpse behind breakable rubble near the gate lever in the lower corridors past the crumbling bridge (two miners nearby).",
+  "description": "Corpse behind breakable rubble by the two miners just over the wooden bridge in the lever gallery, before the corridor that leads to the gate lever.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -10396,12 +10412,12 @@
   ]
  },
  {
-  "name": "SG 2-1: Spiderstone Shard - boss elevator top",
+  "name": "SG 2-1: Spiderstone Shard - behind boss elevator top",
   "code": 3006000400,
   "part": "2-1",
   "kind": "treasure",
   "vanilla_item": "Spiderstone Shard x2",
-  "description": "Corpse near the top of the big boss elevator, below the Kris Blade walkway.",
+  "description": "Corpse behind the big boss elevator at its top, next to the upper call handle, before you ride down (the Kris Blade walkway is on the other side of the lift).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -10466,7 +10482,7 @@
   ]
  },
  {
-  "name": "SG 2-1: Unknown Hero Soul - archstone ledge, past lizard",
+  "name": "SG 2-1: Unknown Hero Soul - archstone ledge, broken cart",
   "code": 3006000430,
   "part": "2-1",
   "kind": "treasure",
@@ -10730,7 +10746,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Dragonstone Shard - bearbug den, past giant bearbug",
+  "name": "TC 2-2: Dragonstone Shard - bearbug den, right corner",
   "code": 3006010120,
   "part": "2-2",
   "kind": "treasure",
@@ -10884,7 +10900,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Hardstone Chunk - rift path, past three worms",
+  "name": "TC 2-2: Hardstone Chunk - rift path junction",
   "code": 3006010190,
   "part": "2-2",
   "kind": "treasure",
@@ -10911,7 +10927,7 @@
   "part": "2-2",
   "kind": "treasure",
   "vanilla_item": "Storied Warrior Soul",
-  "description": "Corpse down a side branch of the bug tunnels, past bones you break, before the open worm cliff.",
+  "description": "Corpse down the right-hand branch at the first junction just inside the fog into the bug tunnels (the left branch when coming from the pit bottom).",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -11328,7 +11344,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Greystone Shard - bearbug ledge, rock worm",
+  "name": "TC 2-2: Greystone Shard - bearbug ledge, right side",
   "code": 3006010380,
   "part": "2-2",
   "kind": "treasure",
@@ -11394,12 +11410,12 @@
   ]
  },
  {
-  "name": "TC 2-2: Storied Warrior Soul - bug tunnels, worm cliff",
+  "name": "TC 2-2: Storied Warrior Soul - worm cliff, ore carts",
   "code": 3006010410,
   "part": "2-2",
   "kind": "treasure",
   "vanilla_item": "Storied Warrior Soul",
-  "description": "Corpse among ore carts in the open area of the bug tunnels where three rock worms emerge and flying bearbugs come from the edge.",
+  "description": "Corpse among the ore carts on the open ledge at the bottom of the rift path, just before the fog into the bug tunnels.",
   "requires": [],
   "missable": "",
   "tendency": "",
@@ -11438,7 +11454,7 @@
   ]
  },
  {
-  "name": "TC 2-2: Clearstone Chunk - bug tunnels, behind bearbug",
+  "name": "TC 2-2: Clearstone Chunk - bug tunnels, right branch",
   "code": 3006010430,
   "part": "2-2",
   "kind": "treasure",
@@ -12618,7 +12634,7 @@
   "part": "2-2",
   "kind": "event",
   "vanilla_item": "Flame Resistance Ring",
-  "description": "Glowing item on the ledge beside where the Giant Bearbug from Patches' trap lands.",
+  "description": "Glowing item at the bottom of the stairs down from the rift platforms, on the ledge above the Club (Patches runs here to grab it if his trap springs).",
   "requires": [],
   "missable": "Patches can take it first (then lot 10600 is never granted; flag 615 is still set)",
   "tendency": "",
@@ -12726,7 +12742,8 @@
    "function": "OnEvent_14301",
    "lot": 10800,
    "flag": 14301,
-   "other_flags": []
+   "other_flags": [],
+   "shared_lot": true
   },
   "groups": [
    "Tutorial",
@@ -12736,7 +12753,7 @@
  },
  {
   "name": "IW 1-3: Colorless Demon Soul - boss plaza, miniboss drop",
-  "code": 3300001160,
+  "code": 4202011600,
   "part": "1-3",
   "kind": "enemy",
   "vanilla_item": "Colorless Demon Soul",
@@ -12747,8 +12764,9 @@
   "game": {
    "map": "m02_02_00_00",
    "flag": 1160,
+   "lot": 10950,
    "entity": 185,
-   "lot": 10950
+   "shared_lot": true
   },
   "groups": [
    "1-3",
@@ -12757,20 +12775,21 @@
   ]
  },
  {
-  "name": "IE 4-1: Gray Demon Soul - pit courtyard miniboss",
-  "code": 3300000550,
+  "name": "IE 4-1: Gray Demon Soul - pit courtyard, miniboss drop",
+  "code": 4301005500,
   "part": "4-1",
   "kind": "enemy",
   "vanilla_item": "Gray Demon Soul",
-  "description": "Dropped by the optional Vanguard in the sunken courtyard (pit courtyard).",
+  "description": "Dropped by the optional Vanguard in the courtyard straight through the first fog gate.",
   "requires": [],
   "missable": "",
   "tendency": "",
   "game": {
    "map": "m03_01_00_00",
    "flag": 550,
+   "lot": 10800,
    "entity": 421,
-   "lot": 10800
+   "shared_lot": true
   },
   "groups": [
    "4-1",
@@ -12778,8 +12797,8 @@
   ]
  },
  {
-  "name": "RP 4-2: Colorless Demon Soul - secret cliff, black tendency",
-  "code": 3300001234,
+  "name": "RP 4-2: Colorless Demon Soul - secret cliff, miniboss drop",
+  "code": 4302012340,
   "part": "4-2",
   "kind": "enemy",
   "vanilla_item": "Colorless Demon Soul",
@@ -12790,8 +12809,9 @@
   "game": {
    "map": "m03_02_00_00",
    "flag": 1234,
+   "lot": 10950,
    "entity": 433,
-   "lot": 10950
+   "shared_lot": true
   },
   "groups": [
    "4-2",
@@ -12801,7 +12821,7 @@
  },
  {
   "name": "UL 3-2: Colorless Demon Soul - swamp dead end, black tendency demon",
-  "code": 3300000611,
+  "code": 4401006110,
   "part": "3-2",
   "kind": "enemy",
   "vanilla_item": "Colorless Demon Soul",
@@ -12812,8 +12832,9 @@
   "game": {
    "map": "m04_01_00_00",
    "flag": 611,
+   "lot": 10950,
    "entity": 220,
-   "lot": 10950
+   "shared_lot": true
   },
   "groups": [
    "3-2",
@@ -12823,7 +12844,7 @@
  },
  {
   "name": "SS 5-2: Colorless Demon Soul - southeast cave, miniboss drop",
-  "code": 3300000828,
+  "code": 4501008280,
   "part": "5-2",
   "kind": "enemy",
   "vanilla_item": "Colorless Demon Soul",
@@ -12834,8 +12855,9 @@
   "game": {
    "map": "m05_01_00_00",
    "flag": 828,
+   "lot": 10950,
    "entity": 434,
-   "lot": 10950
+   "shared_lot": true
   },
   "groups": [
    "5-2",
@@ -12845,7 +12867,7 @@
  },
  {
   "name": "SG 2-1: Colorless Demon Soul - rotating elevator bottom, miniboss drop",
-  "code": 3300000171,
+  "code": 4600001710,
   "part": "2-1",
   "kind": "enemy",
   "vanilla_item": "Colorless Demon Soul",
@@ -12856,8 +12878,9 @@
   "game": {
    "map": "m06_00_00_00",
    "flag": 171,
+   "lot": 10950,
    "entity": 346,
-   "lot": 10950
+   "shared_lot": true
   },
   "groups": [
    "2-1",
@@ -12875,7 +12898,9 @@
   "requires": [
    "boss:1-1",
    "boss:1-2",
-   "region:1-3"
+   "region:1-3",
+   "boss:1-3",
+   "region:1-4"
   ],
   "missable": "Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.",
   "tendency": "",
@@ -12900,7 +12925,9 @@
   "requires": [
    "boss:1-1",
    "boss:1-2",
-   "region:1-3"
+   "region:1-3",
+   "boss:1-3",
+   "region:1-4"
   ],
   "missable": "Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.",
   "tendency": "",
@@ -12925,7 +12952,9 @@
   "requires": [
    "boss:1-1",
    "boss:1-2",
-   "region:1-3"
+   "region:1-3",
+   "boss:1-3",
+   "region:1-4"
   ],
   "missable": "Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.",
   "tendency": "",
@@ -12950,7 +12979,9 @@
   "requires": [
    "boss:1-1",
    "boss:1-2",
-   "region:1-3"
+   "region:1-3",
+   "boss:1-3",
+   "region:1-4"
   ],
   "missable": "Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.",
   "tendency": "",
@@ -12975,7 +13006,9 @@
   "requires": [
    "boss:1-1",
    "boss:1-2",
-   "region:1-3"
+   "region:1-3",
+   "boss:1-3",
+   "region:1-4"
   ],
   "missable": "Lost if Biorr is never rescued or dies (killed by you, by the Blue Dragon, or for Mephistopheles) before leaving, or if the Dregling Merchant dies or turns hostile.",
   "tendency": "",

@@ -109,12 +109,10 @@ def raw_sources() -> list[dict]:
                         "game": {"map": source["map"], "function": source["function"], "lot": source["lot"],
                                  "flag": source["flag"], "other_flags": source["other_flags"]}})
         elif kind == "enemy":
-            (lot, items), = source["drops"].items()
-            (it,) = items
-            out.append({"key": ("enemy", source["map"], source["flag"]), "kind": kind, "map": source["map"],
-                        "item": it, "flag": source["flag"], "code": LOCATION_BASE + 300_000_000 + source["flag"],
-                        "game": {"map": source["map"], "flag": source["flag"], "entity": source["entity"],
-                                 "lot": int(lot)}})
+            for slot, (lot, items) in enumerate(source["drops"].items()):
+                (it,) = items
+                out.append(enemy_source(source["map"], source["flag"], int(lot), slot, it,
+                                        {"entity": source["entity"]}))
         elif kind == "shop":
             category = ("weapon", "armor", "ring", "goods")[source["category"]]
             it = {"category": category, "id": source["item_id"], "count": source["quantity"],
@@ -125,6 +123,13 @@ def raw_sources() -> list[dict]:
     return out
 
 
+def enemy_source(map_id: str, flag: int, lot: int, slot: int, it: dict, extra: dict) -> dict:
+    """A one-time enemy's drop lot. Death flags repeat across worlds, so the id includes the map."""
+    return {"key": ("enemy", map_id, flag, lot), "kind": "enemy", "map": map_id, "item": it, "flag": flag,
+            "code": LOCATION_BASE + 1_000_000_000 + map_number(map_id) * 1_000_000 + flag * 10 + slot,
+            "game": {"map": map_id, "flag": flag, "lot": lot, **extra}}
+
+
 def source_key(entry: dict) -> tuple:
     kind = entry["kind"]
     if kind == "treasure":
@@ -132,7 +137,7 @@ def source_key(entry: dict) -> tuple:
     if kind == "event":
         return ("event", entry["map"], entry["function"], entry["lot"])
     if kind == "enemy":
-        return ("enemy", entry["map"], entry["flag"])
+        return ("enemy", entry["map"], entry["flag"], entry.get("lot"))
     return ("shop", entry["shop_row"])
 
 
@@ -151,15 +156,24 @@ def research() -> dict[tuple, dict]:
 def added_sources(notes: dict[tuple, dict], known: set[tuple]) -> list[dict]:
     """Item sources the extractor missed and the research added (e.g. dragon kills: no event flag of their own)."""
     out = []
+    known_enemies = {k[:3] for k in known if k[0] == "enemy"}
     for key, entry in notes.items():
-        if key in known:
+        if key in known or (key[0] == "enemy" and key[3] is None and key[:3] in known_enemies):
             continue
         if not entry.get("location", True):
             continue  # the research's note on something that is not a source (e.g. a commented-out item call)
         if not entry.get("added_not_in_input"):
             raise ValueError(f"research entry {key} matches no item source in the game data")
+        if entry["kind"] == "enemy":
+            (it,) = GAME.lot_items(entry["lot"])
+            slot = sum(1 for k in notes if k[:3] == key[:3] and k[3] is not None and k[3] < entry["lot"])
+            out.append(enemy_source(entry["map"], entry["flag"], entry["lot"], slot,
+                                    {"category": it.category, "id": it.id, "count": it.count, "name": it.name},
+                                    {"entity": entry["entity"], "corpse_flag": entry.get("corpse_flag"),
+                                     "npc_param": entry.get("npc_param")}))
+            continue
         if entry["kind"] != "event":
-            raise ValueError(f"added research entry {key} is not an event")
+            raise ValueError(f"added research entry {key} is not an event or an enemy")
         (it,) = GAME.lot_items(entry["lot"])
         out.append({"key": key, "kind": "event", "map": entry["map"], "flag": entry["flag"],
                     "item": {"category": it.category, "id": it.id, "count": it.count, "name": it.name},
@@ -187,22 +201,27 @@ def main() -> None:
     locations, logic_items, dropped = [], set(), Counter()
     for source in sources:
         entry = notes.get(source["key"])
+        if entry is None and source["kind"] == "enemy":
+            entry = notes.get(source["key"][:3] + (None,))
         if entry is None:
             raise ValueError(f"no research entry for {source['key']}")
-        name = rules.RENAMES.get(entry["name"], entry["name"])
+        override = rules.OVERRIDES.get(entry["name"], {})
+        name = rules.RENAMES.get(entry["name"], override.get("name", entry["name"]))
         if name in rules.NOT_LOCATIONS:
             dropped["kept vanilla (owner)"] += 1
             continue
         if not entry.get("location", True):
             dropped["not a location (research)"] += 1
             continue
-        norm = rules.normalize(entry.get("requires", []), base_names)
+        requires = override.get("requires", entry.get("requires", [])) + override.get("add_requires", [])
+        norm = rules.normalize(requires, base_names)
+        norm.tokens += [token for token in override.get("tokens", []) if token not in norm.tokens]
         if norm.impossible:
             dropped["impossible on the emulator"] += 1
             continue
         # The part (region) is the area the location is in: the map's, or for shops the merchant's area code.
         part = abbreviation_part[name.split(":", 1)[0]] if source["kind"] == "shop" else MAP_PART[source["map"]]
-        missable = entry.get("missable") or ""
+        missable = override.get("missable", entry.get("missable") or "")
         if norm.npc and not missable:
             missable = "depends on " + "; ".join(norm.npc)
         missable = rules.MISSABLE.get(name, missable)
@@ -211,7 +230,8 @@ def main() -> None:
         it = source["item"]
         location = {"name": with_world_number(name, abbreviation_part), "code": source["code"], "part": part,
                     "kind": source["kind"],
-                    "vanilla_item": item_name(it["name"], it["count"]), "description": entry.get("description", ""),
+                    "vanilla_item": item_name(it["name"], it["count"]),
+                    "description": override.get("description", entry.get("description", "")),
                     "requires": norm.tokens, "missable": missable, "tendency": entry.get("tendency") or "",
                     "game": source["game"], "_item": it}
         logic_items.update(t for t in norm.tokens if ":" not in t)
@@ -255,6 +275,16 @@ def main() -> None:
         locations.append({"name": f"{part.code} boss: {part.boss}", "code": None, "part": part.code,
                           "kind": "boss_event", "vanilla_item": "", "requires": requires, "game": {}})
 
+    # Item lots several locations share (the Vanguards' 10800, the Primeval Demons' 10950): the client cannot
+    # rewrite such a lot for one location; it must give these by their flag instead.
+    lot_users = Counter(l["game"].get("lot") for l in locations if l["code"] is not None and l["game"].get("lot"))
+    for location in locations:
+        if location["code"] is not None and lot_users[location["game"].get("lot")] > 1:
+            location["game"]["shared_lot"] = True
+
+    unused = set(rules.OVERRIDES) - {e["name"] for e in notes.values()}
+    if unused:
+        raise ValueError(f"overrides for names the research does not have: {sorted(unused)}")
     names = Counter(l["name"] for l in locations)
     duplicated = [n for n, c in names.items() if c > 1]
     if duplicated:

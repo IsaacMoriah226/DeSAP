@@ -74,6 +74,13 @@ class DemonsSoulsWeb(WebWorld):
         "setup_en.md",
         "setup/en",
         ["isaacmoriah226"],
+    ), Tutorial(
+        "Location Guide",
+        "Where every location is, what its name's terms mean, and what each one needs.",
+        "English",
+        "locations_en.md",
+        "locations/en",
+        ["isaacmoriah226"],
     )]
 
 
