@@ -115,11 +115,11 @@ class TestPool(DemonsSoulsTestBase):
 class TestNames(DemonsSoulsTestBase):
     run_default_tests = False
 
-    def test_location_names_have_region_codes(self) -> None:
-        codes = {part.abbreviation for part in PARTS} | {"NX", "TUT", "SHOP"}
+    def test_location_names_have_area_codes_and_world_numbers(self) -> None:
+        prefixes = {f"{part.abbreviation} {part.code}" for part in PARTS} | {"NX", "TUT"}
         for name, data in LOCATIONS.items():
             if data.code is not None:
-                self.assertIn(name.split(":", 1)[0], codes, name)
+                self.assertIn(name.split(":", 1)[0], prefixes, name)
 
     def test_item_classifications(self) -> None:
         for name, item in ITEMS.items():

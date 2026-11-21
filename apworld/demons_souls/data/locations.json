@@ -114,7 +114,7 @@
   ]
  },
  {
-  "name": "GB: Jade Hair Ornament - hanging corpse, courtyard",
+  "name": "GB 1-1: Jade Hair Ornament - hanging corpse, courtyard",
   "code": 3002000000,
   "part": "1-1",
   "kind": "treasure",
@@ -136,7 +136,7 @@
   ]
  },
  {
-  "name": "GB: Old Ragged Robes - hanging corpse, courtyard",
+  "name": "GB 1-1: Old Ragged Robes - hanging corpse, courtyard",
   "code": 3002000010,
   "part": "1-1",
   "kind": "treasure",
@@ -158,7 +158,7 @@
   ]
  },
  {
-  "name": "GB: Old Ragged Gloves - hanging corpse, courtyard",
+  "name": "GB 1-1: Old Ragged Gloves - hanging corpse, courtyard",
   "code": 3002000011,
   "part": "1-1",
   "kind": "treasure",
@@ -180,7 +180,7 @@
   ]
  },
  {
-  "name": "GB: Old Ragged Boots - hanging corpse, courtyard",
+  "name": "GB 1-1: Old Ragged Boots - hanging corpse, courtyard",
   "code": 3002000012,
   "part": "1-1",
   "kind": "treasure",
@@ -202,7 +202,7 @@
   ]
  },
  {
-  "name": "GB: Aged Spice - hanging corpse, courtyard",
+  "name": "GB 1-1: Aged Spice - hanging corpse, courtyard",
   "code": 3002000013,
   "part": "1-1",
   "kind": "treasure",
@@ -224,7 +224,7 @@
   ]
  },
  {
-  "name": "GB: Late Moon Grass - start, behind palisade",
+  "name": "GB 1-1: Late Moon Grass - start, behind palisade",
   "code": 3002000020,
   "part": "1-1",
   "kind": "treasure",
@@ -246,7 +246,7 @@
   ]
  },
  {
-  "name": "GB: Crescent Moon Grass - start, before stairs",
+  "name": "GB 1-1: Crescent Moon Grass - start, before stairs",
   "code": 3002000030,
   "part": "1-1",
   "kind": "treasure",
@@ -268,7 +268,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - start, by locked door",
+  "name": "GB 1-1: Unknown Warrior Soul - start, by locked door",
   "code": 3002000040,
   "part": "1-1",
   "kind": "treasure",
@@ -290,7 +290,7 @@
   ]
  },
  {
-  "name": "GB: Half Moon Grass - courtyard, wooden scaffold",
+  "name": "GB 1-1: Half Moon Grass - courtyard, wooden scaffold",
   "code": 3002000050,
   "part": "1-1",
   "kind": "treasure",
@@ -312,7 +312,7 @@
   ]
  },
  {
-  "name": "GB: Firebomb - west rooms, under crates",
+  "name": "GB 1-1: Firebomb - west rooms, under crates",
   "code": 3002000060,
   "part": "1-1",
   "kind": "treasure",
@@ -334,7 +334,7 @@
   ]
  },
  {
-  "name": "GB: Half Moon Grass - boulder stairs, corridor end",
+  "name": "GB 1-1: Half Moon Grass - boulder stairs, corridor end",
   "code": 3002000070,
   "part": "1-1",
   "kind": "treasure",
@@ -356,7 +356,7 @@
   ]
  },
  {
-  "name": "GB: Light Crossbow - ledge below second fog",
+  "name": "GB 1-1: Light Crossbow - ledge below second fog",
   "code": 3002000080,
   "part": "1-1",
   "kind": "treasure",
@@ -378,7 +378,7 @@
   ]
  },
  {
-  "name": "GB: Wooden Bolt - ledge below second fog",
+  "name": "GB 1-1: Wooden Bolt - ledge below second fog",
   "code": 3002000081,
   "part": "1-1",
   "kind": "treasure",
@@ -400,7 +400,7 @@
   ]
  },
  {
-  "name": "GB: Half Moon Grass - catapults, far end",
+  "name": "GB 1-1: Half Moon Grass - catapults, far end",
   "code": 3002000090,
   "part": "1-1",
   "kind": "treasure",
@@ -422,7 +422,7 @@
   ]
  },
  {
-  "name": "GB: Firebomb - left tower, top room",
+  "name": "GB 1-1: Firebomb - left tower, top room",
   "code": 3002000100,
   "part": "1-1",
   "kind": "treasure",
@@ -444,7 +444,7 @@
   ]
  },
  {
-  "name": "GB: Cling Ring - left tower, by lever",
+  "name": "GB 1-1: Cling Ring - left tower, by lever",
   "code": 3002000110,
   "part": "1-1",
   "kind": "treasure",
@@ -466,7 +466,7 @@
   ]
  },
  {
-  "name": "GB: Thief Ring - Ostrava's ledge",
+  "name": "GB 1-1: Thief Ring - Ostrava's ledge",
   "code": 3002000120,
   "part": "1-1",
   "kind": "treasure",
@@ -488,7 +488,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - Ostrava's route, corner",
+  "name": "GB 1-1: Unknown Warrior Soul - Ostrava's route, corner",
   "code": 3002000130,
   "part": "1-1",
   "kind": "treasure",
@@ -510,7 +510,7 @@
   ]
  },
  {
-  "name": "GB: Scimitar - building past Ostrava",
+  "name": "GB 1-1: Scimitar - building past Ostrava",
   "code": 3002000140,
   "part": "1-1",
   "kind": "treasure",
@@ -532,7 +532,7 @@
   ]
  },
  {
-  "name": "GB: Hardstone Shard - barrel room, far end",
+  "name": "GB 1-1: Hardstone Shard - barrel room, far end",
   "code": 3002000150,
   "part": "1-1",
   "kind": "treasure",
@@ -554,7 +554,7 @@
   ]
  },
  {
-  "name": "GB: Sharpstone Shard - barrel room, far end",
+  "name": "GB 1-1: Sharpstone Shard - barrel room, far end",
   "code": 3002000151,
   "part": "1-1",
   "kind": "treasure",
@@ -576,7 +576,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Hero Soul - long corridor end",
+  "name": "GB 1-1: Unknown Hero Soul - long corridor end",
   "code": 3002000160,
   "part": "1-1",
   "kind": "treasure",
@@ -598,7 +598,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - Ostrava's pit",
+  "name": "GB 1-1: Unknown Warrior Soul - Ostrava's pit",
   "code": 3002000170,
   "part": "1-1",
   "kind": "treasure",
@@ -620,7 +620,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - hanging on wooden ledge",
+  "name": "GB 1-1: Unknown Warrior Soul - hanging on wooden ledge",
   "code": 3002000180,
   "part": "1-1",
   "kind": "treasure",
@@ -642,7 +642,7 @@
   ]
  },
  {
-  "name": "GB: Late Moon Grass - before third fog",
+  "name": "GB 1-1: Late Moon Grass - before third fog",
   "code": 3002000190,
   "part": "1-1",
   "kind": "treasure",
@@ -664,7 +664,7 @@
   ]
  },
  {
-  "name": "GB: Full Moon Grass - dragon roost, lower ledge",
+  "name": "GB 1-1: Full Moon Grass - dragon roost, lower ledge",
   "code": 3002000200,
   "part": "1-1",
   "kind": "treasure",
@@ -686,7 +686,7 @@
   ]
  },
  {
-  "name": "GB: Archstone Shard - dragon roost, lower ledge",
+  "name": "GB 1-1: Archstone Shard - dragon roost, lower ledge",
   "code": 3002000210,
   "part": "1-1",
   "kind": "treasure",
@@ -708,7 +708,7 @@
   ]
  },
  {
-  "name": "GB: Renowned Warrior Soul - dragon roost, twin corpses 1",
+  "name": "GB 1-1: Renowned Warrior Soul - dragon roost, twin corpses 1",
   "code": 3002000220,
   "part": "1-1",
   "kind": "treasure",
@@ -730,7 +730,7 @@
   ]
  },
  {
-  "name": "GB: Flame Resistance Ring - dragon roost",
+  "name": "GB 1-1: Flame Resistance Ring - dragon roost",
   "code": 3002000230,
   "part": "1-1",
   "kind": "treasure",
@@ -752,7 +752,7 @@
   ]
  },
  {
-  "name": "GB: Purple Flame Shield - dragon roost",
+  "name": "GB 1-1: Purple Flame Shield - dragon roost",
   "code": 3002000240,
   "part": "1-1",
   "kind": "treasure",
@@ -774,7 +774,7 @@
   ]
  },
  {
-  "name": "GB: Full Moon Grass - dragon roost entrance",
+  "name": "GB 1-1: Full Moon Grass - dragon roost entrance",
   "code": 3002000250,
   "part": "1-1",
   "kind": "treasure",
@@ -796,7 +796,7 @@
   ]
  },
  {
-  "name": "GB: Renowned Warrior Soul - dragon roost, twin corpses 2",
+  "name": "GB 1-1: Renowned Warrior Soul - dragon roost, twin corpses 2",
   "code": 3002000260,
   "part": "1-1",
   "kind": "treasure",
@@ -818,7 +818,7 @@
   ]
  },
  {
-  "name": "GB: Ring of Great Strength - dragon roost",
+  "name": "GB 1-1: Ring of Great Strength - dragon roost",
   "code": 3002000270,
   "part": "1-1",
   "kind": "treasure",
@@ -840,7 +840,7 @@
   ]
  },
  {
-  "name": "GB: Pine Resin - past lever room, furniture",
+  "name": "GB 1-1: Pine Resin - past lever room, furniture",
   "code": 3002000280,
   "part": "1-1",
   "kind": "treasure",
@@ -862,7 +862,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - execution grounds, pile 1",
+  "name": "GB 1-1: Unknown Warrior Soul - execution grounds, pile 1",
   "code": 3002000290,
   "part": "1-1",
   "kind": "treasure",
@@ -885,7 +885,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - execution grounds, pile 2",
+  "name": "GB 1-1: Unknown Warrior Soul - execution grounds, pile 2",
   "code": 3002000300,
   "part": "1-1",
   "kind": "treasure",
@@ -908,7 +908,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - execution grounds, pile 3",
+  "name": "GB 1-1: Unknown Warrior Soul - execution grounds, pile 3",
   "code": 3002000310,
   "part": "1-1",
   "kind": "treasure",
@@ -931,7 +931,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - execution grounds, pile 4",
+  "name": "GB 1-1: Unknown Warrior Soul - execution grounds, pile 4",
   "code": 3002000320,
   "part": "1-1",
   "kind": "treasure",
@@ -954,7 +954,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - execution grounds, pile 5",
+  "name": "GB 1-1: Unknown Warrior Soul - execution grounds, pile 5",
   "code": 3002000330,
   "part": "1-1",
   "kind": "treasure",
@@ -977,7 +977,7 @@
   ]
  },
  {
-  "name": "GB: Renowned Warrior Soul - execution grounds, upper slope",
+  "name": "GB 1-1: Renowned Warrior Soul - execution grounds, upper slope",
   "code": 3002000340,
   "part": "1-1",
   "kind": "treasure",
@@ -1000,7 +1000,7 @@
   ]
  },
  {
-  "name": "GB: Large Brushwood Shield - corpse pit, bottom",
+  "name": "GB 1-1: Large Brushwood Shield - corpse pit, bottom",
   "code": 3002000350,
   "part": "1-1",
   "kind": "treasure",
@@ -1023,7 +1023,7 @@
   ]
  },
  {
-  "name": "GB: Brushwood Helm - corpse pit, bottom",
+  "name": "GB 1-1: Brushwood Helm - corpse pit, bottom",
   "code": 3002000351,
   "part": "1-1",
   "kind": "treasure",
@@ -1046,7 +1046,7 @@
   ]
  },
  {
-  "name": "GB: Brushwood Armor - corpse pit, bottom",
+  "name": "GB 1-1: Brushwood Armor - corpse pit, bottom",
   "code": 3002000352,
   "part": "1-1",
   "kind": "treasure",
@@ -1069,7 +1069,7 @@
   ]
  },
  {
-  "name": "GB: Brushwood Gauntlets - corpse pit, bottom",
+  "name": "GB 1-1: Brushwood Gauntlets - corpse pit, bottom",
   "code": 3002000353,
   "part": "1-1",
   "kind": "treasure",
@@ -1092,7 +1092,7 @@
   ]
  },
  {
-  "name": "GB: Brushwood Greaves - corpse pit, bottom",
+  "name": "GB 1-1: Brushwood Greaves - corpse pit, bottom",
   "code": 3002000354,
   "part": "1-1",
   "kind": "treasure",
@@ -1115,7 +1115,7 @@
   ]
  },
  {
-  "name": "GB: Poison Resistance Ring - execution grounds, stairwell",
+  "name": "GB 1-1: Poison Resistance Ring - execution grounds, stairwell",
   "code": 3002000360,
   "part": "1-1",
   "kind": "treasure",
@@ -1138,7 +1138,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Hero Soul - right tower balcony",
+  "name": "GB 1-1: Unknown Hero Soul - right tower balcony",
   "code": 3002000370,
   "part": "1-1",
   "kind": "treasure",
@@ -1160,7 +1160,7 @@
   ]
  },
  {
-  "name": "GB: Half Moon Grass - right tower, by lever",
+  "name": "GB 1-1: Half Moon Grass - right tower, by lever",
   "code": 3002000380,
   "part": "1-1",
   "kind": "treasure",
@@ -1182,7 +1182,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - first fog, barrels",
+  "name": "GB 1-1: Unknown Warrior Soul - first fog, barrels",
   "code": 3002000390,
   "part": "1-1",
   "kind": "treasure",
@@ -1204,7 +1204,7 @@
   ]
  },
  {
-  "name": "GB: Bastard Sword - below boulder stairs",
+  "name": "GB 1-1: Bastard Sword - below boulder stairs",
   "code": 3002000400,
   "part": "1-1",
   "kind": "treasure",
@@ -1226,7 +1226,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Warrior Soul - dragon bridge end, stairs",
+  "name": "GB 1-1: Unknown Warrior Soul - dragon bridge end, stairs",
   "code": 3002000410,
   "part": "1-1",
   "kind": "treasure",
@@ -1248,7 +1248,7 @@
   ]
  },
  {
-  "name": "GB: Mail Breaker - first fog, corridor end",
+  "name": "GB 1-1: Mail Breaker - first fog, corridor end",
   "code": 3002000420,
   "part": "1-1",
   "kind": "treasure",
@@ -1270,7 +1270,7 @@
   ]
  },
  {
-  "name": "GB: Unknown Hero Soul - outside mausoleum",
+  "name": "GB 1-1: Unknown Hero Soul - outside mausoleum",
   "code": 3002000430,
   "part": "1-1",
   "kind": "treasure",
@@ -1292,7 +1292,7 @@
   ]
  },
  {
-  "name": "GB: Colorless Demon Soul - corpse pit, beam",
+  "name": "GB 1-1: Colorless Demon Soul - corpse pit, beam",
   "code": 3002000440,
   "part": "1-1",
   "kind": "treasure",
@@ -1315,7 +1315,7 @@
   ]
  },
  {
-  "name": "LP: Unknown Hero Soul - west tunnel end, by Ostrava",
+  "name": "LP 1-2: Unknown Hero Soul - west tunnel end, by Ostrava",
   "code": 3002010000,
   "part": "1-2",
   "kind": "treasure",
@@ -1337,7 +1337,7 @@
   ]
  },
  {
-  "name": "LP: Half Moon Grass - dark hall, left",
+  "name": "LP 1-2: Half Moon Grass - dark hall, left",
   "code": 3002010010,
   "part": "1-2",
   "kind": "treasure",
@@ -1359,7 +1359,7 @@
   ]
  },
  {
-  "name": "LP: Throwing Knife - dark hall, right",
+  "name": "LP 1-2: Throwing Knife - dark hall, right",
   "code": 3002010020,
   "part": "1-2",
   "kind": "treasure",
@@ -1381,7 +1381,7 @@
   ]
  },
  {
-  "name": "LP: Crescent Moon Grass - first bridge, near start",
+  "name": "LP 1-2: Crescent Moon Grass - first bridge, near start",
   "code": 3002010030,
   "part": "1-2",
   "kind": "treasure",
@@ -1403,7 +1403,7 @@
   ]
  },
  {
-  "name": "LP: Winged Spear - first bridge, middle",
+  "name": "LP 1-2: Winged Spear - first bridge, middle",
   "code": 3002010040,
   "part": "1-2",
   "kind": "treasure",
@@ -1425,7 +1425,7 @@
   ]
  },
  {
-  "name": "LP: Unknown Hero Soul - first tower top",
+  "name": "LP 1-2: Unknown Hero Soul - first tower top",
   "code": 3002010050,
   "part": "1-2",
   "kind": "treasure",
@@ -1447,7 +1447,7 @@
   ]
  },
  {
-  "name": "LP: Wooden Catalyst - first tower top",
+  "name": "LP 1-2: Wooden Catalyst - first tower top",
   "code": 3002010060,
   "part": "1-2",
   "kind": "treasure",
@@ -1469,7 +1469,7 @@
   ]
  },
  {
-  "name": "LP: Crescent Moon Grass - first tower exit, by wagon",
+  "name": "LP 1-2: Crescent Moon Grass - first tower exit, by wagon",
   "code": 3002010070,
   "part": "1-2",
   "kind": "treasure",
@@ -1491,7 +1491,7 @@
   ]
  },
  {
-  "name": "LP: Spiked Shield - upper walkway",
+  "name": "LP 1-2: Spiked Shield - upper walkway",
   "code": 3002010080,
   "part": "1-2",
   "kind": "treasure",
@@ -1513,7 +1513,7 @@
   ]
  },
  {
-  "name": "LP: Renowned Hero Soul - upper walkway",
+  "name": "LP 1-2: Renowned Hero Soul - upper walkway",
   "code": 3002010090,
   "part": "1-2",
   "kind": "treasure",
@@ -1535,7 +1535,7 @@
   ]
  },
  {
-  "name": "LP: Crescent Moon Grass - upper walkway, far end",
+  "name": "LP 1-2: Crescent Moon Grass - upper walkway, far end",
   "code": 3002010100,
   "part": "1-2",
   "kind": "treasure",
@@ -1557,7 +1557,7 @@
   ]
  },
  {
-  "name": "LP: Unknown Warrior Soul - upper walkway, far end",
+  "name": "LP 1-2: Unknown Warrior Soul - upper walkway, far end",
   "code": 3002010110,
   "part": "1-2",
   "kind": "treasure",
@@ -1579,7 +1579,7 @@
   ]
  },
  {
-  "name": "LP: Compound Short Bow - second tower top",
+  "name": "LP 1-2: Compound Short Bow - second tower top",
   "code": 3002010120,
   "part": "1-2",
   "kind": "treasure",
@@ -1601,7 +1601,7 @@
   ]
  },
  {
-  "name": "LP: Heavy Arrow - second tower top",
+  "name": "LP 1-2: Heavy Arrow - second tower top",
   "code": 3002010121,
   "part": "1-2",
   "kind": "treasure",
@@ -1623,7 +1623,7 @@
   ]
  },
  {
-  "name": "LP: Gash Resistance Ring - west tunnel, crossbowmen",
+  "name": "LP 1-2: Gash Resistance Ring - west tunnel, crossbowmen",
   "code": 3002010130,
   "part": "1-2",
   "kind": "treasure",
@@ -1645,7 +1645,7 @@
   ]
  },
  {
-  "name": "LP: Unknown Hero Soul - east tunnel, before kennel",
+  "name": "LP 1-2: Unknown Hero Soul - east tunnel, before kennel",
   "code": 3002010140,
   "part": "1-2",
   "kind": "treasure",
@@ -1667,7 +1667,7 @@
   ]
  },
  {
-  "name": "LP: Crescent Moon Grass - east tunnel, past kennel",
+  "name": "LP 1-2: Crescent Moon Grass - east tunnel, past kennel",
   "code": 3002010150,
   "part": "1-2",
   "kind": "treasure",
@@ -1689,7 +1689,7 @@
   ]
  },
  {
-  "name": "LP: Stone of Ephemeral Eyes - palace bridge, first corpse",
+  "name": "LP 1-2: Stone of Ephemeral Eyes - palace bridge, first corpse",
   "code": 3002010160,
   "part": "1-2",
   "kind": "treasure",
@@ -1711,7 +1711,7 @@
   ]
  },
  {
-  "name": "LP: Full Moon Grass - palace bridge, second corpse",
+  "name": "LP 1-2: Full Moon Grass - palace bridge, second corpse",
   "code": 3002010170,
   "part": "1-2",
   "kind": "treasure",
@@ -1733,7 +1733,7 @@
   ]
  },
  {
-  "name": "LP: Tower Shield - prison, tunnel end",
+  "name": "LP 1-2: Tower Shield - prison, tunnel end",
   "code": 3002010180,
   "part": "1-2",
   "kind": "treasure",
@@ -1757,7 +1757,7 @@
   ]
  },
  {
-  "name": "LP: Renowned Hero Soul - prison, cell opposite Biorr",
+  "name": "LP 1-2: Renowned Hero Soul - prison, cell opposite Biorr",
   "code": 3002010190,
   "part": "1-2",
   "kind": "treasure",
@@ -1781,7 +1781,7 @@
   ]
  },
  {
-  "name": "LP: Storied Hero Soul - prison, far cell",
+  "name": "LP 1-2: Storied Hero Soul - prison, far cell",
   "code": 3002010200,
   "part": "1-2",
   "kind": "treasure",
@@ -1805,7 +1805,7 @@
   ]
  },
  {
-  "name": "LP: Noble's Lotus - fog tower top, far wall",
+  "name": "LP 1-2: Noble's Lotus - fog tower top, far wall",
   "code": 3002010210,
   "part": "1-2",
   "kind": "treasure",
@@ -1827,7 +1827,7 @@
   ]
  },
  {
-  "name": "LP: Stone of Ephemeral Eyes - fog tower top",
+  "name": "LP 1-2: Stone of Ephemeral Eyes - fog tower top",
   "code": 3002010220,
   "part": "1-2",
   "kind": "treasure",
@@ -1849,7 +1849,7 @@
   ]
  },
  {
-  "name": "LP: Renowned Warrior Soul - fog tower top",
+  "name": "LP 1-2: Renowned Warrior Soul - fog tower top",
   "code": 3002010230,
   "part": "1-2",
   "kind": "treasure",
@@ -1871,7 +1871,7 @@
   ]
  },
  {
-  "name": "LP: Unknown Hero Soul - fog tower top, barricade",
+  "name": "LP 1-2: Unknown Hero Soul - fog tower top, barricade",
   "code": 3002010240,
   "part": "1-2",
   "kind": "treasure",
@@ -1893,7 +1893,7 @@
   ]
  },
  {
-  "name": "LP: Late Moon Grass - fog tower top, above fog",
+  "name": "LP 1-2: Late Moon Grass - fog tower top, above fog",
   "code": 3002010250,
   "part": "1-2",
   "kind": "treasure",
@@ -1915,7 +1915,7 @@
   ]
  },
  {
-  "name": "LP: Renowned Warrior Soul - boss arena ramparts",
+  "name": "LP 1-2: Renowned Warrior Soul - boss arena ramparts",
   "code": 3002010260,
   "part": "1-2",
   "kind": "treasure",
@@ -1937,7 +1937,7 @@
   ]
  },
  {
-  "name": "LP: Crescent Moon Grass - first bridge, tower end",
+  "name": "LP 1-2: Crescent Moon Grass - first bridge, tower end",
   "code": 3002010270,
   "part": "1-2",
   "kind": "treasure",
@@ -1959,7 +1959,7 @@
   ]
  },
  {
-  "name": "IW: Storied Warrior Soul - fountain 1",
+  "name": "IW 1-3: Storied Warrior Soul - fountain 1",
   "code": 3002020000,
   "part": "1-3",
   "kind": "treasure",
@@ -1981,7 +1981,7 @@
   ]
  },
  {
-  "name": "IW: Storied Warrior Soul - fountain 2",
+  "name": "IW 1-3: Storied Warrior Soul - fountain 2",
   "code": 3002020010,
   "part": "1-3",
   "kind": "treasure",
@@ -2003,7 +2003,7 @@
   ]
  },
  {
-  "name": "IW: Storied Warrior Soul - fountain 3",
+  "name": "IW 1-3: Storied Warrior Soul - fountain 3",
   "code": 3002020020,
   "part": "1-3",
   "kind": "treasure",
@@ -2025,7 +2025,7 @@
   ]
  },
  {
-  "name": "IW: Late Moon Grass - plaza, apart from fountain",
+  "name": "IW 1-3: Late Moon Grass - plaza, apart from fountain",
   "code": 3002020030,
   "part": "1-3",
   "kind": "treasure",
@@ -2047,7 +2047,7 @@
   ]
  },
  {
-  "name": "IW: Stone of Ephemeral Eyes - Bloody Key alley, dead end",
+  "name": "IW 1-3: Stone of Ephemeral Eyes - Bloody Key alley, dead end",
   "code": 3002020040,
   "part": "1-3",
   "kind": "treasure",
@@ -2072,7 +2072,7 @@
   ]
  },
  {
-  "name": "IW: Legendary Warrior Soul - witch tower, lower stairs",
+  "name": "IW 1-3: Legendary Warrior Soul - witch tower, lower stairs",
   "code": 3002020050,
   "part": "1-3",
   "kind": "treasure",
@@ -2097,7 +2097,7 @@
   ]
  },
  {
-  "name": "IW: Ring of Magical Nature - witch tower, top floor",
+  "name": "IW 1-3: Ring of Magical Nature - witch tower, top floor",
   "code": 3002020060,
   "part": "1-3",
   "kind": "treasure",
@@ -2122,7 +2122,7 @@
   ]
  },
  {
-  "name": "IW: Ring of the Accursed - witch tower, top floor",
+  "name": "IW 1-3: Ring of the Accursed - witch tower, top floor",
   "code": 3002020070,
   "part": "1-3",
   "kind": "treasure",
@@ -2147,7 +2147,7 @@
   ]
  },
  {
-  "name": "IW: Dregling Shield - first stairs, midway",
+  "name": "IW 1-3: Dregling Shield - first stairs, midway",
   "code": 3002020080,
   "part": "1-3",
   "kind": "treasure",
@@ -2169,7 +2169,7 @@
   ]
  },
  {
-  "name": "IW: Full Moon Grass - alleys, below ledge",
+  "name": "IW 1-3: Full Moon Grass - alleys, below ledge",
   "code": 3002020090,
   "part": "1-3",
   "kind": "treasure",
@@ -2191,7 +2191,7 @@
   ]
  },
  {
-  "name": "IW: Unknown Hero Soul - alleys, behind crates",
+  "name": "IW 1-3: Unknown Hero Soul - alleys, behind crates",
   "code": 3002020100,
   "part": "1-3",
   "kind": "treasure",
@@ -2213,7 +2213,7 @@
   ]
  },
  {
-  "name": "IW: New Moon Grass - alleys, wooden platform",
+  "name": "IW 1-3: New Moon Grass - alleys, wooden platform",
   "code": 3002020110,
   "part": "1-3",
   "kind": "treasure",
@@ -2235,7 +2235,7 @@
   ]
  },
  {
-  "name": "IW: Dregling Shield - alleys, narrow side corridor",
+  "name": "IW 1-3: Dregling Shield - alleys, narrow side corridor",
   "code": 3002020120,
   "part": "1-3",
   "kind": "treasure",
@@ -2257,7 +2257,7 @@
   ]
  },
  {
-  "name": "IW: Great Sword - merchant balcony",
+  "name": "IW 1-3: Great Sword - merchant balcony",
   "code": 3002020130,
   "part": "1-3",
   "kind": "treasure",
@@ -2279,7 +2279,7 @@
   ]
  },
  {
-  "name": "IW: Unknown Hero Soul - crossbow balcony corner",
+  "name": "IW 1-3: Unknown Hero Soul - crossbow balcony corner",
   "code": 3002020140,
   "part": "1-3",
   "kind": "treasure",
@@ -2301,7 +2301,7 @@
   ]
  },
  {
-  "name": "IW: Storied Hero Soul - below crossbow platform",
+  "name": "IW 1-3: Storied Hero Soul - below crossbow platform",
   "code": 3002020150,
   "part": "1-3",
   "kind": "treasure",
@@ -2323,7 +2323,7 @@
   ]
  },
  {
-  "name": "IW: Storied Hero Soul - after first fog, ladder",
+  "name": "IW 1-3: Storied Hero Soul - after first fog, ladder",
   "code": 3002020160,
   "part": "1-3",
   "kind": "treasure",
@@ -2345,7 +2345,7 @@
   ]
  },
  {
-  "name": "IW: Storied Hero Soul - upper walls, around corner",
+  "name": "IW 1-3: Storied Hero Soul - upper walls, around corner",
   "code": 3002020170,
   "part": "1-3",
   "kind": "treasure",
@@ -2367,7 +2367,7 @@
   ]
  },
  {
-  "name": "IW: Penetrating Sword - ledge above closed gate",
+  "name": "IW 1-3: Penetrating Sword - ledge above closed gate",
   "code": 3002020180,
   "part": "1-3",
   "kind": "treasure",
@@ -2389,7 +2389,7 @@
   ]
  },
  {
-  "name": "IW: Full Moon Grass - past short bridge, furniture",
+  "name": "IW 1-3: Full Moon Grass - past short bridge, furniture",
   "code": 3002020190,
   "part": "1-3",
   "kind": "treasure",
@@ -2411,7 +2411,7 @@
   ]
  },
  {
-  "name": "IW: Unknown Hero Soul - boss plaza, archer platform",
+  "name": "IW 1-3: Unknown Hero Soul - boss plaza, archer platform",
   "code": 3002020200,
   "part": "1-3",
   "kind": "treasure",
@@ -2433,7 +2433,7 @@
   ]
  },
  {
-  "name": "IW: Late Moon Grass - boss plaza, right of gate",
+  "name": "IW 1-3: Late Moon Grass - boss plaza, right of gate",
   "code": 3002020210,
   "part": "1-3",
   "kind": "treasure",
@@ -2455,7 +2455,7 @@
   ]
  },
  {
-  "name": "IW: Half Moon Grass - yard before lever",
+  "name": "IW 1-3: Half Moon Grass - yard before lever",
   "code": 3002020220,
   "part": "1-3",
   "kind": "treasure",
@@ -2477,7 +2477,7 @@
   ]
  },
  {
-  "name": "IW: Stone of Ephemeral Eyes - closed gate, crushed soldier",
+  "name": "IW 1-3: Stone of Ephemeral Eyes - closed gate, crushed soldier",
   "code": 3002020230,
   "part": "1-3",
   "kind": "treasure",
@@ -2499,7 +2499,7 @@
   ]
  },
  {
-  "name": "IW: Full Moon Grass - boss plaza, corner by pile",
+  "name": "IW 1-3: Full Moon Grass - boss plaza, corner by pile",
   "code": 3002020240,
   "part": "1-3",
   "kind": "treasure",
@@ -2521,7 +2521,7 @@
   ]
  },
  {
-  "name": "IW: Legendary Warrior Soul - boss plaza, corpse pile",
+  "name": "IW 1-3: Legendary Warrior Soul - boss plaza, corpse pile",
   "code": 3002020250,
   "part": "1-3",
   "kind": "treasure",
@@ -2543,7 +2543,7 @@
   ]
  },
  {
-  "name": "IW: Late Moon Grass - main stairs, behind crates",
+  "name": "IW 1-3: Late Moon Grass - main stairs, behind crates",
   "code": 3002020260,
   "part": "1-3",
   "kind": "treasure",
@@ -2565,7 +2565,7 @@
   ]
  },
  {
-  "name": "KT: Storied Warrior Soul - start, before carcass 1",
+  "name": "KT 1-4: Storied Warrior Soul - start, before carcass 1",
   "code": 3002030000,
   "part": "1-4",
   "kind": "treasure",
@@ -2587,7 +2587,7 @@
   ]
  },
  {
-  "name": "KT: Storied Warrior Soul - start, before carcass 2",
+  "name": "KT 1-4: Storied Warrior Soul - start, before carcass 2",
   "code": 3002030010,
   "part": "1-4",
   "kind": "treasure",
@@ -2609,7 +2609,7 @@
   ]
  },
  {
-  "name": "KT: Stone of Ephemeral Eyes - phantom hall, left end",
+  "name": "KT 1-4: Stone of Ephemeral Eyes - phantom hall, left end",
   "code": 3002030020,
   "part": "1-4",
   "kind": "treasure",
@@ -2631,7 +2631,7 @@
   ]
  },
  {
-  "name": "KT: Storied Warrior Soul - dragon bridge, west",
+  "name": "KT 1-4: Storied Warrior Soul - dragon bridge, west",
   "code": 3002030030,
   "part": "1-4",
   "kind": "treasure",
@@ -2653,7 +2653,7 @@
   ]
  },
  {
-  "name": "KT: Storied Warrior Soul - dragon bridge, middle",
+  "name": "KT 1-4: Storied Warrior Soul - dragon bridge, middle",
   "code": 3002030040,
   "part": "1-4",
   "kind": "treasure",
@@ -2675,7 +2675,7 @@
   ]
  },
  {
-  "name": "KT: Knight Sword - drop from crumbled wall",
+  "name": "KT 1-4: Knight Sword - drop from crumbled wall",
   "code": 3002030050,
   "part": "1-4",
   "kind": "treasure",
@@ -2697,7 +2697,7 @@
   ]
  },
  {
-  "name": "KT: Knight's Shield - drop from crumbled wall",
+  "name": "KT 1-4: Knight's Shield - drop from crumbled wall",
   "code": 3002030051,
   "part": "1-4",
   "kind": "treasure",
@@ -2719,7 +2719,7 @@
   ]
  },
  {
-  "name": "KT: Legendary Warrior Soul - staircase foot, burnt corpse 1",
+  "name": "KT 1-4: Legendary Warrior Soul - staircase foot, burnt corpse 1",
   "code": 3002030060,
   "part": "1-4",
   "kind": "treasure",
@@ -2741,7 +2741,7 @@
   ]
  },
  {
-  "name": "KT: Legendary Warrior Soul - staircase foot, burnt corpse 2",
+  "name": "KT 1-4: Legendary Warrior Soul - staircase foot, burnt corpse 2",
   "code": 3002030070,
   "part": "1-4",
   "kind": "treasure",
@@ -2763,7 +2763,7 @@
   ]
  },
  {
-  "name": "KT: Legendary Warrior Soul - staircase foot, burnt corpse 3",
+  "name": "KT 1-4: Legendary Warrior Soul - staircase foot, burnt corpse 3",
   "code": 3002030080,
   "part": "1-4",
   "kind": "treasure",
@@ -2785,7 +2785,7 @@
   ]
  },
  {
-  "name": "KT: Legendary Hero Soul - great staircase 1",
+  "name": "KT 1-4: Legendary Hero Soul - great staircase 1",
   "code": 3002030090,
   "part": "1-4",
   "kind": "treasure",
@@ -2807,7 +2807,7 @@
   ]
  },
  {
-  "name": "KT: Legendary Hero Soul - great staircase 2",
+  "name": "KT 1-4: Legendary Hero Soul - great staircase 2",
   "code": 3002030100,
   "part": "1-4",
   "kind": "treasure",
@@ -2829,7 +2829,7 @@
   ]
  },
  {
-  "name": "KT: Stone of Ephemeral Eyes - walkway balcony",
+  "name": "KT 1-4: Stone of Ephemeral Eyes - walkway balcony",
   "code": 3002030110,
   "part": "1-4",
   "kind": "treasure",
@@ -2851,7 +2851,7 @@
   ]
  },
  {
-  "name": "IE: Copper Key - key tower bottom",
+  "name": "IE 4-1: Copper Key - key tower bottom",
   "code": 3003010000,
   "part": "4-1",
   "kind": "treasure",
@@ -2873,7 +2873,7 @@
   ]
  },
  {
-  "name": "IE: Half Moon Grass - start, past archway",
+  "name": "IE 4-1: Half Moon Grass - start, past archway",
   "code": 3003010010,
   "part": "4-1",
   "kind": "treasure",
@@ -2895,7 +2895,7 @@
   ]
  },
  {
-  "name": "IE: Talisman of God - gate plaza, under tree",
+  "name": "IE 4-1: Talisman of God - gate plaza, under tree",
   "code": 3003010020,
   "part": "4-1",
   "kind": "treasure",
@@ -2917,7 +2917,7 @@
   ]
  },
  {
-  "name": "IE: Kilij - pit courtyard",
+  "name": "IE 4-1: Kilij - pit courtyard",
   "code": 3003010030,
   "part": "4-1",
   "kind": "treasure",
@@ -2939,7 +2939,7 @@
   ]
  },
  {
-  "name": "IE: Full Moon Grass - pit courtyard",
+  "name": "IE 4-1: Full Moon Grass - pit courtyard",
   "code": 3003010040,
   "part": "4-1",
   "kind": "treasure",
@@ -2961,7 +2961,7 @@
   ]
  },
  {
-  "name": "IE: Storied Hero Soul - pit courtyard",
+  "name": "IE 4-1: Storied Hero Soul - pit courtyard",
   "code": 3003010050,
   "part": "4-1",
   "kind": "treasure",
@@ -2983,7 +2983,7 @@
   ]
  },
  {
-  "name": "IE: Crescent Falchion+1 - outer ledge",
+  "name": "IE 4-1: Crescent Falchion+1 - outer ledge",
   "code": 3003010060,
   "part": "4-1",
   "kind": "treasure",
@@ -3005,7 +3005,7 @@
   ]
  },
  {
-  "name": "IE: Soul Remains - outer ledge",
+  "name": "IE 4-1: Soul Remains - outer ledge",
   "code": 3003010070,
   "part": "4-1",
   "kind": "treasure",
@@ -3027,7 +3027,7 @@
   ]
  },
  {
-  "name": "IE: Augite of Guidance - crow's cliff",
+  "name": "IE 4-1: Augite of Guidance - crow's cliff",
   "code": 3003010080,
   "part": "4-1",
   "kind": "treasure",
@@ -3049,7 +3049,7 @@
   ]
  },
  {
-  "name": "IE: Compound Long Bow - archer tower",
+  "name": "IE 4-1: Compound Long Bow - archer tower",
   "code": 3003010090,
   "part": "4-1",
   "kind": "treasure",
@@ -3071,7 +3071,7 @@
   ]
  },
  {
-  "name": "IE: Light Arrow - archer tower",
+  "name": "IE 4-1: Light Arrow - archer tower",
   "code": 3003010091,
   "part": "4-1",
   "kind": "treasure",
@@ -3093,7 +3093,7 @@
   ]
  },
  {
-  "name": "IE: Crescent Moon Grass - cell tunnels",
+  "name": "IE 4-1: Crescent Moon Grass - cell tunnels",
   "code": 3003010100,
   "part": "4-1",
   "kind": "treasure",
@@ -3115,7 +3115,7 @@
   ]
  },
  {
-  "name": "IE: Renowned Hero Soul - Blige's cell",
+  "name": "IE 4-1: Renowned Hero Soul - Blige's cell",
   "code": 3003010110,
   "part": "4-1",
   "kind": "treasure",
@@ -3139,7 +3139,7 @@
   ]
  },
  {
-  "name": "IE: Uchigatana - before second fog gate",
+  "name": "IE 4-1: Uchigatana - before second fog gate",
   "code": 3003010120,
   "part": "4-1",
   "kind": "treasure",
@@ -3161,7 +3161,7 @@
   ]
  },
  {
-  "name": "IE: Cloudstone Shard - second fog gate, down stairs",
+  "name": "IE 4-1: Cloudstone Shard - second fog gate, down stairs",
   "code": 3003010130,
   "part": "4-1",
   "kind": "treasure",
@@ -3183,7 +3183,7 @@
   ]
  },
  {
-  "name": "IE: Half Moon Grass - upper ledges, top of ladder",
+  "name": "IE 4-1: Half Moon Grass - upper ledges, top of ladder",
   "code": 3003010140,
   "part": "4-1",
   "kind": "treasure",
@@ -3205,7 +3205,7 @@
   ]
  },
  {
-  "name": "IE: Cloudstone Shard - upper ledges, far end",
+  "name": "IE 4-1: Cloudstone Shard - upper ledges, far end",
   "code": 3003010150,
   "part": "4-1",
   "kind": "treasure",
@@ -3227,7 +3227,7 @@
   ]
  },
  {
-  "name": "IE: Stone of Ephemeral Eyes - upper ledges",
+  "name": "IE 4-1: Stone of Ephemeral Eyes - upper ledges",
   "code": 3003010160,
   "part": "4-1",
   "kind": "treasure",
@@ -3249,7 +3249,7 @@
   ]
  },
  {
-  "name": "IE: Unknown Hero Soul - upper ledges, across plank",
+  "name": "IE 4-1: Unknown Hero Soul - upper ledges, across plank",
   "code": 3003010170,
   "part": "4-1",
   "kind": "treasure",
@@ -3271,7 +3271,7 @@
   ]
  },
  {
-  "name": "IE: Unknown Hero Soul - shield landing, by trap",
+  "name": "IE 4-1: Unknown Hero Soul - shield landing, by trap",
   "code": 3003010180,
   "part": "4-1",
   "kind": "treasure",
@@ -3293,7 +3293,7 @@
   ]
  },
  {
-  "name": "IE: Renowned Hero Soul - before cliff path",
+  "name": "IE 4-1: Renowned Hero Soul - before cliff path",
   "code": 3003010190,
   "part": "4-1",
   "kind": "treasure",
@@ -3315,7 +3315,7 @@
   ]
  },
  {
-  "name": "IE: Late Moon Grass - after third fog gate",
+  "name": "IE 4-1: Late Moon Grass - after third fog gate",
   "code": 3003010200,
   "part": "4-1",
   "kind": "treasure",
@@ -3337,7 +3337,7 @@
   ]
  },
  {
-  "name": "IE: Graverobber's Ring - last junction, beam",
+  "name": "IE 4-1: Graverobber's Ring - last junction, beam",
   "code": 3003010210,
   "part": "4-1",
   "kind": "treasure",
@@ -3359,7 +3359,7 @@
   ]
  },
  {
-  "name": "IE: Cloudstone Shard - past third fog gate",
+  "name": "IE 4-1: Cloudstone Shard - past third fog gate",
   "code": 3003010220,
   "part": "4-1",
   "kind": "treasure",
@@ -3381,7 +3381,7 @@
   ]
  },
  {
-  "name": "IE: Renowned Hero Soul - last junction, broken wall",
+  "name": "IE 4-1: Renowned Hero Soul - last junction, broken wall",
   "code": 3003010230,
   "part": "4-1",
   "kind": "treasure",
@@ -3403,7 +3403,7 @@
   ]
  },
  {
-  "name": "IE: Half Moon Grass - before boss fog gate",
+  "name": "IE 4-1: Half Moon Grass - before boss fog gate",
   "code": 3003010240,
   "part": "4-1",
   "kind": "treasure",
@@ -3425,7 +3425,7 @@
   ]
  },
  {
-  "name": "IE: Stone of Ephemeral Eyes - boss arena ledge",
+  "name": "IE 4-1: Stone of Ephemeral Eyes - boss arena ledge",
   "code": 3003010250,
   "part": "4-1",
   "kind": "treasure",
@@ -3449,7 +3449,7 @@
   ]
  },
  {
-  "name": "IE: Storied Warrior Soul - boss arena, behind stairs",
+  "name": "IE 4-1: Storied Warrior Soul - boss arena, behind stairs",
   "code": 3003010260,
   "part": "4-1",
   "kind": "treasure",
@@ -3473,7 +3473,7 @@
   ]
  },
  {
-  "name": "IE: Regenerator's Ring - hidden ledge below key tower",
+  "name": "IE 4-1: Regenerator's Ring - hidden ledge below key tower",
   "code": 3003010270,
   "part": "4-1",
   "kind": "treasure",
@@ -3495,7 +3495,7 @@
   ]
  },
  {
-  "name": "IE: Soldier's Lotus - gate plaza rubble",
+  "name": "IE 4-1: Soldier's Lotus - gate plaza rubble",
   "code": 3003010280,
   "part": "4-1",
   "kind": "treasure",
@@ -3517,7 +3517,7 @@
   ]
  },
  {
-  "name": "IE: Unknown Hero Soul - second fog gate, around corner",
+  "name": "IE 4-1: Unknown Hero Soul - second fog gate, around corner",
   "code": 3003010290,
   "part": "4-1",
   "kind": "treasure",
@@ -3539,7 +3539,7 @@
   ]
  },
  {
-  "name": "IE: Adjudicator's Shield - past second fog gate",
+  "name": "IE 4-1: Adjudicator's Shield - past second fog gate",
   "code": 3003010300,
   "part": "4-1",
   "kind": "treasure",
@@ -3561,7 +3561,7 @@
   ]
  },
  {
-  "name": "IE: Renowned Hero Soul - gate plaza",
+  "name": "IE 4-1: Renowned Hero Soul - gate plaza",
   "code": 3003010310,
   "part": "4-1",
   "kind": "treasure",
@@ -3583,7 +3583,7 @@
   ]
  },
  {
-  "name": "IE: Stone of Ephemeral Eyes - below crow, lizard ledge",
+  "name": "IE 4-1: Stone of Ephemeral Eyes - below crow, lizard ledge",
   "code": 3003010320,
   "part": "4-1",
   "kind": "treasure",
@@ -3605,7 +3605,7 @@
   ]
  },
  {
-  "name": "RP: Legendary Warrior Soul - boss arena entrance",
+  "name": "RP 4-2: Legendary Warrior Soul - boss arena entrance",
   "code": 3003020000,
   "part": "4-2",
   "kind": "treasure",
@@ -3627,7 +3627,7 @@
   ]
  },
  {
-  "name": "RP: Stone of Ephemeral Eyes - start, drop off left stairs",
+  "name": "RP 4-2: Stone of Ephemeral Eyes - start, drop off left stairs",
   "code": 3003020010,
   "part": "4-2",
   "kind": "treasure",
@@ -3649,7 +3649,7 @@
   ]
  },
  {
-  "name": "RP: Storied Warrior Soul - start, drop off right stairs",
+  "name": "RP 4-2: Storied Warrior Soul - start, drop off right stairs",
   "code": 3003020020,
   "part": "4-2",
   "kind": "treasure",
@@ -3671,7 +3671,7 @@
   ]
  },
  {
-  "name": "RP: Soul Remains - tunnel",
+  "name": "RP 4-2: Soul Remains - tunnel",
   "code": 3003020030,
   "part": "4-2",
   "kind": "treasure",
@@ -3693,7 +3693,7 @@
   ]
  },
  {
-  "name": "RP: Kunai - across bridge",
+  "name": "RP 4-2: Kunai - across bridge",
   "code": 3003020040,
   "part": "4-2",
   "kind": "treasure",
@@ -3715,7 +3715,7 @@
   ]
  },
  {
-  "name": "RP: Unknown Warrior Soul - before Patches' room",
+  "name": "RP 4-2: Unknown Warrior Soul - before Patches' room",
   "code": 3003020050,
   "part": "4-2",
   "kind": "treasure",
@@ -3737,7 +3737,7 @@
   ]
  },
  {
-  "name": "RP: Moonshadestone Shard - below casket hall",
+  "name": "RP 4-2: Moonshadestone Shard - below casket hall",
   "code": 3003020060,
   "part": "4-2",
   "kind": "treasure",
@@ -3759,7 +3759,7 @@
   ]
  },
  {
-  "name": "RP: Full Moon Grass - casket hall, behind column",
+  "name": "RP 4-2: Full Moon Grass - casket hall, behind column",
   "code": 3003020070,
   "part": "4-2",
   "kind": "treasure",
@@ -3781,7 +3781,7 @@
   ]
  },
  {
-  "name": "RP: Unknown Warrior Soul - west stairs, midway",
+  "name": "RP 4-2: Unknown Warrior Soul - west stairs, midway",
   "code": 3003020080,
   "part": "4-2",
   "kind": "treasure",
@@ -3803,7 +3803,7 @@
   ]
  },
  {
-  "name": "RP: Crescent Moon Grass - pit",
+  "name": "RP 4-2: Crescent Moon Grass - pit",
   "code": 3003020090,
   "part": "4-2",
   "kind": "treasure",
@@ -3825,7 +3825,7 @@
   ]
  },
  {
-  "name": "RP: Moonshadestone Shard - pit, by Saint Urbain",
+  "name": "RP 4-2: Moonshadestone Shard - pit, by Saint Urbain",
   "code": 3003020100,
   "part": "4-2",
   "kind": "treasure",
@@ -3847,7 +3847,7 @@
   ]
  },
  {
-  "name": "RP: Half Moon Grass - past outer door",
+  "name": "RP 4-2: Half Moon Grass - past outer door",
   "code": 3003020110,
   "part": "4-2",
   "kind": "treasure",
@@ -3869,7 +3869,7 @@
   ]
  },
  {
-  "name": "RP: Unknown Warrior Soul - outside, cliff start",
+  "name": "RP 4-2: Unknown Warrior Soul - outside, cliff start",
   "code": 3003020120,
   "part": "4-2",
   "kind": "treasure",
@@ -3891,7 +3891,7 @@
   ]
  },
  {
-  "name": "RP: Storied Warrior Soul - by first fog gate",
+  "name": "RP 4-2: Storied Warrior Soul - by first fog gate",
   "code": 3003020130,
   "part": "4-2",
   "kind": "treasure",
@@ -3913,7 +3913,7 @@
   ]
  },
  {
-  "name": "RP: Moonshadestone Shard - bridge tunnel end",
+  "name": "RP 4-2: Moonshadestone Shard - bridge tunnel end",
   "code": 3003020140,
   "part": "4-2",
   "kind": "treasure",
@@ -3935,7 +3935,7 @@
   ]
  },
  {
-  "name": "RP: Dagger - lower crypt",
+  "name": "RP 4-2: Dagger - lower crypt",
   "code": 3003020150,
   "part": "4-2",
   "kind": "treasure",
@@ -3957,7 +3957,7 @@
   ]
  },
  {
-  "name": "RP: Crescent Moon Grass - before second fog gate, far corpse",
+  "name": "RP 4-2: Crescent Moon Grass - before second fog gate, far corpse",
   "code": 3003020160,
   "part": "4-2",
   "kind": "treasure",
@@ -3979,7 +3979,7 @@
   ]
  },
  {
-  "name": "RP: Crescent Moon Grass - before second fog gate, near corpse",
+  "name": "RP 4-2: Crescent Moon Grass - before second fog gate, near corpse",
   "code": 3003020170,
   "part": "4-2",
   "kind": "treasure",
@@ -4001,7 +4001,7 @@
   ]
  },
  {
-  "name": "RP: Storied Warrior Soul - stairs to slug cavern",
+  "name": "RP 4-2: Storied Warrior Soul - stairs to slug cavern",
   "code": 3003020180,
   "part": "4-2",
   "kind": "treasure",
@@ -4023,7 +4023,7 @@
   ]
  },
  {
-  "name": "RP: Sticky White Slime - slug cavern, first slugs",
+  "name": "RP 4-2: Sticky White Slime - slug cavern, first slugs",
   "code": 3003020190,
   "part": "4-2",
   "kind": "treasure",
@@ -4045,7 +4045,7 @@
   ]
  },
  {
-  "name": "RP: Sticky White Slime - slug cavern, sarcophagus",
+  "name": "RP 4-2: Sticky White Slime - slug cavern, sarcophagus",
   "code": 3003020200,
   "part": "4-2",
   "kind": "treasure",
@@ -4067,7 +4067,7 @@
   ]
  },
  {
-  "name": "RP: Moonshadestone Chunk - slug cavern, behind column",
+  "name": "RP 4-2: Moonshadestone Chunk - slug cavern, behind column",
   "code": 3003020210,
   "part": "4-2",
   "kind": "treasure",
@@ -4089,7 +4089,7 @@
   ]
  },
  {
-  "name": "RP: Storied Warrior Soul - slug cavern, past chest room",
+  "name": "RP 4-2: Storied Warrior Soul - slug cavern, past chest room",
   "code": 3003020220,
   "part": "4-2",
   "kind": "treasure",
@@ -4111,7 +4111,7 @@
   ]
  },
  {
-  "name": "RP: Ronin Ring - slug cavern chest room",
+  "name": "RP 4-2: Ronin Ring - slug cavern chest room",
   "code": 3003020230,
   "part": "4-2",
   "kind": "treasure",
@@ -4133,7 +4133,7 @@
   ]
  },
  {
-  "name": "RP: Hiltless - slug cavern chest room",
+  "name": "RP 4-2: Hiltless - slug cavern chest room",
   "code": 3003020231,
   "part": "4-2",
   "kind": "treasure",
@@ -4155,7 +4155,7 @@
   ]
  },
  {
-  "name": "RP: Stone of Ephemeral Eyes - slug cavern, far left",
+  "name": "RP 4-2: Stone of Ephemeral Eyes - slug cavern, far left",
   "code": 3003020240,
   "part": "4-2",
   "kind": "treasure",
@@ -4177,7 +4177,7 @@
   ]
  },
  {
-  "name": "RP: Holy Arrow - boss arena, by archstone",
+  "name": "RP 4-2: Holy Arrow - boss arena, by archstone",
   "code": 3003020250,
   "part": "4-2",
   "kind": "treasure",
@@ -4201,7 +4201,7 @@
   ]
  },
  {
-  "name": "RP: Full Moon Grass - boss arena",
+  "name": "RP 4-2: Full Moon Grass - boss arena",
   "code": 3003020260,
   "part": "4-2",
   "kind": "treasure",
@@ -4225,7 +4225,7 @@
   ]
  },
  {
-  "name": "RP: Storied Warrior Soul - secret cliff edge",
+  "name": "RP 4-2: Storied Warrior Soul - secret cliff edge",
   "code": 3003020270,
   "part": "4-2",
   "kind": "treasure",
@@ -4247,7 +4247,7 @@
   ]
  },
  {
-  "name": "RP: White Bow - top of secret cliff",
+  "name": "RP 4-2: White Bow - top of secret cliff",
   "code": 3003020280,
   "part": "4-2",
   "kind": "treasure",
@@ -4269,7 +4269,7 @@
   ]
  },
  {
-  "name": "RP: White Arrow - top of secret cliff",
+  "name": "RP 4-2: White Arrow - top of secret cliff",
   "code": 3003020281,
   "part": "4-2",
   "kind": "treasure",
@@ -4291,7 +4291,7 @@
   ]
  },
  {
-  "name": "RP: Stone of Ephemeral Eyes - top of west stairs, trap",
+  "name": "RP 4-2: Stone of Ephemeral Eyes - top of west stairs, trap",
   "code": 3003020290,
   "part": "4-2",
   "kind": "treasure",
@@ -4313,7 +4313,7 @@
   ]
  },
  {
-  "name": "RP: Unknown Warrior Soul - pit stairs",
+  "name": "RP 4-2: Unknown Warrior Soul - pit stairs",
   "code": 3003020300,
   "part": "4-2",
   "kind": "treasure",
@@ -4335,7 +4335,7 @@
   ]
  },
  {
-  "name": "RP: Full Moon Grass - bridge tunnel, on bridge",
+  "name": "RP 4-2: Full Moon Grass - bridge tunnel, on bridge",
   "code": 3003020310,
   "part": "4-2",
   "kind": "treasure",
@@ -4357,7 +4357,7 @@
   ]
  },
  {
-  "name": "RP: Soul Remains - bridge tunnel start",
+  "name": "RP 4-2: Soul Remains - bridge tunnel start",
   "code": 3003020320,
   "part": "4-2",
   "kind": "treasure",
@@ -4379,7 +4379,7 @@
   ]
  },
  {
-  "name": "RP: Magic Sword \"Makoto\" - pit, pure white",
+  "name": "RP 4-2: Magic Sword \"Makoto\" - pit, pure white",
   "code": 3003020340,
   "part": "4-2",
   "kind": "treasure",
@@ -4402,7 +4402,7 @@
   ]
  },
  {
-  "name": "AS: New Moon Grass - beach path down",
+  "name": "AS 4-3: New Moon Grass - beach path down",
   "code": 3003030000,
   "part": "4-3",
   "kind": "treasure",
@@ -4424,7 +4424,7 @@
   ]
  },
  {
-  "name": "AS: Holy Arrow - ruined house",
+  "name": "AS 4-3: Holy Arrow - ruined house",
   "code": 3003030010,
   "part": "4-3",
   "kind": "treasure",
@@ -4446,7 +4446,7 @@
   ]
  },
  {
-  "name": "AS: Storied Hero Soul - behind giant stone",
+  "name": "AS 4-3: Storied Hero Soul - behind giant stone",
   "code": 3003030020,
   "part": "4-3",
   "kind": "treasure",
@@ -4468,7 +4468,7 @@
   ]
  },
  {
-  "name": "AS: Stone of Ephemeral Eyes - behind right boulder",
+  "name": "AS 4-3: Stone of Ephemeral Eyes - behind right boulder",
   "code": 3003030030,
   "part": "4-3",
   "kind": "treasure",
@@ -4490,7 +4490,7 @@
   ]
  },
  {
-  "name": "AS: Cloudstone Chunk - cliff edge",
+  "name": "AS 4-3: Cloudstone Chunk - cliff edge",
   "code": 3003030040,
   "part": "4-3",
   "kind": "treasure",
@@ -4512,7 +4512,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, Warden's Key - ballista bridge, near end",
+  "name": "PH 3-1: Prison of Hope, Warden's Key - ballista bridge, near end",
   "code": 3004000040,
   "part": "3-1",
   "kind": "treasure",
@@ -4538,7 +4538,7 @@
   ]
  },
  {
-  "name": "PH: Augite of Guidance - 3F west, second cell",
+  "name": "PH 3-1: Augite of Guidance - 3F west, second cell",
   "code": 3004000050,
   "part": "3-1",
   "kind": "treasure",
@@ -4560,7 +4560,7 @@
   ]
  },
  {
-  "name": "PH: Wooden Catalyst - 3F west, plate-end locked cell",
+  "name": "PH 3-1: Wooden Catalyst - 3F west, plate-end locked cell",
   "code": 3004000060,
   "part": "3-1",
   "kind": "treasure",
@@ -4584,7 +4584,7 @@
   ]
  },
  {
-  "name": "PH: Wizard's Clothes - 3F west, plate-end locked cell",
+  "name": "PH 3-1: Wizard's Clothes - 3F west, plate-end locked cell",
   "code": 3004000061,
   "part": "3-1",
   "kind": "treasure",
@@ -4608,7 +4608,7 @@
   ]
  },
  {
-  "name": "PH: Wizard's Gloves - 3F west, plate-end locked cell",
+  "name": "PH 3-1: Wizard's Gloves - 3F west, plate-end locked cell",
   "code": 3004000062,
   "part": "3-1",
   "kind": "treasure",
@@ -4632,7 +4632,7 @@
   ]
  },
  {
-  "name": "PH: Wizard's Shoes - 3F west, plate-end locked cell",
+  "name": "PH 3-1: Wizard's Shoes - 3F west, plate-end locked cell",
   "code": 3004000063,
   "part": "3-1",
   "kind": "treasure",
@@ -4656,7 +4656,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Warrior Soul - 3F west, plate-end hall crates",
+  "name": "PH 3-1: Renowned Warrior Soul - 3F west, plate-end hall crates",
   "code": 3004000070,
   "part": "3-1",
   "kind": "treasure",
@@ -4678,7 +4678,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Warrior Soul - 3F west, stair end hanging",
+  "name": "PH 3-1: Renowned Warrior Soul - 3F west, stair end hanging",
   "code": 3004000080,
   "part": "3-1",
   "kind": "treasure",
@@ -4700,7 +4700,7 @@
   ]
  },
  {
-  "name": "PH: Mercurystone Shard - 3F west, stair-end inner cell",
+  "name": "PH 3-1: Mercurystone Shard - 3F west, stair-end inner cell",
   "code": 3004000090,
   "part": "3-1",
   "kind": "treasure",
@@ -4722,7 +4722,7 @@
   ]
  },
  {
-  "name": "PH: Mercurystone Shard - 3F east, outer cell",
+  "name": "PH 3-1: Mercurystone Shard - 3F east, outer cell",
   "code": 3004000100,
   "part": "3-1",
   "kind": "treasure",
@@ -4744,7 +4744,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Warrior Soul - 3F east, corridor dead end",
+  "name": "PH 3-1: Renowned Warrior Soul - 3F east, corridor dead end",
   "code": 3004000110,
   "part": "3-1",
   "kind": "treasure",
@@ -4766,7 +4766,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Hero Soul - 4F west, first cell",
+  "name": "PH 3-1: Unknown Hero Soul - 4F west, first cell",
   "code": 3004000120,
   "part": "3-1",
   "kind": "treasure",
@@ -4790,7 +4790,7 @@
   ]
  },
  {
-  "name": "PH: Stone of Ephemeral Eyes - 4F west, first cell iron maiden",
+  "name": "PH 3-1: Stone of Ephemeral Eyes - 4F west, first cell iron maiden",
   "code": 3004000130,
   "part": "3-1",
   "kind": "treasure",
@@ -4814,7 +4814,7 @@
   ]
  },
  {
-  "name": "PH: Moonlightstone Shard - outer stairs, bottom",
+  "name": "PH 3-1: Moonlightstone Shard - outer stairs, bottom",
   "code": 3004000140,
   "part": "3-1",
   "kind": "treasure",
@@ -4840,7 +4840,7 @@
   ]
  },
  {
-  "name": "PH: Mercurystone Shard - 3F east, stair-end inner cell",
+  "name": "PH 3-1: Mercurystone Shard - 3F east, stair-end inner cell",
   "code": 3004000150,
   "part": "3-1",
   "kind": "treasure",
@@ -4862,7 +4862,7 @@
   ]
  },
  {
-  "name": "PH: Secret Dagger - 4F west, big locked cell",
+  "name": "PH 3-1: Secret Dagger - 4F west, big locked cell",
   "code": 3004000160,
   "part": "3-1",
   "kind": "treasure",
@@ -4887,7 +4887,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Hero Soul - 4F west, big locked cell",
+  "name": "PH 3-1: Unknown Hero Soul - 4F west, big locked cell",
   "code": 3004000170,
   "part": "3-1",
   "kind": "treasure",
@@ -4912,7 +4912,7 @@
   ]
  },
  {
-  "name": "PH: Fresh Spice - 4F west, jar prisoner cell",
+  "name": "PH 3-1: Fresh Spice - 4F west, jar prisoner cell",
   "code": 3004000180,
   "part": "3-1",
   "kind": "treasure",
@@ -4936,7 +4936,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Hero Soul - 4F west, hole cell iron maiden",
+  "name": "PH 3-1: Unknown Hero Soul - 4F west, hole cell iron maiden",
   "code": 3004000190,
   "part": "3-1",
   "kind": "treasure",
@@ -4960,7 +4960,7 @@
   ]
  },
  {
-  "name": "PH: Assassin's Mask - 4F west, hole cell iron maiden",
+  "name": "PH 3-1: Assassin's Mask - 4F west, hole cell iron maiden",
   "code": 3004000200,
   "part": "3-1",
   "kind": "treasure",
@@ -4984,7 +4984,7 @@
   ]
  },
  {
-  "name": "PH: Black Leather Garb - 4F west, hole cell iron maiden",
+  "name": "PH 3-1: Black Leather Garb - 4F west, hole cell iron maiden",
   "code": 3004000201,
   "part": "3-1",
   "kind": "treasure",
@@ -5008,7 +5008,7 @@
   ]
  },
  {
-  "name": "PH: Black Gloves - 4F west, hole cell iron maiden",
+  "name": "PH 3-1: Black Gloves - 4F west, hole cell iron maiden",
   "code": 3004000202,
   "part": "3-1",
   "kind": "treasure",
@@ -5032,7 +5032,7 @@
   ]
  },
  {
-  "name": "PH: Black Boots - 4F west, hole cell iron maiden",
+  "name": "PH 3-1: Black Boots - 4F west, hole cell iron maiden",
   "code": 3004000203,
   "part": "3-1",
   "kind": "treasure",
@@ -5056,7 +5056,7 @@
   ]
  },
  {
-  "name": "PH: Fresh Spice - 4F balcony, past crates",
+  "name": "PH 3-1: Fresh Spice - 4F balcony, past crates",
   "code": 3004000210,
   "part": "3-1",
   "kind": "treasure",
@@ -5081,7 +5081,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Hero Soul - 4F east, hanging near Mistress",
+  "name": "PH 3-1: Renowned Hero Soul - 4F east, hanging near Mistress",
   "code": 3004000220,
   "part": "3-1",
   "kind": "treasure",
@@ -5106,7 +5106,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Hero Soul - 4F east iron maidens 1",
+  "name": "PH 3-1: Unknown Hero Soul - 4F east iron maidens 1",
   "code": 3004000230,
   "part": "3-1",
   "kind": "treasure",
@@ -5132,7 +5132,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Hero Soul - 4F east iron maidens 2",
+  "name": "PH 3-1: Unknown Hero Soul - 4F east iron maidens 2",
   "code": 3004000240,
   "part": "3-1",
   "kind": "treasure",
@@ -5158,7 +5158,7 @@
   ]
  },
  {
-  "name": "PH: Ring of Magical Sharpness - 4F east iron maidens",
+  "name": "PH 3-1: Ring of Magical Sharpness - 4F east iron maidens",
   "code": 3004000250,
   "part": "3-1",
   "kind": "treasure",
@@ -5184,7 +5184,7 @@
   ]
  },
  {
-  "name": "PH: Aged Spice - Freke's block, entry room",
+  "name": "PH 3-1: Aged Spice - Freke's block, entry room",
   "code": 3004000260,
   "part": "3-1",
   "kind": "treasure",
@@ -5209,7 +5209,7 @@
   ]
  },
  {
-  "name": "PH: Heavy Crossbow - 2F west, stair-end entrance",
+  "name": "PH 3-1: Heavy Crossbow - 2F west, stair-end entrance",
   "code": 3004000270,
   "part": "3-1",
   "kind": "treasure",
@@ -5234,7 +5234,7 @@
   ]
  },
  {
-  "name": "PH: Black Bolt - 2F west, stair-end entrance",
+  "name": "PH 3-1: Black Bolt - 2F west, stair-end entrance",
   "code": 3004000271,
   "part": "3-1",
   "kind": "treasure",
@@ -5259,7 +5259,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Hero Soul - 2F west inner row, plate end 1",
+  "name": "PH 3-1: Unknown Hero Soul - 2F west inner row, plate end 1",
   "code": 3004000280,
   "part": "3-1",
   "kind": "treasure",
@@ -5285,7 +5285,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Hero Soul - 2F west inner row, plate end 2",
+  "name": "PH 3-1: Unknown Hero Soul - 2F west inner row, plate end 2",
   "code": 3004000290,
   "part": "3-1",
   "kind": "treasure",
@@ -5311,7 +5311,7 @@
   ]
  },
  {
-  "name": "PH: Moonlightstone Shard - 2F west inner row, plate end",
+  "name": "PH 3-1: Moonlightstone Shard - 2F west inner row, plate end",
   "code": 3004000300,
   "part": "3-1",
   "kind": "treasure",
@@ -5337,7 +5337,7 @@
   ]
  },
  {
-  "name": "PH: Three-Cornered Hat - 2F west inner row, locked cell",
+  "name": "PH 3-1: Three-Cornered Hat - 2F west inner row, locked cell",
   "code": 3004000310,
   "part": "3-1",
   "kind": "treasure",
@@ -5364,7 +5364,7 @@
   ]
  },
  {
-  "name": "PH: Venerable Sage's Hood - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Hood - 2F west inner row, locked cell",
   "code": 3004000320,
   "part": "3-1",
   "kind": "treasure",
@@ -5391,7 +5391,7 @@
   ]
  },
  {
-  "name": "PH: Venerable Sage's Robe - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Robe - 2F west inner row, locked cell",
   "code": 3004000321,
   "part": "3-1",
   "kind": "treasure",
@@ -5418,7 +5418,7 @@
   ]
  },
  {
-  "name": "PH: Venerable Sage's Gloves - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Gloves - 2F west inner row, locked cell",
   "code": 3004000322,
   "part": "3-1",
   "kind": "treasure",
@@ -5445,7 +5445,7 @@
   ]
  },
  {
-  "name": "PH: Venerable Sage's Boots - 2F west inner row, locked cell",
+  "name": "PH 3-1: Venerable Sage's Boots - 2F west inner row, locked cell",
   "code": 3004000323,
   "part": "3-1",
   "kind": "treasure",
@@ -5472,7 +5472,7 @@
   ]
  },
  {
-  "name": "PH: Stone of Ephemeral Eyes - 2F east, stair-end outer cell",
+  "name": "PH 3-1: Stone of Ephemeral Eyes - 2F east, stair-end outer cell",
   "code": 3004000330,
   "part": "3-1",
   "kind": "treasure",
@@ -5500,7 +5500,7 @@
   ]
  },
  {
-  "name": "PH: Mercurystone Chunk - 2F east, plate-end outer cell",
+  "name": "PH 3-1: Mercurystone Chunk - 2F east, plate-end outer cell",
   "code": 3004000340,
   "part": "3-1",
   "kind": "treasure",
@@ -5529,7 +5529,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Warrior Soul - 2F east, plate-end outer cell",
+  "name": "PH 3-1: Renowned Warrior Soul - 2F east, plate-end outer cell",
   "code": 3004000350,
   "part": "3-1",
   "kind": "treasure",
@@ -5558,7 +5558,7 @@
   ]
  },
  {
-  "name": "PH: Parrying Dagger - 2F east, plate-end inner cell",
+  "name": "PH 3-1: Parrying Dagger - 2F east, plate-end inner cell",
   "code": 3004000360,
   "part": "3-1",
   "kind": "treasure",
@@ -5587,7 +5587,7 @@
   ]
  },
  {
-  "name": "PH: Rogue's Clothes - 2F east, plate-end inner cell",
+  "name": "PH 3-1: Rogue's Clothes - 2F east, plate-end inner cell",
   "code": 3004000361,
   "part": "3-1",
   "kind": "treasure",
@@ -5616,7 +5616,7 @@
   ]
  },
  {
-  "name": "PH: Rogue's Gloves - 2F east, plate-end inner cell",
+  "name": "PH 3-1: Rogue's Gloves - 2F east, plate-end inner cell",
   "code": 3004000362,
   "part": "3-1",
   "kind": "treasure",
@@ -5645,7 +5645,7 @@
   ]
  },
  {
-  "name": "PH: Rogue's Boots - 2F east, plate-end inner cell",
+  "name": "PH 3-1: Rogue's Boots - 2F east, plate-end inner cell",
   "code": 3004000363,
   "part": "3-1",
   "kind": "treasure",
@@ -5674,7 +5674,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Hero Soul - 2F east, inner cell",
+  "name": "PH 3-1: Renowned Hero Soul - 2F east, inner cell",
   "code": 3004000370,
   "part": "3-1",
   "kind": "treasure",
@@ -5703,7 +5703,7 @@
   ]
  },
  {
-  "name": "PH: Mercurystone Chunk - 2F east, inner cell",
+  "name": "PH 3-1: Mercurystone Chunk - 2F east, inner cell",
   "code": 3004000380,
   "part": "3-1",
   "kind": "treasure",
@@ -5732,7 +5732,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Warrior Soul - 1F west, second outer cell",
+  "name": "PH 3-1: Unknown Warrior Soul - 1F west, second outer cell",
   "code": 3004000390,
   "part": "3-1",
   "kind": "treasure",
@@ -5759,7 +5759,7 @@
   ]
  },
  {
-  "name": "PH: Silver Bracelets - 1F west, plate end",
+  "name": "PH 3-1: Silver Bracelets - 1F west, plate end",
   "code": 3004000400,
   "part": "3-1",
   "kind": "treasure",
@@ -5785,7 +5785,7 @@
   ]
  },
  {
-  "name": "PH: Fluted Helm - 1F west, plate end",
+  "name": "PH 3-1: Fluted Helm - 1F west, plate end",
   "code": 3004000410,
   "part": "3-1",
   "kind": "treasure",
@@ -5811,7 +5811,7 @@
   ]
  },
  {
-  "name": "PH: Fluted Armor - 1F west, plate end",
+  "name": "PH 3-1: Fluted Armor - 1F west, plate end",
   "code": 3004000411,
   "part": "3-1",
   "kind": "treasure",
@@ -5837,7 +5837,7 @@
   ]
  },
  {
-  "name": "PH: Fluted Gauntlets - 1F west, plate end",
+  "name": "PH 3-1: Fluted Gauntlets - 1F west, plate end",
   "code": 3004000412,
   "part": "3-1",
   "kind": "treasure",
@@ -5863,7 +5863,7 @@
   ]
  },
  {
-  "name": "PH: Fluted Greaves - 1F west, plate end",
+  "name": "PH 3-1: Fluted Greaves - 1F west, plate end",
   "code": 3004000413,
   "part": "3-1",
   "kind": "treasure",
@@ -5889,7 +5889,7 @@
   ]
  },
  {
-  "name": "PH: Kite Shield - 1F west, plate end",
+  "name": "PH 3-1: Kite Shield - 1F west, plate end",
   "code": 3004000414,
   "part": "3-1",
   "kind": "treasure",
@@ -5915,7 +5915,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Warrior Soul - 1F west, plate-end inner cell",
+  "name": "PH 3-1: Unknown Warrior Soul - 1F west, plate-end inner cell",
   "code": 3004000420,
   "part": "3-1",
   "kind": "treasure",
@@ -5942,7 +5942,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Warrior Soul - 1F east, plate-end inner cell",
+  "name": "PH 3-1: Unknown Warrior Soul - 1F east, plate-end inner cell",
   "code": 3004000430,
   "part": "3-1",
   "kind": "treasure",
@@ -5969,7 +5969,7 @@
   ]
  },
  {
-  "name": "PH: Unknown Warrior Soul - 1F east, outer cell",
+  "name": "PH 3-1: Unknown Warrior Soul - 1F east, outer cell",
   "code": 3004000440,
   "part": "3-1",
   "kind": "treasure",
@@ -5996,7 +5996,7 @@
   ]
  },
  {
-  "name": "PH: Stone of Ephemeral Eyes - ballista bridge, lower rail",
+  "name": "PH 3-1: Stone of Ephemeral Eyes - ballista bridge, lower rail",
   "code": 3004000450,
   "part": "3-1",
   "kind": "treasure",
@@ -6022,7 +6022,7 @@
   ]
  },
  {
-  "name": "PH: Estoc - outer stairs, rubble",
+  "name": "PH 3-1: Estoc - outer stairs, rubble",
   "code": 3004000460,
   "part": "3-1",
   "kind": "treasure",
@@ -6048,7 +6048,7 @@
   ]
  },
  {
-  "name": "PH: Silver Catalyst - north church balcony",
+  "name": "PH 3-1: Silver Catalyst - north church balcony",
   "code": 3004000470,
   "part": "3-1",
   "kind": "treasure",
@@ -6074,7 +6074,7 @@
   ]
  },
  {
-  "name": "PH: Aged Spice - boss arena, by fog door",
+  "name": "PH 3-1: Aged Spice - boss arena, by fog door",
   "code": 3004000480,
   "part": "3-1",
   "kind": "treasure",
@@ -6101,7 +6101,7 @@
   ]
  },
  {
-  "name": "PH: Storied Warrior Soul - boss arena, behind column",
+  "name": "PH 3-1: Storied Warrior Soul - boss arena, behind column",
   "code": 3004000490,
   "part": "3-1",
   "kind": "treasure",
@@ -6128,7 +6128,7 @@
   ]
  },
  {
-  "name": "PH: Baby's Nail - boss arena, behind altar",
+  "name": "PH 3-1: Baby's Nail - boss arena, behind altar",
   "code": 3004000500,
   "part": "3-1",
   "kind": "treasure",
@@ -6155,7 +6155,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Hero Soul - jailer's corridor, west",
+  "name": "PH 3-1: Renowned Hero Soul - jailer's corridor, west",
   "code": 3004000510,
   "part": "3-1",
   "kind": "treasure",
@@ -6182,7 +6182,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Hero Soul - jailer's corridor, east",
+  "name": "PH 3-1: Renowned Hero Soul - jailer's corridor, east",
   "code": 3004000520,
   "part": "3-1",
   "kind": "treasure",
@@ -6209,7 +6209,7 @@
   ]
  },
  {
-  "name": "PH: Claws - 4F west, big locked cell jars",
+  "name": "PH 3-1: Claws - 4F west, big locked cell jars",
   "code": 3004000530,
   "part": "3-1",
   "kind": "treasure",
@@ -6234,7 +6234,7 @@
   ]
  },
  {
-  "name": "PH: Silver Coronet - 3F east, locked inner cell",
+  "name": "PH 3-1: Silver Coronet - 3F east, locked inner cell",
   "code": 3004000540,
   "part": "3-1",
   "kind": "treasure",
@@ -6258,7 +6258,7 @@
   ]
  },
  {
-  "name": "PH: Mercury Rapier+1 - ballista bridge, upper rail",
+  "name": "PH 3-1: Mercury Rapier+1 - ballista bridge, upper rail",
   "code": 3004000550,
   "part": "3-1",
   "kind": "treasure",
@@ -6284,7 +6284,7 @@
   ]
  },
  {
-  "name": "PH: Aged Spice - 1F horde hall",
+  "name": "PH 3-1: Aged Spice - 1F horde hall",
   "code": 3004000560,
   "part": "3-1",
   "kind": "treasure",
@@ -6310,7 +6310,7 @@
   ]
  },
  {
-  "name": "PH: Stone of Ephemeral Eyes - ballista bridge bodies",
+  "name": "PH 3-1: Stone of Ephemeral Eyes - ballista bridge bodies",
   "code": 3004000570,
   "part": "3-1",
   "kind": "treasure",
@@ -6336,7 +6336,7 @@
   ]
  },
  {
-  "name": "PH: Storied Warrior Soul - ballista bridge bodies",
+  "name": "PH 3-1: Storied Warrior Soul - ballista bridge bodies",
   "code": 3004000580,
   "part": "3-1",
   "kind": "treasure",
@@ -6362,7 +6362,7 @@
   ]
  },
  {
-  "name": "PH: Clever Rat's Ring - ballista bridge bodies",
+  "name": "PH 3-1: Clever Rat's Ring - ballista bridge bodies",
   "code": 3004000590,
   "part": "3-1",
   "kind": "treasure",
@@ -6388,7 +6388,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Warrior Soul - ballista bridge bodies 1",
+  "name": "PH 3-1: Renowned Warrior Soul - ballista bridge bodies 1",
   "code": 3004000600,
   "part": "3-1",
   "kind": "treasure",
@@ -6414,7 +6414,7 @@
   ]
  },
  {
-  "name": "PH: Renowned Warrior Soul - ballista bridge bodies 2",
+  "name": "PH 3-1: Renowned Warrior Soul - ballista bridge bodies 2",
   "code": 3004000610,
   "part": "3-1",
   "kind": "treasure",
@@ -6440,7 +6440,7 @@
   ]
  },
  {
-  "name": "PH: Widow's Lotus - catwalk ledge",
+  "name": "PH 3-1: Widow's Lotus - catwalk ledge",
   "code": 3004000620,
   "part": "3-1",
   "kind": "treasure",
@@ -6466,7 +6466,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, 2F E. Cell Key - Rydell's corpse, 2F east",
+  "name": "PH 3-1: Prison of Hope, 2F E. Cell Key - Rydell's corpse, 2F east",
   "code": 3004000630,
   "part": "3-1",
   "kind": "treasure",
@@ -6494,7 +6494,7 @@
   ]
  },
  {
-  "name": "PH: Legendary Hero Soul - Rydell's corpse, 2F east",
+  "name": "PH 3-1: Legendary Hero Soul - Rydell's corpse, 2F east",
   "code": 3004000631,
   "part": "3-1",
   "kind": "treasure",
@@ -6522,7 +6522,7 @@
   ]
  },
  {
-  "name": "UL: Prison of Hope, 2F W. Cell Key - first chain tower top",
+  "name": "UL 3-2: Prison of Hope, 2F W. Cell Key - first chain tower top",
   "code": 3004010000,
   "part": "3-2",
   "kind": "treasure",
@@ -6545,7 +6545,7 @@
   ]
  },
  {
-  "name": "UL: Renowned Hero Soul - first platform, right path",
+  "name": "UL 3-2: Renowned Hero Soul - first platform, right path",
   "code": 3004010010,
   "part": "3-2",
   "kind": "treasure",
@@ -6567,7 +6567,7 @@
   ]
  },
  {
-  "name": "UL: Storied Warrior Soul - first platform, upper path",
+  "name": "UL 3-2: Storied Warrior Soul - first platform, upper path",
   "code": 3004010020,
   "part": "3-2",
   "kind": "treasure",
@@ -6589,7 +6589,7 @@
   ]
  },
  {
-  "name": "UL: Fresh Spice - walkway before heart room",
+  "name": "UL 3-2: Fresh Spice - walkway before heart room",
   "code": 3004010030,
   "part": "3-2",
   "kind": "treasure",
@@ -6611,7 +6611,7 @@
   ]
  },
  {
-  "name": "UL: Aged Spice - heart room, right corridor crates",
+  "name": "UL 3-2: Aged Spice - heart room, right corridor crates",
   "code": 3004010040,
   "part": "3-2",
   "kind": "treasure",
@@ -6633,7 +6633,7 @@
   ]
  },
  {
-  "name": "UL: Moonlightstone Shard - heart room, outer edge",
+  "name": "UL 3-2: Moonlightstone Shard - heart room, outer edge",
   "code": 3004010050,
   "part": "3-2",
   "kind": "treasure",
@@ -6655,7 +6655,7 @@
   ]
  },
  {
-  "name": "UL: Renowned Hero Soul - heart room, outer jars",
+  "name": "UL 3-2: Renowned Hero Soul - heart room, outer jars",
   "code": 3004010060,
   "part": "3-2",
   "kind": "treasure",
@@ -6677,7 +6677,7 @@
   ]
  },
  {
-  "name": "UL: Renowned Hero Soul - lower platform jars",
+  "name": "UL 3-2: Renowned Hero Soul - lower platform jars",
   "code": 3004010070,
   "part": "3-2",
   "kind": "treasure",
@@ -6699,7 +6699,7 @@
   ]
  },
  {
-  "name": "UL: Moonlightstone Shard - bonfire platform 1",
+  "name": "UL 3-2: Moonlightstone Shard - bonfire platform 1",
   "code": 3004010080,
   "part": "3-2",
   "kind": "treasure",
@@ -6721,7 +6721,7 @@
   ]
  },
  {
-  "name": "UL: Moonlightstone Shard - bonfire platform 2",
+  "name": "UL 3-2: Moonlightstone Shard - bonfire platform 2",
   "code": 3004010090,
   "part": "3-2",
   "kind": "treasure",
@@ -6743,7 +6743,7 @@
   ]
  },
  {
-  "name": "UL: Moonlightstone Chunk - below bonfire platform",
+  "name": "UL 3-2: Moonlightstone Chunk - below bonfire platform",
   "code": 3004010100,
   "part": "3-2",
   "kind": "treasure",
@@ -6765,7 +6765,7 @@
   ]
  },
  {
-  "name": "UL: Rune Sword - heart tower, ledge below jars",
+  "name": "UL 3-2: Rune Sword - heart tower, ledge below jars",
   "code": 3004010110,
   "part": "3-2",
   "kind": "treasure",
@@ -6787,7 +6787,7 @@
   ]
  },
  {
-  "name": "UL: Rune Shield - heart tower, ledge below jars",
+  "name": "UL 3-2: Rune Shield - heart tower, ledge below jars",
   "code": 3004010111,
   "part": "3-2",
   "kind": "treasure",
@@ -6809,7 +6809,7 @@
   ]
  },
  {
-  "name": "UL: Flamberge - broken pillar off bridge",
+  "name": "UL 3-2: Flamberge - broken pillar off bridge",
   "code": 3004010120,
   "part": "3-2",
   "kind": "treasure",
@@ -6831,7 +6831,7 @@
   ]
  },
  {
-  "name": "UL: Aged Spice - first chain tower, narrow walkway",
+  "name": "UL 3-2: Aged Spice - first chain tower, narrow walkway",
   "code": 3004010130,
   "part": "3-2",
   "kind": "treasure",
@@ -6853,7 +6853,7 @@
   ]
  },
  {
-  "name": "UL: Stone of Ephemeral Eyes - first chain tower, across lift",
+  "name": "UL 3-2: Stone of Ephemeral Eyes - first chain tower, across lift",
   "code": 3004010140,
   "part": "3-2",
   "kind": "treasure",
@@ -6875,7 +6875,7 @@
   ]
  },
  {
-  "name": "UL: Renowned Warrior Soul - first chain tower top",
+  "name": "UL 3-2: Renowned Warrior Soul - first chain tower top",
   "code": 3004010150,
   "part": "3-2",
   "kind": "treasure",
@@ -6897,7 +6897,7 @@
   ]
  },
  {
-  "name": "UL: Fresh Spice - cage lift platform",
+  "name": "UL 3-2: Fresh Spice - cage lift platform",
   "code": 3004010160,
   "part": "3-2",
   "kind": "treasure",
@@ -6919,7 +6919,7 @@
   ]
  },
  {
-  "name": "UL: Archstone Shard - Yurt's landing",
+  "name": "UL 3-2: Archstone Shard - Yurt's landing",
   "code": 3004010170,
   "part": "3-2",
   "kind": "treasure",
@@ -6941,7 +6941,7 @@
   ]
  },
  {
-  "name": "UL: Mercurystone Shard - swamp, horde pool 1",
+  "name": "UL 3-2: Mercurystone Shard - swamp, horde pool 1",
   "code": 3004010180,
   "part": "3-2",
   "kind": "treasure",
@@ -6963,7 +6963,7 @@
   ]
  },
  {
-  "name": "UL: Mercurystone Chunk - swamp, before horde",
+  "name": "UL 3-2: Mercurystone Chunk - swamp, before horde",
   "code": 3004010190,
   "part": "3-2",
   "kind": "treasure",
@@ -6985,7 +6985,7 @@
   ]
  },
  {
-  "name": "UL: Mercurystone Shard - swamp, horde pool 2",
+  "name": "UL 3-2: Mercurystone Shard - swamp, horde pool 2",
   "code": 3004010200,
   "part": "3-2",
   "kind": "treasure",
@@ -7007,7 +7007,7 @@
   ]
  },
  {
-  "name": "UL: Fragrant Ring - swamp, between tentacles",
+  "name": "UL 3-2: Fragrant Ring - swamp, between tentacles",
   "code": 3004010210,
   "part": "3-2",
   "kind": "treasure",
@@ -7029,7 +7029,7 @@
   ]
  },
  {
-  "name": "UL: Augite of Guidance - swamp boardwalk",
+  "name": "UL 3-2: Augite of Guidance - swamp boardwalk",
   "code": 3004010220,
   "part": "3-2",
   "kind": "treasure",
@@ -7051,7 +7051,7 @@
   ]
  },
  {
-  "name": "UL: Renowned Warrior Soul - swamp, hill",
+  "name": "UL 3-2: Renowned Warrior Soul - swamp, hill",
   "code": 3004010230,
   "part": "3-2",
   "kind": "treasure",
@@ -7073,7 +7073,7 @@
   ]
  },
  {
-  "name": "UL: Stone of Ephemeral Eyes - swamp, first wooden structure",
+  "name": "UL 3-2: Stone of Ephemeral Eyes - swamp, first wooden structure",
   "code": 3004010240,
   "part": "3-2",
   "kind": "treasure",
@@ -7095,7 +7095,7 @@
   ]
  },
  {
-  "name": "UL: Plague Resistance Ring - swamp, dead-end boardwalk",
+  "name": "UL 3-2: Plague Resistance Ring - swamp, dead-end boardwalk",
   "code": 3004010250,
   "part": "3-2",
   "kind": "treasure",
@@ -7117,7 +7117,7 @@
   ]
  },
  {
-  "name": "UL: Renowned Warrior Soul - swamp fog gate",
+  "name": "UL 3-2: Renowned Warrior Soul - swamp fog gate",
   "code": 3004010260,
   "part": "3-2",
   "kind": "treasure",
@@ -7139,7 +7139,7 @@
   ]
  },
  {
-  "name": "UL: Dark Moon Grass - swamp fog gate",
+  "name": "UL 3-2: Dark Moon Grass - swamp fog gate",
   "code": 3004010270,
   "part": "3-2",
   "kind": "treasure",
@@ -7161,7 +7161,7 @@
   ]
  },
  {
-  "name": "UL: Aged Spice - past swamp fog, lizard area",
+  "name": "UL 3-2: Aged Spice - past swamp fog, lizard area",
   "code": 3004010280,
   "part": "3-2",
   "kind": "treasure",
@@ -7183,7 +7183,7 @@
   ]
  },
  {
-  "name": "UL: Fresh Spice - past swamp fog, lizard area",
+  "name": "UL 3-2: Fresh Spice - past swamp fog, lizard area",
   "code": 3004010290,
   "part": "3-2",
   "kind": "treasure",
@@ -7205,7 +7205,7 @@
   ]
  },
  {
-  "name": "UL: Storied Warrior Soul - second chain tower, corridor",
+  "name": "UL 3-2: Storied Warrior Soul - second chain tower, corridor",
   "code": 3004010300,
   "part": "3-2",
   "kind": "treasure",
@@ -7227,7 +7227,7 @@
   ]
  },
  {
-  "name": "UL: Stone of Ephemeral Eyes - heart pit",
+  "name": "UL 3-2: Stone of Ephemeral Eyes - heart pit",
   "code": 3004010310,
   "part": "3-2",
   "kind": "treasure",
@@ -7249,7 +7249,7 @@
   ]
  },
  {
-  "name": "UL: Storied Warrior Soul - heart pit 1",
+  "name": "UL 3-2: Storied Warrior Soul - heart pit 1",
   "code": 3004010320,
   "part": "3-2",
   "kind": "treasure",
@@ -7271,7 +7271,7 @@
   ]
  },
  {
-  "name": "UL: Storied Warrior Soul - heart pit 2",
+  "name": "UL 3-2: Storied Warrior Soul - heart pit 2",
   "code": 3004010330,
   "part": "3-2",
   "kind": "treasure",
@@ -7293,7 +7293,7 @@
   ]
  },
  {
-  "name": "UL: Gold Mask - heart pit",
+  "name": "UL 3-2: Gold Mask - heart pit",
   "code": 3004010340,
   "part": "3-2",
   "kind": "treasure",
@@ -7315,7 +7315,7 @@
   ]
  },
  {
-  "name": "UL: Epee Rapier - heart pit",
+  "name": "UL 3-2: Epee Rapier - heart pit",
   "code": 3004010341,
   "part": "3-2",
   "kind": "treasure",
@@ -7337,7 +7337,7 @@
   ]
  },
  {
-  "name": "UL: Ring of Avarice - heart pit",
+  "name": "UL 3-2: Ring of Avarice - heart pit",
   "code": 3004010350,
   "part": "3-2",
   "kind": "treasure",
@@ -7359,7 +7359,7 @@
   ]
  },
  {
-  "name": "UL: Storied Hero Soul - heart pit 1",
+  "name": "UL 3-2: Storied Hero Soul - heart pit 1",
   "code": 3004010360,
   "part": "3-2",
   "kind": "treasure",
@@ -7381,7 +7381,7 @@
   ]
  },
  {
-  "name": "UL: Storied Hero Soul - heart pit 2",
+  "name": "UL 3-2: Storied Hero Soul - heart pit 2",
   "code": 3004010370,
   "part": "3-2",
   "kind": "treasure",
@@ -7403,7 +7403,7 @@
   ]
  },
  {
-  "name": "UL: Renowned Hero Soul - heart tower stairs",
+  "name": "UL 3-2: Renowned Hero Soul - heart tower stairs",
   "code": 3004010380,
   "part": "3-2",
   "kind": "treasure",
@@ -7425,7 +7425,7 @@
   ]
  },
  {
-  "name": "UL: Storied Warrior Soul - top of heart tower",
+  "name": "UL 3-2: Storied Warrior Soul - top of heart tower",
   "code": 3004010390,
   "part": "3-2",
   "kind": "treasure",
@@ -7447,7 +7447,7 @@
   ]
  },
  {
-  "name": "UL: Aged Spice - top of heart tower",
+  "name": "UL 3-2: Aged Spice - top of heart tower",
   "code": 3004010400,
   "part": "3-2",
   "kind": "treasure",
@@ -7469,7 +7469,7 @@
   ]
  },
  {
-  "name": "UL: Moon Short Sword+1 - boss bridge ledge",
+  "name": "UL 3-2: Moon Short Sword+1 - boss bridge ledge",
   "code": 3004010410,
   "part": "3-2",
   "kind": "treasure",
@@ -7493,7 +7493,7 @@
   ]
  },
  {
-  "name": "UL: Full Moon Grass - boss bridge, far end",
+  "name": "UL 3-2: Full Moon Grass - boss bridge, far end",
   "code": 3004010420,
   "part": "3-2",
   "kind": "treasure",
@@ -7517,7 +7517,7 @@
   ]
  },
  {
-  "name": "IT: Legendary Warrior Soul - Maneater archstone landing",
+  "name": "IT 3-3: Legendary Warrior Soul - Maneater archstone landing",
   "code": 3004020000,
   "part": "3-3",
   "kind": "treasure",
@@ -7541,7 +7541,7 @@
   ]
  },
  {
-  "name": "IT: Renowned Warrior Soul - Maneater archstone landing",
+  "name": "IT 3-3: Renowned Warrior Soul - Maneater archstone landing",
   "code": 3004020001,
   "part": "3-3",
   "kind": "treasure",
@@ -7565,7 +7565,7 @@
   ]
  },
  {
-  "name": "DC: Noble's Lotus - start",
+  "name": "DC 5-1: Noble's Lotus - start",
   "code": 3005000000,
   "part": "5-1",
   "kind": "treasure",
@@ -7587,7 +7587,7 @@
   ]
  },
  {
-  "name": "DC: Renowned Hero Soul - upper walkway",
+  "name": "DC 5-1: Renowned Hero Soul - upper walkway",
   "code": 3005000010,
   "part": "5-1",
   "kind": "treasure",
@@ -7609,7 +7609,7 @@
   ]
  },
  {
-  "name": "DC: Morning Star - below upper walkway",
+  "name": "DC 5-1: Morning Star - below upper walkway",
   "code": 3005000020,
   "part": "5-1",
   "kind": "treasure",
@@ -7631,7 +7631,7 @@
   ]
  },
  {
-  "name": "DC: Ring of Magical Dullness - past floor hole",
+  "name": "DC 5-1: Ring of Magical Dullness - past floor hole",
   "code": 3005000030,
   "part": "5-1",
   "kind": "treasure",
@@ -7653,7 +7653,7 @@
   ]
  },
  {
-  "name": "DC: Renowned Hero Soul - waterfall landing",
+  "name": "DC 5-1: Renowned Hero Soul - waterfall landing",
   "code": 3005000040,
   "part": "5-1",
   "kind": "treasure",
@@ -7675,7 +7675,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - waterfall landing",
+  "name": "DC 5-1: Crescent Moon Grass - waterfall landing",
   "code": 3005000050,
   "part": "5-1",
   "kind": "treasure",
@@ -7697,7 +7697,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - below floor hole",
+  "name": "DC 5-1: Crescent Moon Grass - below floor hole",
   "code": 3005000060,
   "part": "5-1",
   "kind": "treasure",
@@ -7719,7 +7719,7 @@
   ]
  },
  {
-  "name": "DC: Talisman of God - across plank bridge",
+  "name": "DC 5-1: Talisman of God - across plank bridge",
   "code": 3005000070,
   "part": "5-1",
   "kind": "treasure",
@@ -7741,7 +7741,7 @@
   ]
  },
  {
-  "name": "DC: Widow's Lotus - across plank bridge",
+  "name": "DC 5-1: Widow's Lotus - across plank bridge",
   "code": 3005000071,
   "part": "5-1",
   "kind": "treasure",
@@ -7763,7 +7763,7 @@
   ]
  },
  {
-  "name": "DC: Unknown Hero Soul - far side, below Talisman",
+  "name": "DC 5-1: Unknown Hero Soul - far side, below Talisman",
   "code": 3005000080,
   "part": "5-1",
   "kind": "treasure",
@@ -7785,7 +7785,7 @@
   ]
  },
  {
-  "name": "DC: Noble's Lotus - first fog gate",
+  "name": "DC 5-1: Noble's Lotus - first fog gate",
   "code": 3005000090,
   "part": "5-1",
   "kind": "treasure",
@@ -7807,7 +7807,7 @@
   ]
  },
  {
-  "name": "DC: Unknown Hero Soul - brush ledge",
+  "name": "DC 5-1: Unknown Hero Soul - brush ledge",
   "code": 3005000100,
   "part": "5-1",
   "kind": "treasure",
@@ -7829,7 +7829,7 @@
   ]
  },
  {
-  "name": "DC: Faintstone Shard - brush ledge",
+  "name": "DC 5-1: Faintstone Shard - brush ledge",
   "code": 3005000110,
   "part": "5-1",
   "kind": "treasure",
@@ -7851,7 +7851,7 @@
   ]
  },
  {
-  "name": "DC: Saint's Robe - walkway past Filthy Woman",
+  "name": "DC 5-1: Saint's Robe - walkway past Filthy Woman",
   "code": 3005000120,
   "part": "5-1",
   "kind": "treasure",
@@ -7873,7 +7873,7 @@
   ]
  },
  {
-  "name": "DC: Saint's Gloves - walkway past Filthy Woman",
+  "name": "DC 5-1: Saint's Gloves - walkway past Filthy Woman",
   "code": 3005000121,
   "part": "5-1",
   "kind": "treasure",
@@ -7895,7 +7895,7 @@
   ]
  },
  {
-  "name": "DC: Saint's Boots - walkway past Filthy Woman",
+  "name": "DC 5-1: Saint's Boots - walkway past Filthy Woman",
   "code": 3005000122,
   "part": "5-1",
   "kind": "treasure",
@@ -7917,7 +7917,7 @@
   ]
  },
  {
-  "name": "DC: Stone of Ephemeral Eyes - walkway past Filthy Woman",
+  "name": "DC 5-1: Stone of Ephemeral Eyes - walkway past Filthy Woman",
   "code": 3005000123,
   "part": "5-1",
   "kind": "treasure",
@@ -7939,7 +7939,7 @@
   ]
  },
  {
-  "name": "DC: Stone of Ephemeral Eyes - nest",
+  "name": "DC 5-1: Stone of Ephemeral Eyes - nest",
   "code": 3005000130,
   "part": "5-1",
   "kind": "treasure",
@@ -7961,7 +7961,7 @@
   ]
  },
  {
-  "name": "DC: Storied Warrior Soul - lizard ledge, by pole",
+  "name": "DC 5-1: Storied Warrior Soul - lizard ledge, by pole",
   "code": 3005000140,
   "part": "5-1",
   "kind": "treasure",
@@ -7983,7 +7983,7 @@
   ]
  },
  {
-  "name": "DC: Storied Warrior Soul - lizard ledge, edge",
+  "name": "DC 5-1: Storied Warrior Soul - lizard ledge, edge",
   "code": 3005000150,
   "part": "5-1",
   "kind": "treasure",
@@ -8005,7 +8005,7 @@
   ]
  },
  {
-  "name": "DC: Blessed Mace+1 - tick corridor",
+  "name": "DC 5-1: Blessed Mace+1 - tick corridor",
   "code": 3005000160,
   "part": "5-1",
   "kind": "treasure",
@@ -8027,7 +8027,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - rat room",
+  "name": "DC 5-1: Crescent Moon Grass - rat room",
   "code": 3005000170,
   "part": "5-1",
   "kind": "treasure",
@@ -8049,7 +8049,7 @@
   ]
  },
  {
-  "name": "DC: Storied Warrior Soul - white ladder route",
+  "name": "DC 5-1: Storied Warrior Soul - white ladder route",
   "code": 3005000180,
   "part": "5-1",
   "kind": "treasure",
@@ -8072,7 +8072,7 @@
   ]
  },
  {
-  "name": "DC: Full Moon Grass - by boss fog",
+  "name": "DC 5-1: Full Moon Grass - by boss fog",
   "code": 3005000190,
   "part": "5-1",
   "kind": "treasure",
@@ -8094,7 +8094,7 @@
   ]
  },
  {
-  "name": "DC: Suckerstone Shard - boss arena, behind boards",
+  "name": "DC 5-1: Suckerstone Shard - boss arena, behind boards",
   "code": 3005000200,
   "part": "5-1",
   "kind": "treasure",
@@ -8118,7 +8118,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - boss arena, fallen corpse 1",
+  "name": "DC 5-1: Crescent Moon Grass - boss arena, fallen corpse 1",
   "code": 3005000210,
   "part": "5-1",
   "kind": "treasure",
@@ -8143,7 +8143,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - boss arena, fallen corpse 2",
+  "name": "DC 5-1: Crescent Moon Grass - boss arena, fallen corpse 2",
   "code": 3005000220,
   "part": "5-1",
   "kind": "treasure",
@@ -8168,7 +8168,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - boss arena, fallen corpse 3",
+  "name": "DC 5-1: Crescent Moon Grass - boss arena, fallen corpse 3",
   "code": 3005000230,
   "part": "5-1",
   "kind": "treasure",
@@ -8193,7 +8193,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - boss arena, fallen corpse 4",
+  "name": "DC 5-1: Crescent Moon Grass - boss arena, fallen corpse 4",
   "code": 3005000240,
   "part": "5-1",
   "kind": "treasure",
@@ -8218,7 +8218,7 @@
   ]
  },
  {
-  "name": "DC: Faintstone Shard - boss arena, fallen corpse 5",
+  "name": "DC 5-1: Faintstone Shard - boss arena, fallen corpse 5",
   "code": 3005000250,
   "part": "5-1",
   "kind": "treasure",
@@ -8243,7 +8243,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - boss arena, fallen corpse 6",
+  "name": "DC 5-1: Crescent Moon Grass - boss arena, fallen corpse 6",
   "code": 3005000260,
   "part": "5-1",
   "kind": "treasure",
@@ -8268,7 +8268,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - boss arena, fallen corpse 7",
+  "name": "DC 5-1: Crescent Moon Grass - boss arena, fallen corpse 7",
   "code": 3005000270,
   "part": "5-1",
   "kind": "treasure",
@@ -8293,7 +8293,7 @@
   ]
  },
  {
-  "name": "DC: Faintstone Chunk - boss arena, fallen corpse 8",
+  "name": "DC 5-1: Faintstone Chunk - boss arena, fallen corpse 8",
   "code": 3005000280,
   "part": "5-1",
   "kind": "treasure",
@@ -8318,7 +8318,7 @@
   ]
  },
  {
-  "name": "DC: Crescent Moon Grass - boss arena, fallen corpse 9",
+  "name": "DC 5-1: Crescent Moon Grass - boss arena, fallen corpse 9",
   "code": 3005000290,
   "part": "5-1",
   "kind": "treasure",
@@ -8343,7 +8343,7 @@
   ]
  },
  {
-  "name": "DC: Great Club - boss arena, fallen corpse 10",
+  "name": "DC 5-1: Great Club - boss arena, fallen corpse 10",
   "code": 3005000300,
   "part": "5-1",
   "kind": "treasure",
@@ -8368,7 +8368,7 @@
   ]
  },
  {
-  "name": "SS: Noble's Lotus - start descent, drop left",
+  "name": "SS 5-2: Noble's Lotus - start descent, drop left",
   "code": 3005010000,
   "part": "5-2",
   "kind": "treasure",
@@ -8390,7 +8390,7 @@
   ]
  },
  {
-  "name": "SS: Mirdan Hammer - west wall, below shortcut",
+  "name": "SS 5-2: Mirdan Hammer - west wall, below shortcut",
   "code": 3005010010,
   "part": "5-2",
   "kind": "treasure",
@@ -8412,7 +8412,7 @@
   ]
  },
  {
-  "name": "SS: Regenerator's Ring - west wall",
+  "name": "SS 5-2: Regenerator's Ring - west wall",
   "code": 3005010020,
   "part": "5-2",
   "kind": "treasure",
@@ -8434,7 +8434,7 @@
   ]
  },
  {
-  "name": "SS: Legendary Warrior Soul - first swamp, below start",
+  "name": "SS 5-2: Legendary Warrior Soul - first swamp, below start",
   "code": 3005010030,
   "part": "5-2",
   "kind": "treasure",
@@ -8456,7 +8456,7 @@
   ]
  },
  {
-  "name": "SS: Unknown Hero Soul - first swamp, central island",
+  "name": "SS 5-2: Unknown Hero Soul - first swamp, central island",
   "code": 3005010040,
   "part": "5-2",
   "kind": "treasure",
@@ -8478,7 +8478,7 @@
   ]
  },
  {
-  "name": "SS: War Scythe - north islands",
+  "name": "SS 5-2: War Scythe - north islands",
   "code": 3005010050,
   "part": "5-2",
   "kind": "treasure",
@@ -8500,7 +8500,7 @@
   ]
  },
  {
-  "name": "SS: Dark Moon Grass - north islands, platform",
+  "name": "SS 5-2: Dark Moon Grass - north islands, platform",
   "code": 3005010060,
   "part": "5-2",
   "kind": "treasure",
@@ -8522,7 +8522,7 @@
   ]
  },
  {
-  "name": "SS: Crescent Moon Grass - north islands",
+  "name": "SS 5-2: Crescent Moon Grass - north islands",
   "code": 3005010070,
   "part": "5-2",
   "kind": "treasure",
@@ -8544,7 +8544,7 @@
   ]
  },
  {
-  "name": "SS: Broken Sword - north islands, far end",
+  "name": "SS 5-2: Broken Sword - north islands, far end",
   "code": 3005010080,
   "part": "5-2",
   "kind": "treasure",
@@ -8566,7 +8566,7 @@
   ]
  },
  {
-  "name": "SS: Unknown Hero Soul - big island",
+  "name": "SS 5-2: Unknown Hero Soul - big island",
   "code": 3005010090,
   "part": "5-2",
   "kind": "treasure",
@@ -8588,7 +8588,7 @@
   ]
  },
  {
-  "name": "SS: Noble's Lotus - big island",
+  "name": "SS 5-2: Noble's Lotus - big island",
   "code": 3005010100,
   "part": "5-2",
   "kind": "treasure",
@@ -8610,7 +8610,7 @@
   ]
  },
  {
-  "name": "SS: Black Pine Resin - island north of big island",
+  "name": "SS 5-2: Black Pine Resin - island north of big island",
   "code": 3005010110,
   "part": "5-2",
   "kind": "treasure",
@@ -8632,7 +8632,7 @@
   ]
  },
  {
-  "name": "SS: Cat Ring - northeast island",
+  "name": "SS 5-2: Cat Ring - northeast island",
   "code": 3005010120,
   "part": "5-2",
   "kind": "treasure",
@@ -8654,7 +8654,7 @@
   ]
  },
  {
-  "name": "SS: Suckerstone Chunk - east wall, first swamp",
+  "name": "SS 5-2: Suckerstone Chunk - east wall, first swamp",
   "code": 3005010130,
   "part": "5-2",
   "kind": "treasure",
@@ -8676,7 +8676,7 @@
   ]
  },
  {
-  "name": "SS: Pure Suckerstone - east wall",
+  "name": "SS 5-2: Pure Suckerstone - east wall",
   "code": 3005010140,
   "part": "5-2",
   "kind": "treasure",
@@ -8698,7 +8698,7 @@
   ]
  },
  {
-  "name": "SS: Storied Hero Soul - south of big island",
+  "name": "SS 5-2: Storied Hero Soul - south of big island",
   "code": 3005010150,
   "part": "5-2",
   "kind": "treasure",
@@ -8720,7 +8720,7 @@
   ]
  },
  {
-  "name": "SS: Storied Hero Soul - south wall, east",
+  "name": "SS 5-2: Storied Hero Soul - south wall, east",
   "code": 3005010160,
   "part": "5-2",
   "kind": "treasure",
@@ -8742,7 +8742,7 @@
   ]
  },
  {
-  "name": "SS: Storied Hero Soul - south wall, west",
+  "name": "SS 5-2: Storied Hero Soul - south wall, west",
   "code": 3005010170,
   "part": "5-2",
   "kind": "treasure",
@@ -8764,7 +8764,7 @@
   ]
  },
  {
-  "name": "SS: Thief Ring - Selen's island",
+  "name": "SS 5-2: Thief Ring - Selen's island",
   "code": 3005010180,
   "part": "5-2",
   "kind": "treasure",
@@ -8786,7 +8786,7 @@
   ]
  },
  {
-  "name": "SS: Dark Moon Grass - island past Selen's",
+  "name": "SS 5-2: Dark Moon Grass - island past Selen's",
   "code": 3005010190,
   "part": "5-2",
   "kind": "treasure",
@@ -8808,7 +8808,7 @@
   ]
  },
  {
-  "name": "SS: Black Pine Resin - rampart drops",
+  "name": "SS 5-2: Black Pine Resin - rampart drops",
   "code": 3005010200,
   "part": "5-2",
   "kind": "treasure",
@@ -8830,7 +8830,7 @@
   ]
  },
  {
-  "name": "SS: Noble's Lotus - near shaman island",
+  "name": "SS 5-2: Noble's Lotus - near shaman island",
   "code": 3005010210,
   "part": "5-2",
   "kind": "treasure",
@@ -8852,7 +8852,7 @@
   ]
  },
  {
-  "name": "SS: Storied Hero Soul - southeast swamp",
+  "name": "SS 5-2: Storied Hero Soul - southeast swamp",
   "code": 3005010220,
   "part": "5-2",
   "kind": "treasure",
@@ -8874,7 +8874,7 @@
   ]
  },
  {
-  "name": "SS: Suckerstone Chunk - foot of slug nest",
+  "name": "SS 5-2: Suckerstone Chunk - foot of slug nest",
   "code": 3005010230,
   "part": "5-2",
   "kind": "treasure",
@@ -8896,7 +8896,7 @@
   ]
  },
  {
-  "name": "SS: Legendary Hero Soul - slug nest top",
+  "name": "SS 5-2: Legendary Hero Soul - slug nest top",
   "code": 3005010240,
   "part": "5-2",
   "kind": "treasure",
@@ -8918,7 +8918,7 @@
   ]
  },
  {
-  "name": "SS: Unknown Hero Soul - slug nest, lower platform",
+  "name": "SS 5-2: Unknown Hero Soul - slug nest, lower platform",
   "code": 3005010250,
   "part": "5-2",
   "kind": "treasure",
@@ -8940,7 +8940,7 @@
   ]
  },
  {
-  "name": "SS: Late Moon Grass - below Filthy Woman",
+  "name": "SS 5-2: Late Moon Grass - below Filthy Woman",
   "code": 3005010260,
   "part": "5-2",
   "kind": "treasure",
@@ -8962,7 +8962,7 @@
   ]
  },
  {
-  "name": "SS: Storied Hero Soul - shanty town entrance hut",
+  "name": "SS 5-2: Storied Hero Soul - shanty town entrance hut",
   "code": 3005010270,
   "part": "5-2",
   "kind": "treasure",
@@ -8984,7 +8984,7 @@
   ]
  },
  {
-  "name": "SS: Widow's Lotus - shanty town, hanging corpse",
+  "name": "SS 5-2: Widow's Lotus - shanty town, hanging corpse",
   "code": 3005010280,
   "part": "5-2",
   "kind": "treasure",
@@ -9006,7 +9006,7 @@
   ]
  },
  {
-  "name": "SS: Rotten Arrow - shanty town, entrance north",
+  "name": "SS 5-2: Rotten Arrow - shanty town, entrance north",
   "code": 3005010290,
   "part": "5-2",
   "kind": "treasure",
@@ -9028,7 +9028,7 @@
   ]
  },
  {
-  "name": "SS: Faintstone Shard - shanty town, north walkway",
+  "name": "SS 5-2: Faintstone Shard - shanty town, north walkway",
   "code": 3005010300,
   "part": "5-2",
   "kind": "treasure",
@@ -9050,7 +9050,7 @@
   ]
  },
  {
-  "name": "SS: Storied Hero Soul - shanty town, north walkway",
+  "name": "SS 5-2: Storied Hero Soul - shanty town, north walkway",
   "code": 3005010310,
   "part": "5-2",
   "kind": "treasure",
@@ -9072,7 +9072,7 @@
   ]
  },
  {
-  "name": "SS: Dark Moon Grass - under central hut, east",
+  "name": "SS 5-2: Dark Moon Grass - under central hut, east",
   "code": 3005010320,
   "part": "5-2",
   "kind": "treasure",
@@ -9094,7 +9094,7 @@
   ]
  },
  {
-  "name": "SS: Dark Moon Grass - under central hut, west",
+  "name": "SS 5-2: Dark Moon Grass - under central hut, west",
   "code": 3005010330,
   "part": "5-2",
   "kind": "treasure",
@@ -9116,7 +9116,7 @@
   ]
  },
  {
-  "name": "SS: Unknown Hero Soul - shanty town, west end",
+  "name": "SS 5-2: Unknown Hero Soul - shanty town, west end",
   "code": 3005010340,
   "part": "5-2",
   "kind": "treasure",
@@ -9138,7 +9138,7 @@
   ]
  },
  {
-  "name": "SS: Faintstone Shard - shanty town top, west",
+  "name": "SS 5-2: Faintstone Shard - shanty town top, west",
   "code": 3005010350,
   "part": "5-2",
   "kind": "treasure",
@@ -9160,7 +9160,7 @@
   ]
  },
  {
-  "name": "SS: Faintstone Chunk - shanty town top",
+  "name": "SS 5-2: Faintstone Chunk - shanty town top",
   "code": 3005010360,
   "part": "5-2",
   "kind": "treasure",
@@ -9182,7 +9182,7 @@
   ]
  },
  {
-  "name": "SS: Storied Hero Soul - shanty town, upper north",
+  "name": "SS 5-2: Storied Hero Soul - shanty town, upper north",
   "code": 3005010370,
   "part": "5-2",
   "kind": "treasure",
@@ -9204,7 +9204,7 @@
   ]
  },
  {
-  "name": "SS: Unknown Hero Soul - shanty town, upper middle",
+  "name": "SS 5-2: Unknown Hero Soul - shanty town, upper middle",
   "code": 3005010380,
   "part": "5-2",
   "kind": "treasure",
@@ -9226,7 +9226,7 @@
   ]
  },
  {
-  "name": "SS: Shotel - shanty town, upper floor",
+  "name": "SS 5-2: Shotel - shanty town, upper floor",
   "code": 3005010390,
   "part": "5-2",
   "kind": "treasure",
@@ -9248,7 +9248,7 @@
   ]
  },
  {
-  "name": "SS: Unknown Hero Soul - west boardwalk, by shaman",
+  "name": "SS 5-2: Unknown Hero Soul - west boardwalk, by shaman",
   "code": 3005010400,
   "part": "5-2",
   "kind": "treasure",
@@ -9270,7 +9270,7 @@
   ]
  },
  {
-  "name": "SS: Unknown Hero Soul - west boardwalk, mosquitoes",
+  "name": "SS 5-2: Unknown Hero Soul - west boardwalk, mosquitoes",
   "code": 3005010410,
   "part": "5-2",
   "kind": "treasure",
@@ -9292,7 +9292,7 @@
   ]
  },
  {
-  "name": "SS: Legendary Warrior Soul - near shortcut plank",
+  "name": "SS 5-2: Legendary Warrior Soul - near shortcut plank",
   "code": 3005010420,
   "part": "5-2",
   "kind": "treasure",
@@ -9314,7 +9314,7 @@
   ]
  },
  {
-  "name": "SS: Stone of Ephemeral Eyes - giants' island, west",
+  "name": "SS 5-2: Stone of Ephemeral Eyes - giants' island, west",
   "code": 3005010430,
   "part": "5-2",
   "kind": "treasure",
@@ -9336,7 +9336,7 @@
   ]
  },
  {
-  "name": "SS: Stone of Ephemeral Eyes - giants' island, east",
+  "name": "SS 5-2: Stone of Ephemeral Eyes - giants' island, east",
   "code": 3005010440,
   "part": "5-2",
   "kind": "treasure",
@@ -9358,7 +9358,7 @@
   ]
  },
  {
-  "name": "SS: Stone of Ephemeral Eyes - giants' island, middle",
+  "name": "SS 5-2: Stone of Ephemeral Eyes - giants' island, middle",
   "code": 3005010450,
   "part": "5-2",
   "kind": "treasure",
@@ -9380,7 +9380,7 @@
   ]
  },
  {
-  "name": "SS: Dark Moon Grass - boss arena ramp",
+  "name": "SS 5-2: Dark Moon Grass - boss arena ramp",
   "code": 3005010460,
   "part": "5-2",
   "kind": "treasure",
@@ -9404,7 +9404,7 @@
   ]
  },
  {
-  "name": "SS: Storied Warrior Soul - by boss arena archstone",
+  "name": "SS 5-2: Storied Warrior Soul - by boss arena archstone",
   "code": 3005010470,
   "part": "5-2",
   "kind": "treasure",
@@ -9428,7 +9428,7 @@
   ]
  },
  {
-  "name": "SS: Suckerstone Shard - north islands, by War Scythe",
+  "name": "SS 5-2: Suckerstone Shard - north islands, by War Scythe",
   "code": 3005010480,
   "part": "5-2",
   "kind": "treasure",
@@ -9450,7 +9450,7 @@
   ]
  },
  {
-  "name": "RH: Widow's Lotus - upper descent, grass patch",
+  "name": "RH 5-3: Widow's Lotus - upper descent, grass patch",
   "code": 3005020000,
   "part": "5-3",
   "kind": "treasure",
@@ -9472,7 +9472,7 @@
   ]
  },
  {
-  "name": "RH: Stone of Ephemeral Eyes - plague swamp edge",
+  "name": "RH 5-3: Stone of Ephemeral Eyes - plague swamp edge",
   "code": 3005020010,
   "part": "5-3",
   "kind": "treasure",
@@ -9494,7 +9494,7 @@
   ]
  },
  {
-  "name": "RH: Pure Marrowstone - plague swamp, grass patch",
+  "name": "RH 5-3: Pure Marrowstone - plague swamp, grass patch",
   "code": 3005020020,
   "part": "5-3",
   "kind": "treasure",
@@ -9516,7 +9516,7 @@
   ]
  },
  {
-  "name": "RH: Pure Suckerstone - ledge above plague swamp",
+  "name": "RH 5-3: Pure Suckerstone - ledge above plague swamp",
   "code": 3005020030,
   "part": "5-3",
   "kind": "treasure",
@@ -9538,7 +9538,7 @@
   ]
  },
  {
-  "name": "RH: Pure Mercurystone - plague swamp",
+  "name": "RH 5-3: Pure Mercurystone - plague swamp",
   "code": 3005020040,
   "part": "5-3",
   "kind": "treasure",
@@ -9560,7 +9560,7 @@
   ]
  },
  {
-  "name": "RH: Legendary Hero Soul - plague swamp pier",
+  "name": "RH 5-3: Legendary Hero Soul - plague swamp pier",
   "code": 3005020050,
   "part": "5-3",
   "kind": "treasure",
@@ -9582,7 +9582,7 @@
   ]
  },
  {
-  "name": "SG: Sticky White Slime - boulder building, behind debris",
+  "name": "SG 2-1: Sticky White Slime - boulder building, behind debris",
   "code": 3006000040,
   "part": "2-1",
   "kind": "treasure",
@@ -9604,7 +9604,7 @@
   ]
  },
  {
-  "name": "SG: Crushing Battle Axe+1 - balcony room, hanging corpse",
+  "name": "SG 2-1: Crushing Battle Axe+1 - balcony room, hanging corpse",
   "code": 3006000050,
   "part": "2-1",
   "kind": "treasure",
@@ -9626,7 +9626,7 @@
   ]
  },
  {
-  "name": "SG: Renowned Warrior Soul - balcony room, by furniture",
+  "name": "SG 2-1: Renowned Warrior Soul - balcony room, by furniture",
   "code": 3006000060,
   "part": "2-1",
   "kind": "treasure",
@@ -9648,7 +9648,7 @@
   ]
  },
  {
-  "name": "SG: Stone of Ephemeral Eyes - rotating elevator bottom",
+  "name": "SG 2-1: Stone of Ephemeral Eyes - rotating elevator bottom",
   "code": 3006000070,
   "part": "2-1",
   "kind": "treasure",
@@ -9670,7 +9670,7 @@
   ]
  },
  {
-  "name": "SG: Clearstone Shard - ore room, left body",
+  "name": "SG 2-1: Clearstone Shard - ore room, left body",
   "code": 3006000080,
   "part": "2-1",
   "kind": "treasure",
@@ -9692,7 +9692,7 @@
   ]
  },
  {
-  "name": "SG: Hardstone Chunk - ore room, right body",
+  "name": "SG 2-1: Hardstone Chunk - ore room, right body",
   "code": 3006000090,
   "part": "2-1",
   "kind": "treasure",
@@ -9714,7 +9714,7 @@
   ]
  },
  {
-  "name": "SG: Sharpstone Chunk - ore room, right body",
+  "name": "SG 2-1: Sharpstone Chunk - ore room, right body",
   "code": 3006000091,
   "part": "2-1",
   "kind": "treasure",
@@ -9736,7 +9736,7 @@
   ]
  },
  {
-  "name": "SG: Crescent Moon Grass - side tunnel end",
+  "name": "SG 2-1: Crescent Moon Grass - side tunnel end",
   "code": 3006000100,
   "part": "2-1",
   "kind": "treasure",
@@ -9758,7 +9758,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Warrior Soul - below crumbling bridge",
+  "name": "SG 2-1: Unknown Warrior Soul - below crumbling bridge",
   "code": 3006000110,
   "part": "2-1",
   "kind": "treasure",
@@ -9780,7 +9780,7 @@
   ]
  },
  {
-  "name": "SG: Renowned Hero Soul - Fat Official platform",
+  "name": "SG 2-1: Renowned Hero Soul - Fat Official platform",
   "code": 3006000120,
   "part": "2-1",
   "kind": "treasure",
@@ -9802,7 +9802,7 @@
   ]
  },
  {
-  "name": "SG: Ed's Sharpening Stone - lever gallery, behind rubble",
+  "name": "SG 2-1: Ed's Sharpening Stone - lever gallery, behind rubble",
   "code": 3006000130,
   "part": "2-1",
   "kind": "treasure",
@@ -9824,7 +9824,7 @@
   ]
  },
  {
-  "name": "SG: Half Moon Grass - cog ramps, upper ramp",
+  "name": "SG 2-1: Half Moon Grass - cog ramps, upper ramp",
   "code": 3006000140,
   "part": "2-1",
   "kind": "treasure",
@@ -9846,7 +9846,7 @@
   ]
  },
  {
-  "name": "SG: Dragonstone Shard - fire lizard room",
+  "name": "SG 2-1: Dragonstone Shard - fire lizard room",
   "code": 3006000150,
   "part": "2-1",
   "kind": "treasure",
@@ -9868,7 +9868,7 @@
   ]
  },
  {
-  "name": "SG: Large Hardstone Shard - workshop middle",
+  "name": "SG 2-1: Large Hardstone Shard - workshop middle",
   "code": 3006000160,
   "part": "2-1",
   "kind": "treasure",
@@ -9890,7 +9890,7 @@
   ]
  },
  {
-  "name": "SG: Great Club - broken plank platform",
+  "name": "SG 2-1: Great Club - broken plank platform",
   "code": 3006000170,
   "part": "2-1",
   "kind": "treasure",
@@ -9912,7 +9912,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Warrior Soul - broken plank platform",
+  "name": "SG 2-1: Unknown Warrior Soul - broken plank platform",
   "code": 3006000180,
   "part": "2-1",
   "kind": "treasure",
@@ -9934,7 +9934,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Warrior Soul - broken plank platform, second body",
+  "name": "SG 2-1: Unknown Warrior Soul - broken plank platform, second body",
   "code": 3006000190,
   "part": "2-1",
   "kind": "treasure",
@@ -9956,7 +9956,7 @@
   ]
  },
  {
-  "name": "SG: Crescent Moon Grass - walkway above horde",
+  "name": "SG 2-1: Crescent Moon Grass - walkway above horde",
   "code": 3006000200,
   "part": "2-1",
   "kind": "treasure",
@@ -9978,7 +9978,7 @@
   ]
  },
  {
-  "name": "SG: Steel Shield - horde hall end, cart",
+  "name": "SG 2-1: Steel Shield - horde hall end, cart",
   "code": 3006000210,
   "part": "2-1",
   "kind": "treasure",
@@ -10000,7 +10000,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Hero Soul - small platform above horde",
+  "name": "SG 2-1: Unknown Hero Soul - small platform above horde",
   "code": 3006000220,
   "part": "2-1",
   "kind": "treasure",
@@ -10022,7 +10022,7 @@
   ]
  },
  {
-  "name": "SG: Dragonstone Shard - lizard tower top",
+  "name": "SG 2-1: Dragonstone Shard - lizard tower top",
   "code": 3006000230,
   "part": "2-1",
   "kind": "treasure",
@@ -10044,7 +10044,7 @@
   ]
  },
  {
-  "name": "SG: Half Moon Grass - lizard tower descent",
+  "name": "SG 2-1: Half Moon Grass - lizard tower descent",
   "code": 3006000240,
   "part": "2-1",
   "kind": "treasure",
@@ -10066,7 +10066,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Hero Soul - under stairs by magma wheel",
+  "name": "SG 2-1: Unknown Hero Soul - under stairs by magma wheel",
   "code": 3006000250,
   "part": "2-1",
   "kind": "treasure",
@@ -10088,7 +10088,7 @@
   ]
  },
  {
-  "name": "SG: Half Moon Grass - magma pit",
+  "name": "SG 2-1: Half Moon Grass - magma pit",
   "code": 3006000260,
   "part": "2-1",
   "kind": "treasure",
@@ -10110,7 +10110,7 @@
   ]
  },
  {
-  "name": "SG: Large Sharpstone Shard - magma pit",
+  "name": "SG 2-1: Large Sharpstone Shard - magma pit",
   "code": 3006000270,
   "part": "2-1",
   "kind": "treasure",
@@ -10132,7 +10132,7 @@
   ]
  },
  {
-  "name": "SG: Poison Resistance Ring - magma pit, past grille",
+  "name": "SG 2-1: Poison Resistance Ring - magma pit, past grille",
   "code": 3006000280,
   "part": "2-1",
   "kind": "treasure",
@@ -10154,7 +10154,7 @@
   ]
  },
  {
-  "name": "SG: Stone of Ephemeral Eyes - past barrel room, cart",
+  "name": "SG 2-1: Stone of Ephemeral Eyes - past barrel room, cart",
   "code": 3006000290,
   "part": "2-1",
   "kind": "treasure",
@@ -10176,7 +10176,7 @@
   ]
  },
  {
-  "name": "SG: Clearstone Shard - Ed's elevator, mid-level",
+  "name": "SG 2-1: Clearstone Shard - Ed's elevator, mid-level",
   "code": 3006000300,
   "part": "2-1",
   "kind": "treasure",
@@ -10198,7 +10198,7 @@
   ]
  },
  {
-  "name": "SG: Renowned Hero Soul - outside Ed's room",
+  "name": "SG 2-1: Renowned Hero Soul - outside Ed's room",
   "code": 3006000310,
   "part": "2-1",
   "kind": "treasure",
@@ -10220,7 +10220,7 @@
   ]
  },
  {
-  "name": "SG: Kris Blade - boss elevator, upper walkway",
+  "name": "SG 2-1: Kris Blade - boss elevator, upper walkway",
   "code": 3006000320,
   "part": "2-1",
   "kind": "treasure",
@@ -10242,7 +10242,7 @@
   ]
  },
  {
-  "name": "SG: Spiderstone Chunk - rails tunnel before boss",
+  "name": "SG 2-1: Spiderstone Chunk - rails tunnel before boss",
   "code": 3006000330,
   "part": "2-1",
   "kind": "treasure",
@@ -10264,7 +10264,7 @@
   ]
  },
  {
-  "name": "SG: Pickaxe - side tunnel, side room",
+  "name": "SG 2-1: Pickaxe - side tunnel, side room",
   "code": 3006000340,
   "part": "2-1",
   "kind": "treasure",
@@ -10286,7 +10286,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Warrior Soul - crumbling bridge, near end",
+  "name": "SG 2-1: Unknown Warrior Soul - crumbling bridge, near end",
   "code": 3006000350,
   "part": "2-1",
   "kind": "treasure",
@@ -10308,7 +10308,7 @@
   ]
  },
  {
-  "name": "SG: Meltstone Shard - first fog, by the cog",
+  "name": "SG 2-1: Meltstone Shard - first fog, by the cog",
   "code": 3006000360,
   "part": "2-1",
   "kind": "treasure",
@@ -10330,7 +10330,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Hero Soul - cliff above archstone",
+  "name": "SG 2-1: Unknown Hero Soul - cliff above archstone",
   "code": 3006000370,
   "part": "2-1",
   "kind": "treasure",
@@ -10352,7 +10352,7 @@
   ]
  },
  {
-  "name": "SG: Crescent Moon Grass - Ed's elevator top",
+  "name": "SG 2-1: Crescent Moon Grass - Ed's elevator top",
   "code": 3006000380,
   "part": "2-1",
   "kind": "treasure",
@@ -10374,7 +10374,7 @@
   ]
  },
  {
-  "name": "SG: Ed's Sharpening Stone - lizard tower, dog ramp",
+  "name": "SG 2-1: Ed's Sharpening Stone - lizard tower, dog ramp",
   "code": 3006000390,
   "part": "2-1",
   "kind": "treasure",
@@ -10396,7 +10396,7 @@
   ]
  },
  {
-  "name": "SG: Spiderstone Shard - boss elevator top",
+  "name": "SG 2-1: Spiderstone Shard - boss elevator top",
   "code": 3006000400,
   "part": "2-1",
   "kind": "treasure",
@@ -10418,7 +10418,7 @@
   ]
  },
  {
-  "name": "SG: Spiderstone Chunk - boss arena, behind boss",
+  "name": "SG 2-1: Spiderstone Chunk - boss arena, behind boss",
   "code": 3006000410,
   "part": "2-1",
   "kind": "treasure",
@@ -10442,7 +10442,7 @@
   ]
  },
  {
-  "name": "SG: Renowned Warrior Soul - boss arena, left side",
+  "name": "SG 2-1: Renowned Warrior Soul - boss arena, left side",
   "code": 3006000420,
   "part": "2-1",
   "kind": "treasure",
@@ -10466,7 +10466,7 @@
   ]
  },
  {
-  "name": "SG: Unknown Hero Soul - archstone ledge, past lizard",
+  "name": "SG 2-1: Unknown Hero Soul - archstone ledge, past lizard",
   "code": 3006000430,
   "part": "2-1",
   "kind": "treasure",
@@ -10488,7 +10488,7 @@
   ]
  },
  {
-  "name": "TC: Augite of Guidance - elevator hall, hanging corpse",
+  "name": "TC 2-2: Augite of Guidance - elevator hall, hanging corpse",
   "code": 3006010040,
   "part": "2-2",
   "kind": "treasure",
@@ -10510,7 +10510,7 @@
   ]
  },
  {
-  "name": "TC: Clearstone Shard - cart room, platform end",
+  "name": "TC 2-2: Clearstone Shard - cart room, platform end",
   "code": 3006010050,
   "part": "2-2",
   "kind": "treasure",
@@ -10532,7 +10532,7 @@
   ]
  },
  {
-  "name": "TC: Large Sharpstone Shard - cart room, platform end",
+  "name": "TC 2-2: Large Sharpstone Shard - cart room, platform end",
   "code": 3006010060,
   "part": "2-2",
   "kind": "treasure",
@@ -10554,7 +10554,7 @@
   ]
  },
  {
-  "name": "TC: Clearstone Chunk - great pit, top platform",
+  "name": "TC 2-2: Clearstone Chunk - great pit, top platform",
   "code": 3006010070,
   "part": "2-2",
   "kind": "treasure",
@@ -10576,7 +10576,7 @@
   ]
  },
  {
-  "name": "TC: Sharpstone Shard - great pit, top platform",
+  "name": "TC 2-2: Sharpstone Shard - great pit, top platform",
   "code": 3006010071,
   "part": "2-2",
   "kind": "treasure",
@@ -10598,7 +10598,7 @@
   ]
  },
  {
-  "name": "TC: Plague Resistance Ring - great pit, middle platform",
+  "name": "TC 2-2: Plague Resistance Ring - great pit, middle platform",
   "code": 3006010080,
   "part": "2-2",
   "kind": "treasure",
@@ -10620,7 +10620,7 @@
   ]
  },
  {
-  "name": "TC: Large Hardstone Shard - side room off bearbug den",
+  "name": "TC 2-2: Large Hardstone Shard - side room off bearbug den",
   "code": 3006010090,
   "part": "2-2",
   "kind": "treasure",
@@ -10642,7 +10642,7 @@
   ]
  },
  {
-  "name": "TC: Hardstone Shard - side room off bearbug den",
+  "name": "TC 2-2: Hardstone Shard - side room off bearbug den",
   "code": 3006010091,
   "part": "2-2",
   "kind": "treasure",
@@ -10664,7 +10664,7 @@
   ]
  },
  {
-  "name": "TC: Pure Hardstone - lizard nest, lower platform",
+  "name": "TC 2-2: Pure Hardstone - lizard nest, lower platform",
   "code": 3006010100,
   "part": "2-2",
   "kind": "treasure",
@@ -10686,7 +10686,7 @@
   ]
  },
  {
-  "name": "TC: Pure Sharpstone - lizard nest, lower platform",
+  "name": "TC 2-2: Pure Sharpstone - lizard nest, lower platform",
   "code": 3006010101,
   "part": "2-2",
   "kind": "treasure",
@@ -10708,7 +10708,7 @@
   ]
  },
  {
-  "name": "TC: Great Axe - bearbug den, top of stairs",
+  "name": "TC 2-2: Great Axe - bearbug den, top of stairs",
   "code": 3006010110,
   "part": "2-2",
   "kind": "treasure",
@@ -10730,7 +10730,7 @@
   ]
  },
  {
-  "name": "TC: Dragonstone Shard - bearbug den, past giant bearbug",
+  "name": "TC 2-2: Dragonstone Shard - bearbug den, past giant bearbug",
   "code": 3006010120,
   "part": "2-2",
   "kind": "treasure",
@@ -10752,7 +10752,7 @@
   ]
  },
  {
-  "name": "TC: Sharpstone Chunk - rift platforms, corridor end",
+  "name": "TC 2-2: Sharpstone Chunk - rift platforms, corridor end",
   "code": 3006010130,
   "part": "2-2",
   "kind": "treasure",
@@ -10774,7 +10774,7 @@
   ]
  },
  {
-  "name": "TC: Club - bearbug ledge (Patches' bait)",
+  "name": "TC 2-2: Club - bearbug ledge (Patches' bait)",
   "code": 3006010140,
   "part": "2-2",
   "kind": "treasure",
@@ -10796,7 +10796,7 @@
   ]
  },
  {
-  "name": "TC: Greystone Chunk - rift platforms, second drop",
+  "name": "TC 2-2: Greystone Chunk - rift platforms, second drop",
   "code": 3006010150,
   "part": "2-2",
   "kind": "treasure",
@@ -10818,7 +10818,7 @@
   ]
  },
  {
-  "name": "TC: Shade Heater Shield+2 - rift path, platform",
+  "name": "TC 2-2: Shade Heater Shield+2 - rift path, platform",
   "code": 3006010160,
   "part": "2-2",
   "kind": "treasure",
@@ -10840,7 +10840,7 @@
   ]
  },
  {
-  "name": "TC: Stone of Ephemeral Eyes - rift path, below railing",
+  "name": "TC 2-2: Stone of Ephemeral Eyes - rift path, below railing",
   "code": 3006010170,
   "part": "2-2",
   "kind": "treasure",
@@ -10862,7 +10862,7 @@
   ]
  },
  {
-  "name": "TC: Renowned Hero Soul - rift path, by ore carts",
+  "name": "TC 2-2: Renowned Hero Soul - rift path, by ore carts",
   "code": 3006010180,
   "part": "2-2",
   "kind": "treasure",
@@ -10884,7 +10884,7 @@
   ]
  },
  {
-  "name": "TC: Hardstone Chunk - rift path, past three worms",
+  "name": "TC 2-2: Hardstone Chunk - rift path, past three worms",
   "code": 3006010190,
   "part": "2-2",
   "kind": "treasure",
@@ -10906,7 +10906,7 @@
   ]
  },
  {
-  "name": "TC: Storied Warrior Soul - bug tunnels, side branch",
+  "name": "TC 2-2: Storied Warrior Soul - bug tunnels, side branch",
   "code": 3006010200,
   "part": "2-2",
   "kind": "treasure",
@@ -10928,7 +10928,7 @@
   ]
  },
  {
-  "name": "TC: Dragon Long Sword+1 - bug tunnels, past spine",
+  "name": "TC 2-2: Dragon Long Sword+1 - bug tunnels, past spine",
   "code": 3006010210,
   "part": "2-2",
   "kind": "treasure",
@@ -10950,7 +10950,7 @@
   ]
  },
  {
-  "name": "TC: Dragonstone Chunk - lava rift, west end",
+  "name": "TC 2-2: Dragonstone Chunk - lava rift, west end",
   "code": 3006010220,
   "part": "2-2",
   "kind": "treasure",
@@ -10972,7 +10972,7 @@
   ]
  },
  {
-  "name": "TC: Dragonstone Chunk - lava rift, by Pure Dragonstone",
+  "name": "TC 2-2: Dragonstone Chunk - lava rift, by Pure Dragonstone",
   "code": 3006010230,
   "part": "2-2",
   "kind": "treasure",
@@ -10994,7 +10994,7 @@
   ]
  },
  {
-  "name": "TC: Pure Dragonstone - lava rift, middle",
+  "name": "TC 2-2: Pure Dragonstone - lava rift, middle",
   "code": 3006010240,
   "part": "2-2",
   "kind": "treasure",
@@ -11016,7 +11016,7 @@
   ]
  },
  {
-  "name": "TC: Renowned Hero Soul - lava rift, east end",
+  "name": "TC 2-2: Renowned Hero Soul - lava rift, east end",
   "code": 3006010250,
   "part": "2-2",
   "kind": "treasure",
@@ -11038,7 +11038,7 @@
   ]
  },
  {
-  "name": "TC: Stone of Ephemeral Eyes - bug tunnels, lizard dead end",
+  "name": "TC 2-2: Stone of Ephemeral Eyes - bug tunnels, lizard dead end",
   "code": 3006010260,
   "part": "2-2",
   "kind": "treasure",
@@ -11060,7 +11060,7 @@
   ]
  },
  {
-  "name": "TC: Unknown Hero Soul - bug tunnels, ledge across gap",
+  "name": "TC 2-2: Unknown Hero Soul - bug tunnels, ledge across gap",
   "code": 3006010270,
   "part": "2-2",
   "kind": "treasure",
@@ -11082,7 +11082,7 @@
   ]
  },
  {
-  "name": "TC: Unknown Hero Soul - great pit, lizard walkway",
+  "name": "TC 2-2: Unknown Hero Soul - great pit, lizard walkway",
   "code": 3006010280,
   "part": "2-2",
   "kind": "treasure",
@@ -11104,7 +11104,7 @@
   ]
  },
  {
-  "name": "TC: Hands of God - worm cave",
+  "name": "TC 2-2: Hands of God - worm cave",
   "code": 3006010290,
   "part": "2-2",
   "kind": "treasure",
@@ -11126,7 +11126,7 @@
   ]
  },
  {
-  "name": "TC: Hands of God - worm cave, second lot",
+  "name": "TC 2-2: Hands of God - worm cave, second lot",
   "code": 3006010291,
   "part": "2-2",
   "kind": "treasure",
@@ -11148,7 +11148,7 @@
   ]
  },
  {
-  "name": "TC: Full Moon Grass - boss approach",
+  "name": "TC 2-2: Full Moon Grass - boss approach",
   "code": 3006010300,
   "part": "2-2",
   "kind": "treasure",
@@ -11170,7 +11170,7 @@
   ]
  },
  {
-  "name": "TC: Stone of Ephemeral Eyes - boss approach, by fog gate",
+  "name": "TC 2-2: Stone of Ephemeral Eyes - boss approach, by fog gate",
   "code": 3006010310,
   "part": "2-2",
   "kind": "treasure",
@@ -11192,7 +11192,7 @@
   ]
  },
  {
-  "name": "TC: Dragonstone Chunk - boss arena, behind column",
+  "name": "TC 2-2: Dragonstone Chunk - boss arena, behind column",
   "code": 3006010320,
   "part": "2-2",
   "kind": "treasure",
@@ -11216,7 +11216,7 @@
   ]
  },
  {
-  "name": "TC: Storied Hero Soul - boss arena, behind rocks",
+  "name": "TC 2-2: Storied Hero Soul - boss arena, behind rocks",
   "code": 3006010330,
   "part": "2-2",
   "kind": "treasure",
@@ -11240,7 +11240,7 @@
   ]
  },
  {
-  "name": "TC: Unknown Hero Soul - cart room entrance",
+  "name": "TC 2-2: Unknown Hero Soul - cart room entrance",
   "code": 3006010340,
   "part": "2-2",
   "kind": "treasure",
@@ -11262,7 +11262,7 @@
   ]
  },
  {
-  "name": "TC: Storied Warrior Soul - great pit, hanging on beam",
+  "name": "TC 2-2: Storied Warrior Soul - great pit, hanging on beam",
   "code": 3006010350,
   "part": "2-2",
   "kind": "treasure",
@@ -11284,7 +11284,7 @@
   ]
  },
  {
-  "name": "TC: Greystone Shard - rift platforms, first drop",
+  "name": "TC 2-2: Greystone Shard - rift platforms, first drop",
   "code": 3006010360,
   "part": "2-2",
   "kind": "treasure",
@@ -11306,7 +11306,7 @@
   ]
  },
  {
-  "name": "TC: Clearstone Shard - side room off bearbug den",
+  "name": "TC 2-2: Clearstone Shard - side room off bearbug den",
   "code": 3006010370,
   "part": "2-2",
   "kind": "treasure",
@@ -11328,7 +11328,7 @@
   ]
  },
  {
-  "name": "TC: Greystone Shard - bearbug ledge, rock worm",
+  "name": "TC 2-2: Greystone Shard - bearbug ledge, rock worm",
   "code": 3006010380,
   "part": "2-2",
   "kind": "treasure",
@@ -11350,7 +11350,7 @@
   ]
  },
  {
-  "name": "TC: Unknown Hero Soul - rift platforms, third drop",
+  "name": "TC 2-2: Unknown Hero Soul - rift platforms, third drop",
   "code": 3006010390,
   "part": "2-2",
   "kind": "treasure",
@@ -11372,7 +11372,7 @@
   ]
  },
  {
-  "name": "TC: Dragonstone Shard - rift path, side platform",
+  "name": "TC 2-2: Dragonstone Shard - rift path, side platform",
   "code": 3006010400,
   "part": "2-2",
   "kind": "treasure",
@@ -11394,7 +11394,7 @@
   ]
  },
  {
-  "name": "TC: Storied Warrior Soul - bug tunnels, worm cliff",
+  "name": "TC 2-2: Storied Warrior Soul - bug tunnels, worm cliff",
   "code": 3006010410,
   "part": "2-2",
   "kind": "treasure",
@@ -11416,7 +11416,7 @@
   ]
  },
  {
-  "name": "TC: Augite of Guidance - bug tunnels, past bones",
+  "name": "TC 2-2: Augite of Guidance - bug tunnels, past bones",
   "code": 3006010420,
   "part": "2-2",
   "kind": "treasure",
@@ -11438,7 +11438,7 @@
   ]
  },
  {
-  "name": "TC: Clearstone Chunk - bug tunnels, behind bearbug",
+  "name": "TC 2-2: Clearstone Chunk - bug tunnels, behind bearbug",
   "code": 3006010430,
   "part": "2-2",
   "kind": "treasure",
@@ -11460,7 +11460,7 @@
   ]
  },
  {
-  "name": "TC: Unknown Hero Soul - great pit, last stairs",
+  "name": "TC 2-2: Unknown Hero Soul - great pit, last stairs",
   "code": 3006010440,
   "part": "2-2",
   "kind": "treasure",
@@ -11482,7 +11482,7 @@
   ]
  },
  {
-  "name": "UT: Stone of Ephemeral Eyes - lower walkway",
+  "name": "UT 2-3: Stone of Ephemeral Eyes - lower walkway",
   "code": 3006020020,
   "part": "2-3",
   "kind": "treasure",
@@ -11504,7 +11504,7 @@
   ]
  },
  {
-  "name": "UT: New Moon Grass - first ballista walkway, end",
+  "name": "UT 2-3: New Moon Grass - first ballista walkway, end",
   "code": 3006020030,
   "part": "2-3",
   "kind": "treasure",
@@ -11526,7 +11526,7 @@
   ]
  },
  {
-  "name": "UT: Master's Ring - second ballista, narrow walkway",
+  "name": "UT 2-3: Master's Ring - second ballista, narrow walkway",
   "code": 3006020040,
   "part": "2-3",
   "kind": "treasure",
@@ -11548,7 +11548,7 @@
   ]
  },
  {
-  "name": "UT: Legendary Warrior Soul - near the boss's head",
+  "name": "UT 2-3: Legendary Warrior Soul - near the boss's head",
   "code": 3006020050,
   "part": "2-3",
   "kind": "treasure",
@@ -11894,7 +11894,7 @@
   ]
  },
  {
-  "name": "GB: Demonbrandt - mausoleum altar",
+  "name": "GB 1-1: Demonbrandt - mausoleum altar",
   "code": 3120010104,
   "part": "1-1",
   "kind": "event",
@@ -11917,7 +11917,7 @@
   ]
  },
  {
-  "name": "GB: Lead Demon Soul - boss drop",
+  "name": "GB 1-1: Lead Demon Soul - boss drop",
   "code": 3120010110,
   "part": "1-1",
   "kind": "event",
@@ -11942,7 +11942,7 @@
   ]
  },
  {
-  "name": "LP: Iron Demon Soul - boss drop",
+  "name": "LP 1-2: Iron Demon Soul - boss drop",
   "code": 3120110111,
   "part": "1-2",
   "kind": "event",
@@ -11967,7 +11967,7 @@
   ]
  },
  {
-  "name": "IW: Silver Demon Soul - boss drop",
+  "name": "IW 1-3: Silver Demon Soul - boss drop",
   "code": 3120210112,
   "part": "1-3",
   "kind": "event",
@@ -11992,7 +11992,7 @@
   ]
  },
  {
-  "name": "KT: False King Demon Soul - boss drop",
+  "name": "KT 1-4: False King Demon Soul - boss drop",
   "code": 3120310101,
   "part": "1-4",
   "kind": "event",
@@ -12017,7 +12017,7 @@
   ]
  },
  {
-  "name": "IE: Swollen Demon Soul - boss drop",
+  "name": "IE 4-1: Swollen Demon Soul - boss drop",
   "code": 3130110230,
   "part": "4-1",
   "kind": "event",
@@ -12042,7 +12042,7 @@
   ]
  },
  {
-  "name": "RP: Hero Demon Soul - boss drop",
+  "name": "RP 4-2: Hero Demon Soul - boss drop",
   "code": 3130210231,
   "part": "4-2",
   "kind": "event",
@@ -12067,7 +12067,7 @@
   ]
  },
  {
-  "name": "AS: Storm Demon Soul - boss drop",
+  "name": "AS 4-3: Storm Demon Soul - boss drop",
   "code": 3130310232,
   "part": "4-3",
   "kind": "event",
@@ -12094,7 +12094,7 @@
   ]
  },
  {
-  "name": "AS: Pure Cloudstone - boss drop",
+  "name": "AS 4-3: Pure Cloudstone - boss drop",
   "code": 3130310278,
   "part": "4-3",
   "kind": "event",
@@ -12120,7 +12120,7 @@
   ]
  },
  {
-  "name": "AS: Storm Ruler - cemetery sword",
+  "name": "AS 4-3: Storm Ruler - cemetery sword",
   "code": 3130310217,
   "part": "4-3",
   "kind": "event",
@@ -12142,7 +12142,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, 3F Key - 3F east, plate-end wall",
+  "name": "PH 3-1: Prison of Hope, 3F Key - 3F east, plate-end wall",
   "code": 3140010502,
   "part": "3-1",
   "kind": "event",
@@ -12164,7 +12164,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, 4F Key - 4F east, dead-end wall",
+  "name": "PH 3-1: Prison of Hope, 4F Key - 4F east, dead-end wall",
   "code": 3140010503,
   "part": "3-1",
   "kind": "event",
@@ -12188,7 +12188,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, 4F Cell Key - 4F east, dead-end wall",
+  "name": "PH 3-1: Prison of Hope, 4F Cell Key - 4F east, dead-end wall",
   "code": 3140010556,
   "part": "3-1",
   "kind": "event",
@@ -12212,7 +12212,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, 1F Key - jailer's hall wall",
+  "name": "PH 3-1: Prison of Hope, 1F Key - jailer's hall wall",
   "code": 3140010500,
   "part": "3-1",
   "kind": "event",
@@ -12237,7 +12237,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, 1F Cell Key - jailer's hall wall",
+  "name": "PH 3-1: Prison of Hope, 1F Cell Key - jailer's hall wall",
   "code": 3140010553,
   "part": "3-1",
   "kind": "event",
@@ -12262,7 +12262,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, 3F Cell Key - 3F west, plate-end hall wall",
+  "name": "PH 3-1: Prison of Hope, 3F Cell Key - 3F west, plate-end hall wall",
   "code": 3140010555,
   "part": "3-1",
   "kind": "event",
@@ -12284,7 +12284,7 @@
   ]
  },
  {
-  "name": "PH: Prison of Hope, Special Key - Liar's room wall",
+  "name": "PH 3-1: Prison of Hope, Special Key - Liar's room wall",
   "code": 3140010594,
   "part": "3-1",
   "kind": "event",
@@ -12310,7 +12310,7 @@
   ]
  },
  {
-  "name": "PH: Doll Demon Soul - boss drop",
+  "name": "PH 3-1: Doll Demon Soul - boss drop",
   "code": 3140010550,
   "part": "3-1",
   "kind": "event",
@@ -12338,7 +12338,7 @@
   ]
  },
  {
-  "name": "UL: Mixed Demon Soul - boss drop",
+  "name": "UL 3-2: Mixed Demon Soul - boss drop",
   "code": 3140110551,
   "part": "3-2",
   "kind": "event",
@@ -12363,7 +12363,7 @@
   ]
  },
  {
-  "name": "IT: Golden Demon Soul - boss drop",
+  "name": "IT 3-3: Golden Demon Soul - boss drop",
   "code": 3140210552,
   "part": "3-3",
   "kind": "event",
@@ -12391,7 +12391,7 @@
   ]
  },
  {
-  "name": "DC: Istarelle - top of white ladder",
+  "name": "DC 5-1: Istarelle - top of white ladder",
   "code": 3150010419,
   "part": "5-1",
   "kind": "event",
@@ -12414,7 +12414,7 @@
   ]
  },
  {
-  "name": "DC: Writhing Demon Soul - boss drop",
+  "name": "DC 5-1: Writhing Demon Soul - boss drop",
   "code": 3150010450,
   "part": "5-1",
   "kind": "event",
@@ -12439,7 +12439,7 @@
   ]
  },
  {
-  "name": "SS: Large Sword of Moonlight - fallen slug nest",
+  "name": "SS 5-2: Large Sword of Moonlight - fallen slug nest",
   "code": 3150110430,
   "part": "5-2",
   "kind": "event",
@@ -12461,7 +12461,7 @@
   ]
  },
  {
-  "name": "SS: Eroded Demon Soul - boss drop",
+  "name": "SS 5-2: Eroded Demon Soul - boss drop",
   "code": 3150110451,
   "part": "5-2",
   "kind": "event",
@@ -12486,7 +12486,7 @@
   ]
  },
  {
-  "name": "RH: Pureblood Demon Soul - boss drop",
+  "name": "RH 5-3: Pureblood Demon Soul - boss drop",
   "code": 3150210452,
   "part": "5-3",
   "kind": "event",
@@ -12513,7 +12513,7 @@
   ]
  },
  {
-  "name": "RH: Ring of Sincere Prayer - boss drop",
+  "name": "RH 5-3: Ring of Sincere Prayer - boss drop",
   "code": 3150210479,
   "part": "5-3",
   "kind": "event",
@@ -12539,7 +12539,7 @@
   ]
  },
  {
-  "name": "SG: Hard Demon Soul - boss drop",
+  "name": "SG 2-1: Hard Demon Soul - boss drop",
   "code": 3160010630,
   "part": "2-1",
   "kind": "event",
@@ -12564,7 +12564,7 @@
   ]
  },
  {
-  "name": "SG: Pure Spiderstone - boss drop",
+  "name": "SG 2-1: Pure Spiderstone - boss drop",
   "code": 3160010671,
   "part": "2-1",
   "kind": "event",
@@ -12588,7 +12588,7 @@
   ]
  },
  {
-  "name": "TC: Searing Demon Soul - boss drop",
+  "name": "TC 2-2: Searing Demon Soul - boss drop",
   "code": 3160110631,
   "part": "2-2",
   "kind": "event",
@@ -12613,7 +12613,7 @@
   ]
  },
  {
-  "name": "TC: Flame Resistance Ring - bearbug ledge",
+  "name": "TC 2-2: Flame Resistance Ring - bearbug ledge",
   "code": 3160110600,
   "part": "2-2",
   "kind": "event",
@@ -12636,7 +12636,7 @@
   ]
  },
  {
-  "name": "UT: Dragon Demon Soul - boss drop",
+  "name": "UT 2-3: Dragon Demon Soul - boss drop",
   "code": 3160210632,
   "part": "2-3",
   "kind": "event",
@@ -12663,7 +12663,7 @@
   ]
  },
  {
-  "name": "UT: Pure Dragonstone - boss drop",
+  "name": "UT 2-3: Pure Dragonstone - boss drop",
   "code": 3160210679,
   "part": "2-3",
   "kind": "event",
@@ -12689,7 +12689,7 @@
   ]
  },
  {
-  "name": "UT: Dragon Bone Smasher - boss arena, left corridor",
+  "name": "UT 2-3: Dragon Bone Smasher - boss arena, left corridor",
   "code": 3160210626,
   "part": "2-3",
   "kind": "event",
@@ -12735,7 +12735,7 @@
   ]
  },
  {
-  "name": "IW: Colorless Demon Soul - boss plaza, miniboss drop",
+  "name": "IW 1-3: Colorless Demon Soul - boss plaza, miniboss drop",
   "code": 3300001160,
   "part": "1-3",
   "kind": "enemy",
@@ -12757,7 +12757,7 @@
   ]
  },
  {
-  "name": "IE: Gray Demon Soul - pit courtyard miniboss",
+  "name": "IE 4-1: Gray Demon Soul - pit courtyard miniboss",
   "code": 3300000550,
   "part": "4-1",
   "kind": "enemy",
@@ -12778,7 +12778,7 @@
   ]
  },
  {
-  "name": "RP: Colorless Demon Soul - secret cliff, black tendency",
+  "name": "RP 4-2: Colorless Demon Soul - secret cliff, black tendency",
   "code": 3300001234,
   "part": "4-2",
   "kind": "enemy",
@@ -12800,7 +12800,7 @@
   ]
  },
  {
-  "name": "UL: Colorless Demon Soul - swamp dead end, black tendency demon",
+  "name": "UL 3-2: Colorless Demon Soul - swamp dead end, black tendency demon",
   "code": 3300000611,
   "part": "3-2",
   "kind": "enemy",
@@ -12822,7 +12822,7 @@
   ]
  },
  {
-  "name": "SS: Colorless Demon Soul - southeast cave, miniboss drop",
+  "name": "SS 5-2: Colorless Demon Soul - southeast cave, miniboss drop",
   "code": 3300000828,
   "part": "5-2",
   "kind": "enemy",
@@ -12844,7 +12844,7 @@
   ]
  },
  {
-  "name": "SG: Colorless Demon Soul - rotating elevator bottom, miniboss drop",
+  "name": "SG 2-1: Colorless Demon Soul - rotating elevator bottom, miniboss drop",
   "code": 3300000171,
   "part": "2-1",
   "kind": "enemy",
@@ -12866,7 +12866,7 @@
   ]
  },
  {
-  "name": "IW: Brushwood Helm - Dregling Merchant after Biorr leaves",
+  "name": "IW 1-3: Brushwood Helm - Dregling Merchant after Biorr leaves",
   "code": 3200001150,
   "part": "1-3",
   "kind": "shop",
@@ -12891,7 +12891,7 @@
   ]
  },
  {
-  "name": "IW: Brushwood Armor - Dregling Merchant after Biorr leaves",
+  "name": "IW 1-3: Brushwood Armor - Dregling Merchant after Biorr leaves",
   "code": 3200001151,
   "part": "1-3",
   "kind": "shop",
@@ -12916,7 +12916,7 @@
   ]
  },
  {
-  "name": "IW: Brushwood Gauntlets - Dregling Merchant after Biorr leaves",
+  "name": "IW 1-3: Brushwood Gauntlets - Dregling Merchant after Biorr leaves",
   "code": 3200001152,
   "part": "1-3",
   "kind": "shop",
@@ -12941,7 +12941,7 @@
   ]
  },
  {
-  "name": "IW: Brushwood Greaves - Dregling Merchant after Biorr leaves",
+  "name": "IW 1-3: Brushwood Greaves - Dregling Merchant after Biorr leaves",
   "code": 3200001153,
   "part": "1-3",
   "kind": "shop",
@@ -12966,7 +12966,7 @@
   ]
  },
  {
-  "name": "IW: Large Brushwood Shield - Dregling Merchant after Biorr leaves",
+  "name": "IW 1-3: Large Brushwood Shield - Dregling Merchant after Biorr leaves",
   "code": 3200001154,
   "part": "1-3",
   "kind": "shop",
@@ -12991,7 +12991,7 @@
   ]
  },
  {
-  "name": "IE: Sticky White Slime - Blige",
+  "name": "IE 4-1: Sticky White Slime - Blige",
   "code": 3200002004,
   "part": "4-1",
   "kind": "shop",
@@ -13014,7 +13014,7 @@
   ]
  },
  {
-  "name": "PH: Ring of Avarice - Former Noble's Wife",
+  "name": "PH 3-1: Ring of Avarice - Former Noble's Wife",
   "code": 3200003014,
   "part": "3-1",
   "kind": "shop",
@@ -13037,7 +13037,7 @@
   ]
  },
  {
-  "name": "SS: Dark Moon Grass - Filthy Woman",
+  "name": "SS 5-2: Dark Moon Grass - Filthy Woman",
   "code": 3200004050,
   "part": "5-2",
   "kind": "shop",
@@ -13179,7 +13179,7 @@
   ]
  },
  {
-  "name": "LP: Small Scaled Flame Demon Soul - optional boss drop",
+  "name": "LP 1-2: Small Scaled Flame Demon Soul - optional boss drop",
   "code": 3120110118,
   "part": "1-2",
   "kind": "event",
@@ -13201,7 +13201,7 @@
   ]
  },
  {
-  "name": "KT: Large Scaled Flame Demon Soul - optional boss drop",
+  "name": "KT 1-4: Large Scaled Flame Demon Soul - optional boss drop",
   "code": 3120310117,
   "part": "1-4",
   "kind": "event",

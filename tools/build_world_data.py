@@ -169,6 +169,14 @@ def added_sources(notes: dict[tuple, dict], known: set[tuple]) -> list[dict]:
     return out
 
 
+def with_world_number(name: str, abbreviation_part: dict[str, str]) -> str:
+    """"GB: Mail Breaker - ..." -> "GB 1-1: Mail Breaker - ...": the area code, then its world number (the owner
+    asked for the number in every name it applies to; the Nexus and the tutorial have none)."""
+    code, rest = name.split(":", 1)
+    part = abbreviation_part[code]
+    return f"{code} {part}:{rest}" if part not in ("Nexus", "Tutorial") else name
+
+
 def main() -> None:
     notes = research()
     sources = raw_sources()
@@ -201,7 +209,8 @@ def main() -> None:
         if part == "Tutorial" and not missable:
             missable = "tutorial: cannot be revisited"
         it = source["item"]
-        location = {"name": name, "code": source["code"], "part": part, "kind": source["kind"],
+        location = {"name": with_world_number(name, abbreviation_part), "code": source["code"], "part": part,
+                    "kind": source["kind"],
                     "vanilla_item": item_name(it["name"], it["count"]), "description": entry.get("description", ""),
                     "requires": norm.tokens, "missable": missable, "tendency": entry.get("tendency") or "",
                     "game": source["game"], "_item": it}
