@@ -92,6 +92,13 @@ class DemonsSoulsCommandProcessor(ClientCommandProcessor):
         self.output(f"Live-control file: {self.ctx.bridge.live.path}")
         return True
 
+    def _cmd_tracker(self) -> bool:
+        """Open the 3D map tracker in your browser."""
+        url = self.ctx.open_tracker()
+        if url:
+            self.output(f"Map tracker: {url}")
+        return bool(url)
+
     def _cmd_deathlink(self) -> bool:
         """Turn DeathLink on or off for this session."""
         self.ctx.death_link_enabled = not self.ctx.death_link_enabled
@@ -114,6 +121,7 @@ class DemonsSoulsContext(CommonContext):
         self.launch_status = ""
         self.last_backup = 0.0
         self.overlay = None  # the in-game message window (GUI only; overlay.py)
+        self.tracker = None  # the 3D map tracker's local web server (tracker.py)
         self.bridge = DemonsSoulsGame(default_live_file())
         self.slot_data: dict[str, Any] = {}
         self.scouted: dict[int, NetworkItem] = {}
@@ -145,6 +153,8 @@ class DemonsSoulsContext(CommonContext):
         self.phase = ""  # "preparing" (the game is paused while the items are placed), "ready", "" (neither yet)
         self.last_message = ""
         self.launcher_mode = False  # the emulator runs from the Archipelago profile: every save there is ours
+        self.last_position = None  # the player's, for the map tracker (None: no character loaded)
+        self.last_map = ""
 
     # --- server ---------------------------------------------------------------------------------------------------
 
@@ -221,6 +231,24 @@ class DemonsSoulsContext(CommonContext):
         text = f"{self.server_seed_name}:{self.team}:{self.slot}".encode()
         return int.from_bytes(hashlib.sha256(text).digest()[:8], "little") | 1
 
+    def start_tracker(self) -> str:
+        """Serve the map tracker (once); returns its address ("" if it could not start)."""
+        if self.tracker is None:
+            from .tracker import TrackerFeed, TrackerServer
+            self.tracker = TrackerServer(TrackerFeed(self).state)
+        try:
+            return self.tracker.start()
+        except OSError as error:
+            logger.warning(f"The map tracker could not start: {error}")
+            return ""
+
+    def open_tracker(self) -> str:
+        url = self.start_tracker()
+        if url:
+            import webbrowser
+            webbrowser.open(url)
+        return url
+
     def run_gui(self):
         from .gui import make_manager
         self.ui = make_manager(self)
@@ -283,6 +311,7 @@ class DemonsSoulsContext(CommonContext):
         if time.monotonic() - self.attached_at < SETTLE_SECONDS:
             return out  # (let the game finish starting before anything is written)
         state = self.bridge.state()
+        self.last_position, self.last_map = (state.position, state.map_id) if state.in_game else (None, "")
         if not state.in_game:
             # a loading screen or the title: the next area loads with the current lots (another save may be loaded
             # next; check_save tells)
@@ -684,6 +713,7 @@ def launch(*args: str) -> None:
         if parsed.name:
             ctx.auth = parsed.name
         ctx.server_task = asyncio.create_task(server_loop(ctx), name="server loop")
+        ctx.start_tracker()
         if gui_enabled:
             ctx.run_gui()
         ctx.run_cli()

@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demon's Souls Map Tracker</title>
+<style>
+@font-face { font-family: "Jost"; src: url("/fonts/Jost.ttf") format("truetype"); font-weight: 100 900; }
+:root {
+  --bg: #101012; --panel: #16161a; --card: #1b1b20; --raise: #222228; --border: #2e2e35;
+  --text: #e8e5df; --dim: #9a968f; --faint: #6b6863; --gold: #c9a45c;
+  --logic: #7cd992; --out: #d2604f; --checked: #77736d; --warn: #d9a441;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden;
+  font: 15px/1.35 "Jost", "Futura", "Century Gothic", sans-serif; font-weight: 450; }
+button, input { font: inherit; color: inherit; }
+#app { display: grid; grid-template-columns: 300px 1fr 300px; height: 100%; }
+aside { background: var(--panel); border-right: 1px solid var(--border); overflow-y: auto; padding: 18px 16px 24px; }
+aside.right { border-right: 0; border-left: 1px solid var(--border); }
+aside::-webkit-scrollbar { width: 8px; } aside::-webkit-scrollbar-thumb { background: var(--raise); border-radius: 4px; }
+.brand { font-size: 11px; letter-spacing: .28em; color: var(--gold); font-weight: 600; }
+h1 { font-size: 22px; font-weight: 500; margin: 2px 0 14px; letter-spacing: .01em; }
+h2 { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); font-weight: 600; margin: 22px 0 10px; }
+.status { display: flex; align-items: center; gap: 8px; color: var(--dim); font-size: 13.5px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); flex: none; }
+.dot.on { background: var(--logic); box-shadow: 0 0 8px var(--logic); } .dot.bad { background: var(--out); }
+.total { display: flex; align-items: baseline; gap: 8px; margin-top: 16px; }
+.total b { font-size: 34px; font-weight: 500; } .total span { color: var(--dim); }
+.bar { height: 5px; background: var(--raise); border-radius: 3px; overflow: hidden; display: flex; margin-top: 8px; }
+.bar i { display: block; height: 100%; } .bar .c { background: var(--checked); } .bar .l { background: var(--logic); }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.chip { font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--raise); color: var(--dim); border: 1px solid transparent; }
+.chip.logic { color: var(--logic); border-color: #2f4a37; } .chip.gold { color: var(--gold); border-color: #4a3f2a; }
+.area { display: block; width: 100%; text-align: left; background: none; border: 1px solid transparent; border-radius: 10px;
+  padding: 10px 11px; margin-bottom: 4px; cursor: pointer; }
+.area:hover { background: var(--card); } .area.sel { background: var(--card); border-color: var(--border); }
+.area .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.area .name { font-weight: 500; } .area .here { color: var(--gold); font-size: 12px; margin-left: 6px; }
+.area .n { font-size: 12.5px; color: var(--dim); white-space: nowrap; } .area .n b { color: var(--logic); font-weight: 500; }
+.part { display: flex; align-items: center; gap: 10px; padding: 7px 4px; border-radius: 8px; cursor: pointer; }
+.part:hover { background: var(--card); }
+.part .code { font-size: 12px; color: var(--dim); width: 30px; font-variant-numeric: tabular-nums; }
+.part .pname { flex: 1; } .part .tag { font-size: 11.5px; padding: 2px 8px; border-radius: 999px; }
+.tag.open { color: var(--logic); background: #1d2a21; } .tag.locked { color: var(--out); background: #2c1c1a; }
+.tag.boss { color: var(--gold); background: #2a241a; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.stone { text-align: center; padding: 8px 0 7px; border-radius: 8px; background: var(--card); border: 1px solid var(--border);
+  color: var(--faint); font-size: 13px; font-variant-numeric: tabular-nums; cursor: pointer; transition: border-color .15s; }
+.stone:hover { border-color: var(--gold); }
+.stone.have { color: #1b1408; background: var(--gold); border-color: var(--gold); font-weight: 600; }
+.stone.free { color: var(--dim); border-style: dashed; }
+.key { display: flex; align-items: center; gap: 10px; padding: 5px 2px; color: var(--faint); font-size: 14px; }
+.key.have { color: var(--text); } .key .pip { width: 10px; height: 10px; border-radius: 3px; border: 1.5px solid var(--faint); transform: rotate(45deg); flex: none; }
+.key.have .pip { background: var(--gold); border-color: var(--gold); }
+.off { padding: 6px 0; display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; cursor: pointer; }
+.off .dot { margin-top: 6px; } .off .sub { color: var(--faint); font-size: 12px; }
+#view { position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 35%, #1d1e25 0%, #121216 55%, #0c0c0e 100%); }
+#view canvas { display: block; outline: none; }
+#labels { position: absolute; inset: 0; pointer-events: none; }
+.label { position: absolute; transform: translate(-50%, -100%); pointer-events: auto; cursor: pointer; white-space: nowrap;
+  font-size: 13px; padding: 3px 10px; border-radius: 999px; background: rgba(16,16,18,.72); border: 1px solid var(--border);
+  color: var(--text); backdrop-filter: blur(4px); transition: opacity .2s; }
+.label .c { color: var(--gold); margin-right: 6px; font-weight: 600; } .label.locked { color: var(--faint); }
+.label.locked .c { color: var(--out); }
+#top { position: absolute; left: 16px; right: 16px; top: 14px; display: flex; gap: 10px; align-items: center; pointer-events: none; }
+#top > * { pointer-events: auto; }
+.pill { display: flex; align-items: center; gap: 4px; background: rgba(22,22,26,.85); border: 1px solid var(--border);
+  border-radius: 999px; padding: 4px; backdrop-filter: blur(6px); }
+.toggle { border: 0; background: none; border-radius: 999px; padding: 5px 12px; cursor: pointer; display: flex; align-items: center;
+  gap: 7px; color: var(--dim); font-size: 13.5px; white-space: nowrap; }
+.toggle:hover { background: var(--raise); } .toggle.on { color: var(--text); background: var(--raise); }
+.toggle .dot { width: 9px; height: 9px; }
+#search { width: 220px; background: rgba(22,22,26,.85); border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px;
+  outline: none; backdrop-filter: blur(6px); } #search:focus { border-color: var(--gold); }
+#gizmo { position: absolute; right: 14px; top: 64px; width: 96px; height: 96px; cursor: pointer; }
+#help { position: absolute; left: 16px; bottom: 14px; font-size: 12.5px; color: var(--faint); background: rgba(16,16,18,.6);
+  padding: 7px 12px; border-radius: 10px; line-height: 1.6; }
+#help b { color: var(--dim); font-weight: 500; }
+#tip { position: absolute; pointer-events: none; background: rgba(16,16,18,.94); border: 1px solid var(--border); border-radius: 10px;
+  padding: 9px 12px; font-size: 13.5px; max-width: 340px; display: none; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+#tip .s { font-size: 12.5px; margin-top: 3px; } #tip .i { margin-top: 6px; color: var(--gold); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 13px; }
+.card .t { font-weight: 500; } .card .s { font-size: 13px; color: var(--dim); margin-top: 4px; }
+.muted { color: var(--faint); font-size: 13px; }
+#toast { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); background: rgba(22,22,26,.92); border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 999px; font-size: 13.5px; color: var(--dim); opacity: 0; transition: opacity .3s; pointer-events: none; }
+#offline { position: absolute; inset: 0; display: none; place-items: center; background: rgba(12,12,14,.7); font-size: 16px; color: var(--dim); }
+@media (max-width: 1100px) { #app { grid-template-columns: 260px 1fr; } aside.right { display: none; } #help { display: none; } }
+@media (max-width: 900px) { #search { width: 140px; } }
+</style>
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+               "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+</script>
+</head>
+<body>
+<div id="app">
+  <aside>
+    <div class="brand">DEMON'S SOULS · ARCHIPELAGO</div>
+    <h1>Map Tracker</h1>
+    <div class="status"><span class="dot" id="conn"></span><span id="connText">Looking for the client…</span></div>
+    <div class="total"><b id="totChecked">0</b><span id="totOf">/ 0 checked</span></div>
+    <div class="bar"><i class="c" id="barC"></i><i class="l" id="barL"></i></div>
+    <div class="chips"><span class="chip logic" id="totLogic">0 in logic</span><span class="chip gold" id="ready" hidden>Items placed</span></div>
+    <h2>Areas</h2>
+    <div id="areas"></div>
+    <h2 id="partsTitle">Parts</h2>
+    <div id="parts"></div>
+  </aside>
+  <main id="view">
+    <div id="labels"></div>
+    <div id="top">
+      <input id="search" placeholder="Search locations   ( / )" autocomplete="off" spellcheck="false">
+      <div class="pill">
+        <button class="toggle on" data-show="logic"><span class="dot" style="background:var(--logic)"></span>In logic</button>
+        <button class="toggle on" data-show="out"><span class="dot" style="background:var(--out)"></span>Out of logic</button>
+        <button class="toggle on" data-show="checked"><span class="dot" style="background:var(--checked)"></span>Checked</button>
+      </div>
+      <div class="pill">
+        <button class="toggle" id="reveal" title="Show what every unchecked location holds">Reveal items</button>
+        <button class="toggle on" id="follow" title="Keep the player in view (F)">Follow player</button>
+      </div>
+    </div>
+    <canvas id="gizmo" width="192" height="192" title="Click an axis to look along it"></canvas>
+    <div id="help"><b>Orbit</b> drag / middle mouse · <b>Pan</b> Shift+drag or right drag · <b>Zoom</b> wheel<br>
+      <b>Numpad 1 3 7</b> front, side, top (Ctrl: opposite) · <b>5</b> ortho · <b>2 4 6 8</b> orbit · <b>Home</b> frame all · <b>.</b> frame selected · <b>F</b> follow</div>
+    <div id="tip"></div>
+    <div id="toast"></div>
+    <div id="offline">The client is not running. Start it from the Demon's Souls launcher.</div>
+  </main>
+  <aside class="right">
+    <h2 style="margin-top:4px">Archstones</h2>
+    <div class="grid" id="stones"></div>
+    <h2>Keys</h2>
+    <div id="keys"></div>
+    <h2 id="offTitle">Not on the map</h2>
+    <div id="offmap"></div>
+    <h2>Selected</h2>
+    <div id="detail"><div class="muted">Click a marker on the map.</div></div>
+  </aside>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+// FromSoftware's maps are left-handed (x right, y up, z forward); three.js is right-handed: mirror z.
+const MIRROR = new THREE.Vector3(1, 1, -1);
+const COLORS = { logic: new THREE.Color("#7cd992"), out: new THREE.Color("#d2604f"), checked: new THREE.Color("#77736d"),
+                 gold: new THREE.Color("#c9a45c"), select: new THREE.Color("#ffffff") };
+const PART_TINTS = ["#7d8fb3", "#9c82b8", "#76b0a1", "#b39c72", "#8aa3c0"].map(c => new THREE.Color(c));
+const $ = id => document.getElementById(id);
+
+let STATIC = null, STATE = null;
+let area = null;                 // the shown area (from STATIC.areas)
+const scenes = {};               // area id -> { mesh, edges, markers, labels }
+let selected = null, hovered = null, reveal = false, follow = true, query = "";
+const show = { logic: true, out: true, checked: true };
+let lastPlayerArea = null;
+
+// --- three.js -------------------------------------------------------------------------------------------
+const view = $("view");
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+view.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0x101014, 600, 2400);
+scene.add(new THREE.HemisphereLight(0xd6deec, 0x2a2930, 1.6));
+const sun = new THREE.DirectionalLight(0xfff0d8, 1.5); sun.position.set(0.45, 1, 0.3); scene.add(sun);
+const root = new THREE.Group(); root.scale.copy(MIRROR); scene.add(root);
+
+const persp = new THREE.PerspectiveCamera(45, 1, 0.5, 6000);
+const ortho = new THREE.OrthographicCamera(-1, 1, 1, -1, -6000, 6000);
+let camera = persp, controls = null;
+function makeControls(target) {
+  if (controls) controls.dispose();
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = 0.12;
+  controls.screenSpacePanning = true; controls.zoomToCursor = true;
+  controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: THREE.MOUSE.ROTATE, RIGHT: THREE.MOUSE.PAN };  // Shift+drag pans
+  controls.maxDistance = 4000; controls.minDistance = 3;
+  if (target) controls.target.copy(target);
+  controls.addEventListener("start", pauseFollow);
+  controls.update();
+}
+makeControls();
+
+function resize() {
+  const w = view.clientWidth, h = view.clientHeight;
+  renderer.setSize(w, h);
+  persp.aspect = w / h; persp.updateProjectionMatrix();
+  orthoFrustum();
+}
+function orthoFrustum() {
+  const w = view.clientWidth, h = view.clientHeight, half = ortho.userData.half || 200;
+  ortho.left = -half * w / h; ortho.right = half * w / h; ortho.top = half; ortho.bottom = -half; ortho.updateProjectionMatrix();
+}
+addEventListener("resize", resize);
+
+// markers: screen-sized discs; drawn twice (faint through the floors, solid where visible)
+const markerVertex = `
+  attribute vec3 color; attribute float size; attribute float glow; attribute float alpha;
+  uniform float uScale; varying vec3 vColor; varying float vGlow; varying float vAlpha;
+  void main() { vColor = color; vGlow = glow; vAlpha = alpha;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    gl_PointSize = size * uScale * (glow > 0.0 ? 2.6 : 1.4); }`;
+const markerFragment = `
+  uniform float uOpacity; uniform float uTime; varying vec3 vColor; varying float vGlow; varying float vAlpha;
+  void main() { float k = vGlow > 0.0 ? 2.6 : 1.4; float r = length(gl_PointCoord - 0.5) * 2.0 * k;
+    vec4 c;
+    if (r < 0.78) c = vec4(vColor, 1.0);
+    else if (r < 1.0) c = vec4(0.05, 0.05, 0.06, 0.95);
+    else { if (vGlow <= 0.0 || r > k) discard;
+      float a = pow(1.0 - (r - 1.0) / (k - 1.0), 2.2) * vGlow * (0.42 + 0.18 * sin(uTime * 2.6)); c = vec4(vColor, a); }
+    c.a *= uOpacity * vAlpha; if (c.a < 0.01) discard; gl_FragColor = c; }`;
+function markerMaterial(opacity, depthTest) {
+  return new THREE.ShaderMaterial({ vertexShader: markerVertex, fragmentShader: markerFragment, transparent: true,
+    depthWrite: false, depthTest, uniforms: { uOpacity: { value: opacity }, uTime: { value: 0 }, uScale: { value: renderer.getPixelRatio() } } });
+}
+const markerMats = [markerMaterial(0.28, false), markerMaterial(1, true)];
+
+// the player: a gold disc with a light beam
+const playerGeo = new THREE.BufferGeometry();
+playerGeo.setAttribute("position", new THREE.Float32BufferAttribute([0, 0, 0], 3));
+playerGeo.setAttribute("color", new THREE.Float32BufferAttribute(COLORS.gold.toArray(), 3));
+playerGeo.setAttribute("size", new THREE.Float32BufferAttribute([17], 1));
+playerGeo.setAttribute("glow", new THREE.Float32BufferAttribute([1.6], 1));
+playerGeo.setAttribute("alpha", new THREE.Float32BufferAttribute([1], 1));
+const playerMat = markerMaterial(1, false);
+const player = new THREE.Group();
+const playerDot = new THREE.Points(playerGeo, playerMat); playerDot.renderOrder = 10; player.add(playerDot);
+const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 140, 12, 1, true),
+  new THREE.MeshBasicMaterial({ color: 0xc9a45c, transparent: true, opacity: 0.22, depthWrite: false, blending: THREE.AdditiveBlending }));
+beam.position.y = 70; player.add(beam);
+player.visible = false; root.add(player);
+
+// --- data -----------------------------------------------------------------------------------------------
+async function loadArea(a) {
+  if (scenes[a.id]) return scenes[a.id];
+  const raw = await (await fetch("/maps/" + a.file)).arrayBuffer();
+  const ints = new Int16Array(raw), q = STATIC.quantum;
+  const positions = new Float32Array(ints.length);
+  for (let i = 0; i < ints.length; i++) positions[i] = ints[i] / q;
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  geo.setAttribute("color", new THREE.BufferAttribute(new Float32Array(positions.length), 3));
+  geo.computeVertexNormals();
+  geo.computeBoundingBox();
+  const mesh = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide, flatShading: true }));
+  const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo, 28),
+    new THREE.LineBasicMaterial({ color: 0x0b0b0e, transparent: true, opacity: 0.55 }));
+  const s = { area: a, mesh, edges, group: new THREE.Group(), box: geo.boundingBox.clone() };
+  s.group.add(mesh, edges);
+  // markers
+  s.locs = STATIC.locations.filter(l => l.area === a.id && l.position);
+  s.offmap = STATIC.locations.filter(l => l.area === a.id && !l.position);
+  const n = s.locs.length, mp = new Float32Array(n * 3);
+  s.locs.forEach((l, i) => { mp[i * 3] = l.position[0]; mp[i * 3 + 1] = l.position[1] + 0.7; mp[i * 3 + 2] = l.position[2]; });
+  const mg = new THREE.BufferGeometry();
+  mg.setAttribute("position", new THREE.BufferAttribute(mp, 3));
+  for (const [name, k] of [["color", 3], ["size", 1], ["glow", 1], ["alpha", 1]]) mg.setAttribute(name, new THREE.BufferAttribute(new Float32Array(n * k), k));
+  s.markerGeo = mg;
+  markerMats.forEach((m, i) => { const p = new THREE.Points(mg, m); p.renderOrder = 5 + i; p.frustumCulled = false; s.group.add(p); });
+  // part labels
+  s.labels = a.parts.filter(p => p.count).map(p => {
+    const el = document.createElement("div"); el.className = "label";
+    el.innerHTML = p.code === "Nexus" || p.code === "Tutorial" ? `<span class="c">${p.code}</span>` : `<span class="c">${p.code}</span>${p.name}`;
+    el.onclick = () => framePart(p);
+    $("labels").appendChild(el);
+    return { el, part: p, at: new THREE.Vector3((p.min[0] + p.max[0]) / 2, p.max[1] + 4, (p.min[2] + p.max[2]) / 2) };
+  });
+  scenes[a.id] = s;
+  return s;
+}
+
+function status(code) {
+  if (STATE?.checked_set.has(code)) return "checked";
+  return STATE?.logic_set.has(code) ? "logic" : "out";
+}
+const STATUS_TEXT = { checked: "Checked", logic: "In logic", out: "Out of logic" };
+
+function paintMesh(s) {
+  const geo = s.mesh.geometry, col = geo.attributes.color, pos = geo.attributes.position;
+  const lo = s.box.min.y, span = Math.max(1, s.box.max.y - lo);
+  const open = new Set(STATE?.open_parts || []);
+  const here = STATE?.player?.area === s.area.id ? STATE.player.map : null;
+  const c = new THREE.Color(), gray = new THREE.Color(0x3a3a40);
+  s.area.parts.forEach((p, pi) => {
+    const tint = PART_TINTS[pi % PART_TINTS.length];
+    const locked = !open.has(p.code) && STATE;
+    for (let t = p.start; t < p.start + p.count; t++) {
+      let h = 0; for (let k = 0; k < 3; k++) h += pos.getY(t * 3 + k);
+      const shade = 0.62 + 0.55 * ((h / 3 - lo) / span);
+      c.copy(tint);
+      if (locked) c.lerp(gray, 0.72);
+      c.multiplyScalar(shade);
+      for (let k = 0; k < 3; k++) col.setXYZ(t * 3 + k, c.r, c.g, c.b);
+    }
+  });
+  col.needsUpdate = true;
+}
+
+function paintMarkers(s) {
+  const g = s.markerGeo, col = g.attributes.color, size = g.attributes.size, glow = g.attributes.glow, alpha = g.attributes.alpha;
+  s.locs.forEach((l, i) => {
+    const st = status(l.code), visible = show[st];
+    const match = !query || l.name.toLowerCase().includes(query);
+    const sel = selected === l || hovered === l;
+    const c = sel ? COLORS.select : COLORS[st];
+    col.setXYZ(i, c.r, c.g, c.b);
+    size.setX(i, !visible ? 0 : sel ? 15 : st === "checked" ? 7 : 11);
+    glow.setX(i, visible && (st === "logic" || sel) && match ? 1 : 0);
+    alpha.setX(i, match ? (st === "checked" ? 0.75 : 1) : 0.12);
+  });
+  for (const a of [col, size, glow, alpha]) a.needsUpdate = true;
+}
+
+// --- showing an area ------------------------------------------------------------------------------------
+async function showArea(id, frame = true) {
+  const a = STATIC.areas.find(x => x.id === id);
+  if (!a) return;
+  for (const s of Object.values(scenes)) { root.remove(s.group); s.labels.forEach(l => l.el.style.display = "none"); }
+  area = a;
+  const s = await loadArea(a);
+  if (area !== a) return;
+  root.add(s.group);
+  s.labels.forEach(l => l.el.style.display = "");
+  paintMesh(s); paintMarkers(s);
+  renderSide();
+  if (frame) frameBox(s.box, false);
+}
+
+function worldBox(box) {  // a box in map coordinates -> scene coordinates
+  const a = box.min.clone().multiply(MIRROR), b = box.max.clone().multiply(MIRROR);
+  return new THREE.Box3().setFromPoints([a, b]);
+}
+let flight = null;
+function flyTo(target, distance, instant) {
+  const dir = camera.position.clone().sub(controls.target).normalize();
+  if (dir.lengthSq() < 0.5) dir.set(0.6, 0.7, 0.4).normalize();
+  const to = { target: target.clone(), position: target.clone().add(dir.multiplyScalar(distance)), half: distance * Math.tan(THREE.MathUtils.degToRad(22.5)) };
+  if (instant) { controls.target.copy(to.target); camera.position.copy(to.position); setHalf(to.half); controls.update(); return; }
+  flight = { from: { target: controls.target.clone(), position: camera.position.clone(), half: ortho.userData.half || to.half }, to, t0: performance.now() };
+}
+function setHalf(h) { ortho.userData.half = h; if (camera === ortho) { ortho.zoom = 1; orthoFrustum(); } }
+function frameBox(box, animate = true) {
+  const b = worldBox(box), c = b.getCenter(new THREE.Vector3());
+  const r = b.getBoundingSphere(new THREE.Sphere()).radius + 8;
+  const fit = Math.min(1, view.clientWidth / view.clientHeight);  // (narrow views: fit the width too)
+  flyTo(c, r / Math.sin(THREE.MathUtils.degToRad(22.5)) / fit, !animate);
+}
+function userFrame(box) { pauseFollow(); frameBox(box); }
+function pauseFollow() { if (follow && STATE?.player) setFollow(false, "Follow paused: press F to follow the player again"); }
+async function goToPart(code) {  // any part, locked or not: its world, framed on it
+  const a = STATIC.areas.find(x => x.parts.some(p => p.code === code));
+  if (!a) return;
+  pauseFollow();
+  if (area?.id !== a.id) await showArea(a.id, false);
+  framePart(a.parts.find(p => p.code === code));
+}
+function framePart(p) { userFrame(new THREE.Box3(new THREE.Vector3(...p.min), new THREE.Vector3(...p.max))); }
+function frameLocation(l) {
+  if (!l.position) return;
+  pauseFollow();
+  flyTo(new THREE.Vector3(...l.position).multiply(MIRROR), 70);
+}
+
+// --- views (Blender numpad) -----------------------------------------------------------------------------
+function lookAlong(dir) {  // dir: from the target to the camera, scene coordinates
+  const d = camera.position.distanceTo(controls.target);
+  const v = dir.clone().normalize();
+  if (Math.abs(v.y) > 0.999) v.z += 0.001;  // (straight up/down: keep OrbitControls' up axis usable)
+  camera.position.copy(controls.target).add(v.normalize().multiplyScalar(d));
+  controls.update();
+}
+function orbit(dTheta, dPhi) {
+  const off = camera.position.clone().sub(controls.target);
+  const sph = new THREE.Spherical().setFromVector3(off);
+  sph.theta += dTheta; sph.phi = THREE.MathUtils.clamp(sph.phi + dPhi, 0.001, Math.PI - 0.001);
+  camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sph));
+  controls.update();
+}
+function toggleOrtho() {
+  const target = controls.target.clone(), position = camera.position.clone();
+  const d = position.distanceTo(target);
+  if (camera === persp) { ortho.userData.half = d * Math.tan(THREE.MathUtils.degToRad(22.5)); ortho.zoom = 1; orthoFrustum(); camera = ortho; }
+  else { const half = ortho.userData.half / ortho.zoom; const dist = half / Math.tan(THREE.MathUtils.degToRad(22.5));
+         position.copy(target).add(position.clone().sub(target).normalize().multiplyScalar(dist)); camera = persp; }
+  camera.position.copy(position); camera.up.set(0, 1, 0);
+  makeControls(target);
+  toast(camera === ortho ? "Orthographic" : "Perspective");
+}
+
+addEventListener("keydown", e => {
+  if (e.target === $("search")) { if (e.key === "Escape") { $("search").value = ""; setQuery(""); $("search").blur(); } return; }
+  const opposite = e.ctrlKey ? -1 : 1, step = Math.PI / 12;
+  switch (e.code) {
+    case "Numpad1": case "Digit1": lookAlong(new THREE.Vector3(0, 0, opposite)); break;
+    case "Numpad3": case "Digit3": lookAlong(new THREE.Vector3(opposite, 0, 0)); break;
+    case "Numpad7": case "Digit7": lookAlong(new THREE.Vector3(0, opposite, 0)); break;
+    case "Numpad5": case "Digit5": toggleOrtho(); break;
+    case "Numpad4": orbit(-step, 0); break; case "Numpad6": orbit(step, 0); break;
+    case "Numpad8": orbit(0, -step); break; case "Numpad2": orbit(0, step); break;
+    case "Home": if (area) userFrame(scenes[area.id].box); break;
+    case "NumpadDecimal": case "Period": if (selected) frameLocation(selected); break;
+    case "KeyF": setFollow(!follow); break;
+    case "Slash": $("search").focus(); break;
+    default: return;
+  }
+  e.preventDefault();
+});
+
+// --- picking --------------------------------------------------------------------------------------------
+const v3 = new THREE.Vector3();
+function pick(x, y) {
+  const s = area && scenes[area.id];
+  if (!s) return null;
+  let best = null, bestD = 13 * 13;
+  const w = view.clientWidth, h = view.clientHeight;
+  for (const l of s.locs) {
+    if (!show[status(l.code)]) continue;
+    v3.set(l.position[0], l.position[1] + 0.7, l.position[2]).multiply(MIRROR).project(camera);
+    if (v3.z > 1) continue;
+    const dx = (v3.x + 1) / 2 * w - x, dy = (1 - v3.y) / 2 * h - y, d = dx * dx + dy * dy;
+    if (d < bestD) { bestD = d; best = l; }
+  }
+  return best;
+}
+let down = null;
+renderer.domElement.addEventListener("pointerdown", e => down = [e.clientX, e.clientY]);
+renderer.domElement.addEventListener("pointermove", e => {
+  const r = renderer.domElement.getBoundingClientRect(), l = pick(e.clientX - r.left, e.clientY - r.top);
+  if (l !== hovered) { hovered = l; paintMarkers(scenes[area.id]); }
+  const tip = $("tip");
+  if (!l) { tip.style.display = "none"; renderer.domElement.style.cursor = ""; return; }
+  renderer.domElement.style.cursor = "pointer";
+  tip.innerHTML = describe(l);
+  tip.style.display = "block";
+  tip.style.left = Math.min(e.clientX - r.left + 16, view.clientWidth - tip.offsetWidth - 8) + "px";
+  tip.style.top = Math.min(e.clientY - r.top + 16, view.clientHeight - tip.offsetHeight - 8) + "px";
+});
+renderer.domElement.addEventListener("pointerleave", () => { $("tip").style.display = "none"; });
+renderer.domElement.addEventListener("pointerup", e => {
+  if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 4 || e.button !== 0) return;
+  const r = renderer.domElement.getBoundingClientRect();
+  select(pick(e.clientX - r.left, e.clientY - r.top));
+});
+renderer.domElement.addEventListener("dblclick", () => { if (selected) frameLocation(selected); });
+
+function itemText(l) {
+  const it = STATE?.scouted?.[l.code];
+  if (!it || (!reveal && status(l.code) !== "checked")) return "";
+  return it.own ? it.item : `${it.player}'s ${it.item}`;
+}
+function describe(l) {
+  const st = status(l.code), item = itemText(l);
+  const part = STATIC.parts[l.part];
+  return `<div>${escape(l.name)}</div><div class="s" style="color:var(--${st === "checked" ? "dim" : st})">${STATUS_TEXT[st]}` +
+    `${part ? " · " + part.code + " " + escape(part.name) : ""}${l.missable ? " · missable" : ""}</div>` +
+    (item ? `<div class="i">${escape(item)}</div>` : "");
+}
+function escape(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+function select(l) {
+  selected = l;
+  if (area) paintMarkers(scenes[area.id]);
+  $("detail").innerHTML = l ? `<div class="card"><div class="t">${escape(l.name)}</div><div class="s">${describe(l).split("</div>").slice(1).join("</div>")}</div>` +
+    (l.position ? `<div class="muted" style="margin-top:8px">Double-click or press . to zoom to it.</div>` : "")
+    : `<div class="muted">Click a marker on the map.</div>`;
+}
+
+// --- side panels ----------------------------------------------------------------------------------------
+function counts(locs) {
+  let c = 0, l = 0;
+  for (const x of locs) { const st = status(x.code); if (st === "checked") c++; else if (st === "logic") l++; }
+  return { c, l, n: locs.length };
+}
+function renderSide() {
+  if (!STATIC) return;
+  const all = counts(STATIC.locations);
+  $("totChecked").textContent = all.c; $("totOf").textContent = `/ ${all.n} checked`;
+  $("barC").style.width = (100 * all.c / all.n) + "%"; $("barL").style.width = (100 * all.l / all.n) + "%";
+  $("totLogic").textContent = `${all.l} in logic`;
+  $("ready").hidden = !STATE?.ready;
+  const areas = $("areas"); areas.innerHTML = "";
+  for (const a of STATIC.areas) {
+    const k = counts(STATIC.locations.filter(l => l.area === a.id));
+    const b = document.createElement("button");
+    b.className = "area" + (area?.id === a.id ? " sel" : "");
+    b.innerHTML = `<div class="row"><span><span class="name">${escape(a.name)}</span>${STATE?.player?.area === a.id ? '<span class="here">● you</span>' : ""}</span>` +
+      `<span class="n">${k.l ? `<b>${k.l}</b> · ` : ""}${k.c}/${k.n}</span></div>` +
+      `<div class="bar"><i class="c" style="width:${100 * k.c / k.n}%"></i><i class="l" style="width:${100 * k.l / k.n}%"></i></div>`;
+    b.onclick = () => { if (STATE?.player && STATE.player.area !== a.id) setFollow(false); showArea(a.id); };
+    areas.appendChild(b);
+  }
+  if (!area) return;
+  const open = new Set(STATE?.open_parts || []), bosses = new Set(STATE?.bosses || []);
+  $("partsTitle").textContent = area.name;
+  const parts = $("parts"); parts.innerHTML = "";
+  for (const p of area.parts) {
+    const info = STATIC.parts[p.code];
+    const k = counts(STATIC.locations.filter(l => l.part === p.code));
+    const row = document.createElement("div"); row.className = "part";
+    const tag = !info ? "" : !open.has(p.code) ? `<span class="tag locked" title="Needs ${escape(info.lock)}">Locked</span>`
+      : bosses.has(p.code) ? `<span class="tag boss" title="${escape(info.boss)} is in logic">Open</span>` : `<span class="tag open">Open</span>`;
+    row.innerHTML = `<span class="code">${info ? p.code : ""}</span><span class="pname">${escape(p.name)}<div class="muted">${k.l ? `<span style="color:var(--logic)">${k.l} in logic</span> · ` : ""}${k.c}/${k.n} checked</div></span>${tag}`;
+    row.onclick = () => framePart(p);
+    parts.appendChild(row);
+  }
+  // archstones and keys
+  const have = STATE?.have || {};
+  $("stones").innerHTML = `<div class="stone have free" data-part="1-1" title="1-1 Gates of Boletaria: open from the start">1-1</div>` +
+    STATIC.progression.filter(p => p.group === "Archstones")
+      .map(p => `<div class="stone${have[p.name] ? " have" : ""}" data-part="${p.name.slice(0, 3)}" title="${escape(p.name)}${have[p.name] ? "" : " (not found yet)"}: click to see it">${p.name.slice(0, 3)}</div>`).join("");
+  $("stones").querySelectorAll("[data-part]").forEach(el => el.onclick = () => goToPart(el.dataset.part));
+  $("keys").innerHTML = STATIC.progression.filter(p => p.group === "Keys")
+    .map(p => `<div class="key${have[p.name] ? " have" : ""}"><span class="pip"></span>${escape(p.name.replace("Prison of Hope, ", "Prison: "))}</div>`).join("");
+  // locations without a map position (boss rewards, shops)
+  const s = scenes[area.id];
+  const off = s ? s.offmap : [];
+  $("offTitle").style.display = off.length ? "" : "none";
+  $("offmap").innerHTML = "";
+  for (const l of off) {
+    const st = status(l.code), el = document.createElement("div"); el.className = "off";
+    if (!show[st]) continue;
+    el.innerHTML = `<span class="dot" style="background:var(--${st === "checked" ? "checked" : st})"></span><span>${escape(l.name)}<div class="sub">${l.kind === "shop" ? "Shop" : "Reward"} · ${STATUS_TEXT[st]}</div></span>`;
+    el.onclick = () => select(l);
+    $("offmap").appendChild(el);
+  }
+}
+
+// --- toggles --------------------------------------------------------------------------------------------
+document.querySelectorAll("[data-show]").forEach(b => b.onclick = () => {
+  show[b.dataset.show] = !show[b.dataset.show]; b.classList.toggle("on", show[b.dataset.show]);
+  if (area) { paintMarkers(scenes[area.id]); renderSide(); }
+});
+$("reveal").onclick = () => { reveal = !reveal; $("reveal").classList.toggle("on", reveal); toast(reveal ? "Showing every location's item" : "Items hidden until checked"); select(selected); };
+$("follow").onclick = () => setFollow(!follow);
+function setFollow(on, message) {
+  follow = on; $("follow").classList.toggle("on", on);
+  toast(message || (on ? "Following the player" : "Not following the player"));
+  if (on && STATE?.player) { if (area?.id !== STATE.player.area) showArea(STATE.player.area, false); followPlayer(true); }
+}
+function setQuery(q) {
+  query = q.trim().toLowerCase();
+  if (area) paintMarkers(scenes[area.id]);
+}
+$("search").addEventListener("input", e => setQuery(e.target.value));
+$("search").addEventListener("keydown", e => {
+  if (e.key !== "Enter" || !query) return;
+  const hit = STATIC.locations.find(l => l.name.toLowerCase().includes(query));
+  if (!hit) return toast("No location matches");
+  setFollow(false, `Found: ${hit.name}`);
+  (area?.id === hit.area ? Promise.resolve() : showArea(hit.area, false)).then(() => { select(hit); frameLocation(hit); });
+});
+let toastTimer;
+function toast(text) { const t = $("toast"); t.textContent = text; t.style.opacity = 1; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.style.opacity = 0, 1800); }
+
+// --- the axis gizmo (Blender's navigation gizmo) -------------------------------------------------------
+const gz = $("gizmo"), g2 = gz.getContext("2d");
+const AXES = [["X", new THREE.Vector3(1, 0, 0), "#e0605a"], ["Y", new THREE.Vector3(0, 1, 0), "#86c26a"], ["Z", new THREE.Vector3(0, 0, 1), "#5f8fe0"]];
+let gizmoHits = [];
+function drawGizmo() {
+  const S = 192, c = S / 2, R = 62, inv = camera.quaternion.clone().invert();
+  g2.clearRect(0, 0, S, S);
+  g2.fillStyle = "rgba(22,22,26,.55)"; g2.beginPath(); g2.arc(c, c, 90, 0, 7); g2.fill();
+  const items = [];
+  for (const [name, axis, color] of AXES) for (const sign of [1, -1]) {
+    const v = axis.clone().multiplyScalar(sign).applyQuaternion(inv);
+    items.push({ name, sign, color, x: c + v.x * R, y: c - v.y * R, z: v.z, dir: axis.clone().multiplyScalar(sign) });
+  }
+  items.sort((a, b) => a.z - b.z);
+  gizmoHits = items;
+  for (const it of items) {
+    if (it.sign > 0) { g2.strokeStyle = it.color; g2.lineWidth = 4; g2.beginPath(); g2.moveTo(c, c); g2.lineTo(it.x, it.y); g2.stroke(); }
+    g2.beginPath(); g2.arc(it.x, it.y, it.sign > 0 ? 17 : 13, 0, 7);
+    g2.fillStyle = it.sign > 0 ? it.color : "rgba(30,30,36,.9)"; g2.fill();
+    if (it.sign < 0) { g2.strokeStyle = it.color; g2.lineWidth = 3; g2.stroke(); }
+    if (it.sign > 0) { g2.fillStyle = "#101012"; g2.font = "600 19px Jost, sans-serif"; g2.textAlign = "center"; g2.textBaseline = "middle"; g2.fillText(it.name, it.x, it.y + 1); }
+  }
+}
+gz.addEventListener("click", e => {
+  const r = gz.getBoundingClientRect(), x = (e.clientX - r.left) * 2, y = (e.clientY - r.top) * 2;
+  const hit = [...gizmoHits].reverse().find(it => Math.hypot(it.x - x, it.y - y) < 20);
+  if (hit) lookAlong(hit.dir);
+});
+
+// --- the player -----------------------------------------------------------------------------------------
+function followPlayer(force) {
+  if (!STATE?.player || STATE.player.area !== area?.id) return;
+  const p = new THREE.Vector3(...STATE.player.position).multiply(MIRROR);
+  if (force) { flyTo(p, Math.min(camera.position.distanceTo(controls.target), 180)); return; }
+  const delta = p.clone().sub(controls.target);
+  if (delta.lengthSq() > 0.01) { controls.target.add(delta); camera.position.add(delta); }
+}
+
+// --- polling ---------------------------------------------------------------------------------------------
+async function poll() {
+  try {
+    const st = await (await fetch("/api/state", { cache: "no-store" })).json();
+    st.checked_set = new Set(st.checked); st.logic_set = new Set(st.in_logic);
+    const changed = !STATE || STATE.checked.length !== st.checked.length || STATE.in_logic.length !== st.in_logic.length
+      || STATE.open_parts.join() !== st.open_parts.join() || STATE.player?.area !== st.player?.area || STATE.ready !== st.ready;
+    STATE = st;
+    $("offline").style.display = "none";
+    $("conn").className = "dot" + (st.connected ? " on" : "");
+    $("connText").textContent = st.connected ? `${st.slot} · connected${st.game_running ? "" : " · game not running"}` : "Client running · not connected";
+    if (st.player) {
+      player.position.set(...st.player.position); player.visible = st.player.area === area?.id;
+      if (follow && st.player.area !== lastPlayerArea) { lastPlayerArea = st.player.area; await showArea(st.player.area, false); followPlayer(true); }
+      else if (follow) followPlayer(false);
+    } else player.visible = false;
+    if (changed && area) { paintMesh(scenes[area.id]); paintMarkers(scenes[area.id]); renderSide(); }
+  } catch (err) {
+    $("offline").style.display = "grid";
+    $("conn").className = "dot bad"; $("connText").textContent = "The client is not running";
+  }
+  setTimeout(poll, 750);
+}
+
+// --- frame loop ------------------------------------------------------------------------------------------
+const clock = new THREE.Clock();
+function frame() {
+  requestAnimationFrame(frame);
+  const t = clock.getElapsedTime();
+  if (flight) {
+    const k = Math.min(1, (performance.now() - flight.t0) / 550), e = 1 - Math.pow(1 - k, 3);
+    controls.target.lerpVectors(flight.from.target, flight.to.target, e);
+    camera.position.lerpVectors(flight.from.position, flight.to.position, e);
+    if (camera === ortho) setHalf(THREE.MathUtils.lerp(flight.from.half, flight.to.half, e));
+    if (k >= 1) flight = null;
+  }
+  controls.update();
+  const dist = camera === ortho ? (ortho.userData.half || 200) / ortho.zoom / Math.tan(THREE.MathUtils.degToRad(22.5))
+                                : camera.position.distanceTo(controls.target);
+  scene.fog.near = dist * 1.1; scene.fog.far = dist * 3.2;
+  const s0 = area && scenes[area.id];
+  if (s0) s0.edges.material.opacity = THREE.MathUtils.clamp(140 / dist, 0.08, 0.55);
+  for (const m of [...markerMats, playerMat]) m.uniforms.uTime.value = t;
+  beam.material.opacity = 0.16 + 0.08 * Math.sin(t * 2.2);
+  renderer.render(scene, camera);
+  const s = area && scenes[area.id];
+  if (s) {
+    const w = view.clientWidth, h = view.clientHeight;
+    for (const l of s.labels) {
+      v3.copy(l.at).multiply(MIRROR).project(camera);
+      const visible = v3.z < 1 && Math.abs(v3.x) < 1.1 && Math.abs(v3.y) < 1.1;
+      l.el.style.opacity = visible ? 1 : 0;
+      l.el.style.left = ((v3.x + 1) / 2 * w) + "px"; l.el.style.top = ((1 - v3.y) / 2 * h) + "px";
+      l.el.classList.toggle("locked", !!STATE && !(STATE.open_parts || []).includes(l.part.code));
+    }
+  }
+  drawGizmo();
+}
+
+window.tracker = { get camera() { return camera; }, get controls() { return controls; }, get follow() { return follow; }, get flight() { return flight; }, get area() { return area; } };  // (for debugging)
+
+// --- start ------------------------------------------------------------------------------------------------
+(async () => {
+  resize();
+  try { STATIC = await (await fetch("/api/static")).json(); }
+  catch { $("offline").style.display = "grid"; return; }
+  camera.position.set(300, 400, 300);
+  frame();
+  await poll();
+  if (!area) await showArea(STATE?.player?.area || "w1");
+})();
+</script>
+</body>
+</html>

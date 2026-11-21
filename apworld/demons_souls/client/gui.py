@@ -248,6 +248,9 @@ class PlayPage(BoxLayout):
                               padding=[dp(28), dp(14), dp(28), dp(14)], spacing=dp(14)), BAR)
         self.status = text("", 12.5, TEXT_DIM, height=40)
         bar.add_widget(self.status)
+        tracker = FlatButton("MAP TRACKER", points=13, size_hint=(None, 1), width=dp(150))
+        tracker.bind(on_release=lambda *_: self.ctx.open_tracker())
+        bar.add_widget(tracker)
         self.play = FlatButton("PLAY", color=PLAY, hover=PLAY_HOVER, font=SERIF, points=19, size_hint=(None, 1),
                                width=dp(220))
         self.play.bind(on_release=self.on_play)
