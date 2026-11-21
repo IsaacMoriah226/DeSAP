@@ -24,6 +24,18 @@ PLAYER_GAME_DATA = 0x9027E6948
 CHR_INS_MAN = 0x9027CF378
 GAME_MAN = 0x9027BF378
 
+# Markers for finding the game's tables fast (one pass over memory instead of string-then-pointer passes):
+# - PARAM_ENTRY: the first qword of each entry of the game's param list; the entry's table pointer is 0x18 bytes
+#   before it (only the live copy of a param has an entry: freed load buffers do not).
+# - TEXT_NODE: the first two qwords of each node of the loaded text tables; string views (pointer, length) of the
+#   text at +0x28 and of its key at +0x48.
+# Measured 2026-11-21: every TABLES param and every placeholder text found at 0x2_0000_0000-0x4_0000_0000.
+PARAM_ENTRY = 0x9025A23C0
+PARAM_ENTRY_TABLE = -0x18
+TEXT_NODE = (0x902EA0CE8, 0x902EA0D90)
+TEXT_NODE_TEXT, TEXT_NODE_KEY = 0x28, 0x48
+HOT_MEMORY = (0x200000000, 0x400000000)  # where both have always been: searched first
+
 # offsets
 CHR_CTRL, CHR_BODY, BODY_POSITION = 0x38, 0x20, 0x20  # ChrIns -> ChrCtrl -> physics body -> x, y, z (the MSB's)
 PLAYER_DATA = 0x10

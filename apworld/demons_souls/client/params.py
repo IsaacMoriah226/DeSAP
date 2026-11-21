@@ -83,6 +83,14 @@ def find_tables(game: GameMemory) -> dict[str, list[Table]]:
     """The game's live copy of each TABLES param (two passes over the game's memory: about 45 s)."""
     needles = {name: name.encode("ascii") + b"\0" for name in TABLES}
     hits = game.find_guest(list(needles.values()), limit=32)
+    candidates = table_candidates(game, hits)
+    pointers = game.find_guest([struct.pack("<Q", t.start) for copies in candidates.values() for t in copies], limit=4)
+    return live_tables(candidates, pointers)
+
+
+def table_candidates(game: GameMemory, hits: dict[bytes, list[int]]) -> dict[str, list[Table]]:
+    """Copies of the TABLES params among the hits of their type names (pass one)."""
+    needles = {name: name.encode("ascii") + b"\0" for name in TABLES}
     out: dict[str, list[Table]] = {name: [] for name in TABLES}
     for name, needle in needles.items():
         count, row_size = TABLES[name]
@@ -100,17 +108,20 @@ def find_tables(game: GameMemory) -> dict[str, list[Table]]:
                 continue
             table.name = name
             out[name].append(table)
-    candidates = [t for copies in out.values() for t in copies]
-    if candidates:  # keep the copies the game points to
-        pointers = game.find_guest([struct.pack("<Q", t.start) for t in candidates], limit=4)
-        for name, copies in out.items():
-            live = []
-            for table in copies:
-                found = pointers[struct.pack("<Q", table.start)]
-                if found:
-                    table.reference = found[0]
-                    live.append(table)
-            out[name] = live
+    return out
+
+
+def live_tables(candidates: dict[str, list[Table]], pointers: dict[bytes, list[int]]) -> dict[str, list[Table]]:
+    """The copies the game's param list points to (pass two's hits for each copy's start)."""
+    out = {}
+    for name, copies in candidates.items():
+        live = []
+        for table in copies:
+            found = pointers.get(struct.pack("<Q", table.start), [])
+            if found:
+                table.reference = found[0]
+                live.append(table)
+        out[name] = live
     return out
 
 

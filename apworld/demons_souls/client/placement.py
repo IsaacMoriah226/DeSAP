@@ -26,17 +26,23 @@ from .flags import Flags, world_of_map
 # 9998 was tried first (2026-11-21): a key item, one at most, so a corpse with several other-world items showed one
 # popup. 2055 is a stackable material (to check in game). Its text is set through the loaded text tables (any
 # length, verified). Its icon cannot be changed through EquipParamGoods' iconId: the remake draws icons by item id.
-PLACEHOLDER = (CATEGORY["goods"], 2055, 1)
-PLACEHOLDER_TEXTS = {
-    "GOODS_NAME_2055": "Archipelago Item",
-    "GOODS_INFO_2055": "An item for another world",
-    "GOODS_CAPTION_2055": "This item belongs to another player's world in the Archipelago multiworld. "
-                          "It has been sent to them; the client takes this token away.",
-}
+# Up to three placeholders per corpse (goods 2055 and 2057, stackable materials cut from the game, and 9998, a key
+# item, one at most): each item of a corpse holding several items for other worlds gets its own, named after it.
+PLACEHOLDERS = ((CATEGORY["goods"], 2055, 1), (CATEGORY["goods"], 2057, 1), (CATEGORY["goods"], 9998, 1))
+PLACEHOLDER = PLACEHOLDERS[0]
+GENERIC_NAME = "Archipelago Item"
+PLACEHOLDER_TEXTS = {}
+for _category, _item, _count in PLACEHOLDERS:
+    PLACEHOLDER_TEXTS.update({
+        f"GOODS_NAME_{_item}": GENERIC_NAME,
+        f"GOODS_INFO_{_item}": "An item for another world",
+        f"GOODS_CAPTION_{_item}": "This item belongs to another player's world in the Archipelago multiworld. "
+                                  "It has been sent to them; the client takes this token away.",
+    })
+NAME_KEYS = tuple(f"GOODS_NAME_{item}" for _category, item, _count in PLACEHOLDERS)
 # While you play, the client names the placeholder after the nearest unchecked location (in the world you are in)
 # that holds another world's item: "<Player>'s <Item>". You stand at a corpse to loot it, so the pickup's popup shows
 # that location's item. Scripted rewards have no position: they keep the generic name.
-PLACEHOLDER_NAME_KEY = "GOODS_NAME_2055"
 NAMING_RANGE = 40.0  # metres: farther than that, the generic name
 # Shop rows holding another world's item sell a second placeholder (goods 2056, also cut from the game).
 SHOP_PLACEHOLDER = (CATEGORY["goods"], 2056, 1)
@@ -48,10 +54,19 @@ SHOP_PLACEHOLDER_TEXTS = {
 }
 
 
+def _spot(location) -> tuple:
+    return location.game["map"], tuple(location.game.get("position") or ())
+
+
+def placeholder_for(code: int) -> tuple[int, int, int]:
+    rank = RANK.get(code, 0)
+    return PLACEHOLDERS[rank] if rank < len(PLACEHOLDERS) else PLACEHOLDERS[0]
+
+
 def nearest_foreign(position, area: int, scouted: dict, checked: frozenset, slot: int):
-    """The scouted item of the nearest unchecked location in this area holding another world's item, with its
-    distance; (None, inf) when there is none."""
-    best, best_distance = None, float("inf")
+    """The nearest corpse (in this area) with unchecked locations holding other worlds' items: [(rank, item)] of
+    those, and its distance; ([], inf) when there is none."""
+    best, best_spot, best_distance = [], None, float("inf")
     if position is None:
         return best, best_distance
     for code, item in scouted.items():
@@ -62,9 +77,25 @@ def nearest_foreign(position, area: int, scouted: dict, checked: frozenset, slot
             continue
         x, y, z = location.game["position"]
         distance = ((x - position[0]) ** 2 + (y - position[1]) ** 2 + (z - position[2]) ** 2) ** 0.5
-        if distance < best_distance:
-            best, best_distance = item, distance
-    return best, best_distance
+        if distance < best_distance - 0.01:
+            best, best_spot, best_distance = [(RANK.get(code, 0), item)], _spot(location), distance
+        elif best_spot is not None and _spot(location) == best_spot:
+            best.append((RANK.get(code, 0), item))
+    return sorted(best, key=lambda pair: pair[0]), best_distance
+
+
+def placeholder_names(found: list, describe) -> dict[str, str]:
+    """Each placeholder's name for the corpse's items `found` ([(rank, item)]); describe(item) -> "Player's Item"."""
+    names = {key: GENERIC_NAME for key in NAME_KEYS}
+    extra = [item for rank, item in found if rank >= len(PLACEHOLDERS)]
+    for rank, item in found:
+        if rank < len(PLACEHOLDERS):
+            names[NAME_KEYS[rank]] = describe(item)
+    if extra:
+        first = names[NAME_KEYS[0]]
+        names[NAME_KEYS[0]] = (first if first != GENERIC_NAME else describe(extra[0])) + \
+            f" and {len(extra) if first != GENERIC_NAME else len(extra) - 1} more"
+    return names
 GOAL_FLAG, GOAL_WORLD = 70, 1  # OnCharacterDead(70, 821): False King Allant (m01_00_00_00_eventboss.lua)
 AMMUNITION = range(160000, 170000)
 
@@ -158,3 +189,15 @@ def upgraded_weapon(weapon_id: int, held: list[int], rows: set[int]) -> int:
         return weapon_id
     target = min(top, max(level, math.ceil(best * top - 1e-9)))
     return base + target if base + target in rows else weapon_id
+
+
+# A location's rank among the locations of its corpse (same map and position), in id order: which placeholder its
+# lot gives when it holds another world's item (ranks past the last placeholder share the first).
+RANK: dict[int, int] = {}
+_by_spot: dict[tuple, list[int]] = {}
+for _code, _location in sorted(LOCATION_BY_CODE.items()):
+    if "position" in _location.game:
+        _by_spot.setdefault(_spot(_location), []).append(_code)
+for _codes in _by_spot.values():
+    for _rank, _code in enumerate(_codes):
+        RANK[_code] = _rank

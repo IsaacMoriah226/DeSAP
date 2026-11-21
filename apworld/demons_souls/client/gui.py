@@ -290,8 +290,12 @@ class PlayPage(BoxLayout):
                                                                   " outside the Archipelago profile"))
         else:
             rows["game"].set("wait", "Game not running")
-        rows["items"].set("ok" if st["placed"] else "wait",
-                          "Items placed" if st["placed"] else "Items are placed at the title screen")
+        if st["phase"] == "preparing":
+            rows["items"].set("wait", "Preparing: the game is paused for a few seconds ...")
+        elif st["placed"]:
+            rows["items"].set("ok", "Ready: the Archipelago items are placed")
+        else:
+            rows["items"].set("wait", "Items are placed at the title screen (the game pauses a few seconds)")
         if st["save_ok"]:
             rows["save"].set("ok", "This slot's save is loaded")
         elif st["save_problem"]:
@@ -312,7 +316,9 @@ class PlayPage(BoxLayout):
             self.play.text, self.play.disabled = "CONNECT", False  # (the game was started before this window)
         else:
             self.play.text, self.play.disabled = ("RUNNING", True) if running else ("PLAY", False)
-        self.status.text = st["progress"] or st["launch"] or (
+        ready_to_start = st["placed"] and st["attached"] and not st["in_game"] and not st["save_ok"]
+        self.status.text = ("Ready! Start a New Game in Demon's Souls (or Continue this slot's save)."
+                            if ready_to_start else "") or st["progress"] or st["launch"] or (
             "Archipelago saves are kept apart from your vanilla saves and backed up while you play.")
 
 

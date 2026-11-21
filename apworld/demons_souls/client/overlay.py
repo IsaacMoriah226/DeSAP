@@ -7,8 +7,8 @@ premultiplied BGRA bitmap): crisp text over a background of any opacity. It neve
 opens the launcher's overlay settings. KytyPS5's fullscreen is SDL's desktop (borderless) fullscreen, which other
 windows can draw over.
 
-Font: a Futura-like face, the first found of: the world's bundled fonts (data/fonts/*.ttf), Futura, Jost, Century
-Gothic (Office), Bahnschrift, Segoe UI.
+Font: Jost (data/fonts/Jost.ttf, SIL Open Font License, the free Futura-style face), medium weight; Segoe UI only if
+the file were missing.
 """
 
 from __future__ import annotations
@@ -104,17 +104,26 @@ class Message:
     born: float
 
 
+FONT_WEIGHT = 500  # Jost is a variable font: medium
+
+
 def find_font() -> str | None:
-    here = Path(__file__).resolve().parent.parent / "data" / "fonts"
-    candidates = sorted(here.glob("*.ttf")) if here.is_dir() else []
-    fonts = Path(os.environ.get("WINDIR", r"C:\Windows")) / "Fonts"
-    local = Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "Windows" / "Fonts"
-    for folder in (fonts, local):
-        if folder.is_dir():
-            for pattern in ("Futura*.tt*", "futura*.tt*", "Jost*.ttf"):
-                candidates += sorted(folder.glob(pattern))
-    candidates += [fonts / name for name in ("GOTHIC.TTF", "bahnschrift.ttf", "segoeui.ttf")]
-    return next((str(c) for c in candidates if c.exists()), None)
+    bundled = Path(__file__).resolve().parent.parent / "data" / "fonts" / "Jost.ttf"
+    if bundled.exists():
+        return str(bundled)
+    fallback = Path(os.environ.get("WINDIR", r"C:\Windows")) / "Fonts" / "segoeui.ttf"
+    return str(fallback) if fallback.exists() else None
+
+
+def load_font(path: str | None, size: int):
+    if not path:
+        return ImageFont.load_default()
+    font = ImageFont.truetype(path, size)
+    try:
+        font.set_variation_by_axes([FONT_WEIGHT])
+    except (OSError, AttributeError):
+        pass  # (not a variable font)
+    return font
 
 
 class Overlay:
@@ -127,6 +136,7 @@ class Overlay:
         self.on_moved = on_moved
         self.emulator_pid = emulator_pid
         self.messages: list[Message] = []
+        self.banner: tuple[list[tuple[str, str]], float] | None = None  # (parts, until; inf: until removed)
         self.inbox: queue.Queue = queue.Queue()
         self.hwnd = None
         self.thread: threading.Thread | None = None
@@ -148,6 +158,12 @@ class Overlay:
 
     def push(self, parts: list[tuple[str, str]]) -> None:
         self.inbox.put(parts)
+
+    def set_banner(self, parts: list[tuple[str, str]] | None, seconds: float | None = None) -> None:
+        """Pin a notice above the messages (for `seconds`, or until replaced or removed with None). It shows even
+        when the messages are turned off: it says whether the game is ready to play."""
+        self.banner = None if parts is None else (parts, time.monotonic() + seconds if seconds else float("inf"))
+        self.dirty = True
 
     def refresh(self) -> None:
         """Settings changed: redraw."""
@@ -227,7 +243,10 @@ class Overlay:
                 self.dirty = True  # (fading)
             self.messages = alive
         self.messages = self.messages[-max(1, s.lines):]
-        show = s.enabled and self._game_in_front()
+        if self.banner is not None and time.monotonic() > self.banner[1]:
+            self.banner = None
+            self.dirty = True
+        show = (s.enabled or self.banner is not None) and self._game_in_front()
         if show != self.visible:
             user32.ShowWindow(self.hwnd, SW_SHOWNOACTIVATE if show else SW_HIDE)
             self.visible = show
@@ -242,13 +261,18 @@ class Overlay:
         """The overlay as an RGBA image (also used by tests and the settings preview)."""
         s = self.settings
         size = max(10, s.font_size)
-        font = ImageFont.truetype(self.font_path, size) if self.font_path else ImageFont.load_default()
-        small = ImageFont.truetype(self.font_path, max(10, int(size * 0.7))) if self.font_path else font
+        font = load_font(self.font_path, size)
+        small = load_font(self.font_path, max(10, int(size * 0.7)))
         pad, line_gap = 14, int(size * 0.35)
         width = max(240, s.width)
-        lines = self._wrap(self.messages, font, width - 2 * pad)
+        banner = self.banner
+        banner_lines = self._wrap([Message(banner[0], 0.0)], font, width - 2 * pad - 12) if banner else []
+        messages = self.messages if s.enabled else []
+        lines = self._wrap(messages, font, width - 2 * pad)
         line_height = size + line_gap
-        height = self.HEADER + pad // 2 + max(0, len(lines)) * line_height + (pad if lines else 4)
+        banner_height = len(banner_lines) * line_height + (line_gap + 12 if lines else 6) if banner_lines else 0
+        height = (self.HEADER + pad // 2 + banner_height + max(0, len(lines)) * line_height
+                  + (pad if lines else 8 if banner_lines else 4))
         image = Image.new("RGBA", (width, height), (0, 0, 0, 0))
         draw = ImageDraw.Draw(image)
         r, g, b = (int(s.background.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
@@ -257,6 +281,18 @@ class Overlay:
         draw.text((pad, 7), "Archipelago", font=small, fill=(*gold, s.text_alpha))
         self._gear(draw, width - self.GEAR - 6, 2, self.GEAR, (*COLORS["dim"], s.text_alpha))
         y = self.HEADER + pad // 2
+        if banner_lines:  # a gold-edged box, never faded
+            box = (pad - 6, y - 4, width - pad + 6, y + len(banner_lines) * line_height + 4)
+            draw.rounded_rectangle(box, radius=7, fill=(*gold, int(s.text_alpha * 0.16)),
+                                   outline=(*gold, int(s.text_alpha * 0.8)), width=2)
+            for line, _born in banner_lines:
+                x = pad + 4
+                for chunk, key in line:
+                    draw.text((x + 1, y + 1), chunk, font=font, fill=(0, 0, 0, int(s.text_alpha * 0.6)))
+                    draw.text((x, y), chunk, font=font, fill=(*COLORS.get(key, COLORS["text"]), s.text_alpha))
+                    x += draw.textlength(chunk, font=font)
+                y += line_height
+            y += line_gap + 12
         now = time.monotonic()
         for line, born in lines:
             fade = 1.0

@@ -29,6 +29,13 @@ class LoadoutTest(unittest.TestCase):
                 limit = sum(row[f + "_weight"] for f in ARMOR_FIELDS) + ARMOR_ALLOWANCE
                 self.assertLessEqual(armor, limit + 1e-6, row["name"])
 
+    def test_armor_fits_both_body_types(self):
+        for seed in range(30):
+            for row_id, fields in starting_loadouts(Random(seed), False).items():
+                for field in ARMOR_FIELDS:
+                    if field in fields:
+                        self.assertIn(EQUIPMENT["armor"][str(fields[field])]["gender"], (0, 3))
+
     def test_casters_keep_their_tools(self):
         for row_id, fields in starting_loadouts(Random(1), True).items():
             row = EQUIPMENT["classes"][row_id]

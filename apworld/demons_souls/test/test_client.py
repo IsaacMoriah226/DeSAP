@@ -96,6 +96,15 @@ class FakeGame:
     def kill_player(self):
         self.kills += 1
 
+    def paused(self, record=None):
+        import contextlib
+        self.pauses = getattr(self, "pauses", 0) + 1
+        return contextlib.nullcontext()
+
+    def prepare(self, keys):
+        self.find_tables()
+        return self.find_text_entries(keys)
+
     def find_tables(self):
         weapons = {base + level: 0 for base in (10000, 60000) for level in range(0, 11)}
         self.tables = {"ITEMLOT_PARAM_ST": [params.Table(0, {})], "SHOP_LINEUP_PARAM": [params.Table(0, {})],
@@ -218,6 +227,49 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(self.ctx.placed)
         self.assertEqual(self.game.restored, 1)
 
+    def test_the_game_is_paused_until_ready(self):
+        banners = []
+        self.ctx.overlay = SimpleNamespace(set_banner=lambda parts, seconds=None: banners.append(parts),
+                                           push=lambda parts: None)
+        self.ctx.launcher_mode = True
+        self.scout({TREASURE: (CLUB, 1)})
+        self.game.in_game = False  # the title screen
+        self.tick()
+        self.assertEqual(self.game.pauses, 1)  # one pause around the whole placement
+        self.assertTrue(self.ctx.placed)
+        self.assertEqual(self.ctx.phase, "ready")
+        self.assertIn("Preparing", banners[0][0][0])
+        self.assertIn("New Game", "".join(text for text, _ in banners[-1]))
+        self.tick()
+        self.assertEqual(self.game.pauses, 1)  # placed: no more pauses
+
+    def test_waits_for_the_item_tables(self):
+        def not_loaded(keys):
+            raise LookupError("not yet")
+        self.game.prepare = not_loaded
+        self.ctx.launcher_mode = True
+        self.scout({TREASURE: (CLUB, 1)})
+        self.game.in_game = False
+        self.tick()
+        self.assertFalse(self.ctx.placed)
+        self.assertEqual(self.ctx.phase, "preparing")  # (at the title: still says to wait)
+        self.tick()
+        self.assertEqual(self.game.pauses, 1)  # (not again before PLACE_RETRY)
+        del self.game.prepare
+        self.ctx.next_place_try = 0.0
+        self.tick()
+        self.assertTrue(self.ctx.placed)
+
+    def test_overlay_banner_shows_with_messages_off(self):
+        from ..client.overlay import Overlay
+        from ..client.settings import OverlaySettings
+        overlay = Overlay(OverlaySettings(enabled=False), lambda: None)
+        plain = overlay.render().size[1]
+        overlay.set_banner([("Preparing Archipelago", "gold"), (": the game is paused ...", "text")])
+        self.assertGreater(overlay.render().size[1], plain)
+        overlay.set_banner(None)
+        self.assertEqual(overlay.render().size[1], plain)
+
     # --- placement ----------------------------------------------------------------------------------------------
 
     def test_placement(self):
@@ -305,10 +357,23 @@ class ClientTest(unittest.IsolatedAsyncioTestCase):
         self.ctx.slot_info = {1: SimpleNamespace(game="Demon's Souls Remake", name="Me"),
                               OTHER_PLAYER: SimpleNamespace(game="Demon's Souls Remake", name="Friend")}
         self.tick()
-        self.assertTrue(self.game.texts[-1][1].startswith("Friend's "), self.game.texts[-1])
+        self.assertTrue(any(text.startswith("Friend's ") for _fields, text in self.game.texts), self.game.texts)
         self.game.position = (9999.0, 0.0, 0.0)
+        self.game.texts = []
         self.tick()
-        self.assertEqual(self.game.texts[-1][1], "Archipelago Item")
+        self.assertTrue(self.game.texts and all(text == "Archipelago Item" for _f, text in self.game.texts))
+
+    def test_each_item_of_a_corpse_gets_its_own_placeholder(self):
+        from ..client.placement import NAME_KEYS, RANK, placeholder_for, placeholder_names
+        corpse = [code for code, location in LOCATION_BY_CODE.items()
+                  if location.name.startswith("GB 1-1:") and "hanging corpse, courtyard" in location.name
+                  and location.game["index"] == 1]
+        self.assertEqual(sorted(RANK[c] for c in corpse), [0, 1, 2, 3])
+        self.assertEqual(len({placeholder_for(c) for c in corpse}), 3)
+        items = [(RANK[c], SimpleNamespace(name=f"item{RANK[c]}")) for c in corpse]
+        names = placeholder_names(items, lambda item: "Friend's " + item.name)
+        self.assertEqual(names[NAME_KEYS[1]], "Friend's item1")
+        self.assertEqual(names[NAME_KEYS[0]], "Friend's item0 and 1 more")
 
     def test_placeholders_are_removed(self):
         self.placed_game()

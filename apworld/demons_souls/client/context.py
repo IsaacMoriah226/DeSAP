@@ -8,7 +8,8 @@ Each tick (GAME_TICK seconds) the game loop, off the event loop:
 - reads the game state: character loaded, map, event flags, death count;
 - claims or recognises the save (its Archipelago identity, in unused event flags), and stops on a save that belongs
   to another seed or slot;
-- once the server's scouts are in: finds the param tables and rewrites lots and shop rows (placement.py);
+- once the server's scouts are in: pauses the game for a few seconds, finds the param tables and rewrites lots and
+  shop rows (placement.py), so nobody plays a world that is not ready (the overlay and the launcher say so);
 - sends newly checked locations; gives received items (popup), keeping the count in the save;
 - removes placeholder items, enforces the world locks (sends the player to the Nexus), DeathLink, the goal.
 """
@@ -32,17 +33,22 @@ from ..parts import PARTS
 from . import addresses as A
 from . import params
 from .game import DemonsSoulsGame, GameState, GameVersionError
-from .profile import Emulator, Profile, ProfileError
+from .memory import thaw_recorded
+from .profile import Emulator, Profile, ProfileError, data_dir
 from .settings import LauncherSettings
-from .placement import (CHECKS, GOAL_FLAG, GOAL_WORLD, LOCATION_BY_CODE, LOCATION_INDEX, LOCK_CODES, NAMING_RANGE,
-                        PLACEHOLDER, PLACEHOLDER_NAME_KEY, PLACEHOLDER_TEXTS, SHOP_PLACEHOLDER, SHOP_PLACEHOLDER_TEXTS,
-                        game_item, has_lot, nearest_foreign, shared, upgraded_weapon)
+from .placement import (CHECKS, GOAL_FLAG, GOAL_WORLD, LOCATION_BY_CODE, LOCATION_INDEX, LOCK_CODES, NAME_KEYS,
+                        NAMING_RANGE, PLACEHOLDERS, PLACEHOLDER_TEXTS, SHOP_PLACEHOLDER, SHOP_PLACEHOLDER_TEXTS,
+                        game_item, has_lot, nearest_foreign, placeholder_for, placeholder_names, shared,
+                        upgraded_weapon)
 
 GAME = "Demon's Souls Remake"
 GAME_TICK = 0.25
-ATTACH_RETRY = 5.0
+ATTACH_RETRY = 2.0
 KICK_RETRY = 15.0
-SETTLE_SECONDS = 15.0  # after attaching, before the client writes anything
+SETTLE_SECONDS = 3.0  # after attaching, before the client writes anything (only live tables are written)
+PLACE_RETRY = 5.0  # the item tables were not loaded yet: try again after this long
+READY_BANNER_SECONDS = 20.0
+PAUSE_RECORD = data_dir() / "paused.json"  # the threads a pause holds (resumed by the next client if this one dies)
 GIVE_PER_TICK = 4  # items per game call (one popup each; batches of 2 and 8 verified in game)
 PART_OF_MAP = {part.map: part for part in PARTS}
 NEXIAL_BINDING = 1033
@@ -124,7 +130,7 @@ class DemonsSoulsContext(CommonContext):
         self.area_safe = False  # the area being played loaded after the rewrite (treasures are fixed at load)
         self.texts_set = False
         self.text_fields: dict[str, list[int]] = {}
-        self.placeholder_name = ""
+        self.placeholder_names: dict[str, str] = {}
         self.lot_writes: dict[int, dict[int, bytes]] = {}
         self.shop_writes: dict[int, dict[int, bytes]] = {}
         self.physical: set[int] = set()  # locations whose lot or shop row gives this world's item by itself
@@ -133,6 +139,8 @@ class DemonsSoulsContext(CommonContext):
         self.last_kick = 0.0
         self.last_attach_try = 0.0
         self.attached_at = 0.0
+        self.next_place_try = 0.0
+        self.phase = ""  # "preparing" (the game is paused while the items are placed), "ready", "" (neither yet)
         self.last_message = ""
         self.launcher_mode = False  # the emulator runs from the Archipelago profile: every save there is ours
 
@@ -172,6 +180,11 @@ class DemonsSoulsContext(CommonContext):
     def overlay_message(self, parts: list[tuple[str, str]]) -> None:
         if self.overlay is not None:
             self.overlay.push(parts)
+
+    def overlay_banner(self, parts: list[tuple[str, str]] | None, seconds: float | None = None) -> None:
+        """A notice pinned above the messages (shown even with the messages turned off); None removes it."""
+        if self.overlay is not None:
+            self.overlay.set_banner(parts, seconds)
 
     def on_print_json(self, args: dict) -> None:
         super().on_print_json(args)
@@ -242,12 +255,20 @@ class DemonsSoulsContext(CommonContext):
                 return out
             self.last_attach_try = time.monotonic()
             try:
+                thawed = thaw_recorded(PAUSE_RECORD)  # (a client that died while the game was paused)
+                if thawed:
+                    logger.warning(f"Resumed the game ({thawed} threads a previous client left paused).")
+            except (OSError, ValueError):
+                pass
+            try:
                 self.bridge.attach()
                 self.attached_at = time.monotonic()
                 self.launcher_mode = self.in_profile(self.bridge.exe_path)
                 if self.launcher_mode:
                     self.bridge.live.path = self.profile.live_file
                 self.say("Attached to the emulator" + (" (Archipelago profile)." if self.launcher_mode else "."))
+                if self.launcher_mode and self.slot and not self.placed:
+                    self.wait_banner()
             except LookupError as error:
                 self.say("Waiting for the game ..." if "starting" in str(error) else "Waiting for kyty_emulator.exe ...")
                 return out
@@ -264,13 +285,13 @@ class DemonsSoulsContext(CommonContext):
             # a loading screen or the title: the next area loads with the current lots (another save may be loaded
             # next; check_save tells)
             if self.launcher_mode:
-                self.place(view)  # ready before a save is even loaded (the profile holds Archipelago saves only)
+                self.place(view, in_game=False)  # ready before a save is even loaded (Archipelago saves only)
             if self.placed:
                 self.area_safe = True
             return out
         if not self.check_save(state):
             return out
-        self.place(view)
+        self.place(view, in_game=True)
         out["checks"] = self.find_checks(state, view)
         self.deliver(state, view)
         self.name_placeholder(state, view)
@@ -311,8 +332,9 @@ class DemonsSoulsContext(CommonContext):
                      "slot (or start a new character).")
         return False
 
-    def place(self, view: View) -> None:
-        """Rewrite lots and shop rows once the scouts are in; repair them if the game reloaded its params."""
+    def place(self, view: View, in_game: bool = True) -> None:
+        """Rewrite lots and shop rows once the scouts are in; repair them if the game reloaded its params. The game
+        is paused meanwhile (a few seconds), so nothing is picked up, bought or created from the vanilla tables."""
         if not view.scouted or os.environ.get("DESAP_NO_WRITES"):
             return
         if self.placed:
@@ -324,14 +346,59 @@ class DemonsSoulsContext(CommonContext):
             else:
                 self.say("The game reloaded its item tables: placing the items again.")
                 self.placed = False
+        if time.monotonic() < self.next_place_try:
+            return
+        self.phase = "preparing"
+        self.say("Preparing Archipelago: the game is paused for a few seconds ...")
+        self.overlay_banner([("Preparing Archipelago", "gold"), (": the game is paused for a few seconds ...", "text")])
+        started = time.monotonic()
+        try:
+            with self.bridge.paused(PAUSE_RECORD):
+                done = self.write_placement(view)
+        except BaseException:
+            self.phase = ""
+            self.overlay_banner(None)
+            raise
+        if not done:
+            if in_game:
+                self.phase = ""
+                self.overlay_banner(None)
+            else:
+                self.wait_banner()  # (at the title: still not ready to start)
+            self.next_place_try = time.monotonic() + PLACE_RETRY
+            self.say("Waiting for the game to load its item tables ...")
+            return
+        self.phase = "ready"
+        logger.info(f"Items placed in {time.monotonic() - started:.1f} s. Pickups lying in the area you are in change "
+                    "after its next loading screen (die, warp, or quit and continue); bosses, scripted rewards and "
+                    "enemy drops already give their new items.")
+        if in_game:
+            self.say("Ready: the Archipelago items are placed.")
+            self.overlay_banner([("Ready: ", "location"), ("the Archipelago items are placed.", "text")],
+                                READY_BANNER_SECONDS / 2)
+        else:
+            self.say("Ready! Start a New Game in Demon's Souls (or Continue this slot's save).")
+            self.overlay_banner([("Ready! ", "location"), ("Start a New Game (or Continue this slot's save).", "text")],
+                                READY_BANNER_SECONDS)
+
+    def wait_banner(self) -> None:
+        """The game is up but not ready: say so until it is (nobody should start a character before "Ready!")."""
+        self.phase = "preparing"
+        self.overlay_banner([("Preparing Archipelago", "gold"), (": wait for ", "text"), ("Ready!", "location"),
+                             (" before you start.", "text")])
+
+    def write_placement(self, view: View) -> bool:
+        """The placement itself (with the game paused). False when the item tables are not loaded yet."""
         if self.bridge.tables and not self.bridge.tables_live():
             self.bridge.tables = {}
+            self.texts_set = False
+        texts = {**PLACEHOLDER_TEXTS, **SHOP_PLACEHOLDER_TEXTS}
         if not self.bridge.tables:
-            self.say("Looking for the game's item tables (about 45 seconds) ...")
             try:
-                self.bridge.find_tables()
+                self.text_fields = self.bridge.prepare(list(texts))
             except LookupError:
-                return
+                return False
+            self.texts_set = False
         self.build_writes(view)
         self.bridge.patch_rows("ITEMLOT_PARAM_ST", self.lot_writes)
         if self.bridge.tables.get("SHOP_LINEUP_PARAM"):
@@ -351,20 +418,19 @@ class DemonsSoulsContext(CommonContext):
                     for copy in self.bridge.tables.get("EQUIP_PARAM_WEAPON_ST", []) for row in copy.rows}
             self.bridge.patch_rows("EQUIP_PARAM_WEAPON_ST", rows)
         if not self.texts_set:
-            self.say("Setting the text of items for other worlds (about a minute) ...")
-            texts = {**PLACEHOLDER_TEXTS, **SHOP_PLACEHOLDER_TEXTS}
-            self.text_fields = self.bridge.find_text_entries(list(texts))
+            missing = [key for key in texts if not self.text_fields.get(key)]
+            if missing:
+                logger.warning(f"Texts not found ({', '.join(missing)}): those items keep their own names.")
             for key, text in texts.items():
-                if key == PLACEHOLDER_NAME_KEY:
-                    self.bridge.set_text_buffer(self.text_fields[key], text, key)
+                if key in NAME_KEYS:
+                    self.bridge.set_text_buffer(self.text_fields.get(key, []), text, key)
                 else:
-                    self.bridge.set_text(self.text_fields[key], text, key)
-            self.placeholder_name = PLACEHOLDER_TEXTS[PLACEHOLDER_NAME_KEY]
+                    self.bridge.set_text(self.text_fields.get(key, []), text, key)
+            self.placeholder_names = {key: PLACEHOLDER_TEXTS[key] for key in NAME_KEYS}
             self.texts_set = True
         self.placed = True
         self.area_safe = False
-        self.say("Items placed. Pickups lying in the area you are in change after its next loading screen (die, "
-                 "warp, or quit and continue); bosses, scripted rewards and enemy drops already give their new items.")
+        return True
 
     def dress_placeholders(self) -> None:
         """The placeholders take the Nexial Binding's look (its icon id and the remake's item link)."""
@@ -376,7 +442,7 @@ class DemonsSoulsContext(CommonContext):
         link = self.bridge.memory.read(source + params.GOODS_REMAKE_UI, 4)
         self.bridge.patch_rows("EQUIP_PARAM_GOODS_ST", {
             item: {params.GOODS_ICON: icon, params.GOODS_REMAKE_UI: link}
-            for item in (PLACEHOLDER[1], SHOP_PLACEHOLDER[1])})
+            for item in [p[1] for p in PLACEHOLDERS] + [SHOP_PLACEHOLDER[1]]})
 
     def in_profile(self, exe_path: str) -> bool:
         try:
@@ -460,6 +526,7 @@ class DemonsSoulsContext(CommonContext):
             "checked": len(self.checked_locations), "locations": len(self.checked_locations | self.missing_locations),
             "received": len(self.items_received), "goal": self.finished_game, "launch": self.launch_status,
             "progress": self.last_message if self.bridge.attached and not self.placed else "",
+            "phase": self.phase if self.bridge.attached else "",
         }
 
     def weapon_rows(self) -> set[int]:
@@ -484,7 +551,7 @@ class DemonsSoulsContext(CommonContext):
                 if shared(location):  # the client gives these when their flags turn on
                     self.lot_writes[lot] = params.lot_bytes(-1, 0, 0, host_only)
                     continue
-                self.lot_writes[lot] = params.lot_bytes(*(own or PLACEHOLDER), host_only)
+                self.lot_writes[lot] = params.lot_bytes(*(own or placeholder_for(code)), host_only)
                 if own:
                     self.physical.add(code)
             elif location.kind == "shop" and self.bridge.tables.get("SHOP_LINEUP_PARAM"):
@@ -537,21 +604,24 @@ class DemonsSoulsContext(CommonContext):
             return []  # (no character loaded: the title screen)
 
     def name_placeholder(self, state: GameState, view: View) -> None:
-        """The placeholder takes the name of the nearest location holding another world's item."""
-        if not self.texts_set or PLACEHOLDER_NAME_KEY not in self.text_fields:
+        """The placeholders take the names of the nearest corpse's items for other worlds (one placeholder each)."""
+        if not self.texts_set:
             return
-        item, distance = nearest_foreign(state.position, state.area, view.scouted, view.checked, self.slot)
-        if item is not None and distance <= NAMING_RANGE:
-            name = (f"{self.player_names.get(item.player, 'Someone')}'s "
+        found, distance = nearest_foreign(state.position, state.area, view.scouted, view.checked, self.slot)
+        if distance > NAMING_RANGE:
+            found = []
+
+        def describe(item) -> str:
+            return (f"{self.player_names.get(item.player, 'Someone')}'s "
                     f"{self.item_names.lookup_in_slot(item.item, item.player)}")
-        else:
-            name = PLACEHOLDER_TEXTS[PLACEHOLDER_NAME_KEY]
-        if name != self.placeholder_name:
-            self.bridge.set_text_buffer(self.text_fields[PLACEHOLDER_NAME_KEY], name, PLACEHOLDER_NAME_KEY)
-            self.placeholder_name = name
+
+        for key, name in placeholder_names(found, describe).items():
+            if key in self.text_fields and self.placeholder_names.get(key) != name:
+                self.bridge.set_text_buffer(self.text_fields[key], name, key)
+                self.placeholder_names[key] = name
 
     def clean_placeholders(self) -> None:
-        for placeholder in (PLACEHOLDER, SHOP_PLACEHOLDER):
+        for placeholder in PLACEHOLDERS + (SHOP_PLACEHOLDER,):
             count = sum(e.count for e in self.bridge.inventory() if (e.category, e.item_id) == placeholder[:2])
             if count:
                 self.bridge.remove_item(placeholder[0], placeholder[1], min(count, 16))
@@ -621,6 +691,7 @@ def launch(*args: str) -> None:
 
     import colorama
 
+    Utils.init_logging("DemonsSoulsLauncher", exception_logger="Client")  # (Archipelago's logs folder)
     parser = get_base_parser(description="Demon's Souls Remake client (KytyPS5).")
     parser.add_argument("--name", default=None, help="Slot name to connect as.")
     parsed, _rest = parser.parse_known_args(args)

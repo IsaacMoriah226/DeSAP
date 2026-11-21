@@ -1094,367 +1094,440 @@
   "202100": {
    "name": "Old Ragged Robes",
    "slot": 2,
-   "weight": 3.5
+   "weight": 3.5,
+   "gender": 2
   },
   "302100": {
    "name": "Old Ragged Gloves",
    "slot": 3,
-   "weight": 2.1
+   "weight": 2.1,
+   "gender": 2
   },
   "402100": {
    "name": "Old Ragged Boots",
    "slot": 4,
-   "weight": 2.1
+   "weight": 2.1,
+   "gender": 2
   },
   "100800": {
    "name": "Brushwood Helm",
    "slot": 1,
-   "weight": 6.9
+   "weight": 6.9,
+   "gender": 3
   },
   "200800": {
    "name": "Brushwood Armor",
    "slot": 2,
-   "weight": 17.3
+   "weight": 17.3,
+   "gender": 3
   },
   "300800": {
    "name": "Brushwood Gauntlets",
    "slot": 3,
-   "weight": 10.4
+   "weight": 10.4,
+   "gender": 3
   },
   "400800": {
    "name": "Brushwood Greaves",
    "slot": 4,
-   "weight": 10.4
+   "weight": 10.4,
+   "gender": 3
   },
   "200100": {
    "name": "Wizard's Clothes",
    "slot": 2,
-   "weight": 1.9
+   "weight": 1.9,
+   "gender": 3
   },
   "300100": {
    "name": "Wizard's Gloves",
    "slot": 3,
-   "weight": 1.2
+   "weight": 1.2,
+   "gender": 3
   },
   "400100": {
    "name": "Wizard's Shoes",
    "slot": 4,
-   "weight": 1.2
+   "weight": 1.2,
+   "gender": 3
   },
   "100200": {
    "name": "Assassin's Mask",
    "slot": 1,
-   "weight": 0.5
+   "weight": 0.5,
+   "gender": 3
   },
   "200200": {
    "name": "Black Leather Garb",
    "slot": 2,
-   "weight": 1.2
+   "weight": 1.2,
+   "gender": 3
   },
   "300200": {
    "name": "Black Gloves",
    "slot": 3,
-   "weight": 0.7
+   "weight": 0.7,
+   "gender": 3
   },
   "400200": {
    "name": "Black Boots",
    "slot": 4,
-   "weight": 0.7
+   "weight": 0.7,
+   "gender": 3
   },
   "102100": {
    "name": "Three-Cornered Hat",
    "slot": 1,
-   "weight": 1.4
+   "weight": 1.4,
+   "gender": 2
   },
   "101400": {
    "name": "Venerable Sage's Hood",
    "slot": 1,
-   "weight": 1.5
+   "weight": 1.5,
+   "gender": 1
   },
   "201400": {
    "name": "Venerable Sage's Robe",
    "slot": 2,
-   "weight": 3.8
+   "weight": 3.8,
+   "gender": 1
   },
   "301400": {
    "name": "Venerable Sage's Gloves",
    "slot": 3,
-   "weight": 2.3
+   "weight": 2.3,
+   "gender": 1
   },
   "401400": {
    "name": "Venerable Sage's Boots",
    "slot": 4,
-   "weight": 2.3
+   "weight": 2.3,
+   "gender": 1
   },
   "201800": {
    "name": "Rogue's Clothes",
    "slot": 2,
-   "weight": 1.5
+   "weight": 1.5,
+   "gender": 2
   },
   "301800": {
    "name": "Rogue's Gloves",
    "slot": 3,
-   "weight": 0.9
+   "weight": 0.9,
+   "gender": 2
   },
   "401800": {
    "name": "Rogue's Boots",
    "slot": 4,
-   "weight": 0.9
+   "weight": 0.9,
+   "gender": 2
   },
   "301700": {
    "name": "Silver Bracelets",
    "slot": 3,
-   "weight": 0.5
+   "weight": 0.5,
+   "gender": 2
   },
   "100700": {
    "name": "Fluted Helm",
    "slot": 1,
-   "weight": 4.6
+   "weight": 4.6,
+   "gender": 3
   },
   "200700": {
    "name": "Fluted Armor",
    "slot": 2,
-   "weight": 11.5
+   "weight": 11.5,
+   "gender": 3
   },
   "300700": {
    "name": "Fluted Gauntlets",
    "slot": 3,
-   "weight": 6.9
+   "weight": 6.9,
+   "gender": 3
   },
   "400700": {
    "name": "Fluted Greaves",
    "slot": 4,
-   "weight": 6.9
+   "weight": 6.9,
+   "gender": 3
   },
   "100100": {
    "name": "Silver Coronet",
    "slot": 1,
-   "weight": 0.9
+   "weight": 0.9,
+   "gender": 3
   },
   "100000": {
    "name": "Gold Mask",
    "slot": 1,
-   "weight": 0.6
+   "weight": 0.6,
+   "gender": 2
   },
   "201200": {
    "name": "Saint's Robe",
    "slot": 2,
-   "weight": 4.6
+   "weight": 4.6,
+   "gender": 3
   },
   "301200": {
    "name": "Saint's Gloves",
    "slot": 3,
-   "weight": 2.8
+   "weight": 2.8,
+   "gender": 3
   },
   "401200": {
    "name": "Saint's Boots",
    "slot": 4,
-   "weight": 2.8
+   "weight": 2.8,
+   "gender": 3
   },
   "102000": {
    "name": "Binded Hood",
    "slot": 1,
-   "weight": 2.3
+   "weight": 2.3,
+   "gender": 3
   },
   "202000": {
    "name": "Binded Cross",
    "slot": 2,
-   "weight": 5.8
+   "weight": 5.8,
+   "gender": 3
   },
   "302000": {
    "name": "Binded Gloves",
    "slot": 3,
-   "weight": 3.5
+   "weight": 3.5,
+   "gender": 3
   },
   "402000": {
    "name": "Binded Boots",
    "slot": 4,
-   "weight": 3.5
+   "weight": 3.5,
+   "gender": 3
   },
   "101100": {
    "name": "Ancient King's Mask",
    "slot": 1,
-   "weight": 3.1
+   "weight": 3.1,
+   "gender": 1
   },
   "201100": {
    "name": "Ancient King's Breastplate",
    "slot": 2,
-   "weight": 7.7
+   "weight": 7.7,
+   "gender": 1
   },
   "301100": {
    "name": "Ancient King's Gauntlets",
    "slot": 3,
-   "weight": 4.6
+   "weight": 4.6,
+   "gender": 1
   },
   "401100": {
    "name": "Ancient King's Greaves",
    "slot": 4,
-   "weight": 4.6
+   "weight": 4.6,
+   "gender": 1
   },
   "101800": {
    "name": "Official's Cap",
    "slot": 1,
-   "weight": 0.5
+   "weight": 0.5,
+   "gender": 3
   },
   "101900": {
    "name": "Dull Gold Helm",
    "slot": 1,
-   "weight": 3.8
+   "weight": 3.8,
+   "gender": 2
   },
   "201900": {
    "name": "Dull Gold Armor",
    "slot": 2,
-   "weight": 9.6
+   "weight": 9.6,
+   "gender": 2
   },
   "301900": {
    "name": "Dull Gold Gauntlets",
    "slot": 3,
-   "weight": 5.8
+   "weight": 5.8,
+   "gender": 2
   },
   "401900": {
    "name": "Dull Gold Leggings",
    "slot": 4,
-   "weight": 5.8
+   "weight": 5.8,
+   "gender": 2
   },
   "200000": {
    "name": "Shaman's Garb",
    "slot": 2,
-   "weight": 1.5
+   "weight": 1.5,
+   "gender": 3
   },
   "300000": {
    "name": "Shaman's Armbands",
    "slot": 3,
-   "weight": 0.9
+   "weight": 0.9,
+   "gender": 3
   },
   "400000": {
    "name": "Shaman's Tabi",
    "slot": 4,
-   "weight": 0.9
+   "weight": 0.9,
+   "gender": 3
   },
   "100900": {
    "name": "Dark Silver Helm",
    "slot": 1,
-   "weight": 5.4
+   "weight": 5.4,
+   "gender": 1
   },
   "200900": {
    "name": "Dark Silver Armor",
    "slot": 2,
-   "weight": 13.5
+   "weight": 13.5,
+   "gender": 1
   },
   "300900": {
    "name": "Dark Silver Gauntlets",
    "slot": 3,
-   "weight": 8.1
+   "weight": 8.1,
+   "gender": 1
   },
   "400900": {
    "name": "Dark Silver Greaves",
    "slot": 4,
-   "weight": 8.1
+   "weight": 8.1,
+   "gender": 1
   },
   "399908": {
    "name": "Official's Gloves",
    "slot": 3,
-   "weight": 1.2
+   "weight": 1.2,
+   "gender": 0
   },
   "499908": {
    "name": "Official's Leggings",
    "slot": 4,
-   "weight": 1.2
+   "weight": 1.2,
+   "gender": 0
   },
   "100600": {
    "name": "Plate Helm",
    "slot": 1,
-   "weight": 3.8
+   "weight": 3.8,
+   "gender": 3
   },
   "200600": {
    "name": "Coat of Plates",
    "slot": 2,
-   "weight": 9.6
+   "weight": 9.6,
+   "gender": 3
   },
   "300600": {
    "name": "Plate Gauntlets",
    "slot": 3,
-   "weight": 5.8
+   "weight": 5.8,
+   "gender": 3
   },
   "400600": {
    "name": "Plate Greaves",
    "slot": 4,
-   "weight": 5.8
+   "weight": 5.8,
+   "gender": 3
   },
   "100300": {
    "name": "Leather Cap",
    "slot": 1,
-   "weight": 1.2
+   "weight": 1.2,
+   "gender": 3
   },
   "200300": {
    "name": "Leather Armor",
    "slot": 2,
-   "weight": 3.1
+   "weight": 3.1,
+   "gender": 3
   },
   "300300": {
    "name": "Leather Gloves",
    "slot": 3,
-   "weight": 1.8
+   "weight": 1.8,
+   "gender": 3
   },
   "400300": {
    "name": "Leather Boots",
    "slot": 4,
-   "weight": 1.8
+   "weight": 1.8,
+   "gender": 3
   },
   "299900": {
    "name": "Barbarian Clothes",
    "slot": 2,
-   "weight": 0.0
+   "weight": 0.0,
+   "gender": 3
   },
   "399900": {
    "name": "Barbarian Armbands",
    "slot": 3,
-   "weight": 0.0
+   "weight": 0.0,
+   "gender": 3
   },
   "499900": {
    "name": "Barbarian Leggings",
    "slot": 4,
-   "weight": 0.0
+   "weight": 0.0,
+   "gender": 3
   },
   "100400": {
    "name": "Mail Coif",
    "slot": 1,
-   "weight": 3.8
+   "weight": 3.8,
+   "gender": 3
   },
   "200400": {
    "name": "Chain Mail",
    "slot": 2,
-   "weight": 9.6
+   "weight": 9.6,
+   "gender": 3
   },
   "300400": {
    "name": "Chain Gloves",
    "slot": 3,
-   "weight": 5.8
+   "weight": 5.8,
+   "gender": 3
   },
   "400400": {
    "name": "Hard Leather Boots",
    "slot": 4,
-   "weight": 5.8
+   "weight": 5.8,
+   "gender": 3
   },
   "100500": {
    "name": "Mirdan Helm",
    "slot": 1,
-   "weight": 5.4
+   "weight": 5.4,
+   "gender": 3
   },
   "200500": {
    "name": "Mirdan Scale Armor",
    "slot": 2,
-   "weight": 13.5
+   "weight": 13.5,
+   "gender": 3
   },
   "300500": {
    "name": "Mirdan Gauntlets",
    "slot": 3,
-   "weight": 8.1
+   "weight": 8.1,
+   "gender": 3
   },
   "400500": {
    "name": "Mirdan Greaves",
    "slot": 4,
-   "weight": 8.1
+   "weight": 8.1,
+   "gender": 3
   }
  },
  "classes": {

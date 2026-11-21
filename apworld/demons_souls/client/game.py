@@ -19,7 +19,7 @@ from . import params
 from .flags import CLIENT_BLOCK, CLIENT_BLOCK_SIZE, IDENTITY_OFFSET, RECEIVED_OFFSET, SNAPSHOT_SIZE, Flags, delivered_bit
 from .gamecall import Call, GameCall
 from .live import LiveControl
-from .memory import PAGE_READWRITE, GameMemory, find_pid
+from .memory import Freeze, PAGE_READWRITE, GameMemory, find_pid
 
 logger = logging.getLogger("Client")
 
@@ -205,6 +205,76 @@ class DemonsSoulsGame:
         self.live.gamecmd(A.SUICIDE_COMMAND)
 
     # --- params and text -----------------------------------------------------------------------------------------
+
+    def prepare(self, text_keys: list[str]) -> dict[str, list[int]]:
+        """Find the live param tables and the text entries of `text_keys` in one pass over the game's memory (by
+        the markers of addresses.py: about 15 s where they have always been, longer if they must be looked for
+        everywhere). Returns the text fields (as find_text_entries); sets self.tables. Raises LookupError when the
+        item lots are not there yet."""
+        tables, fields = self.scan_markers(text_keys, *A.HOT_MEMORY)
+        if len(tables["ITEMLOT_PARAM_ST"]) != 1 or not all(fields.values()):
+            logger.info("Not all of the game's tables are where they usually are: searching all of its memory.")
+            tables, fields = self.scan_markers(text_keys)
+        if len(tables["ITEMLOT_PARAM_ST"]) != 1:
+            raise LookupError("the item lots are not in memory yet (or not one live copy)")
+        self.tables = tables
+        return fields
+
+    def scan_markers(self, text_keys: list[str], start: int = 0, end: int = 1 << 47):
+        """(live TABLES copies, text fields of text_keys) found in [start, end) by their markers. Regular
+        expressions, not bytes.find: several times faster here (about 1 s per expression and 4 GB)."""
+        import os
+        import re
+        entry_rx = re.compile(re.escape(struct.pack("<Q", A.PARAM_ENTRY)))
+        # a text node whose key is as long as one of the keys (the length qword right after the key's pointer)
+        lengths = b"".join(re.escape(bytes([n])) for n in sorted({len(key) for key in text_keys}))
+        node_rx = re.compile(re.escape(struct.pack("<QQ", *A.TEXT_NODE)) +
+                             b".{%d}[%s]\0{7}" % (A.TEXT_NODE_KEY + 8 - 16, lengths), re.S)
+        needles = [key.encode("ascii") + b"\0" for key in text_keys]
+        prefix = os.path.commonprefix(needles)  # (a literal prefix keeps the expression fast)
+        key_rx = re.compile(re.escape(prefix) + b"(?:" + b"|".join(re.escape(n[len(prefix):]) for n in needles) + b")")
+        entries: list[int] = []
+        nodes: list[tuple[int, int, int]] = []  # (key pointer, key length, text field)
+        key_strings: dict[int, str] = {}
+        for at, block, n in self.memory.blocks(start, end, overlap=A.TEXT_NODE_KEY + 16):
+            for m in entry_rx.finditer(block, 0, n + 7):
+                if m.start() % 8 == 0 and m.start() < n:
+                    entries.append(at + m.start())
+            for m in node_rx.finditer(block):
+                if m.start() % 8 == 0 and m.start() < n:
+                    key_at, length = struct.unpack_from("<QQ", block, m.start() + A.TEXT_NODE_KEY)
+                    nodes.append((key_at, length, at + m.start() + A.TEXT_NODE_TEXT))
+            for m in key_rx.finditer(block):
+                if m.start() < n:
+                    key_strings[at + m.start()] = m.group(0)[:-1].decode("ascii")
+        tables: dict[str, list[params.Table]] = {name: [] for name in params.TABLES}
+        seen = set()
+        for entry in entries:
+            try:
+                start_at = self.memory.u64(entry + A.PARAM_ENTRY_TABLE)
+                if start_at in seen:
+                    continue
+                header = self.memory.read(start_at, 0x30)
+                name = header[0x0C:0x2C].split(b"\0")[0].decode("ascii", "replace")
+                if name not in params.TABLES:
+                    continue
+                table = params.read_table(self.memory, start_at)
+            except OSError:
+                continue
+            seen.add(start_at)
+            table.name, table.reference = name, entry + A.PARAM_ENTRY_TABLE
+            if table.live(self.memory):
+                tables[name].append(table)
+        fields: dict[str, list[int]] = {key: [] for key in text_keys}
+        for key_at, length, field in nodes:
+            key = key_strings.get(key_at)
+            if key is not None and len(key) == length:
+                fields[key].append(field)
+        return tables, fields
+
+    def paused(self, record: Path | None = None) -> Freeze:
+        """A context manager that pauses the game (not its window) while the client prepares it (memory.Freeze)."""
+        return Freeze(self.memory.pid, record)
 
     def find_tables(self) -> dict[str, list[params.Table]]:
         """Locate the param tables (slow: about 30 s). Raises LookupError if the lots are not loaded yet."""

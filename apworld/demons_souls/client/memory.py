@@ -9,12 +9,15 @@ from __future__ import annotations
 
 import ctypes
 import ctypes.wintypes as wt
+import json
 import struct
 from dataclasses import dataclass
+from pathlib import Path
 
 EBOOT_BASE = 0x900000000
 PROCESS_VM_READ, PROCESS_VM_WRITE, PROCESS_VM_OPERATION, PROCESS_QUERY_INFORMATION = 0x10, 0x20, 0x08, 0x400
-TH32CS_SNAPPROCESS = 0x2
+TH32CS_SNAPPROCESS, TH32CS_SNAPTHREAD = 0x2, 0x4
+THREAD_SUSPEND_RESUME = 0x0002
 MEM_COMMIT = 0x1000
 PAGE_NOACCESS, PAGE_GUARD = 0x01, 0x100
 
@@ -28,6 +31,12 @@ class _PROCESSENTRY32W(ctypes.Structure):
                 ("szExeFile", ctypes.c_wchar * 260)]
 
 
+class _THREADENTRY32(ctypes.Structure):
+    _fields_ = [("dwSize", wt.DWORD), ("cntUsage", wt.DWORD), ("th32ThreadID", wt.DWORD),
+                ("th32OwnerProcessID", wt.DWORD), ("tpBasePri", ctypes.c_long), ("tpDeltaPri", ctypes.c_long),
+                ("dwFlags", wt.DWORD)]
+
+
 class _MEMORY_BASIC_INFORMATION(ctypes.Structure):
     _fields_ = [("BaseAddress", ctypes.c_uint64), ("AllocationBase", ctypes.c_uint64),
                 ("AllocationProtect", wt.DWORD), ("PartitionId", wt.WORD), ("RegionSize", ctypes.c_uint64),
@@ -35,6 +44,13 @@ class _MEMORY_BASIC_INFORMATION(ctypes.Structure):
 
 
 _k32.OpenProcess.restype = wt.HANDLE
+_k32.OpenThread.restype = wt.HANDLE
+_k32.SuspendThread.argtypes = [wt.HANDLE]
+_k32.ResumeThread.argtypes = [wt.HANDLE]
+_k32.SuspendThread.restype = _k32.ResumeThread.restype = wt.DWORD
+_u32 = ctypes.WinDLL("user32", use_last_error=True)
+_u32.GetWindowThreadProcessId.argtypes = [wt.HWND, ctypes.POINTER(wt.DWORD)]
+_WNDENUMPROC = ctypes.WINFUNCTYPE(wt.BOOL, wt.HWND, wt.LPARAM)
 _k32.CreateToolhelp32Snapshot.restype = wt.HANDLE
 _k32.ReadProcessMemory.argtypes = [wt.HANDLE, ctypes.c_uint64, ctypes.c_void_p, ctypes.c_size_t,
                                    ctypes.POINTER(ctypes.c_size_t)]
@@ -76,6 +92,113 @@ def find_pid(exe: str = "kyty_emulator.exe") -> int:
     finally:
         _k32.CloseHandle(snap)
     raise LookupError(f"{exe} is not running")
+
+
+def process_threads(pid: int) -> list[int]:
+    snap = _k32.CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0)
+    entry = _THREADENTRY32()
+    entry.dwSize = ctypes.sizeof(entry)
+    out = []
+    try:
+        ok = _k32.Thread32First(snap, ctypes.byref(entry))
+        while ok:
+            if entry.th32OwnerProcessID == pid:
+                out.append(entry.th32ThreadID)
+            ok = _k32.Thread32Next(snap, ctypes.byref(entry))
+    finally:
+        _k32.CloseHandle(snap)
+    return out
+
+
+def window_threads(pid: int) -> set[int]:
+    """The threads owning the process's top-level windows (they pump its window messages)."""
+    out: set[int] = set()
+
+    @_WNDENUMPROC
+    def visit(hwnd, _):
+        owner = wt.DWORD()
+        thread = _u32.GetWindowThreadProcessId(hwnd, ctypes.byref(owner))
+        if owner.value == pid:
+            out.add(thread)
+        return True
+
+    _u32.EnumWindows(visit, 0)
+    return out
+
+
+class Freeze:
+    """Pause a process: every thread but its window threads, so the game stops dead (verified: no byte of its data
+    changes) while its window keeps answering Windows (no "Not Responding"). A context manager; `record` (a file)
+    lists the paused threads while they are paused, so thaw_recorded() can resume them if this process dies."""
+
+    def __init__(self, pid: int, record: Path | None = None):
+        self.pid, self.record = pid, record
+        self.handles: list[int] = []
+
+    def __enter__(self) -> "Freeze":
+        keep = window_threads(self.pid)
+        if not keep:
+            return self  # (no window yet: nothing would keep answering Windows, so do not pause)
+        paused = []
+        try:
+            for thread in process_threads(self.pid):
+                if thread in keep:
+                    continue
+                handle = _k32.OpenThread(THREAD_SUSPEND_RESUME, False, thread)
+                if not handle:
+                    continue
+                if _k32.SuspendThread(handle) == 0xFFFFFFFF:
+                    _k32.CloseHandle(handle)
+                    continue
+                self.handles.append(handle)
+                paused.append(thread)
+        except BaseException:
+            self.__exit__()
+            raise
+        if self.record is not None:
+            try:
+                self.record.write_text(json.dumps({"pid": self.pid, "threads": paused}))
+            except OSError:
+                pass
+        return self
+
+    @property
+    def paused(self) -> bool:
+        return bool(self.handles)
+
+    def __exit__(self, *exc) -> None:
+        for handle in self.handles:
+            _k32.ResumeThread(handle)
+            _k32.CloseHandle(handle)
+        self.handles = []
+        if self.record is not None:
+            try:
+                self.record.unlink(missing_ok=True)
+            except OSError:
+                pass
+
+
+def thaw_recorded(record: Path) -> int:
+    """Resume the threads that a Freeze of a client that died left paused (once each). Returns how many."""
+    try:
+        data = json.loads(record.read_text())
+    except (OSError, ValueError):
+        return 0
+    done = 0
+    alive = set(process_threads(int(data.get("pid", 0))))
+    for thread in data.get("threads", []):
+        if thread not in alive:
+            continue
+        handle = _k32.OpenThread(THREAD_SUSPEND_RESUME, False, thread)
+        if handle:
+            if _k32.ResumeThread(handle) != 0xFFFFFFFF:
+                done += 1
+            _k32.CloseHandle(handle)
+    try:
+        record.unlink(missing_ok=True)
+    except OSError:
+        pass
+    return done
 
 
 @dataclass
@@ -218,36 +341,44 @@ class GameMemory:
                         runs.append((page, page + PAGE))
         return runs
 
-    def find_guest(self, patterns: list[bytes], limit: int = 64) -> dict[bytes, list[int]]:
-        """Addresses of each pattern in touched, readable memory (one pass for all patterns). GPU (write-combined)
-        and guard pages are skipped; the game's data lives in mapped views at 0x2_0000_0000 and up."""
-        import re
-        regex = re.compile(b"|".join(re.escape(p) for p in patterns))
-        hits: dict[bytes, list[int]] = {p: [] for p in patterns}
-        longest = max(len(p) for p in patterns)
+    def blocks(self, start: int = 0, end: int = 1 << 47, overlap: int = 0, chunk: int = 16 << 20):
+        """Touched, readable memory in [start, end) as (address, data, n): up to `chunk` new bytes from `address`
+        (the first n of data), then up to `overlap` more from the same run. GPU (write-combined) and guard pages are
+        skipped; the game's data lives in mapped views at 0x2_0000_0000 and up."""
         runs = []
         info = _MEMORY_BASIC_INFORMATION()
-        address = 0
-        while _k32.VirtualQueryEx(self.handle, address, ctypes.byref(info), ctypes.sizeof(info)):
+        address = start
+        while address < end and _k32.VirtualQueryEx(self.handle, address, ctypes.byref(info), ctypes.sizeof(info)):
             base, size = info.BaseAddress, info.RegionSize
             if (info.State == MEM_COMMIT and info.Protect & _READABLE
                     and not info.Protect & (PAGE_GUARD | PAGE_WRITECOMBINE)):
-                runs += self.resident(base, base + size)
+                runs += self.resident(max(base, start), min(base + size, end))
             address = base + size
         for run_start, run_end in runs:
             at = run_start
             while at < run_end:
-                n = min((16 << 20) + longest, run_end - at)
+                n = min(chunk, run_end - at)
                 try:
-                    block = self.read(at, n)
+                    data = self.read(at, min(n + overlap, run_end - at))
                 except OSError:
-                    at += 16 << 20
+                    at += n
                     continue
-                for m in regex.finditer(block):
-                    found = hits[m.group(0)]
-                    if len(found) < limit and (not found or found[-1] != at + m.start()):
-                        found.append(at + m.start())
-                at += 16 << 20
+                yield at, data, n
+                at += n
+
+    def find_guest(self, patterns: list[bytes], limit: int = 64) -> dict[bytes, list[int]]:
+        """Addresses of each pattern in touched, readable memory (one pass for all patterns; slow with many)."""
+        import re
+        regex = re.compile(b"|".join(re.escape(p) for p in patterns))
+        hits: dict[bytes, list[int]] = {p: [] for p in patterns}
+        longest = max(len(p) for p in patterns)
+        for at, block, n in self.blocks(overlap=longest):
+            for m in regex.finditer(block):
+                if m.start() >= n:
+                    break
+                found = hits[m.group(0)]
+                if len(found) < limit and (not found or found[-1] != at + m.start()):
+                    found.append(at + m.start())
         return hits
 
     def regions(self, start: int = 0, end: int = 1 << 47) -> list[Region]:

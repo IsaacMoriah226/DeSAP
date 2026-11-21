@@ -5,7 +5,8 @@ keeps its stats, spells, ring and items, and gets random weapons, shield and arm
   (every requirement met; any weapon with RemoveStatRequirements), at most a little heavier than what they replace.
 - A bow stays a bow (the class's arrows still fit); a catalyst or talisman stays as it is (the class's spells need
   it); a shield becomes another shield the class can hold.
-- Armor: a random piece in every slot, the set within the class's own armor weight (+3), so it rolls as before.
+- Armor: a random piece in every slot that both body types can wear, the set within the class's own armor
+  weight (+3), so it rolls as before.
 
 Pools (data/equipment.json, built from the game files): the world's weapons and armor plus what merchants sell, all
 obtainable in a normal game. The result goes to the client in the slot data; it rewrites the classes' rows of
@@ -24,6 +25,7 @@ CATALYST, BOW, CROSSBOW, SHIELD = 8, 10, 11, 12
 WEAPON_FIELDS = ("equip_Wep_Right", "equip_Subwep_Right", "equip_Wep_Left", "equip_Subwep_Left")
 ARMOR_FIELDS = ("equip_Helm", "equip_Armer", "equip_Gaunt", "equip_Leg")  # slots 1-4
 ARMOR_ALLOWANCE = 3.0
+BOTH_BODY_TYPES = (0, 3)  # EquipParamProtector equipModelGender: 1 body type B only, 2 A only
 WEAPON_ALLOWANCE = 3.0
 
 
@@ -60,7 +62,9 @@ def class_loadout(row: dict, random: Random, no_requirements: bool) -> dict[str,
             out[field] = chosen
             taken.add(chosen)
     budget = sum(row[f + "_weight"] for f in ARMOR_FIELDS) + ARMOR_ALLOWANCE
-    pieces = {slot: sorted((int(i), a) for i, a in EQUIPMENT["armor"].items() if a["slot"] == slot)
+    # (only armor both body types can wear: some is body type A or B only, and the class comes before that choice)
+    pieces = {slot: sorted((int(i), a) for i, a in EQUIPMENT["armor"].items()
+                           if a["slot"] == slot and a.get("gender") in BOTH_BODY_TYPES)
               for slot in (1, 2, 3, 4)}
     lightest = {slot: min((a["weight"] for _i, a in pieces[slot]), default=0.0) for slot in pieces}
     slots = [1, 2, 3, 4]

@@ -257,7 +257,9 @@ def equipment(items: dict) -> dict:
                 "left": bool(row["leftHandEquipable"])}
         elif item["kind"] == "armor" and game_id in armor_rows:
             armor[str(game_id)] = {"name": item["name"], "slot": game_id // 100000,
-                                   "weight": round(armor_rows[game_id]["weight"], 2)}
+                                   "weight": round(armor_rows[game_id]["weight"], 2),
+                                   # equipModelGender: 1 body type B only, 2 body type A only, 0 and 3 both
+                                   "gender": armor_rows[game_id]["equipModelGender"]}
     class_def = souls.load_paramdef("CharaInitParam")
     class_rows = souls.read_param(GAME.params["CharaInitParam"].data, class_def).by_id()
     classes = {}
