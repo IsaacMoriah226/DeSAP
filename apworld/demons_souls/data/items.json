@@ -44,17 +44,6 @@
   ]
  },
  {
-  "name": "Geri's Stiletto",
-  "code": 3001050001,
-  "kind": "weapon",
-  "game_id": 10500,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Weapons"
-  ]
- },
- {
   "name": "Kris Blade",
   "code": 3001060001,
   "kind": "weapon",
@@ -488,17 +477,6 @@
   "code": 3009040001,
   "kind": "weapon",
   "game_id": 90400,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Weapons"
-  ]
- },
- {
-  "name": "Talisman of Beasts",
-  "code": 3009050001,
-  "kind": "weapon",
-  "game_id": 90500,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -1166,32 +1144,10 @@
   ]
  },
  {
-  "name": "Ring of Herculean Strength",
-  "code": 3200010101,
-  "kind": "ring",
-  "game_id": 101,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Rings"
-  ]
- },
- {
   "name": "Clever Rat's Ring",
   "code": 3200010201,
   "kind": "ring",
   "game_id": 102,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Rings"
-  ]
- },
- {
-  "name": "Dull Rat's Ring",
-  "code": 3200010301,
-  "kind": "ring",
-  "game_id": 103,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -1298,28 +1254,6 @@
   ]
  },
  {
-  "name": "Ally's Ring",
-  "code": 3200011401,
-  "kind": "ring",
-  "game_id": 114,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Rings"
-  ]
- },
- {
-  "name": "Foe's Ring",
-  "code": 3200011501,
-  "kind": "ring",
-  "game_id": 115,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Rings"
-  ]
- },
- {
   "name": "Thief Ring",
   "code": 3200011601,
   "kind": "ring",
@@ -1397,17 +1331,6 @@
   ]
  },
  {
-  "name": "Ring of Devout Prayer",
-  "code": 3200012401,
-  "kind": "ring",
-  "game_id": 124,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Rings"
-  ]
- },
- {
   "name": "Gash Resistance Ring",
   "code": 3200012501,
   "kind": "ring",
@@ -1430,17 +1353,6 @@
   ]
  },
  {
-  "name": "?ring:1000",
-  "code": 3200100001,
-  "kind": "ring",
-  "game_id": 1000,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Rings"
-  ]
- },
- {
   "name": "False King Demon Soul",
   "code": 3300000701,
   "kind": "goods",
@@ -1448,7 +1360,8 @@
   "count": 1,
   "classification": "useful",
   "groups": [
-   "Keys"
+   "Demon Souls",
+   "Boss Souls"
   ]
  },
  {
@@ -1457,7 +1370,7 @@
   "kind": "goods",
   "game_id": 9,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1468,18 +1381,7 @@
   "kind": "goods",
   "game_id": 10,
   "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Keys"
-  ]
- },
- {
-  "name": "Prison of Hope, 2F Key",
-  "code": 3300001101,
-  "kind": "goods",
-  "game_id": 11,
-  "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1490,7 +1392,7 @@
   "kind": "goods",
   "game_id": 12,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1501,7 +1403,7 @@
   "kind": "goods",
   "game_id": 13,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1512,7 +1414,7 @@
   "kind": "goods",
   "game_id": 14,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1698,17 +1600,6 @@
   ]
  },
  {
-  "name": "Maiden in Black Demon Soul",
-  "code": 3300003001,
-  "kind": "goods",
-  "game_id": 30,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Demon Souls"
-  ]
- },
- {
   "name": "Gray Demon Soul",
   "code": 3300003101,
   "kind": "goods",
@@ -1731,6 +1622,17 @@
   ]
  },
  {
+  "name": "Large Scaled Flame Demon Soul",
+  "code": 3300003301,
+  "kind": "goods",
+  "game_id": 33,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls"
+  ]
+ },
+ {
   "name": "Colorless Demon Soul",
   "code": 3300003401,
   "kind": "goods",
@@ -1742,25 +1644,14 @@
   ]
  },
  {
-  "name": "Mausoleum Key",
-  "code": 3300003501,
-  "kind": "goods",
-  "game_id": 35,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Keys"
-  ]
- },
- {
   "name": "Jade Hair Ornament",
   "code": 3300003801,
   "kind": "goods",
   "game_id": 38,
   "count": 1,
-  "classification": "useful",
+  "classification": "filler",
   "groups": [
-   "Keys"
+   "Consumables"
   ]
  },
  {
@@ -1769,7 +1660,7 @@
   "kind": "goods",
   "game_id": 39,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1780,7 +1671,7 @@
   "kind": "goods",
   "game_id": 40,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1791,7 +1682,7 @@
   "kind": "goods",
   "game_id": 41,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1802,7 +1693,7 @@
   "kind": "goods",
   "game_id": 42,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -1813,7 +1704,7 @@
   "kind": "goods",
   "game_id": 43,
   "count": 1,
-  "classification": "useful",
+  "classification": "progression",
   "groups": [
    "Keys"
   ]
@@ -2433,15 +2324,6 @@
   ]
  },
  {
-  "name": "Brass Telescope",
-  "code": 3300101801,
-  "kind": "goods",
-  "game_id": 1018,
-  "count": 1,
-  "classification": "useful",
-  "groups": []
- },
- {
   "name": "Archstone Shard",
   "code": 3300102001,
   "kind": "goods",
@@ -2469,15 +2351,6 @@
   "kind": "goods",
   "game_id": 1021,
   "count": 1,
-  "classification": "useful",
-  "groups": []
- },
- {
-  "name": "Stone of Ephemeral Eyes x2",
-  "code": 3300102102,
-  "kind": "goods",
-  "game_id": 1021,
-  "count": 2,
   "classification": "useful",
   "groups": []
  },
@@ -2632,15 +2505,6 @@
   "groups": [
    "Souls"
   ]
- },
- {
-  "name": "Nexial Binding",
-  "code": 3300103301,
-  "kind": "goods",
-  "game_id": 1033,
-  "count": 1,
-  "classification": "useful",
-  "groups": []
  },
  {
   "name": "Hardstone Shard x3",
@@ -2808,17 +2672,6 @@
   ]
  },
  {
-  "name": "Pure Clearstone",
-  "code": 3300201401,
-  "kind": "goods",
-  "game_id": 2014,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Upgrade Stones"
-  ]
- },
- {
   "name": "Greystone Shard x2",
   "code": 3300201502,
   "kind": "goods",
@@ -2834,17 +2687,6 @@
   "code": 3300201601,
   "kind": "goods",
   "game_id": 2016,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Upgrade Stones"
-  ]
- },
- {
-  "name": "Pure Greystone",
-  "code": 3300201701,
-  "kind": "goods",
-  "game_id": 2017,
   "count": 1,
   "classification": "useful",
   "groups": [
@@ -3127,17 +2969,6 @@
   ]
  },
  {
-  "name": "Pure Faintstone",
-  "code": 3300204701,
-  "kind": "goods",
-  "game_id": 2047,
-  "count": 1,
-  "classification": "useful",
-  "groups": [
-   "Upgrade Stones"
-  ]
- },
- {
   "name": "Cloudstone Shard",
   "code": 3300204801,
   "kind": "goods",
@@ -3190,28 +3021,6 @@
   "classification": "useful",
   "groups": [
    "Upgrade Stones"
-  ]
- },
- {
-  "name": "Blue Eye Stone",
-  "code": 3300999701,
-  "kind": "goods",
-  "game_id": 9997,
-  "count": 1,
-  "classification": "filler",
-  "groups": [
-   "Consumables"
-  ]
- },
- {
-  "name": "White Eye Stone",
-  "code": 3300999901,
-  "kind": "goods",
-  "game_id": 9999,
-  "count": 1,
-  "classification": "filler",
-  "groups": [
-   "Consumables"
   ]
  },
  {

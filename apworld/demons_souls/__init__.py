@@ -1,9 +1,9 @@
 """Archipelago world for Demon's Souls (PS5 remake, PPSA01341, game version 01.007.000).
 
-Logic: 1-1 is open. Every other world part needs its lock item ("1-2 The Lord's Path", ...), and a part after
-the first of its world also needs the previous part's boss dead. The goal is the ending credits: the Old One,
-reached once every archdemon is dead. Locations that can be lost (world tendency, one-time events) are excluded:
-they only get filler.
+Logic: 1-1 is open. Every other world part needs its lock item ("1-2 The Lord's Path", ...) and the vanilla
+conditions of its archstone (see `part_requirements`). The goal is the ending credits: False King Allant below the
+Nexus, reached once all five archdemons are dead. Locations that can be lost (world tendency, NPC states, the
+tutorial, one-time events) are excluded: they only get filler.
 """
 
 from __future__ import annotations
@@ -21,6 +21,7 @@ from .parts import ARCHDEMON_PARTS, LOCK_ITEMS, LOCKED_PARTS, PART_BY_CODE, PART
 
 GAME = "Demon's Souls Remake"
 VICTORY = "Victory"
+FINAL_REGION = "Below the Nexus"
 FILLER_FALLBACK = "Crescent Moon Grass"
 
 _CLASSIFICATION = {
@@ -28,6 +29,25 @@ _CLASSIFICATION = {
     "useful": ItemClassification.useful,
     "filler": ItemClassification.filler,
 }
+
+
+def part_requirements(code: str) -> tuple[str, ...]:
+    """What entering a part from its archstone needs (the client enforces the same):
+    - its lock item;
+    - x-1 of worlds 2-5: Phalanx dead (the Monumental unseals the other archstones only after the first boss);
+    - x-n for n > 1: the boss of x-(n-1) dead (its archstone appears when you take that boss's soul);
+    - 1-3 (and so 1-4): an archdemon of another world dead (the gate past the Tower Knight stays sealed until
+      then, event flag 8035).
+    """
+    part = PART_BY_CODE[code]
+    needs = [] if code == "1-1" else [part.lock_item]
+    if part.number == 1 and part.world != 1:
+        needs.append("boss:1-1")
+    if part.number > 1:
+        needs.append(f"boss:{part.world}-{part.number - 1}")
+    if code == "1-3":
+        needs.append("any:" + "|".join(f"boss:{other}" for other in ARCHDEMON_PARTS if not other.startswith("1-")))
+    return tuple(needs)
 
 
 def region_name(part: str) -> str:
@@ -89,15 +109,15 @@ class DemonsSoulsWorld(World):
         regions = {name: Region(name, self.player, self.multiworld) for name in ("Tutorial", "Nexus")}
         for part in PARTS:
             regions[part.lock_item] = Region(part.lock_item, self.player, self.multiworld)
-        regions["The Old One"] = Region("The Old One", self.player, self.multiworld)
+        regions[FINAL_REGION] = Region(FINAL_REGION, self.player, self.multiworld)
         self.multiworld.regions += regions.values()
 
         regions["Tutorial"].connect(regions["Nexus"], "Leave the tutorial")
         regions["Nexus"].connect(regions[PART_BY_CODE["1-1"].lock_item], "Archstone 1-1")
         for part in LOCKED_PARTS:
             regions["Nexus"].connect(regions[part.lock_item], f"Archstone {part.code}", self._part_rule(part.code))
-        regions["Nexus"].connect(regions["The Old One"], "Descend to the Old One", self._requires(
-            tuple(f"boss:{code}" for code in ARCHDEMON_PARTS)))
+        # With every archdemon dead, the Maiden in Black takes you below the Nexus to False King Allant.
+        regions["Nexus"].connect(regions[FINAL_REGION], "Descend below the Nexus", self._requires(("archdemons:5",)))
 
         for name, data in LOCATIONS.items():
             region = regions[region_name(data.part)]
@@ -113,33 +133,42 @@ class DemonsSoulsWorld(World):
             location.access_rule = self._requires(data.requires)
             region.locations.append(location)
 
-        victory = DemonsSoulsLocation(self.player, "The Old One", None, regions["The Old One"])
+        victory = DemonsSoulsLocation(self.player, "False King Allant", None, regions[FINAL_REGION])
         victory.place_locked_item(DemonsSoulsItem(VICTORY, ItemClassification.progression, None, self.player))
-        regions["The Old One"].locations.append(victory)
+        regions[FINAL_REGION].locations.append(victory)
 
     def _part_rule(self, code: str):
-        """Entering a locked part: its lock item, and for x-2 and later the previous part's boss dead."""
-        part = PART_BY_CODE[code]
-        needs = [part.lock_item]
-        if part.number > 1:
-            needs.append(f"boss:{part.world}-{part.number - 1}")
-        return self._requires(tuple(needs))
+        """Entering a locked part from the Nexus: see `part_requirements`."""
+        return self._requires(part_requirements(code))
 
     def _requires(self, needs: tuple[str, ...]):
+        """A rule for requirement tokens (see DeSAP/tools/research_rules.py): item names, "boss:<part>",
+        "region:<part>", "archdemons:<n>", "any:<token>|<token>"."""
         if not needs:
             return lambda state: True
-        items = []
-        for need in needs:
-            if need.startswith("boss:"):
-                items.append(PART_BY_CODE[need[5:]].boss_event)
-            else:
-                items.append(need)
-        counts = Counter(items)
+        checks = [self._token(need) for need in needs]
+        if len(checks) == 1:
+            return checks[0]
+        return lambda state: all(check(state) for check in checks)
+
+    def _token(self, need: str):
         player = self.player
-        if len(counts) == 1 and next(iter(counts.values())) == 1:
-            only = items[0]
-            return lambda state: state.has(only, player)
-        return lambda state: state.has_all_counts(counts, player)
+        if need.startswith("any:"):
+            options = [self._token(option) for option in need[4:].split("|")]
+            return lambda state: any(option(state) for option in options)
+        if need.startswith("boss:"):
+            event = PART_BY_CODE[need[5:]].boss_event
+            return lambda state: state.has(event, player)
+        if need.startswith("region:"):
+            region = PART_BY_CODE[need[7:]].lock_item
+            return lambda state: state.can_reach_region(region, player)
+        if need.startswith("archdemons:"):
+            count = int(need[11:])
+            events = [PART_BY_CODE[code].boss_event for code in ARCHDEMON_PARTS]
+            return lambda state: state.has_from_list_unique(events, player, count)
+        if need not in ITEMS:
+            raise KeyError(f"{GAME}: a requirement names an unknown item: {need!r}")
+        return lambda state: state.has(need, player)
 
     def set_rules(self) -> None:
         self.multiworld.completion_condition[self.player] = lambda state: state.has(VICTORY, self.player)

@@ -56,6 +56,21 @@ class EventReward:
         return int(self.map[1:3])
 
 
+_BLOCK_COMMENT = re.compile(r"--\[(=*)\[.*?\]\1\]", re.S)
+_LINE_COMMENT = re.compile(r"--[^\n]*")
+
+
+def strip_lua_comments(text: str) -> str:
+    """The script without comments: Bluepoint commented out several item calls (e.g. a second False King Demon
+    Soul in the Inner Ward), which must not count. Block comments keep their line breaks."""
+    text = _BLOCK_COMMENT.sub(lambda m: "\n" * m.group(0).count("\n"), text)
+    return _LINE_COMMENT.sub("", text)
+
+
+def read_script(path) -> str:
+    return strip_lua_comments(path.read_bytes().decode("cp932", "replace"))
+
+
 _FUNCTION = re.compile(r"^function\s+([\w.:]+)\s*\(", re.M)
 _REWARD = re.compile(r"proxy:GetRateItem\(\s*(\d+)\s*\)")
 _SET_FLAG = re.compile(r"proxy:SetEventFlag\(\s*(\d+)\s*,\s*(true|1)\s*\)")
@@ -106,7 +121,7 @@ def enemy_kills(game: GameData) -> list[EnemyKill]:
     out = []
     script = game.dvdroot / "script"
     for path in sorted(script.glob("m0?_??_00_00.lua")):
-        text = path.read_bytes().decode("cp932", "replace")
+        text = read_script(path)
         deaths = {}
         for m in _DEAD.finditer(text):
             deaths.setdefault((int(m.group(1)), int(m.group(2))), m.group(3))
@@ -129,7 +144,7 @@ def event_rewards(game: GameData) -> list[EventReward]:
     out = []
     script = game.dvdroot / "script"
     for path in sorted(script.glob("m0?_??_00_00.lua")):
-        text = path.read_bytes().decode("cp932", "replace")
+        text = read_script(path)
         starts = [(m.start(), m.group(1)) for m in _FUNCTION.finditer(text)] + [(len(text), "")]
         once = _once_registrations(text)
         for (begin, name), (end, _) in zip(starts, starts[1:]):

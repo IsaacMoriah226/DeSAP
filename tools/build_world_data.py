@@ -2,9 +2,9 @@
 
 Inputs:
   work\\locations.json             every item source in the game files (tools/build_locations.py)
-  work\\research\\final\\*.json      the reviewed research: names, descriptions, requirements, missable flags,
-                                   which sources are locations at all (optional while research is running:
-                                   without it, names are placeholders)
+  work\\research\\out\\*.json        the research: names, descriptions, requirements, missable flags, which
+                                   sources are locations at all; tools/research_rules.py turns its
+                                   requirement texts into logic and holds the owner's decisions
 
   python -I tools/build_world_data.py
 """
@@ -31,6 +31,12 @@ def _load(name: str):
 
 
 _ids, _parts = _load("ids"), _load("parts")
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "tools"))
+import research_rules as rules  # noqa: E402
+from desap.gamedata import GameData  # noqa: E402
+
+GAME = GameData()
 ITEM_BASE, KINDS, LOCATION_BASE, LOCK_ITEM_OFFSET = _ids.ITEM_BASE, _ids.KINDS, _ids.LOCATION_BASE, _ids.LOCK_ITEM_OFFSET
 LOCK_ITEMS, PARTS = _parts.LOCK_ITEMS, _parts.PARTS
 
@@ -43,7 +49,7 @@ for sub in ("00", "01", "02"):
     MAP_PART[f"m08_{sub}_00_00"] = "Tutorial"
 PART_ABBREVIATION = {part.code: part.abbreviation for part in PARTS} | {"Nexus": "NX", "Tutorial": "TUT"}
 
-KEY_GOODS = set(range(6, 15)) | set(range(35, 45)) | {9931}
+KEY_GOODS = {6, 8, 9, 10, 11, 12, 13, 14, 35, 36, 37, 39, 40, 41, 42, 43, 44, 9931}  # 7 is a demon soul, 38 a trade item
 BOSS_SOULS = {7} | set(range(15, 30))
 DEMON_SOULS = BOSS_SOULS | set(range(30, 35))
 USEFUL_GOODS = {1010, 1018, 1021, 1033}
@@ -119,57 +125,90 @@ def raw_sources() -> list[dict]:
     return out
 
 
+def source_key(entry: dict) -> tuple:
+    kind = entry["kind"]
+    if kind == "treasure":
+        return ("treasure", entry["map"], entry["index"], entry["lot"])
+    if kind == "event":
+        return ("event", entry["map"], entry["function"], entry["lot"])
+    if kind == "enemy":
+        return ("enemy", entry["map"], entry["flag"])
+    return ("shop", entry["shop_row"])
+
+
 def research() -> dict[tuple, dict]:
-    """Reviewed research entries by source key (empty while research is running)."""
+    """The research entries (work/research/out/<world>.json) by source key."""
     out: dict[tuple, dict] = {}
-    for path in sorted((WORK / "research" / "final").glob("*.json")):
+    for path in sorted((WORK / "research" / "out").glob("*.json")):
         for entry in json.loads(path.read_text(encoding="utf-8"))["locations"]:
-            kind = entry["kind"]
-            if kind == "treasure":
-                key = ("treasure", entry["map"], entry["index"], entry["lot"])
-            elif kind == "event":
-                key = ("event", entry["map"], entry["function"], entry["lot"])
-            elif kind == "enemy":
-                key = ("enemy", entry["map"], entry["flag"])
-            else:
-                key = ("shop", entry["shop_row"])
+            key = source_key(entry)
             if key in out:
                 raise ValueError(f"research lists {key} twice")
             out[key] = entry
     return out
 
 
+def added_sources(notes: dict[tuple, dict], known: set[tuple]) -> list[dict]:
+    """Item sources the extractor missed and the research added (e.g. dragon kills: no event flag of their own)."""
+    out = []
+    for key, entry in notes.items():
+        if key in known:
+            continue
+        if not entry.get("location", True):
+            continue  # the research's note on something that is not a source (e.g. a commented-out item call)
+        if not entry.get("added_not_in_input"):
+            raise ValueError(f"research entry {key} matches no item source in the game data")
+        if entry["kind"] != "event":
+            raise ValueError(f"added research entry {key} is not an event")
+        (it,) = GAME.lot_items(entry["lot"])
+        out.append({"key": key, "kind": "event", "map": entry["map"], "flag": entry["flag"],
+                    "item": {"category": it.category, "id": it.id, "count": it.count, "name": it.name},
+                    "code": LOCATION_BASE + 100_000_000 + map_number(entry["map"]) * 100_000 + entry["lot"],
+                    "game": {"map": entry["map"], "function": entry["function"], "lot": entry["lot"],
+                             "flag": entry["flag"], "other_flags": []}})
+    return out
+
+
 def main() -> None:
-    sources = raw_sources()
     notes = research()
-    locations, logic_items = [], set()
+    sources = raw_sources()
+    sources += added_sources(notes, {s["key"] for s in sources})
+    base_names = {s["item"]["name"] for s in sources}
+    abbreviation_part = {abbr: part for part, abbr in PART_ABBREVIATION.items()}
+
+    locations, logic_items, dropped = [], set(), Counter()
     for source in sources:
         entry = notes.get(source["key"])
-        # Shops have no map in the data; the research says where each merchant is (placeholder: the Nexus).
-        part = MAP_PART.get(source["map"], "Nexus") if source["map"] else "Nexus"
-        if entry is not None:
-            if not entry.get("location", True):
-                continue
-            part = entry.get("part", part)
-            name, description = entry["name"], entry.get("description", "")
-            requires, missable, tendency = entry.get("requires", []), entry.get("missable") or "", entry.get("tendency") or ""
-        else:
-            if notes:
-                raise ValueError(f"no research entry for {source['key']}")
-            prefix = "SHOP" if source["kind"] == "shop" else PART_ABBREVIATION[part]
-            name = f"{prefix}: {source['item']['name']} - {source['kind']} {'/'.join(map(str, source['key'][1:]))}"
-            description, requires, missable, tendency = "", [], "", ""
-            if any(l["code"] == source["code"] for l in locations):
-                continue  # placeholder mode: the same lot given by two events of a map (NPC events, dropped later)
+        if entry is None:
+            raise ValueError(f"no research entry for {source['key']}")
+        name = rules.RENAMES.get(entry["name"], entry["name"])
+        if name in rules.NOT_LOCATIONS:
+            dropped["kept vanilla (owner)"] += 1
+            continue
+        if not entry.get("location", True):
+            dropped["not a location (research)"] += 1
+            continue
+        norm = rules.normalize(entry.get("requires", []), base_names)
+        if norm.impossible:
+            dropped["impossible on the emulator"] += 1
+            continue
+        # The part (region) is the area the location is in: the map's, or for shops the merchant's area code.
+        part = abbreviation_part[name.split(":", 1)[0]] if source["kind"] == "shop" else MAP_PART[source["map"]]
+        missable = entry.get("missable") or ""
+        if norm.npc and not missable:
+            missable = "depends on " + "; ".join(norm.npc)
+        missable = rules.MISSABLE.get(name, missable)
+        if part == "Tutorial" and not missable:
+            missable = "tutorial: cannot be revisited"
         it = source["item"]
         location = {"name": name, "code": source["code"], "part": part, "kind": source["kind"],
-                    "vanilla_item": item_name(it["name"], it["count"]), "description": description,
-                    "requires": requires, "missable": missable, "tendency": tendency, "game": source["game"],
-                    "_item": it}
-        logic_items.update(r for r in requires if not r.startswith("boss:"))
+                    "vanilla_item": item_name(it["name"], it["count"]), "description": entry.get("description", ""),
+                    "requires": norm.tokens, "missable": missable, "tendency": entry.get("tendency") or "",
+                    "game": source["game"], "_item": it}
+        logic_items.update(t for t in norm.tokens if ":" not in t)
         locations.append(location)
 
-    # Items: every vanilla item of a location, the world locks, the filler fallback.
+    # Items: every vanilla item of a location, and the world locks.
     items: dict[str, dict] = {}
     for location in locations:
         it = location.pop("_item")
@@ -189,18 +228,21 @@ def main() -> None:
     if unknown:
         raise ValueError(f"requirements name items no location holds: {unknown}")
 
-    # Location groups and the bosses (events marking a part's boss dead; its requirements are its soul's).
+    # Location groups, and each part's boss: an event (no id) whose requirements are those of its soul's
+    # location, without the boss itself.
     for location in locations:
-        groups = [location["part"]] if location["part"] else []
+        groups = [location["part"]]
         groups.append({"treasure": "Treasures", "event": "Events", "shop": "Shops", "enemy": "Enemy Drops"}[location["kind"]])
         if location["missable"] or location["tendency"]:
             groups.append("Missable")
-        if location["vanilla_item"] in items and "Boss Souls" in items[location["vanilla_item"]]["groups"]:
+        if "Boss Souls" in items[location["vanilla_item"]]["groups"]:
             groups.append("Boss Rewards")
         location["groups"] = groups
     for part in PARTS:
         souls = [l for l in locations if l["part"] == part.code and "Boss Rewards" in l["groups"]]
-        requires = sorted({r for l in souls for r in l["requires"]})
+        if len(souls) != 1:
+            raise ValueError(f"{part.code}: expected one boss soul location, found {[l['name'] for l in souls]}")
+        requires = [t for t in souls[0]["requires"] if t != f"boss:{part.code}"]
         locations.append({"name": f"{part.code} boss: {part.boss}", "code": None, "part": part.code,
                           "kind": "boss_event", "vanilla_item": "", "requires": requires, "game": {}})
 
@@ -217,9 +259,10 @@ def main() -> None:
                                                ensure_ascii=False), encoding="utf-8")
     (OUT / "locations.json").write_text(json.dumps(locations, indent=1, ensure_ascii=False), encoding="utf-8")
     real = [l for l in locations if l["code"] is not None]
-    print(f"{len(real)} locations ({Counter(l['kind'] for l in real)}), "
-          f"{sum(1 for l in real if l['missable'] or l['tendency'])} missable; {len(items)} items "
-          f"({Counter(i['classification'] for i in items.values())}); research entries: {len(notes)}")
+    print(f"{len(real)} locations ({dict(Counter(l['kind'] for l in real))}), "
+          f"{sum(1 for l in real if l['missable'] or l['tendency'])} missable; dropped {dict(dropped)}")
+    print(f"{len(items)} items ({dict(Counter(i['classification'] for i in items.values()))}); progression keys: "
+          f"{sorted(n for n, i in items.items() if i['classification'] == 'progression' and 'Keys' in i['groups'])}")
 
 
 if __name__ == "__main__":
