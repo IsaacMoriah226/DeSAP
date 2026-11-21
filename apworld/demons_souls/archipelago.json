@@ -1,6 +1,6 @@
 {
 	"game": "Demon's Souls Remake",
-	"minimum_ap_version": "0.6.0",
-	"world_version": "0.3.0",
+	"minimum_ap_version": "0.6.8",
+	"world_version": "0.4.0",
 	"authors": ["isaacmoriah226"]
 }

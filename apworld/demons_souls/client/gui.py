@@ -506,9 +506,9 @@ class OverlayPage(BoxLayout):
             ctypes.windll.user32.SetWindowPos(self.ctx.overlay.hwnd, 0, 40, 120, 0, 0, 0x0001 | 0x0004 | 0x0010)
 
     def draw_preview(self) -> None:
-        import io
         import time as _time
-        from PIL import Image as PilImage
+        from kivy.graphics.texture import Texture
+        from . import gdiplus
         from .overlay import Message, Overlay
         sample = Overlay(self.ctx.settings.overlay, on_settings=lambda: None)
         now = _time.monotonic()
@@ -519,13 +519,18 @@ class OverlayPage(BoxLayout):
                     now),
             Message([("You received ", "text"), ("1-2 The Lord's Path", "progression"), (" from ", "text"),
                      ("Friend", "player")], now)][-max(1, self.ctx.settings.overlay.lines):]
-        image = sample.render()
-        scene = PilImage.new("RGBA", (image.width + 40, image.height + 40), (74, 82, 70, 255))  # a stand-in for the game
-        scene.alpha_composite(image, (20, 20))
-        data = io.BytesIO()
-        scene.save(data, format="png")
-        data.seek(0)
-        self.preview.texture = CoreImage(data, ext="png").texture
+        with gdiplus.LOCK:
+            image = sample.render()
+            scene = gdiplus.Canvas(image.width + 40, image.height + 40)
+            scene.fill((74, 82, 70))  # a stand-in for the game
+            scene.paste(image, 20, 20)
+            data = scene.bgra(premultiplied=False)
+            image.close()
+            scene.close()
+        texture = Texture.create(size=(scene.width, scene.height), colorfmt="rgba")
+        texture.blit_buffer(data, colorfmt="bgra", bufferfmt="ubyte")
+        texture.flip_vertical()  # (Kivy's rows go bottom-up)
+        self.preview.texture = texture
         self.preview.height = min(dp(320), scene.height)
 
 

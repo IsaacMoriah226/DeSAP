@@ -1,14 +1,14 @@
 """The in-game message overlay: a borderless, always-on-top, per-pixel transparent window over Demon's Souls that
 shows the items this player finds, sends and receives (everything else stays in the launcher's log).
 
-Windows only, ctypes and Pillow (both in Archipelago). The window is a layered window (UpdateLayeredWindow with a
-premultiplied BGRA bitmap): crisp text over a background of any opacity. It never takes the focus
+Windows only, ctypes and GDI+ (gdiplus.py; Archipelago's frozen build has no Pillow). The window is a layered
+window (UpdateLayeredWindow with a premultiplied BGRA bitmap): crisp text over a background of any opacity. It never takes the focus
 (WS_EX_NOACTIVATE), shows only while the emulator's window is in front, can be dragged anywhere, and its gear icon
 opens the launcher's overlay settings. KytyPS5's fullscreen is SDL's desktop (borderless) fullscreen, which other
 windows can draw over.
 
-Font: Jost (data/fonts/Jost.ttf, SIL Open Font License, the free Futura-style face), medium weight; Segoe UI only if
-the file were missing.
+Font: Jost Medium (data/fonts/Jost-Medium.ttf, a static instance of the variable Jost.ttf, SIL Open Font License, the
+free Futura-style face), loaded from memory (it works from a packed .apworld); Segoe UI only if it were missing.
 """
 
 from __future__ import annotations
@@ -16,15 +16,14 @@ from __future__ import annotations
 import ctypes
 import ctypes.wintypes as wt
 import os
+import pkgutil
 import queue
 import re
 import threading
 import time
 from dataclasses import dataclass
-from pathlib import Path
 
-from PIL import Image, ImageChops, ImageDraw, ImageFont
-
+from . import gdiplus
 from .settings import OverlaySettings
 
 user32 = ctypes.WinDLL("user32", use_last_error=True)
@@ -104,26 +103,32 @@ class Message:
     born: float
 
 
-FONT_WEIGHT = 500  # Jost is a variable font: medium
+FONT_FILE = "data/fonts/Jost-Medium.ttf"
+_font_file: gdiplus.FontFile | None | bool = None
+_measure: gdiplus.Canvas | None = None
 
 
-def find_font() -> str | None:
-    bundled = Path(__file__).resolve().parent.parent / "data" / "fonts" / "Jost.ttf"
-    if bundled.exists():
-        return str(bundled)
-    fallback = Path(os.environ.get("WINDIR", r"C:\Windows")) / "Fonts" / "segoeui.ttf"
-    return str(fallback) if fallback.exists() else None
+def load_font(size: float) -> gdiplus.Font:
+    """Jost Medium at `size` pixels (Segoe UI if the font file were missing)."""
+    global _font_file
+    with gdiplus.LOCK:
+        if _font_file is None:
+            data = pkgutil.get_data(__name__.rsplit(".", 2)[0], FONT_FILE)
+            try:
+                _font_file = gdiplus.FontFile(data) if data else False
+            except OSError:
+                _font_file = False
+        if _font_file:
+            return _font_file.size(size)
+        return gdiplus.Font.system("Segoe UI", size)
 
 
-def load_font(path: str | None, size: int):
-    if not path:
-        return ImageFont.load_default()
-    font = ImageFont.truetype(path, size)
-    try:
-        font.set_variation_by_axes([FONT_WEIGHT])
-    except (OSError, AttributeError):
-        pass  # (not a variable font)
-    return font
+def text_width(text: str, font: gdiplus.Font) -> float:
+    global _measure
+    with gdiplus.LOCK:
+        if _measure is None:
+            _measure = gdiplus.Canvas(1, 1)
+        return _measure.textlength(text, font)
 
 
 class Overlay:
@@ -140,7 +145,6 @@ class Overlay:
         self.inbox: queue.Queue = queue.Queue()
         self.hwnd = None
         self.thread: threading.Thread | None = None
-        self.font_path = find_font()
         self.dirty = True
         self.visible = False
         self.size = (1, 1)
@@ -257,12 +261,16 @@ class Overlay:
 
     # --- drawing -------------------------------------------------------------------------------------------------
 
-    def render(self) -> Image.Image:
-        """The overlay as an RGBA image (also used by tests and the settings preview)."""
+    def render(self) -> gdiplus.Canvas:
+        """The overlay drawn on a transparent canvas (also used by tests and the settings preview)."""
+        with gdiplus.LOCK:
+            return self._render()
+
+    def _render(self) -> gdiplus.Canvas:
         s = self.settings
         size = max(10, s.font_size)
-        font = load_font(self.font_path, size)
-        small = load_font(self.font_path, max(10, int(size * 0.7)))
+        font = load_font(size)
+        small = load_font(max(10, int(size * 0.7)))
         pad, line_gap = 14, int(size * 0.35)
         width = max(240, s.width)
         banner = self.banner
@@ -273,12 +281,11 @@ class Overlay:
         banner_height = len(banner_lines) * line_height + (line_gap + 12 if lines else 6) if banner_lines else 0
         height = (self.HEADER + pad // 2 + banner_height + max(0, len(lines)) * line_height
                   + (pad if lines else 8 if banner_lines else 4))
-        image = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-        draw = ImageDraw.Draw(image)
+        draw = gdiplus.Canvas(width, height)
         r, g, b = (int(s.background.lstrip("#")[i:i + 2], 16) for i in (0, 2, 4))
         draw.rounded_rectangle((0, 0, width - 1, height - 1), radius=10, fill=(r, g, b, s.background_alpha))
         gold = COLORS["gold"]
-        draw.text((pad, 7), "Archipelago", font=small, fill=(*gold, s.text_alpha))
+        draw.text((pad, 7), "Archipelago", small, (*gold, s.text_alpha))
         self._gear(draw, width - self.GEAR - 6, 2, self.GEAR, (*COLORS["dim"], s.text_alpha))
         y = self.HEADER + pad // 2
         if banner_lines:  # a gold-edged box, never faded
@@ -288,9 +295,9 @@ class Overlay:
             for line, _born in banner_lines:
                 x = pad + 4
                 for chunk, key in line:
-                    draw.text((x + 1, y + 1), chunk, font=font, fill=(0, 0, 0, int(s.text_alpha * 0.6)))
-                    draw.text((x, y), chunk, font=font, fill=(*COLORS.get(key, COLORS["text"]), s.text_alpha))
-                    x += draw.textlength(chunk, font=font)
+                    draw.text((x + 1, y + 1), chunk, font, (0, 0, 0, int(s.text_alpha * 0.6)))
+                    draw.text((x, y), chunk, font, (*COLORS.get(key, COLORS["text"]), s.text_alpha))
+                    x += draw.textlength(chunk, font)
                 y += line_height
             y += line_gap + 12
         now = time.monotonic()
@@ -302,14 +309,14 @@ class Overlay:
             x = pad
             for chunk, key in line:
                 alpha = int(s.text_alpha * fade)
-                draw.text((x + 1, y + 1), chunk, font=font, fill=(0, 0, 0, int(alpha * 0.6)))  # shadow
-                draw.text((x, y), chunk, font=font, fill=(*COLORS.get(key, COLORS["text"]), alpha))
-                x += draw.textlength(chunk, font=font)
+                draw.text((x + 1, y + 1), chunk, font, (0, 0, 0, int(alpha * 0.6)))  # shadow
+                draw.text((x, y), chunk, font, (*COLORS.get(key, COLORS["text"]), alpha))
+                x += draw.textlength(chunk, font)
             y += line_height
-        return image
+        return draw
 
     @staticmethod
-    def _gear(draw: ImageDraw.ImageDraw, x: int, y: int, size: int, color) -> None:
+    def _gear(draw: gdiplus.Canvas, x: int, y: int, size: int, color) -> None:
         import math
         cx, cy, outer, inner = x + size / 2, y + size / 2, size * 0.42, size * 0.28
         points = []
@@ -317,8 +324,9 @@ class Overlay:
             angle = i * math.pi / 8
             radius = outer if i % 2 == 0 else inner
             points.append((cx + radius * math.cos(angle), cy + radius * math.sin(angle)))
-        draw.polygon(points, fill=color)
-        draw.ellipse((cx - inner * 0.55, cy - inner * 0.55, cx + inner * 0.55, cy + inner * 0.55), fill=(0, 0, 0, 0))
+        draw.polygon(points, color)
+        draw.ellipse((cx - inner * 0.55, cy - inner * 0.55, cx + inner * 0.55, cy + inner * 0.55), (0, 0, 0, 0),
+                     replace=True)
 
     @staticmethod
     def _wrap(messages: list[Message], font, width: int) -> list[tuple[list[tuple[str, str]], float]]:
@@ -329,12 +337,12 @@ class Overlay:
             used = 0.0
             for text, key in message.parts:
                 for token in re.findall(r"\s*\S+|\s+$", text):  # words with the spaces before them
-                    w = font.getlength(token)
+                    w = text_width(token, font)
                     if line and used + w > width:
                         out.append((line, message.born))
                         line, used = [], 0.0
                         token = token.lstrip()
-                        w = font.getlength(token)
+                        w = text_width(token, font)
                     if line and line[-1][1] == key:
                         line[-1] = (line[-1][0] + token, key)
                     else:
@@ -345,12 +353,10 @@ class Overlay:
         return out
 
     def _draw(self) -> None:
-        image = self.render()
-        width, height = image.size
-        # premultiplied BGRA (colour channels scaled by alpha), top-down rows (negative height below)
-        r, g, b, a = image.split()
-        data = Image.merge("RGBA", (ImageChops.multiply(b, a), ImageChops.multiply(g, a), ImageChops.multiply(r, a),
-                                    a)).tobytes()
+        canvas = self.render()
+        width, height = canvas.size
+        data = canvas.bgra(premultiplied=True)  # top-down rows (negative height below)
+        canvas.close()
         header = BITMAPINFOHEADER(ctypes.sizeof(BITMAPINFOHEADER), width, -height, 1, 32, 0, 0, 0, 0, 0, 0)
         screen = user32.GetDC(None)
         memory = gdi32.CreateCompatibleDC(screen)

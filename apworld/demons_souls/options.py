@@ -22,7 +22,7 @@ class RandomizeStartingLoadout(DefaultOnToggle):
     """Give every class random starting weapons, shield and armor, as Dark Souls III's randomizer does. Each class
     keeps its stats, spells, ring and items; its new weapons are ones it can use (any weapon with Remove Stat
     Requirements), its catalyst or talisman stays, a bow stays a bow, and its armor weighs about what it did. The
-    class selection screen shows the new gear."""
+    launcher's Classes page shows each class's new gear (the game's own class preview still shows the usual gear)."""
     display_name = "Randomize Starting Loadout"
 
 
