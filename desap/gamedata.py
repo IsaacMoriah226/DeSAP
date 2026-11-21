@@ -17,13 +17,35 @@ from . import msb, souls
 
 DEFAULT_GAME = Path(r"C:\Users\Isaac Moriah\Desktop\PPSA01341-app0")
 
-# ITEMLOT_ITEMCATEGORY -> (dev console command, item.msgbnd name file id)
+# ITEMLOT_ITEMCATEGORY -> (kind, item.msgbnd name file id of the PS3 text)
 CATEGORIES = {
     0x00000000: ("weapon", 11),
     0x10000000: ("armor", 12),
     0x20000000: ("ring", 13),
     0x40000000: ("goods", 10),
 }
+# The remake's own UI text (Bluepoint .ctxt files, what the game shows): kind -> (file, key prefix)
+REMAKE_TEXT = {
+    "weapon": ("weapon_name", "WEAPON_NAME_"),
+    "armor": ("protector_name", "PROTECTOR_NAME_"),
+    "ring": ("accessory_name", "ACCESSORY_NAME_"),
+    "goods": ("goods_name", "GOODS_NAME_"),
+    "magic": ("magic_name", "MAGIC_NAME_"),
+}
+
+
+def read_ctxt(path: Path, prefix: str) -> dict[int, str]:
+    """Lines `<PREFIX><id>:<hash>=<text>`; continuation lines (multi-line text) are joined with newlines."""
+    out: dict[int, str] = {}
+    last = None
+    for line in path.read_text(encoding="utf-8-sig").splitlines():
+        if line.startswith(prefix) and ":" in line and "=" in line:
+            key, text = line.split("=", 1)
+            last = int(key[len(prefix):key.index(":")])
+            out[last] = text
+        elif last is not None and line:
+            out[last] += "\n" + line
+    return out
 CONSOLE_ADD = {"weapon": "cp11_addWeapon", "armor": "cp11_addArmor", "ring": "cp11_addAccessory",
                "goods": "cp11_addGoods"}
 
@@ -93,13 +115,21 @@ class TreasureLocation:
 
 class GameData:
     def __init__(self, game: Path = DEFAULT_GAME, language: str = "na_english"):
+        self.game = game
         self.dvdroot = game / "cp11demonssouls" / "dvdroot"
         self.language = language
 
     @cached_property
-    def names(self) -> dict[int, dict[int, str]]:
+    def ps3_names(self) -> dict[int, dict[int, str]]:
+        """The original game's item text (msg/<language>/item.msgbnd); the remake does not show it."""
         files = souls.read_bnd3((self.dvdroot / "msg" / self.language / "item.msgbnd").read_bytes())
         return {f.id: souls.read_fmg(f.data) for f in files}
+
+    @cached_property
+    def names(self) -> dict[str, dict[int, str]]:
+        """kind -> id -> the remake's English name (text/ds/_cmn/*.en.ctxt)."""
+        folder = self.game / "text" / "ds" / "_cmn"
+        return {kind: read_ctxt(folder / f"{file}.en.ctxt", prefix) for kind, (file, prefix) in REMAKE_TEXT.items()}
 
     @cached_property
     def params(self) -> dict[str, souls.BinderFile]:
@@ -111,7 +141,13 @@ class GameData:
 
     def item_name(self, category: int, item_id: int) -> str:
         kind = CATEGORIES.get(category)
-        return self.names.get(kind[1], {}).get(item_id, f"?{category:#x}:{item_id}") if kind else f"?{category:#x}:{item_id}"
+        if kind is None:
+            return f"?{category:#x}:{item_id}"
+        name = self.names[kind[0]].get(item_id)
+        if not name:  # not in the remake's text: the PS3 name, marked
+            name = self.ps3_names.get(kind[1], {}).get(item_id)
+            return f"{name} (PS3 name)" if name else f"?{kind[0]}:{item_id}"
+        return name
 
     def lot_items(self, lot_id: int) -> list[LotItem]:
         row = self.item_lots.get(lot_id)

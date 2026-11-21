@@ -6,7 +6,7 @@ Event: +0 name offset (i64), +8 event id, +12 type, +16 id, +20 -1, +24 base dat
        +32 type data offset (i64). Base data: part index, region index, entity id, 0.
 Treasure type data (type 4): 0, 0, part index, -1, then 5 x (item lot id, -1) (the PS3 layout has one 0 and
 no -1 after the part index).
-Part: +0 name offset (i64), +8 type, position at +0x20 (3 x f32).
+Part: +0 name offset (i64), +8 type, position at +0x20 (3 x f32), +0x68 entity data offset (i64; entity id first).
 """
 
 from __future__ import annotations
@@ -24,6 +24,7 @@ class Part:
     name: str
     type: int
     position: tuple[float, float, float]
+    entity_id: int = -1  # what event scripts call the part by (-1: none)
 
 
 @dataclass
@@ -99,7 +100,10 @@ def read_msb(path: Path) -> Msb:
     parts = []
     for i, entry in enumerate(params.get("PARTS_PARAM_ST", [])):
         name_at, part_type = struct.unpack_from("<qi", data, entry)
-        parts.append(Part(i, _text(data, entry + name_at), part_type, struct.unpack_from("<3f", data, entry + 0x20)))
+        entity_at = struct.unpack_from("<q", data, entry + 0x68)[0]
+        entity_id = struct.unpack_from("<i", data, entry + entity_at)[0] if entity_at > 0 else -1
+        parts.append(Part(i, _text(data, entry + name_at), part_type, struct.unpack_from("<3f", data, entry + 0x20),
+                          entity_id))
     treasures = []
     for entry in params.get("EVENT_PARAM_ST", []):
         name_at, event_id, event_type = struct.unpack_from("<qii", data, entry)

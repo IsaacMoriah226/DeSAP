@@ -1,0 +1,3382 @@
+[
+ {
+  "name": "Dagger",
+  "code": 3001000001,
+  "kind": "weapon",
+  "game_id": 10000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Parrying Dagger",
+  "code": 3001010001,
+  "kind": "weapon",
+  "game_id": 10100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Mail Breaker",
+  "code": 3001020001,
+  "kind": "weapon",
+  "game_id": 10200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Baby's Nail",
+  "code": 3001040001,
+  "kind": "weapon",
+  "game_id": 10400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Geri's Stiletto",
+  "code": 3001050001,
+  "kind": "weapon",
+  "game_id": 10500,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Kris Blade",
+  "code": 3001060001,
+  "kind": "weapon",
+  "game_id": 10600,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Secret Dagger",
+  "code": 3001070001,
+  "kind": "weapon",
+  "game_id": 10700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Moon Short Sword+1",
+  "code": 3002003101,
+  "kind": "weapon",
+  "game_id": 20031,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Dragon Long Sword+1",
+  "code": 3002022101,
+  "kind": "weapon",
+  "game_id": 20221,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Flamberge",
+  "code": 3002030001,
+  "kind": "weapon",
+  "game_id": 20300,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Bastard Sword",
+  "code": 3002040001,
+  "kind": "weapon",
+  "game_id": 20400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Great Sword",
+  "code": 3002060001,
+  "kind": "weapon",
+  "game_id": 20600,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Dragon Bone Smasher",
+  "code": 3002070001,
+  "kind": "weapon",
+  "game_id": 20700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Rune Sword",
+  "code": 3002080001,
+  "kind": "weapon",
+  "game_id": 20800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Soulbrandt",
+  "code": 3002090001,
+  "kind": "weapon",
+  "game_id": 20900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Demonbrandt",
+  "code": 3002100001,
+  "kind": "weapon",
+  "game_id": 21000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Storm Ruler",
+  "code": 3002110001,
+  "kind": "weapon",
+  "game_id": 21100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Knight Sword",
+  "code": 3002130001,
+  "kind": "weapon",
+  "game_id": 21300,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Broken Sword",
+  "code": 3002140001,
+  "kind": "weapon",
+  "game_id": 21400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Large Sword of Moonlight",
+  "code": 3002160001,
+  "kind": "weapon",
+  "game_id": 21600,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Penetrating Sword",
+  "code": 3002180001,
+  "kind": "weapon",
+  "game_id": 21800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Mercury Rapier+1",
+  "code": 3003002101,
+  "kind": "weapon",
+  "game_id": 30021,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Estoc",
+  "code": 3003010001,
+  "kind": "weapon",
+  "game_id": 30100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Epee Rapier",
+  "code": 3003020001,
+  "kind": "weapon",
+  "game_id": 30200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Scimitar",
+  "code": 3004000001,
+  "kind": "weapon",
+  "game_id": 40000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Kilij",
+  "code": 3004010001,
+  "kind": "weapon",
+  "game_id": 40100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Shotel",
+  "code": 3004020001,
+  "kind": "weapon",
+  "game_id": 40200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Crescent Falchion+1",
+  "code": 3004033101,
+  "kind": "weapon",
+  "game_id": 40331,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Uchigatana",
+  "code": 3004040001,
+  "kind": "weapon",
+  "game_id": 40400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Hiltless",
+  "code": 3004050001,
+  "kind": "weapon",
+  "game_id": 40500,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Magic Sword \"Makoto\"",
+  "code": 3004070001,
+  "kind": "weapon",
+  "game_id": 40700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Crushing Battle Axe+1",
+  "code": 3005001101,
+  "kind": "weapon",
+  "game_id": 50011,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Great Axe",
+  "code": 3005020001,
+  "kind": "weapon",
+  "game_id": 50200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Club",
+  "code": 3006000001,
+  "kind": "weapon",
+  "game_id": 60000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Blessed Mace+1",
+  "code": 3006011101,
+  "kind": "weapon",
+  "game_id": 60111,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Morning Star",
+  "code": 3006030001,
+  "kind": "weapon",
+  "game_id": 60300,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Great Club",
+  "code": 3006040001,
+  "kind": "weapon",
+  "game_id": 60400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Pickaxe",
+  "code": 3006060001,
+  "kind": "weapon",
+  "game_id": 60600,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Winged Spear",
+  "code": 3007010001,
+  "kind": "weapon",
+  "game_id": 70100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Istarelle",
+  "code": 3007030001,
+  "kind": "weapon",
+  "game_id": 70300,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "War Scythe",
+  "code": 3008000001,
+  "kind": "weapon",
+  "game_id": 80000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Mirdan Hammer",
+  "code": 3008010001,
+  "kind": "weapon",
+  "game_id": 80100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Wooden Catalyst",
+  "code": 3009000001,
+  "kind": "weapon",
+  "game_id": 90000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Silver Catalyst",
+  "code": 3009010001,
+  "kind": "weapon",
+  "game_id": 90100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Talisman of God",
+  "code": 3009040001,
+  "kind": "weapon",
+  "game_id": 90400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Talisman of Beasts",
+  "code": 3009050001,
+  "kind": "weapon",
+  "game_id": 90500,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Claws",
+  "code": 3010010001,
+  "kind": "weapon",
+  "game_id": 100100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Hands of God",
+  "code": 3010020001,
+  "kind": "weapon",
+  "game_id": 100200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Compound Short Bow",
+  "code": 3013010001,
+  "kind": "weapon",
+  "game_id": 130100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Compound Long Bow",
+  "code": 3013030001,
+  "kind": "weapon",
+  "game_id": 130300,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "White Bow",
+  "code": 3013040001,
+  "kind": "weapon",
+  "game_id": 130400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Light Crossbow",
+  "code": 3014000001,
+  "kind": "weapon",
+  "game_id": 140000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Heavy Crossbow",
+  "code": 3014010001,
+  "kind": "weapon",
+  "game_id": 140100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Kite Shield",
+  "code": 3015020001,
+  "kind": "weapon",
+  "game_id": 150200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Shade Heater Shield+2",
+  "code": 3015032201,
+  "kind": "weapon",
+  "game_id": 150322,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Adjudicator's Shield",
+  "code": 3015040001,
+  "kind": "weapon",
+  "game_id": 150400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Spiked Shield",
+  "code": 3015050001,
+  "kind": "weapon",
+  "game_id": 150500,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Tower Shield",
+  "code": 3015060001,
+  "kind": "weapon",
+  "game_id": 150600,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Knight's Shield",
+  "code": 3015090001,
+  "kind": "weapon",
+  "game_id": 150900,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Dregling Shield",
+  "code": 3015100001,
+  "kind": "weapon",
+  "game_id": 151000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Rune Shield",
+  "code": 3015110001,
+  "kind": "weapon",
+  "game_id": 151100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Large Brushwood Shield",
+  "code": 3015120001,
+  "kind": "weapon",
+  "game_id": 151200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Steel Shield",
+  "code": 3015130001,
+  "kind": "weapon",
+  "game_id": 151300,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Purple Flame Shield",
+  "code": 3015140001,
+  "kind": "weapon",
+  "game_id": 151400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Heavy Arrow x6",
+  "code": 3016010006,
+  "kind": "weapon",
+  "game_id": 160100,
+  "count": 6,
+  "classification": "filler",
+  "groups": [
+   "Ammunition"
+  ]
+ },
+ {
+  "name": "Light Arrow x13",
+  "code": 3016020013,
+  "kind": "weapon",
+  "game_id": 160200,
+  "count": 13,
+  "classification": "filler",
+  "groups": [
+   "Ammunition"
+  ]
+ },
+ {
+  "name": "Rotten Arrow x21",
+  "code": 3016050021,
+  "kind": "weapon",
+  "game_id": 160500,
+  "count": 21,
+  "classification": "filler",
+  "groups": [
+   "Ammunition"
+  ]
+ },
+ {
+  "name": "Holy Arrow x11",
+  "code": 3016060011,
+  "kind": "weapon",
+  "game_id": 160600,
+  "count": 11,
+  "classification": "filler",
+  "groups": [
+   "Ammunition"
+  ]
+ },
+ {
+  "name": "Holy Arrow x31",
+  "code": 3016060031,
+  "kind": "weapon",
+  "game_id": 160600,
+  "count": 31,
+  "classification": "filler",
+  "groups": [
+   "Ammunition"
+  ]
+ },
+ {
+  "name": "White Arrow x18",
+  "code": 3016070018,
+  "kind": "weapon",
+  "game_id": 160700,
+  "count": 18,
+  "classification": "filler",
+  "groups": [
+   "Ammunition"
+  ]
+ },
+ {
+  "name": "White Arrow x30",
+  "code": 3016070030,
+  "kind": "weapon",
+  "game_id": 160700,
+  "count": 30,
+  "classification": "filler",
+  "groups": [
+   "Ammunition"
+  ]
+ },
+ {
+  "name": "Black Bolt x9",
+  "code": 3017020009,
+  "kind": "weapon",
+  "game_id": 170200,
+  "count": 9,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Wooden Bolt x16",
+  "code": 3017030016,
+  "kind": "weapon",
+  "game_id": 170300,
+  "count": 16,
+  "classification": "useful",
+  "groups": [
+   "Weapons"
+  ]
+ },
+ {
+  "name": "Gold Mask",
+  "code": 3110000001,
+  "kind": "armor",
+  "game_id": 100000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Silver Coronet",
+  "code": 3110010001,
+  "kind": "armor",
+  "game_id": 100100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Assassin's Mask",
+  "code": 3110020001,
+  "kind": "armor",
+  "game_id": 100200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Fluted Helm",
+  "code": 3110070001,
+  "kind": "armor",
+  "game_id": 100700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Brushwood Helm",
+  "code": 3110080001,
+  "kind": "armor",
+  "game_id": 100800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Venerable Sage's Hood",
+  "code": 3110140001,
+  "kind": "armor",
+  "game_id": 101400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Three-Cornered Hat",
+  "code": 3110210001,
+  "kind": "armor",
+  "game_id": 102100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Wizard's Clothes",
+  "code": 3120010001,
+  "kind": "armor",
+  "game_id": 200100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Black Leather Garb",
+  "code": 3120020001,
+  "kind": "armor",
+  "game_id": 200200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Fluted Armor",
+  "code": 3120070001,
+  "kind": "armor",
+  "game_id": 200700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Brushwood Armor",
+  "code": 3120080001,
+  "kind": "armor",
+  "game_id": 200800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Saint's Robe",
+  "code": 3120120001,
+  "kind": "armor",
+  "game_id": 201200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Venerable Sage's Robe",
+  "code": 3120140001,
+  "kind": "armor",
+  "game_id": 201400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Rogue's Clothes",
+  "code": 3120180001,
+  "kind": "armor",
+  "game_id": 201800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Old Ragged Robes",
+  "code": 3120210001,
+  "kind": "armor",
+  "game_id": 202100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Wizard's Gloves",
+  "code": 3130010001,
+  "kind": "armor",
+  "game_id": 300100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Black Gloves",
+  "code": 3130020001,
+  "kind": "armor",
+  "game_id": 300200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Fluted Gauntlets",
+  "code": 3130070001,
+  "kind": "armor",
+  "game_id": 300700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Brushwood Gauntlets",
+  "code": 3130080001,
+  "kind": "armor",
+  "game_id": 300800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Saint's Gloves",
+  "code": 3130120001,
+  "kind": "armor",
+  "game_id": 301200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Venerable Sage's Gloves",
+  "code": 3130140001,
+  "kind": "armor",
+  "game_id": 301400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Silver Bracelets",
+  "code": 3130170001,
+  "kind": "armor",
+  "game_id": 301700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Rogue's Gloves",
+  "code": 3130180001,
+  "kind": "armor",
+  "game_id": 301800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Old Ragged Gloves",
+  "code": 3130210001,
+  "kind": "armor",
+  "game_id": 302100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Wizard's Shoes",
+  "code": 3140010001,
+  "kind": "armor",
+  "game_id": 400100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Black Boots",
+  "code": 3140020001,
+  "kind": "armor",
+  "game_id": 400200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Fluted Greaves",
+  "code": 3140070001,
+  "kind": "armor",
+  "game_id": 400700,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Brushwood Greaves",
+  "code": 3140080001,
+  "kind": "armor",
+  "game_id": 400800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Saint's Boots",
+  "code": 3140120001,
+  "kind": "armor",
+  "game_id": 401200,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Venerable Sage's Boots",
+  "code": 3140140001,
+  "kind": "armor",
+  "game_id": 401400,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Rogue's Boots",
+  "code": 3140180001,
+  "kind": "armor",
+  "game_id": 401800,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Old Ragged Boots",
+  "code": 3140210001,
+  "kind": "armor",
+  "game_id": 402100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Armor"
+  ]
+ },
+ {
+  "name": "Ring of Great Strength",
+  "code": 3200010001,
+  "kind": "ring",
+  "game_id": 100,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of Herculean Strength",
+  "code": 3200010101,
+  "kind": "ring",
+  "game_id": 101,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Clever Rat's Ring",
+  "code": 3200010201,
+  "kind": "ring",
+  "game_id": 102,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Dull Rat's Ring",
+  "code": 3200010301,
+  "kind": "ring",
+  "game_id": 103,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Fragrant Ring",
+  "code": 3200010501,
+  "kind": "ring",
+  "game_id": 105,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Regenerator's Ring",
+  "code": 3200010601,
+  "kind": "ring",
+  "game_id": 106,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Flame Resistance Ring",
+  "code": 3200010701,
+  "kind": "ring",
+  "game_id": 107,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Poison Resistance Ring",
+  "code": 3200010801,
+  "kind": "ring",
+  "game_id": 108,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of Magical Sharpness",
+  "code": 3200010901,
+  "kind": "ring",
+  "game_id": 109,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of Magical Dullness",
+  "code": 3200011001,
+  "kind": "ring",
+  "game_id": 110,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of Magical Nature",
+  "code": 3200011101,
+  "kind": "ring",
+  "game_id": 111,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of Sincere Prayer",
+  "code": 3200011201,
+  "kind": "ring",
+  "game_id": 112,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Cling Ring",
+  "code": 3200011301,
+  "kind": "ring",
+  "game_id": 113,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ally's Ring",
+  "code": 3200011401,
+  "kind": "ring",
+  "game_id": 114,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Foe's Ring",
+  "code": 3200011501,
+  "kind": "ring",
+  "game_id": 115,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Thief Ring",
+  "code": 3200011601,
+  "kind": "ring",
+  "game_id": 116,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Graverobber's Ring",
+  "code": 3200011701,
+  "kind": "ring",
+  "game_id": 117,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Cat Ring",
+  "code": 3200011801,
+  "kind": "ring",
+  "game_id": 118,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of the Accursed",
+  "code": 3200011901,
+  "kind": "ring",
+  "game_id": 119,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of Avarice",
+  "code": 3200012001,
+  "kind": "ring",
+  "game_id": 120,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ronin Ring",
+  "code": 3200012101,
+  "kind": "ring",
+  "game_id": 121,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Master's Ring",
+  "code": 3200012301,
+  "kind": "ring",
+  "game_id": 123,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Ring of Devout Prayer",
+  "code": 3200012401,
+  "kind": "ring",
+  "game_id": 124,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Gash Resistance Ring",
+  "code": 3200012501,
+  "kind": "ring",
+  "game_id": 125,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "Plague Resistance Ring",
+  "code": 3200012601,
+  "kind": "ring",
+  "game_id": 126,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "?ring:1000",
+  "code": 3200100001,
+  "kind": "ring",
+  "game_id": 1000,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Rings"
+  ]
+ },
+ {
+  "name": "False King Demon Soul",
+  "code": 3300000701,
+  "kind": "goods",
+  "game_id": 7,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Copper Key",
+  "code": 3300000901,
+  "kind": "goods",
+  "game_id": 9,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 1F Key",
+  "code": 3300001001,
+  "kind": "goods",
+  "game_id": 10,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 2F Key",
+  "code": 3300001101,
+  "kind": "goods",
+  "game_id": 11,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 3F Key",
+  "code": 3300001201,
+  "kind": "goods",
+  "game_id": 12,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 4F Key",
+  "code": 3300001301,
+  "kind": "goods",
+  "game_id": 13,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, Warden's Key",
+  "code": 3300001401,
+  "kind": "goods",
+  "game_id": 14,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Lead Demon Soul",
+  "code": 3300001501,
+  "kind": "goods",
+  "game_id": 15,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Iron Demon Soul",
+  "code": 3300001601,
+  "kind": "goods",
+  "game_id": 16,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Silver Demon Soul",
+  "code": 3300001701,
+  "kind": "goods",
+  "game_id": 17,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Swollen Demon Soul",
+  "code": 3300001801,
+  "kind": "goods",
+  "game_id": 18,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Hero Demon Soul",
+  "code": 3300001901,
+  "kind": "goods",
+  "game_id": 19,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Storm Demon Soul",
+  "code": 3300002001,
+  "kind": "goods",
+  "game_id": 20,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Doll Demon Soul",
+  "code": 3300002101,
+  "kind": "goods",
+  "game_id": 21,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Mixed Demon Soul",
+  "code": 3300002201,
+  "kind": "goods",
+  "game_id": 22,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Golden Demon Soul",
+  "code": 3300002301,
+  "kind": "goods",
+  "game_id": 23,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Writhing Demon Soul",
+  "code": 3300002401,
+  "kind": "goods",
+  "game_id": 24,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Eroded Demon Soul",
+  "code": 3300002501,
+  "kind": "goods",
+  "game_id": 25,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Pureblood Demon Soul",
+  "code": 3300002601,
+  "kind": "goods",
+  "game_id": 26,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Hard Demon Soul",
+  "code": 3300002701,
+  "kind": "goods",
+  "game_id": 27,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Searing Demon Soul",
+  "code": 3300002801,
+  "kind": "goods",
+  "game_id": 28,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Dragon Demon Soul",
+  "code": 3300002901,
+  "kind": "goods",
+  "game_id": 29,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls",
+   "Boss Souls"
+  ]
+ },
+ {
+  "name": "Maiden in Black Demon Soul",
+  "code": 3300003001,
+  "kind": "goods",
+  "game_id": 30,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls"
+  ]
+ },
+ {
+  "name": "Gray Demon Soul",
+  "code": 3300003101,
+  "kind": "goods",
+  "game_id": 31,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls"
+  ]
+ },
+ {
+  "name": "Small Scaled Flame Demon Soul",
+  "code": 3300003201,
+  "kind": "goods",
+  "game_id": 32,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls"
+  ]
+ },
+ {
+  "name": "Colorless Demon Soul",
+  "code": 3300003401,
+  "kind": "goods",
+  "game_id": 34,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Demon Souls"
+  ]
+ },
+ {
+  "name": "Mausoleum Key",
+  "code": 3300003501,
+  "kind": "goods",
+  "game_id": 35,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Jade Hair Ornament",
+  "code": 3300003801,
+  "kind": "goods",
+  "game_id": 38,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 1F Cell Key",
+  "code": 3300003901,
+  "kind": "goods",
+  "game_id": 39,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 2F W. Cell Key",
+  "code": 3300004001,
+  "kind": "goods",
+  "game_id": 40,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 3F Cell Key",
+  "code": 3300004101,
+  "kind": "goods",
+  "game_id": 41,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 4F Cell Key",
+  "code": 3300004201,
+  "kind": "goods",
+  "game_id": 42,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, 2F E. Cell Key",
+  "code": 3300004301,
+  "kind": "goods",
+  "game_id": 43,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Prison of Hope, Special Key",
+  "code": 3300004401,
+  "kind": "goods",
+  "game_id": 44,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Keys"
+  ]
+ },
+ {
+  "name": "Crescent Moon Grass",
+  "code": 3300100001,
+  "kind": "goods",
+  "game_id": 1000,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Crescent Moon Grass x2",
+  "code": 3300100002,
+  "kind": "goods",
+  "game_id": 1000,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Crescent Moon Grass x3",
+  "code": 3300100003,
+  "kind": "goods",
+  "game_id": 1000,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Crescent Moon Grass x4",
+  "code": 3300100004,
+  "kind": "goods",
+  "game_id": 1000,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Crescent Moon Grass x5",
+  "code": 3300100005,
+  "kind": "goods",
+  "game_id": 1000,
+  "count": 5,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Crescent Moon Grass x11",
+  "code": 3300100011,
+  "kind": "goods",
+  "game_id": 1000,
+  "count": 11,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Half Moon Grass",
+  "code": 3300100101,
+  "kind": "goods",
+  "game_id": 1001,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Half Moon Grass x2",
+  "code": 3300100102,
+  "kind": "goods",
+  "game_id": 1001,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Half Moon Grass x3",
+  "code": 3300100103,
+  "kind": "goods",
+  "game_id": 1001,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Half Moon Grass x4",
+  "code": 3300100104,
+  "kind": "goods",
+  "game_id": 1001,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Half Moon Grass x5",
+  "code": 3300100105,
+  "kind": "goods",
+  "game_id": 1001,
+  "count": 5,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Half Moon Grass x8",
+  "code": 3300100108,
+  "kind": "goods",
+  "game_id": 1001,
+  "count": 8,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Late Moon Grass x2",
+  "code": 3300100202,
+  "kind": "goods",
+  "game_id": 1002,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Late Moon Grass x3",
+  "code": 3300100203,
+  "kind": "goods",
+  "game_id": 1002,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Late Moon Grass x5",
+  "code": 3300100205,
+  "kind": "goods",
+  "game_id": 1002,
+  "count": 5,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Full Moon Grass",
+  "code": 3300100301,
+  "kind": "goods",
+  "game_id": 1003,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Full Moon Grass x2",
+  "code": 3300100302,
+  "kind": "goods",
+  "game_id": 1003,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Full Moon Grass x3",
+  "code": 3300100303,
+  "kind": "goods",
+  "game_id": 1003,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Full Moon Grass x4",
+  "code": 3300100304,
+  "kind": "goods",
+  "game_id": 1003,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Full Moon Grass x5",
+  "code": 3300100305,
+  "kind": "goods",
+  "game_id": 1003,
+  "count": 5,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Full Moon Grass x9",
+  "code": 3300100309,
+  "kind": "goods",
+  "game_id": 1003,
+  "count": 9,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "New Moon Grass x2",
+  "code": 3300100402,
+  "kind": "goods",
+  "game_id": 1004,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "New Moon Grass x4",
+  "code": 3300100404,
+  "kind": "goods",
+  "game_id": 1004,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "New Moon Grass x6",
+  "code": 3300100406,
+  "kind": "goods",
+  "game_id": 1004,
+  "count": 6,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Fresh Spice",
+  "code": 3300100501,
+  "kind": "goods",
+  "game_id": 1005,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Fresh Spice x2",
+  "code": 3300100502,
+  "kind": "goods",
+  "game_id": 1005,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Fresh Spice x3",
+  "code": 3300100503,
+  "kind": "goods",
+  "game_id": 1005,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Fresh Spice x6",
+  "code": 3300100506,
+  "kind": "goods",
+  "game_id": 1005,
+  "count": 6,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Aged Spice",
+  "code": 3300100601,
+  "kind": "goods",
+  "game_id": 1006,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Aged Spice x2",
+  "code": 3300100602,
+  "kind": "goods",
+  "game_id": 1006,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Aged Spice x3",
+  "code": 3300100603,
+  "kind": "goods",
+  "game_id": 1006,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Aged Spice x4",
+  "code": 3300100604,
+  "kind": "goods",
+  "game_id": 1006,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Aged Spice x8",
+  "code": 3300100608,
+  "kind": "goods",
+  "game_id": 1006,
+  "count": 8,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Noble's Lotus x3",
+  "code": 3300100703,
+  "kind": "goods",
+  "game_id": 1007,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Noble's Lotus x4",
+  "code": 3300100704,
+  "kind": "goods",
+  "game_id": 1007,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Noble's Lotus x6",
+  "code": 3300100706,
+  "kind": "goods",
+  "game_id": 1007,
+  "count": 6,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Widow's Lotus x2",
+  "code": 3300100802,
+  "kind": "goods",
+  "game_id": 1008,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Widow's Lotus x3",
+  "code": 3300100803,
+  "kind": "goods",
+  "game_id": 1008,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Dark Moon Grass",
+  "code": 3300100901,
+  "kind": "goods",
+  "game_id": 1009,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Dark Moon Grass x2",
+  "code": 3300100902,
+  "kind": "goods",
+  "game_id": 1009,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Dark Moon Grass x3",
+  "code": 3300100903,
+  "kind": "goods",
+  "game_id": 1009,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Dark Moon Grass x5",
+  "code": 3300100905,
+  "kind": "goods",
+  "game_id": 1009,
+  "count": 5,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Ed's Sharpening Stone x2",
+  "code": 3300101002,
+  "kind": "goods",
+  "game_id": 1010,
+  "count": 2,
+  "classification": "useful",
+  "groups": []
+ },
+ {
+  "name": "Throwing Knife x10",
+  "code": 3300101110,
+  "kind": "goods",
+  "game_id": 1011,
+  "count": 10,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Kunai x11",
+  "code": 3300101211,
+  "kind": "goods",
+  "game_id": 1012,
+  "count": 11,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Firebomb x5",
+  "code": 3300101305,
+  "kind": "goods",
+  "game_id": 1013,
+  "count": 5,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Firebomb x6",
+  "code": 3300101306,
+  "kind": "goods",
+  "game_id": 1013,
+  "count": 6,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Soul Remains x2",
+  "code": 3300101402,
+  "kind": "goods",
+  "game_id": 1014,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Soul Remains x3",
+  "code": 3300101403,
+  "kind": "goods",
+  "game_id": 1014,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Soul Remains x6",
+  "code": 3300101406,
+  "kind": "goods",
+  "game_id": 1014,
+  "count": 6,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Pine Resin x4",
+  "code": 3300101504,
+  "kind": "goods",
+  "game_id": 1015,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Black Pine Resin x2",
+  "code": 3300101602,
+  "kind": "goods",
+  "game_id": 1016,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Black Pine Resin x6",
+  "code": 3300101606,
+  "kind": "goods",
+  "game_id": 1016,
+  "count": 6,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Sticky White Slime",
+  "code": 3300101701,
+  "kind": "goods",
+  "game_id": 1017,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Sticky White Slime x2",
+  "code": 3300101702,
+  "kind": "goods",
+  "game_id": 1017,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Brass Telescope",
+  "code": 3300101801,
+  "kind": "goods",
+  "game_id": 1018,
+  "count": 1,
+  "classification": "useful",
+  "groups": []
+ },
+ {
+  "name": "Archstone Shard",
+  "code": 3300102001,
+  "kind": "goods",
+  "game_id": 1020,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Archstone Shard x2",
+  "code": 3300102002,
+  "kind": "goods",
+  "game_id": 1020,
+  "count": 2,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Stone of Ephemeral Eyes",
+  "code": 3300102101,
+  "kind": "goods",
+  "game_id": 1021,
+  "count": 1,
+  "classification": "useful",
+  "groups": []
+ },
+ {
+  "name": "Stone of Ephemeral Eyes x2",
+  "code": 3300102102,
+  "kind": "goods",
+  "game_id": 1021,
+  "count": 2,
+  "classification": "useful",
+  "groups": []
+ },
+ {
+  "name": "Stone of Ephemeral Eyes x3",
+  "code": 3300102103,
+  "kind": "goods",
+  "game_id": 1021,
+  "count": 3,
+  "classification": "useful",
+  "groups": []
+ },
+ {
+  "name": "Augite of Guidance",
+  "code": 3300102201,
+  "kind": "goods",
+  "game_id": 1022,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Augite of Guidance x3",
+  "code": 3300102203,
+  "kind": "goods",
+  "game_id": 1022,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Augite of Guidance x4",
+  "code": 3300102204,
+  "kind": "goods",
+  "game_id": 1022,
+  "count": 4,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Augite of Guidance x5",
+  "code": 3300102205,
+  "kind": "goods",
+  "game_id": 1022,
+  "count": 5,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Soldier's Lotus x3",
+  "code": 3300102303,
+  "kind": "goods",
+  "game_id": 1023,
+  "count": 3,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "Unknown Warrior Soul",
+  "code": 3300102501,
+  "kind": "goods",
+  "game_id": 1025,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Unknown Hero Soul",
+  "code": 3300102601,
+  "kind": "goods",
+  "game_id": 1026,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Renowned Warrior Soul",
+  "code": 3300102701,
+  "kind": "goods",
+  "game_id": 1027,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Renowned Hero Soul",
+  "code": 3300102801,
+  "kind": "goods",
+  "game_id": 1028,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Storied Warrior Soul",
+  "code": 3300102901,
+  "kind": "goods",
+  "game_id": 1029,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Storied Hero Soul",
+  "code": 3300103001,
+  "kind": "goods",
+  "game_id": 1030,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Legendary Warrior Soul",
+  "code": 3300103101,
+  "kind": "goods",
+  "game_id": 1031,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Legendary Hero Soul",
+  "code": 3300103201,
+  "kind": "goods",
+  "game_id": 1032,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Souls"
+  ]
+ },
+ {
+  "name": "Nexial Binding",
+  "code": 3300103301,
+  "kind": "goods",
+  "game_id": 1033,
+  "count": 1,
+  "classification": "useful",
+  "groups": []
+ },
+ {
+  "name": "Hardstone Shard x3",
+  "code": 3300200003,
+  "kind": "goods",
+  "game_id": 2000,
+  "count": 3,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Hardstone Shard x5",
+  "code": 3300200005,
+  "kind": "goods",
+  "game_id": 2000,
+  "count": 5,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Large Hardstone Shard",
+  "code": 3300200101,
+  "kind": "goods",
+  "game_id": 2001,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Large Hardstone Shard x2",
+  "code": 3300200102,
+  "kind": "goods",
+  "game_id": 2001,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Hardstone Chunk",
+  "code": 3300200201,
+  "kind": "goods",
+  "game_id": 2002,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Hardstone",
+  "code": 3300200301,
+  "kind": "goods",
+  "game_id": 2003,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Sharpstone Shard x3",
+  "code": 3300200403,
+  "kind": "goods",
+  "game_id": 2004,
+  "count": 3,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Sharpstone Shard x4",
+  "code": 3300200404,
+  "kind": "goods",
+  "game_id": 2004,
+  "count": 4,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Large Sharpstone Shard",
+  "code": 3300200501,
+  "kind": "goods",
+  "game_id": 2005,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Large Sharpstone Shard x2",
+  "code": 3300200502,
+  "kind": "goods",
+  "game_id": 2005,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Sharpstone Chunk",
+  "code": 3300200601,
+  "kind": "goods",
+  "game_id": 2006,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Sharpstone",
+  "code": 3300200701,
+  "kind": "goods",
+  "game_id": 2007,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Clearstone Shard",
+  "code": 3300201201,
+  "kind": "goods",
+  "game_id": 2012,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Clearstone Shard x4",
+  "code": 3300201204,
+  "kind": "goods",
+  "game_id": 2012,
+  "count": 4,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Clearstone Chunk",
+  "code": 3300201301,
+  "kind": "goods",
+  "game_id": 2013,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Clearstone",
+  "code": 3300201401,
+  "kind": "goods",
+  "game_id": 2014,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Greystone Shard x2",
+  "code": 3300201502,
+  "kind": "goods",
+  "game_id": 2015,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Greystone Chunk",
+  "code": 3300201601,
+  "kind": "goods",
+  "game_id": 2016,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Greystone",
+  "code": 3300201701,
+  "kind": "goods",
+  "game_id": 2017,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Spiderstone Shard x2",
+  "code": 3300202402,
+  "kind": "goods",
+  "game_id": 2024,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Spiderstone Chunk",
+  "code": 3300202501,
+  "kind": "goods",
+  "game_id": 2025,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Spiderstone",
+  "code": 3300202601,
+  "kind": "goods",
+  "game_id": 2026,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Mercurystone Shard",
+  "code": 3300202701,
+  "kind": "goods",
+  "game_id": 2027,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Mercurystone Shard x2",
+  "code": 3300202702,
+  "kind": "goods",
+  "game_id": 2027,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Mercurystone Chunk",
+  "code": 3300202801,
+  "kind": "goods",
+  "game_id": 2028,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Mercurystone",
+  "code": 3300202901,
+  "kind": "goods",
+  "game_id": 2029,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Dragonstone Shard",
+  "code": 3300203001,
+  "kind": "goods",
+  "game_id": 2030,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Dragonstone Shard x2",
+  "code": 3300203002,
+  "kind": "goods",
+  "game_id": 2030,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Dragonstone Chunk x2",
+  "code": 3300203102,
+  "kind": "goods",
+  "game_id": 2031,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Dragonstone",
+  "code": 3300203201,
+  "kind": "goods",
+  "game_id": 2032,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Suckerstone Shard",
+  "code": 3300203301,
+  "kind": "goods",
+  "game_id": 2033,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Suckerstone Shard x2",
+  "code": 3300203302,
+  "kind": "goods",
+  "game_id": 2033,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Suckerstone Chunk",
+  "code": 3300203401,
+  "kind": "goods",
+  "game_id": 2034,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Suckerstone Chunk x2",
+  "code": 3300203402,
+  "kind": "goods",
+  "game_id": 2034,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Suckerstone",
+  "code": 3300203501,
+  "kind": "goods",
+  "game_id": 2035,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Marrowstone",
+  "code": 3300203801,
+  "kind": "goods",
+  "game_id": 2038,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Moonlightstone Shard",
+  "code": 3300203901,
+  "kind": "goods",
+  "game_id": 2039,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Moonlightstone Chunk",
+  "code": 3300204001,
+  "kind": "goods",
+  "game_id": 2040,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Moonshadestone Shard",
+  "code": 3300204201,
+  "kind": "goods",
+  "game_id": 2042,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Moonshadestone Shard x2",
+  "code": 3300204202,
+  "kind": "goods",
+  "game_id": 2042,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Moonshadestone Chunk",
+  "code": 3300204301,
+  "kind": "goods",
+  "game_id": 2043,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Faintstone Shard",
+  "code": 3300204501,
+  "kind": "goods",
+  "game_id": 2045,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Faintstone Shard x2",
+  "code": 3300204502,
+  "kind": "goods",
+  "game_id": 2045,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Faintstone Chunk",
+  "code": 3300204601,
+  "kind": "goods",
+  "game_id": 2046,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Faintstone",
+  "code": 3300204701,
+  "kind": "goods",
+  "game_id": 2047,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Cloudstone Shard",
+  "code": 3300204801,
+  "kind": "goods",
+  "game_id": 2048,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Cloudstone Shard x2",
+  "code": 3300204802,
+  "kind": "goods",
+  "game_id": 2048,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Cloudstone Chunk x2",
+  "code": 3300204902,
+  "kind": "goods",
+  "game_id": 2049,
+  "count": 2,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Pure Cloudstone",
+  "code": 3300205001,
+  "kind": "goods",
+  "game_id": 2050,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Meltstone Shard",
+  "code": 3300205401,
+  "kind": "goods",
+  "game_id": 2054,
+  "count": 1,
+  "classification": "useful",
+  "groups": [
+   "Upgrade Stones"
+  ]
+ },
+ {
+  "name": "Blue Eye Stone",
+  "code": 3300999701,
+  "kind": "goods",
+  "game_id": 9997,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "White Eye Stone",
+  "code": 3300999901,
+  "kind": "goods",
+  "game_id": 9999,
+  "count": 1,
+  "classification": "filler",
+  "groups": [
+   "Consumables"
+  ]
+ },
+ {
+  "name": "1-2 The Lord's Path",
+  "code": 3900000000,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "1-3 Inner Ward",
+  "code": 3900000001,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "1-4 The King's Tower",
+  "code": 3900000002,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "2-1 Smithing Grounds",
+  "code": 3900000003,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "2-2 The Tunnel City",
+  "code": 3900000004,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "2-3 Underground Temple",
+  "code": 3900000005,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "3-1 Prison of Hope",
+  "code": 3900000006,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "3-2 Upper Latria",
+  "code": 3900000007,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "3-3 The Ivory Tower",
+  "code": 3900000008,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "4-1 Island's Edge",
+  "code": 3900000009,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "4-2 The Ritual Path",
+  "code": 3900000010,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "4-3 Altar of Storms",
+  "code": 3900000011,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "5-1 Depraved Chasm",
+  "code": 3900000012,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "5-2 Swamp of Sorrow",
+  "code": 3900000013,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ },
+ {
+  "name": "5-3 Rotting Haven",
+  "code": 3900000014,
+  "kind": "archipelago",
+  "game_id": 0,
+  "count": 1,
+  "classification": "progression",
+  "groups": [
+   "World Locks"
+  ]
+ }
+]
